@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: ff-db
+    image: mysql
+    expose:
+      - "${DB_PORT}"
+    volumes:
+      - "ff-volume:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - ff-network
+      - ff-db-view
+    restart: unless-stopped
+
+  db-view:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - ff-db-view
+
+  ff:
+    container_name: ff-api
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    working_dir: /ff-volume/app
+    ports:
+      - "${PORT_EXPOSED}:${PORT}"
+    volumes:
+      - "./:/ff-volume/app"
+    depends_on:
+      - db
+    networks:
+      - ff-network
+    restart: unless-stopped
+
+  # ffe2e:
+  #   container_name: ff-api-e2e
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile-local
+  #   working_dir: /ff-e2e/app
+  #   expose:
+  #      - 3000
+  #   volumes:
+  #     - "./:/ff-e2e/app"
+  #   command: npm run test:e2e
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - ff-network
+  #   restart: "no"
+
+networks:
+  ff-network:
+    driver: bridge
+  ff-db-view:
+     driver: bridge
+
+volumes:
+  ff-volume:
+    driver: "local"
