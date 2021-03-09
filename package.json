@@ -18,7 +18,16 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli.config.ts",
+    "typeorm:migration:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli.config.ts migration:create -n",
+    "typeorm:migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli.config.ts migration:generate -n",
+    "typeorm:migration:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli.config.ts migration:revert",
+    "typeorm:migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli.config.ts migration:run",
+    "typeorm:seed:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:create -n",
+    "typeorm:seed:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:generate -n",
+    "typeorm:seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:run",
+    "typeorm:seed:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.13",
@@ -44,7 +53,8 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.31"
+    "typeorm": "^0.2.31",
+    "typeorm-naming-strategies": "^2.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.6",

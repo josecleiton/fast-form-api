@@ -1,5 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 export const databaseConfigKey = 'database';
 
@@ -21,8 +22,8 @@ export const databaseConfig = registerAs(
       process.env.DB_LOGGING === 'true' ||
       process.env.NODE_ENV === 'development',
     cli: {
-      // migrationsDir: 'src/database/migrations',
-      migrationsDir: __dirname + '/../database/migrations',
+      migrationsDir: 'src/database/migrations',
     },
+    namingStrategy: new SnakeNamingStrategy(),
   }),
 );
