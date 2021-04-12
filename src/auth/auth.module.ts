@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from '../user/user.module';
 import { jwtConfigKey } from '../config';
 
+import { CaslModule } from './casl/casl.module';
+
 import { AuthService } from './auth.service';
 import { AuthRepository } from './repositories/auth.repository';
 import { JwtStrategy } from './strategies/jwt.strategy';
@@ -21,8 +23,9 @@ import { JwtStrategy } from './strategies/jwt.strategy';
       inject: [ConfigService],
     }),
     UserModule,
+    CaslModule,
   ],
   providers: [AuthService, JwtStrategy],
-  exports: [AuthService, JwtStrategy],
+  exports: [AuthService, JwtStrategy, CaslModule],
 })
 export class AuthModule {}
