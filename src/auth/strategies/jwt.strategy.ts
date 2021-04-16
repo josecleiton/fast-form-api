@@ -8,6 +8,7 @@ import { jwtConfigKey } from '../../config';
 
 import { UserService } from '../../user/user.service';
 import { AuthService } from '../auth.service';
+import { JwtPayload } from '../interfaces/jwt-payload.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -23,15 +24,17 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: { email: string }): Promise<unknown> {
-    const auth = await this.authService.findAuth(payload.email);
+  async validate(payload: JwtPayload): Promise<unknown> {
+    const auth = await this.authService.findAuth({ login: payload.uid });
     if (!auth) {
       throw new UnauthorizedException();
     }
-    const user = await this.userService.findUser(payload.email);
+
+    const user = await this.userService.findUser({ enrollment: payload.uid });
     if (!user) {
       throw new UnauthorizedException();
     }
+
     return user;
   }
 }

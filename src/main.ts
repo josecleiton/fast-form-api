@@ -65,13 +65,16 @@ async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
   const PORT = parseInt(configService.get('PORT')!) ?? DEFAULT_PORT;
+
   applySecurityLayer(app, configService);
   applyPerfLayer(app);
   await applyGlobals(app);
   buildSwaggerDoc(app, configService);
+
   if (PORT === DEFAULT_PORT) {
     logger.warn(`App using default port :${DEFAULT_PORT}`);
   }
+
   await app.listen(PORT, '0.0.0.0');
   logger.log(`App listening to port :${PORT}`);
   logger.log(`App running on: ${await app.getUrl()}`);

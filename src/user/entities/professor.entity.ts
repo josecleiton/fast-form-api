@@ -1,5 +1,5 @@
-import { Entity } from 'typeorm';
+import { ChildEntity } from 'typeorm';
 import { User } from './user.entity';
 
-@Entity('professor')
+@ChildEntity()
 export class Professor extends User {}
