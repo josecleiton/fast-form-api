@@ -1,6 +1,7 @@
 import { ExamAgreement } from 'src/exam/entities/agreement.entity';
 import { Column, Entity, OneToMany, TableInheritance } from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
+import { UserRole } from '../enum/user-role.enum';
 import { UserType } from '../enum/user-type.enum';
 
 @Entity('user')
@@ -12,9 +13,12 @@ export class User extends FFEntity {
   @Column({ type: 'varchar', unique: true })
   cpf: string;
 
-  @Column({ default: UserType.STUDENT })
+  @Column()
   type: UserType;
-
+  
+  @Column({ type: 'enum', default: UserRole.REGULAR, enum: UserRole })
+  role: UserRole;
+  
   @OneToMany(
     () => ExamAgreement,
     examAgreement => examAgreement.user

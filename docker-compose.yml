@@ -17,6 +17,7 @@ services:
     restart: unless-stopped
 
   db-view:
+    container_name: ff-db-admin
     image: phpmyadmin
     restart: unless-stopped
     ports:

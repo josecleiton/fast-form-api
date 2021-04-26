@@ -7,14 +7,13 @@ import {
 } from '@casl/ability';
 import { Injectable } from '@nestjs/common';
 
-import { UserType } from '../../../user/enum/user-type.enum';
-
 import { Answer } from '../../../answer/entities/answer.entity';
 import { Exam } from '../../../exam/entities/exam.entity';
 import { ExamAgreement } from '../../../exam/entities/agreement.entity';
 import { User } from '../../../user/entities/user.entity';
 import { CaslAction as Action } from '../enums/casl-action.enum';
 import { QuestionGroup } from 'src/question-group/entities/question-group.entity';
+import { UserRole } from 'src/user/enum/user-role.enum';
 
 type CaslSubjects =
   | InferSubjects<
@@ -35,11 +34,11 @@ export class CaslAbilityFactory {
       Ability as AbilityClass<AppAbility>,
     );
 
-    switch (user.type) {
-      case UserType.ADMIN:
+    switch (user.role) {
+      case UserRole.ADMIN:
         can(Action.MANAGE, 'all');
         break;
-      case UserType.MANAGER:
+      case UserRole.MANAGER:
         can(Action.READ, 'all');
         can(Action.MANAGE, QuestionGroup);
         break;
