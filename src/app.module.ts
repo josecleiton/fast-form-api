@@ -9,6 +9,7 @@ import { ExamModule } from './exam/exam.module';
 import { QuestionGroupModule } from './question-group/question-group.module';
 import { AnswerModule } from './answer/answer.module';
 import { UniversityModule } from './university/university.module';
+import { AuxiliaryModule } from './auxiliary/auxiliary.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UniversityModule } from './university/university.module';
     QuestionGroupModule,
     AnswerModule,
     UniversityModule,
+    AuxiliaryModule,
   ],
 })
 export class AppModule {}
