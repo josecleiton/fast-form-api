@@ -11,6 +11,8 @@ import { CaslModule } from './casl/casl.module';
 import { AuthService } from './auth.service';
 import { AuthRepository } from './repositories/auth.repository';
 import { JwtGuard } from './guards/jwt.guard';
+import { AuthController } from './controllers/auth.controller';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -25,7 +27,8 @@ import { JwtGuard } from './guards/jwt.guard';
     UserModule,
     CaslModule,
   ],
-  providers: [AuthService, JwtGuard],
+  controllers: [AuthController],
+  providers: [AuthService, JwtGuard, JwtStrategy],
   exports: [AuthService, JwtGuard, CaslModule],
 })
 export class AuthModule {}
