@@ -9,6 +9,7 @@ import { ExamModule } from './exam/exam.module';
 import { QuestionGroupModule } from './question-group/question-group.module';
 import { AnswerModule } from './answer/answer.module';
 import { UniversityModule } from './university/university.module';
+import { AuxiliaryModule } from './auxiliary/auxiliary.module';
 import { CoreModule } from './core/core.module';
 
 @Module({
@@ -28,6 +29,7 @@ import { CoreModule } from './core/core.module';
     QuestionGroupModule,
     AnswerModule,
     UniversityModule,
+    AuxiliaryModule,
   ],
 })
 export class AppModule {}
