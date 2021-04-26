@@ -9,6 +9,7 @@ import { ExamModule } from './exam/exam.module';
 import { QuestionGroupModule } from './question-group/question-group.module';
 import { AnswerModule } from './answer/answer.module';
 import { UniversityModule } from './university/university.module';
+import { CoreModule } from './core/core.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UniversityModule } from './university/university.module';
         configService.get(databaseConfigKey)!,
       inject: [ConfigService],
     }),
+    CoreModule,
     LoggerModule,
     AuthModule,
     UserModule,
