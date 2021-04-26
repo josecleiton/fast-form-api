@@ -1,6 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthService } from 'src/auth/auth.service';
+import {
+  runOnTransactionRollback,
+  Transactional,
+} from 'typeorm-transactional-cls-hooked';
 
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserDto } from './dtos/user.dto';
@@ -15,9 +19,17 @@ export class UserService {
     private readonly authService: AuthService,
   ) {}
 
+  @Transactional()
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const auth = await this.authService.createAuth(createUserDto);
-    return this.userRepository.createUser(createUserDto);
+    const auth = await this.authService.createAuth({
+      login: createUserDto.enrollment,
+      password: createUserDto.password,
+    });
+    runOnTransactionRollback((e) => {
+      e && console.error(e);
+      console.log('create auth transaction completed');
+    });
+    return await this.userRepository.createUser(createUserDto);
   }
 
   findUser(userDto: UserDto): Promise<User | undefined> {

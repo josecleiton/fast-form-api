@@ -9,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import bcrypt = require('bcryptjs');
 
 import { InjectRepository } from '@nestjs/typeorm';
+import { Transactional } from 'typeorm-transactional-cls-hooked';
 
 import { UserService } from '../user/user.service';
 
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   async mustFindAuth(authDto: AuthDto): Promise<Auth> {
-    const auth = await this.findAuth(authDto);
+    const auth = await this.findAuth({ login: authDto.login });
     if (!auth) {
       throw new NotFoundException(authDto);
     }
@@ -60,6 +61,7 @@ export class AuthService {
     return accessToken;
   }
 
+  @Transactional()
   async createAuth(createAuthDto: CreateAuthDto): Promise<void> {
     const salt = await bcrypt.genSalt();
     const password = await bcrypt.hash(createAuthDto.password, salt);
