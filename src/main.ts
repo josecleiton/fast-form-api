@@ -3,6 +3,7 @@ import rateLimit = require('express-rate-limit');
 import compression = require('compression');
 import morgan = require('morgan');
 import basicAuth = require('express-basic-auth');
+import { initializeTransactionalContext } from 'typeorm-transactional-cls-hooked';
 
 import { NestFactory } from '@nestjs/core';
 import { Logger, INestApplication, ValidationPipe } from '@nestjs/common';
@@ -15,6 +16,7 @@ import { SwaggerOptions } from './config/interfaces/swagger.interface';
 import { swaggerConfigKey } from './config/swagger.config';
 import { CustomLogger } from './logger/logger.service';
 import { corsConfigKey, rateLimitConfigKey } from './config';
+import { PayloadInterceptor } from './core/interceptors/payload.interceptor';
 
 const DEFAULT_PORT = 3000;
 
@@ -58,6 +60,7 @@ function applyPerfLayer(app: NestExpressApplication): void {
 async function applyGlobals(app: INestApplication): Promise<void> {
   const logger = await app.resolve(CustomLogger);
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+  app.useGlobalInterceptors(new PayloadInterceptor());
   app.useLogger(logger);
 }
 
@@ -75,6 +78,7 @@ async function bootstrap(): Promise<void> {
     logger.warn(`App using default port :${DEFAULT_PORT}`);
   }
 
+  initializeTransactionalContext();
   await app.listen(PORT, '0.0.0.0');
   logger.log(`App listening to port :${PORT}`);
   logger.log(`App running on: ${await app.getUrl()}`);
