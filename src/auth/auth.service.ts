@@ -6,7 +6,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import bcrypt = require('bcrypt');
+import bcrypt = require('bcryptjs');
 
 import { InjectRepository } from '@nestjs/typeorm';
 
