@@ -1,6 +1,8 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { JwtGuard } from '../../auth/guards/jwt.guard';
+import { GetUser } from '../decoratos/get-user.decorator';
 import { CreateUserDto } from '../dtos/create-user.dto';
+import { User } from '../entities/user.entity';
 import { UserService } from '../user.service';
 
 @Controller('user')
@@ -12,10 +14,10 @@ export class UserController {
     return this.userService.createUser(createUserDto);
   }
 
-  @Get(':enrollment')
+  @Get()
   @UseGuards(JwtGuard)
-  getUser(@Param('enrollment') enrollment: string) {
-    return this.userService.findUser({ enrollment });
+  getUser(@GetUser() user: User) {
+    return user;
   }
 
   // @Put()
