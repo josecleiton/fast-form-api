@@ -1,8 +1,14 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthService } from 'src/auth/auth.service';
+import { ProfessorService } from 'src/auxiliary/services/professor.service';
+import { StudentService } from 'src/auxiliary/services/student.service';
 import {
-  runOnTransactionRollback,
+  runOnTransactionComplete,
   Transactional,
 } from 'typeorm-transactional-cls-hooked';
 
@@ -11,8 +17,6 @@ import { UserDto } from './dtos/user.dto';
 import { User } from './entities/user.entity';
 import { UserType } from './enum/user-type.enum';
 import { createUser } from './helpers/create-user.helper';
-import { ProfessorRepository } from './repositories/professor.repository';
-import { StudentRepository } from './repositories/student.repository';
 import { UserRepository } from './repositories/user.repository';
 
 @Injectable()
@@ -20,35 +24,33 @@ export class UserService {
   constructor(
     @InjectRepository(UserRepository)
     private readonly userRepository: UserRepository,
-    @InjectRepository(StudentRepository)
-    private readonly studentRepository: StudentRepository,
-    @InjectRepository(ProfessorRepository)
-    private readonly professorRepository: ProfessorRepository,
     private readonly authService: AuthService,
+    private readonly studentService: StudentService,
+    private readonly professorService: ProfessorService,
   ) {}
 
   @Transactional()
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const auth = await this.authService.createAuth({
+    const user = await this.createUserByType(createUserDto);
+    await this.authService.createAuth({
       login: createUserDto.enrollment,
       password: createUserDto.password,
     });
-    runOnTransactionRollback((e) => {
+    runOnTransactionComplete((e) => {
       e && console.error(e);
       console.log('create auth transaction completed');
     });
-    return await this.createUserByType(createUserDto);
+    return user;
   }
 
   private async createUserByType(createUserDto: CreateUserDto): Promise<User> {
-    const user = createUser(createUserDto);
     switch (createUserDto.type) {
       case UserType.PROFESSOR:
-        return this.professorRepository.save(user);
+        return this.professorService.createStudent(createUserDto);
       case UserType.STUDENT:
-        return this.studentRepository.save(user);
+        return this.studentService.createStudent(createUserDto);
       default:
-        return this.userRepository.save(user);
+        throw new UnprocessableEntityException();
     }
   }
 

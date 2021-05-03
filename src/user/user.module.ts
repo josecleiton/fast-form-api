@@ -1,20 +1,17 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
+import { AuxiliaryModule } from 'src/auxiliary/auxiliary.module';
+
+import { AuthModule } from '../auth/auth.module';
 import { UserController } from './controllers/user.controller';
-import { ProfessorRepository } from './repositories/professor.repository';
-import { StudentRepository } from './repositories/student.repository';
 import { UserRepository } from './repositories/user.repository';
 import { UserService } from './user.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      UserRepository,
-      StudentRepository,
-      ProfessorRepository,
-    ]),
+    TypeOrmModule.forFeature([UserRepository]),
     forwardRef(() => AuthModule),
+    forwardRef(() => AuxiliaryModule),
   ],
   controllers: [UserController],
   providers: [UserService],
