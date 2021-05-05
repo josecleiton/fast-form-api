@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
-import { QuestionGroupService } from './question-group.service';
-import { QuestionGroupController } from './question-group.controller';
+import { QuestionGroupService } from './services/question-group.service';
+import { QuestionGroupController } from './controllers/question-group.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { QuestionGroupRepository } from './repositories/question-group.repository';
+import { QuestionModule } from './question/question.module';
+import { QuestionController } from './controllers/question.controller';
 
 @Module({
-  controllers: [QuestionGroupController],
-  providers: [QuestionGroupService]
+  imports: [
+    TypeOrmModule.forFeature([QuestionGroupRepository]),
+    QuestionModule,
+  ],
+  controllers: [QuestionGroupController, QuestionController],
+  providers: [QuestionGroupService],
 })
 export class QuestionGroupModule {}
