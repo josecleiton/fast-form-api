@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
   db:
@@ -21,7 +21,7 @@ services:
     image: phpmyadmin
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 8081:80
     environment:
       - PMA_ARBITRARY=1
     networks:
