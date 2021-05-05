@@ -1,5 +1,6 @@
 import { corsConfig } from './cors.config';
 import { databaseConfig } from './database.config';
+import { firebaseConfig } from './firebase.config';
 import { jwtConfig } from './jwt.config';
 import { rateLimitConfig } from './rate-limit.config';
 import { swaggerConfig } from './swagger.config';
@@ -16,4 +17,5 @@ export const configs = [
   rateLimitConfig,
   corsConfig,
   jwtConfig,
+  firebaseConfig,
 ];
