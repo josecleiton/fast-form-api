@@ -9,6 +9,6 @@ export const swaggerConfig = registerAs(
     title: 'Fast Form',
     description: 'Fast Form API',
     version: 'v0.0.1',
-    users: { ff: 'ff' },
+    users: { ff: 'senhaforte' },
   }),
 );
