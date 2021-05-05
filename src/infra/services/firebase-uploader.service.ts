@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { randomBytes } from 'node:crypto';
+import { randomBytes } from 'crypto';
 import { FirebaseStorageService } from 'src/firebase';
 import { FileSendDto } from '../dtos/file-send.dto';
 import { UploaderService } from './uploader.service';
