@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { randomBytes } from 'node:crypto';
 import { FirebaseStorageService } from 'src/firebase';
 import { FileSendDto } from '../dtos/file-send.dto';
 import { UploaderService } from './uploader.service';
@@ -9,7 +10,7 @@ export class FirebaseUploader implements UploaderService {
 
   async upload(fileDto: FileSendDto, path = ''): Promise<string> {
     return await this.storageService.upload(
-      path,
+      `${path}/${randomBytes(32).toString('hex')}`,
       fileDto.buffer,
       fileDto.mimetype,
       true,

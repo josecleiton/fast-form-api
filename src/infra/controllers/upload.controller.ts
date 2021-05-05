@@ -8,6 +8,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
+import { uploadRootPath } from '../infra.constants';
 import { UploaderService } from '../services/uploader.service';
 
 @Controller('upload')
@@ -19,6 +20,6 @@ export class UploadController {
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   async upload(@UploadedFile() file: Express.Multer.File) {
-    return await this.service.upload(file);
+    return await this.service.upload(file, uploadRootPath);
   }
 }
