@@ -10,6 +10,7 @@ import { QuestionGroupModule } from './question-group/question-group.module';
 import { AnswerModule } from './answer/answer.module';
 import { CoreModule } from './core/core.module';
 import { AuxiliaryModule } from './auxiliary/auxiliary.module';
+import { InfraModule } from './infra/infra.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { AuxiliaryModule } from './auxiliary/auxiliary.module';
     QuestionGroupModule,
     AnswerModule,
     AuxiliaryModule,
+    InfraModule,
   ],
 })
 export class AppModule {}
