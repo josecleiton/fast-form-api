@@ -1,4 +1,5 @@
 import { FFEntity } from 'src/core/entities/ff.entity';
+import { Exam } from 'src/exam/entities/exam.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Grade } from './grade.entity';
 
@@ -15,4 +16,7 @@ export class Period extends FFEntity {
 
   @OneToMany(() => Grade, (grade) => grade.period)
   grades: Grade[];
+
+  @OneToMany(() => Exam, (exam) => exam.period)
+  exams: Exam[];
 }
