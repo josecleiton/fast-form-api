@@ -30,7 +30,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    const user = await this.userService.findUser({ enrollment: payload.uid });
+    const user = await this.userService.findSpecializedUser({
+      enrollment: payload.uid,
+    });
     if (!user) {
       throw new UnauthorizedException();
     }

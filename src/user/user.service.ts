@@ -17,6 +17,7 @@ import { UserDto } from './dtos/user.dto';
 import { User } from './entities/user.entity';
 import { UserType } from './enum/user-type.enum';
 import { createUser } from './helpers/create-user.helper';
+import { UserResult } from './interfaces/user-specialized-result.interface';
 import { UserRepository } from './repositories/user.repository';
 
 @Injectable()
@@ -63,6 +64,44 @@ export class UserService {
     if (!user) {
       throw new UnauthorizedException(userDto);
     }
+    return user;
+  }
+
+  async findSpecializedUser(userDto: UserDto): Promise<User | undefined> {
+    const partialUser:
+      | UserResult
+      | undefined = await this.userRepository.findOne({
+      select: ['type', 'id'],
+      where: { ...userDto },
+    });
+
+    if (!partialUser) {
+      throw new UnauthorizedException(userDto);
+    }
+
+    let user: User | undefined;
+
+    switch (partialUser.type) {
+      case UserType.PROFESSOR:
+        user = await this.professorService.findOne(userDto);
+        break;
+      case UserType.STUDENT:
+        user = await this.studentService.findOne(userDto);
+        break;
+      default:
+        user = await this.userRepository.findOne({ ...userDto });
+    }
+
+    return user;
+  }
+
+  async mustFindSpecializedUser(userDto: UserDto): Promise<User> {
+    const user = await this.findSpecializedUser(userDto);
+
+    if (!user) {
+      throw new UnauthorizedException();
+    }
+
     return user;
   }
 }
