@@ -1,26 +1,52 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
+import { Exam } from './entities/exam.entity';
+import { EXAM_NOT_FOUND } from './exam.constants';
+import { ExamRepository } from './repositories/exam.repository';
 
 @Injectable()
 export class ExamService {
-  create(createExamDto: CreateExamDto) {
-    return 'This action adds a new exam';
+  constructor(
+    @InjectRepository(ExamRepository)
+    private readonly repository: ExamRepository,
+  ) {}
+
+  @Transactional()
+  create(createExamDto: CreateExamDto): Promise<Exam> {
+    const exam = this.repository.create(createExamDto);
+
+    return this.repository.save(exam);
   }
 
   findAll() {
-    return `This action returns all exam`;
+    return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} exam`;
+  async findOne(id: number) {
+    const exam = await this.repository.findOne(id);
+    if (!exam) {
+      throw new NotFoundException({ id }, EXAM_NOT_FOUND);
+    }
+
+    return exam;
   }
 
-  update(id: number, updateExamDto: UpdateExamDto) {
-    return `This action updates a #${id} exam`;
+  @Transactional()
+  async update(id: number, updateExamDto: UpdateExamDto) {
+    let exam = await this.findOne(id);
+
+    exam = this.repository.merge(exam, updateExamDto);
+
+    return this.repository.save(exam);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} exam`;
+  async remove(id: number) {
+    const result = await this.repository.softDelete(id);
+    if (!result.affected) {
+      throw new NotFoundException({ id }, EXAM_NOT_FOUND);
+    }
   }
 }
