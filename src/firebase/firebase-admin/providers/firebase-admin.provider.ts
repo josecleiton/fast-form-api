@@ -10,6 +10,7 @@ export class FirebaseAdmin implements firebase.app.App {
   constructor(@Inject(FIREBASE_OPTIONS) options: FirebaseModuleOptions) {
     this.app = firebase.initializeApp({
       databaseURL: options.databaseURL,
+      storageBucket: options.storageBucket,
       credential: firebase.credential.cert(options.cert),
     });
   }

@@ -10,13 +10,13 @@ export const firebaseConfig = registerAs(
       );
     }
 
-    if (!process.env.FIREBASE_DB) {
-      throw new Error('Needs FIREBASE_DB env var');
+    if (!process.env.FIREBASE_BUCKET) {
+      throw new Error('Needs FIREBASE_BUCKET env var');
     }
 
     return {
       cert: JSON.parse(process.env.FIREBASE_ADMIN),
-      databaseURL: process.env.FIREBASE_DB,
+      storageBucket: process.env.FIREBASE_BUCKET,
     };
     //return JSON.parse(process.env.FIREBASE_ADMIN);
   },

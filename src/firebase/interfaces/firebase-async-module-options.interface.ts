@@ -3,7 +3,8 @@ import { ModuleMetadata } from '@nestjs/common';
 
 export interface FirebaseModuleOptions {
   cert: firebase.ServiceAccount;
-  databaseURL: string;
+  databaseURL?: string;
+  storageBucket?: string;
 }
 
 export interface FirebaseAsyncModuleOptions
