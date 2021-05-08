@@ -79,14 +79,15 @@ export class QuestionGroupService {
     const toCopy = await this.findOne(copyQuestionGroupDto.groupId);
     const exam = await this.examService.findOne(copyQuestionGroupDto.examId);
 
-    let group = this.repository.create({
-      ...toCopy,
-      questions: [],
-      exam,
-      id: undefined,
-    });
+    const group = await this.repository.save(
+      this.repository.create({
+        ...toCopy,
+        questions: [],
+        exam,
+        id: undefined,
+      }),
+    );
 
-    group = await this.repository.save(group);
     group.questions = await this.questionService.copyToGroup(
       group,
       toCopy.questions,
