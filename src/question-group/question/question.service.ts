@@ -1,10 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
+import { In } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CreateQuestionDto } from './dtos/create-question.dto';
 import { QuestionFindDto } from './dtos/question-find.dto';
+import { ReorderQuestionDto } from './dtos/reorder-question.dto';
 import { UpdateQuestionDto } from './dtos/update-question.dto';
 import { Question } from './entities/question.entity';
 import { questionNotFound } from './question.constants';
@@ -62,6 +64,27 @@ export class QuestionService {
       questions.map((question) =>
         this.repository.create({ ...question, group, id: undefined }),
       ),
+    );
+  }
+
+  @Transactional()
+  async reorder({
+    groupId,
+    questionIds,
+  }: ReorderQuestionDto): Promise<Question[]> {
+    const questions = await this.repository.find({
+      where: { groupId, id: In(questionIds) },
+    });
+
+    const questionPositionMap: ReadonlyMap<number, number> = new Map(
+      questionIds.map((id, position) => [id, position]),
+    );
+
+    return await this.repository.save(
+      questions.map((question) => {
+        question.position = questionPositionMap.get(question.id) ?? 0;
+        return question;
+      }),
     );
   }
 

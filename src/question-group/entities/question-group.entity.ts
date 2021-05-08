@@ -1,6 +1,6 @@
 import { FFEntity } from 'src/core/entities/ff.entity';
 import { Exam } from 'src/exam/entities/exam.entity';
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { AfterLoad, Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { Question } from '../question/entities/question.entity';
 
 @Entity()
@@ -11,12 +11,24 @@ export class QuestionGroup extends FFEntity {
   @Column({ type: 'bool', default: false })
   class: boolean;
 
-  @Column({type: 'bool', default: false})
+  @Column({ type: 'bool', default: false })
   personal: boolean;
+
+  @Column({ type: 'int', default: 0 })
+  position: number;
+
+  @Column({ type: 'int', nullable: true })
+  examId: number;
 
   @OneToMany(() => Question, (question) => question.group)
   questions: Question[];
 
   @ManyToOne(() => Exam)
   exam: Exam;
+
+  @AfterLoad()
+  sortItems() {
+    this.questions =
+      this.questions?.sort((a, b) => a.position - b.position) ?? [];
+  }
 }

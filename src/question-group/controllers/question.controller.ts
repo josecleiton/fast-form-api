@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Put,
   Query,
@@ -15,6 +16,7 @@ import { JwtGuard } from '../../auth/guards/jwt.guard';
 
 import { CreateQuestionDto } from '../question/dtos/create-question.dto';
 import { QuestionFindDto } from '../question/dtos/question-find.dto';
+import { ReorderQuestionDto } from '../question/dtos/reorder-question.dto';
 import { UpdateQuestionDto } from '../question/dtos/update-question.dto';
 import { Question } from '../question/entities/question.entity';
 import { QuestionService } from '../question/question.service';
@@ -64,6 +66,14 @@ export class QuestionController {
     }
 
     return await this.questionService.update(id, updateQuestionDto);
+  }
+
+  @Patch()
+  @ApiOkResponse({ type: [Question] })
+  async reorder(
+    @Body() reorderQuesitonDto: ReorderQuestionDto,
+  ): Promise<Question[]> {
+    return await this.questionService.reorder(reorderQuesitonDto);
   }
 
   @Delete(':id')

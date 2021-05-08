@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsPositive, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
 export class CreateQuestionGroupDto {
   @IsString()

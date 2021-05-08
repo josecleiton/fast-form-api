@@ -19,6 +19,9 @@ export class Question extends FFEntity {
   @Column({ type: 'int', nullable: true })
   groupId?: number;
 
+  @Column({ type: 'int', default: 0 })
+  position: number;
+
   @ManyToOne(() => QuestionGroup)
   group: QuestionGroup;
 }

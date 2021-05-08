@@ -8,6 +8,7 @@ import {
   UseGuards,
   ParseIntPipe,
   Put,
+  Patch,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -21,6 +22,7 @@ import { CreateQuestionGroupDto } from '../dto/create-question-group.dto';
 import { UpdateQuestionGroupDto } from '../dto/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CopyQuestionGroupDto } from '../dto/copy-question-group.dto';
+import { ReorderQuestionGroupDto } from '../dto/reorder-question-group.dto';
 
 @Controller('question-group')
 @UseGuards(JwtGuard)
@@ -66,6 +68,12 @@ export class QuestionGroupController {
     @Body() copyQuestionGroupDto: CopyQuestionGroupDto,
   ): Promise<QuestionGroup> {
     return await this.questionGroupService.copy(copyQuestionGroupDto);
+  }
+
+  @Patch()
+  @ApiOkResponse({type: [QuestionGroup]})
+  async reorder(@Body() reorderQuestionGroupDto: ReorderQuestionGroupDto ): Promise<QuestionGroup[]> {
+    return await this.questionGroupService.reorder(reorderQuestionGroupDto);
   }
 
   @Delete(':id')

@@ -1,10 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { group } from 'node:console';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { ExamService } from 'src/exam/exam.service';
+import { In } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CopyQuestionGroupDto } from '../dto/copy-question-group.dto';
 import { CreateQuestionGroupDto } from '../dto/create-question-group.dto';
+import { ReorderQuestionGroupDto } from '../dto/reorder-question-group.dto';
 import { UpdateQuestionGroupDto } from '../dto/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { questionGroupNotFound } from '../question-group.constants';
@@ -94,6 +97,27 @@ export class QuestionGroupService {
     );
 
     return group;
+  }
+
+  @Transactional()
+  async reorder({
+    examId,
+    groupIds,
+  }: ReorderQuestionGroupDto): Promise<QuestionGroup[]> {
+    const groups = await this.repository.find({
+      where: { examId, id: In(groupIds) },
+    });
+
+    const groupIdPositionMap: ReadonlyMap<number, number> = new Map(
+      groupIds.map((id, position) => [id, position]),
+    );
+
+    return await this.repository.save(
+      groups.map((group) => {
+        group.position = groupIdPositionMap.get(group.id) ?? 0;
+        return group;
+      }),
+    );
   }
 
   @Transactional()
