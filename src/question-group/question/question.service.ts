@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { QueryBuilder, SelectQueryBuilder } from 'typeorm';
 import { CreateQuestionDto } from './dtos/create-question.dto';
 import { QuestionFindDto } from './dtos/question-find.dto';
@@ -50,8 +51,8 @@ export class QuestionService {
   }
 
   async remove(id: number): Promise<void> {
-    const result = await this.repository.softDelete({ id });
-    if (!result.affected) {
+    const result: SoftDeleteResult = await this.repository.softDelete({ id });
+    if (!result.raw.affectedRows) {
       throw new NotFoundException({ id }, questionNotFound);
     }
   }

@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
@@ -22,7 +23,7 @@ export class ExamService {
   }
 
   findAll() {
-    return this.repository.find();
+    return this.repository.find({ relations: ['groups'] });
   }
 
   async findOne(id: number) {
@@ -43,9 +44,10 @@ export class ExamService {
     return this.repository.save(exam);
   }
 
+  @Transactional()
   async remove(id: number) {
-    const result = await this.repository.softDelete(id);
-    if (!result.affected) {
+    const result: SoftDeleteResult = await this.repository.softDelete(id);
+    if (!result.raw.affectedRows) {
       throw new NotFoundException({ id }, EXAM_NOT_FOUND);
     }
   }

@@ -1,1 +1,1 @@
-export const uploadRootPath = '/questions';
+export const UPLOAD_PATH = '/questions';

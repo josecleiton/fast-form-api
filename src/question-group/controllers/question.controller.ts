@@ -33,7 +33,9 @@ export class QuestionController {
   async createQuestion(
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise<Question> {
-    await this.questionGroupService.findOne(createQuestionDto.groupId);
+    if (createQuestionDto.groupId) {
+      await this.questionGroupService.findOne(createQuestionDto.groupId);
+    }
     return await this.questionService.createQuestion(createQuestionDto);
   }
 

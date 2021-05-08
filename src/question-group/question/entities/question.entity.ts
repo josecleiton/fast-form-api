@@ -7,14 +7,17 @@ export class Question extends FFEntity {
   @Column({ type: 'text' })
   statement: string;
 
-  @Column({ type: 'text' })
-  imageUrl: string;
+  @Column({ type: 'text', nullable: true })
+  imageUrl?: string;
 
-  @Column({ type: 'varchar', default: '' })
-  imageAlt: string;
+  @Column({ type: 'varchar', nullable: true })
+  imageAlt?: string;
 
   @Column({ type: 'bool', default: true })
   required: boolean;
+
+  @Column({ type: 'int', nullable: true })
+  groupId?: number;
 
   @ManyToOne(() => QuestionGroup)
   group: QuestionGroup;

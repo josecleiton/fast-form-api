@@ -1,6 +1,8 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsBoolean,
   IsNotEmpty,
+  IsOptional,
   IsPositive,
   IsString,
   IsUrl,
@@ -11,16 +13,25 @@ export class CreateQuestionDto {
   @IsNotEmpty()
   statement: string;
 
+  @IsOptional()
   @IsUrl()
-  imageUrl: string;
+  imageUrl?: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
-  imageAlt: string;
+  imageAlt?: string;
 
+  @ApiProperty({
+    type: Boolean,
+    title:
+      'Questão pode não ser obrigatória. Se essa propriedade não for fornecida, ela é verdadeira por padrão',
+  })
   @IsBoolean()
-  required: boolean;
+  @IsOptional()
+  required?: boolean;
 
+  @IsOptional()
   @IsPositive()
-  groupId: number;
+  groupId?: number;
 }

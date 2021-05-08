@@ -9,5 +9,6 @@ import { ExamRepository } from './repositories/exam.repository';
   imports: [TypeOrmModule.forFeature([ExamRepository])],
   controllers: [ExamController],
   providers: [ExamService],
+  exports: [ExamService],
 })
 export class ExamModule {}
