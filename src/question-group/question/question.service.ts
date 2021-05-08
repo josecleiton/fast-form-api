@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
-import { QueryBuilder, SelectQueryBuilder } from 'typeorm';
+import { Transactional } from 'typeorm-transactional-cls-hooked';
+import { QuestionGroup } from '../entities/question-group.entity';
 import { CreateQuestionDto } from './dtos/create-question.dto';
 import { QuestionFindDto } from './dtos/question-find.dto';
 import { UpdateQuestionDto } from './dtos/update-question.dto';
@@ -16,6 +17,7 @@ export class QuestionService {
     private readonly repository: QuestionRepository,
   ) {}
 
+  @Transactional()
   createQuestion(createQuestionDto: CreateQuestionDto): Promise<Question> {
     const question = this.repository.create(createQuestionDto);
 
@@ -42,6 +44,7 @@ export class QuestionService {
     return question;
   }
 
+  @Transactional()
   async update(id: number, updateDto: UpdateQuestionDto): Promise<Question> {
     let question = await this.findOne(id);
 
@@ -50,6 +53,19 @@ export class QuestionService {
     return this.repository.save(question);
   }
 
+  @Transactional()
+  async copyToGroup(
+    group: QuestionGroup,
+    questions: Question[],
+  ): Promise<Question[]> {
+    return await this.repository.save(
+      questions.map((question) =>
+        this.repository.create({ ...question, group, id: undefined }),
+      ),
+    );
+  }
+
+  @Transactional()
   async remove(id: number): Promise<void> {
     const result: SoftDeleteResult = await this.repository.softDelete({ id });
     if (!result.raw.affectedRows) {

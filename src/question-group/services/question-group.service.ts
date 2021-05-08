@@ -9,6 +9,7 @@ import { UpdateQuestionGroupDto } from '../dto/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { questionGroupNotFound } from '../question-group.constants';
 import { Question } from '../question/entities/question.entity';
+import { QuestionService } from '../question/question.service';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
 
 @Injectable()
@@ -16,7 +17,8 @@ export class QuestionGroupService {
   constructor(
     @InjectRepository(QuestionGroupRepository)
     private readonly repository: QuestionGroupRepository,
-    private readonly exam: ExamService,
+    private readonly examService: ExamService,
+    private readonly questionService: QuestionService,
   ) {}
 
   @Transactional()
@@ -25,7 +27,7 @@ export class QuestionGroupService {
   ): Promise<QuestionGroup> {
     const questionGroup = this.repository.create(createQuestionGroupDto);
     if (createQuestionGroupDto.examId) {
-      questionGroup.exam = await this.exam.findOne(
+      questionGroup.exam = await this.examService.findOne(
         createQuestionGroupDto.examId,
       );
     }
@@ -62,7 +64,7 @@ export class QuestionGroupService {
     );
 
     if (updateQuestionGroupDto.examId) {
-      questionGroup.exam = await this.exam.findOne(
+      questionGroup.exam = await this.examService.findOne(
         updateQuestionGroupDto.examId,
       );
     }
@@ -75,18 +77,22 @@ export class QuestionGroupService {
     copyQuestionGroupDto: CopyQuestionGroupDto,
   ): Promise<QuestionGroup> {
     const toCopy = await this.findOne(copyQuestionGroupDto.groupId);
+    const exam = await this.examService.findOne(copyQuestionGroupDto.examId);
 
-    const questions: Partial<Question>[] = toCopy.questions.map((question) => {
-      return { ...question, id: undefined, groupId: undefined };
-    });
-
-    const result = this.repository.create({
+    let group = this.repository.create({
       ...toCopy,
-      questions,
+      questions: [],
+      exam,
       id: undefined,
     });
 
-    return await this.repository.save(result);
+    group = await this.repository.save(group);
+    group.questions = await this.questionService.copyToGroup(
+      group,
+      toCopy.questions,
+    );
+
+    return group;
   }
 
   @Transactional()
