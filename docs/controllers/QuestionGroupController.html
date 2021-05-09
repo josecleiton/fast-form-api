@@ -684,11 +684,11 @@ import {
 import { JwtGuard } from &#x27;../../auth/guards/jwt.guard&#x27;;
 
 import { QuestionGroupService } from &#x27;../services/question-group.service&#x27;;
-import { CreateQuestionGroupDto } from &#x27;../dto/create-question-group.dto&#x27;;
-import { UpdateQuestionGroupDto } from &#x27;../dto/update-question-group.dto&#x27;;
+import { CreateQuestionGroupDto } from &#x27;../dtos/create-question-group.dto&#x27;;
+import { UpdateQuestionGroupDto } from &#x27;../dtos/update-question-group.dto&#x27;;
 import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
-import { CopyQuestionGroupDto } from &#x27;../dto/copy-question-group.dto&#x27;;
-import { ReorderQuestionGroupDto } from &#x27;../dto/reorder-question-group.dto&#x27;;
+import { CopyQuestionGroupDto } from &#x27;../dtos/copy-question-group.dto&#x27;;
+import { ReorderQuestionGroupDto } from &#x27;../dtos/reorder-question-group.dto&#x27;;
 
 @Controller(&#x27;question-group&#x27;)
 @UseGuards(JwtGuard)

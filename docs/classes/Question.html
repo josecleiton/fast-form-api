@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/question/entities/question.entity.ts</code>
+            <code>src/question-group/entities/question.entity.ts</code>
         </p>
 
 
@@ -89,7 +89,6 @@
                                 <a href="#group">group</a>
                             </li>
                             <li>
-                                    <span class="modifier">Optional</span>
                                 <a href="#groupId">groupId</a>
                             </li>
                             <li>
@@ -178,7 +177,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/question-group/question/entities/question.entity.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/question-group/entities/question.entity.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -192,7 +191,6 @@
                         <a name="groupId"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Optional</span>
                             groupId</b>
                             <a href="#groupId"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -209,13 +207,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Column({type: &#x27;int&#x27;, nullable: true})<br />
+                                @Column({type: &#x27;int&#x27;})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/question-group/question/entities/question.entity.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/question-group/entities/question.entity.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -252,7 +250,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/question-group/question/entities/question.entity.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/question-group/entities/question.entity.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -289,7 +287,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/question-group/question/entities/question.entity.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/question-group/entities/question.entity.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -319,13 +317,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Column({type: &#x27;int&#x27;, default: 0})<br />
+                                @Index(&#x27;IX_question_position&#x27;)<br />@Column({type: &#x27;int&#x27;, default: 0})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/question-group/question/entities/question.entity.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/question-group/entities/question.entity.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -361,7 +359,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/question-group/question/entities/question.entity.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/question-group/entities/question.entity.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -397,7 +395,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/question-group/question/entities/question.entity.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/question-group/entities/question.entity.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -719,7 +717,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FFEntity } from &#x27;src/core/entities/ff.entity&#x27;;
 import { QuestionGroup } from &#x27;src/question-group/entities/question-group.entity&#x27;;
-import { Column, Entity, ManyToOne } from &#x27;typeorm&#x27;;
+import { Column, Entity, Index, ManyToOne } from &#x27;typeorm&#x27;;
 
 @Entity()
 export class Question extends FFEntity {
@@ -735,9 +733,10 @@ export class Question extends FFEntity {
   @Column({ type: &#x27;bool&#x27;, default: true })
   required: boolean;
 
-  @Column({ type: &#x27;int&#x27;, nullable: true })
-  groupId?: number;
+  @Column({ type: &#x27;int&#x27; })
+  groupId: number;
 
+  @Index(&#x27;IX_question_position&#x27;)
   @Column({ type: &#x27;int&#x27;, default: 0 })
   position: number;
 

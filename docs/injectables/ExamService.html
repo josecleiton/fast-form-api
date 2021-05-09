@@ -552,7 +552,7 @@ export class ExamService {
   }
 
   async findOne(id: number) {
-    const exam &#x3D; await this.repository.findOne(id);
+    const exam &#x3D; await this.repository.findOne(id, { relations: [&#x27;groups&#x27;] });
     if (!exam) {
       throw new NotFoundException({ id }, EXAM_NOT_FOUND);
     }

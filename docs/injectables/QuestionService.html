@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/question/question.service.ts</code>
+            <code>src/question-group/services/question.service.ts</code>
         </p>
 
 
@@ -80,6 +80,7 @@
                                 <a href="#copyToGroup">copyToGroup</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#createQuestion">createQuestion</a>
                             </li>
                             <li>
@@ -88,6 +89,11 @@
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#findOne">findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#getNextPosition">getNextPosition</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -119,12 +125,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/QuestionRepository.html">QuestionRepository</a>)</code>
+<code>constructor(repository: <a href="../classes/QuestionRepository.html">QuestionRepository</a>, groupService: <a href="../injectables/QuestionGroupService.html">QuestionGroupService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/question-group/question/question.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/question-group/services/question.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -146,6 +152,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/QuestionRepository.html" target="_self" >QuestionRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>groupService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/QuestionGroupService.html" target="_self" >QuestionGroupService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -198,8 +216,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/question-group/question/question.service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/question-group/services/question.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -265,6 +283,7 @@
                     <a name="createQuestion"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Async</span>
                             createQuestion
                         </b>
                         <a href="#createQuestion"><span class="icon ion-ios-link"></span></a>
@@ -273,7 +292,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createQuestion(createQuestionDto: <a href="../classes/CreateQuestionDto.html">CreateQuestionDto</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createQuestion(createQuestionDto: <a href="../classes/CreateQuestionDto.html">CreateQuestionDto</a>)</code>
                 </td>
             </tr>
 
@@ -287,8 +307,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/question-group/question/question.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/question-group/services/question.service.ts:33</a></div>
                 </td>
             </tr>
 
@@ -357,8 +377,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/question-group/question/question.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/question-group/services/question.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -429,8 +449,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/question-group/question/question.service.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/question-group/services/question.service.ts:55</a></div>
                 </td>
             </tr>
 
@@ -481,6 +501,79 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getNextPosition"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                            getNextPosition
+                        </b>
+                        <a href="#getNextPosition"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNextPosition(groupId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/question-group/services/question.service.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>groupId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
                         <b>
@@ -508,8 +601,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/question-group/question/question.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/question-group/services/question.service.ts:111</a></div>
                 </td>
             </tr>
 
@@ -587,8 +680,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/question-group/question/question.service.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/question-group/services/question.service.ts:90</a></div>
                 </td>
             </tr>
 
@@ -665,8 +758,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/question-group/question/question.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/question-group/services/question.service.ts:65</a></div>
                 </td>
             </tr>
 
@@ -731,30 +824,45 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Inject, Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { SoftDeleteResult } from &#x27;src/core/interfaces/soft-delete-result.interface&#x27;;
 import { In } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
-import { CreateQuestionDto } from &#x27;./dtos/create-question.dto&#x27;;
-import { QuestionFindDto } from &#x27;./dtos/question-find.dto&#x27;;
-import { ReorderQuestionDto } from &#x27;./dtos/reorder-question.dto&#x27;;
-import { UpdateQuestionDto } from &#x27;./dtos/update-question.dto&#x27;;
-import { Question } from &#x27;./entities/question.entity&#x27;;
-import { questionNotFound } from &#x27;./question.constants&#x27;;
-import { QuestionRepository } from &#x27;./repositories/question.repository&#x27;;
+import { CreateQuestionDto } from &#x27;../dtos/create-question.dto&#x27;;
+import { QuestionFindDto } from &#x27;../dtos/question-find.dto&#x27;;
+import { ReorderQuestionDto } from &#x27;../dtos/reorder-question.dto&#x27;;
+import { UpdateQuestionDto } from &#x27;../dtos/update-question.dto&#x27;;
+import { Question } from &#x27;../entities/question.entity&#x27;;
+import { questionNotFound } from &#x27;../question.constants&#x27;;
+import { QuestionRepository } from &#x27;../repositories/question.repository&#x27;;
+import { QuestionGroupService } from &#x27;./question-group.service&#x27;;
+import { last } from &#x27;src/core/utils/last.util&#x27;;
 
 @Injectable()
 export class QuestionService {
   constructor(
     @InjectRepository(QuestionRepository)
     private readonly repository: QuestionRepository,
+    @Inject(forwardRef(() &#x3D;&gt; QuestionGroupService))
+    private readonly groupService: QuestionGroupService,
   ) {}
 
+  private async getNextPosition(groupId: number): Promise&lt;number&gt; {
+    const { questions } &#x3D; await this.groupService.findOne(groupId);
+
+    return (last(questions)?.position ?? -1) + 1;
+  }
+
   @Transactional()
-  createQuestion(createQuestionDto: CreateQuestionDto): Promise&lt;Question&gt; {
-    const question &#x3D; this.repository.create(createQuestionDto);
+  async createQuestion(
+    createQuestionDto: CreateQuestionDto,
+  ): Promise&lt;Question&gt; {
+    const question &#x3D; this.repository.create({
+      ...createQuestionDto,
+      position: await this.getNextPosition(createQuestionDto.groupId),
+    });
 
     return this.repository.save(question);
   }
@@ -782,6 +890,10 @@ export class QuestionService {
   @Transactional()
   async update(id: number, updateDto: UpdateQuestionDto): Promise&lt;Question&gt; {
     let question &#x3D; await this.findOne(id);
+
+    if (updateDto.groupId &amp;&amp; question.groupId !&#x3D;&#x3D; updateDto.groupId) {
+      question.position &#x3D; await this.getNextPosition(updateDto.groupId);
+    }
 
     question &#x3D; this.repository.merge(question, updateDto);
 

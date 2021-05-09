@@ -232,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:43</a></div>
                 </td>
             </tr>
 
@@ -311,8 +311,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:50</a></div>
                 </td>
             </tr>
 
@@ -390,8 +390,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:75</a></div>
                 </td>
             </tr>
 
@@ -469,8 +469,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:66</a></div>
                 </td>
             </tr>
 
@@ -548,8 +548,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:57</a></div>
                 </td>
             </tr>
 
@@ -628,12 +628,12 @@
 import { ApiNotFoundResponse, ApiOkResponse } from &#x27;@nestjs/swagger&#x27;;
 import { JwtGuard } from &#x27;../../auth/guards/jwt.guard&#x27;;
 
-import { CreateQuestionDto } from &#x27;../question/dtos/create-question.dto&#x27;;
-import { QuestionFindDto } from &#x27;../question/dtos/question-find.dto&#x27;;
-import { ReorderQuestionDto } from &#x27;../question/dtos/reorder-question.dto&#x27;;
-import { UpdateQuestionDto } from &#x27;../question/dtos/update-question.dto&#x27;;
-import { Question } from &#x27;../question/entities/question.entity&#x27;;
-import { QuestionService } from &#x27;../question/question.service&#x27;;
+import { CreateQuestionDto } from &#x27;../dtos/create-question.dto&#x27;;
+import { QuestionFindDto } from &#x27;../dtos/question-find.dto&#x27;;
+import { ReorderQuestionDto } from &#x27;../dtos/reorder-question.dto&#x27;;
+import { UpdateQuestionDto } from &#x27;../dtos/update-question.dto&#x27;;
+import { Question } from &#x27;../entities/question.entity&#x27;;
+import { QuestionService } from &#x27;../services/question.service&#x27;;
 import { QuestionGroupService } from &#x27;../services/question-group.service&#x27;;
 
 @Controller(&#x27;question&#x27;)
@@ -649,9 +649,6 @@ export class QuestionController {
   async createQuestion(
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise&lt;Question&gt; {
-    if (createQuestionDto.groupId) {
-      await this.questionGroupService.findOne(createQuestionDto.groupId);
-    }
     return await this.questionService.createQuestion(createQuestionDto);
   }
 
@@ -675,10 +672,6 @@ export class QuestionController {
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateQuestionDto: UpdateQuestionDto,
   ): Promise&lt;Question&gt; {
-    if (updateQuestionDto.groupId) {
-      await this.questionGroupService.findOne(updateQuestionDto.groupId);
-    }
-
     return await this.questionService.update(id, updateQuestionDto);
   }
 

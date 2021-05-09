@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/question/dtos/create-question.dto.ts</code>
+            <code>src/question-group/dtos/create-question.dto.ts</code>
         </p>
 
 
@@ -80,7 +80,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Optional</span>
                                 <a href="#groupId">groupId</a>
                             </li>
                             <li>
@@ -124,7 +123,6 @@
                         <a name="groupId"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Optional</span>
                             groupId</b>
                             <a href="#groupId"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -141,13 +139,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @IsOptional()<br />@IsPositive()<br />
+                                @IsPositive()<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/question-group/question/dtos/create-question.dto.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/question-group/dtos/create-question.dto.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -184,7 +182,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/question-group/question/dtos/create-question.dto.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/question-group/dtos/create-question.dto.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -221,7 +219,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/question-group/question/dtos/create-question.dto.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/question-group/dtos/create-question.dto.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -258,7 +256,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/question-group/question/dtos/create-question.dto.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/question-group/dtos/create-question.dto.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -294,7 +292,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/question-group/question/dtos/create-question.dto.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/question-group/dtos/create-question.dto.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -346,9 +344,8 @@ export class CreateQuestionDto {
   @IsOptional()
   required?: boolean;
 
-  @IsOptional()
   @IsPositive()
-  groupId?: number;
+  groupId: number;
 }
 </code></pre>
     </div>
