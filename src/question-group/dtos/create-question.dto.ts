@@ -31,7 +31,6 @@ export class CreateQuestionDto {
   @IsOptional()
   required?: boolean;
 
-  @IsOptional()
   @IsPositive()
-  groupId?: number;
+  groupId: number;
 }

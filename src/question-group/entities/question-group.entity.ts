@@ -1,7 +1,14 @@
 import { FFEntity } from 'src/core/entities/ff.entity';
 import { Exam } from 'src/exam/entities/exam.entity';
-import { AfterLoad, Column, Entity, ManyToOne, OneToMany } from 'typeorm';
-import { Question } from '../question/entities/question.entity';
+import {
+  AfterLoad,
+  Column,
+  Entity,
+  Index,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
+import { Question } from './question.entity';
 
 @Entity()
 export class QuestionGroup extends FFEntity {
@@ -14,6 +21,7 @@ export class QuestionGroup extends FFEntity {
   @Column({ type: 'bool', default: false })
   personal: boolean;
 
+  @Index('IX_question_group_position')
   @Column({ type: 'int', default: 0 })
   position: number;
 

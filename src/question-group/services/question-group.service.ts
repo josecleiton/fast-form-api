@@ -1,19 +1,19 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { group } from 'node:console';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { ExamService } from 'src/exam/exam.service';
 import { In } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
-import { CopyQuestionGroupDto } from '../dto/copy-question-group.dto';
-import { CreateQuestionGroupDto } from '../dto/create-question-group.dto';
-import { ReorderQuestionGroupDto } from '../dto/reorder-question-group.dto';
-import { UpdateQuestionGroupDto } from '../dto/update-question-group.dto';
+import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
+import { CreateQuestionGroupDto } from '../dtos/create-question-group.dto';
+import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
+import { UpdateQuestionGroupDto } from '../dtos/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { questionGroupNotFound } from '../question-group.constants';
-import { Question } from '../question/entities/question.entity';
-import { QuestionService } from '../question/question.service';
+import { QuestionService } from './question.service';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
+import { last } from 'src/core/utils/last.util';
+import { createAliasResolver } from '@casl/ability';
 
 @Injectable()
 export class QuestionGroupService {
@@ -24,13 +24,24 @@ export class QuestionGroupService {
     private readonly questionService: QuestionService,
   ) {}
 
+  private async setExamAndPosition(
+    questionGroup: QuestionGroup,
+    examId: number,
+  ) {
+    questionGroup.exam = await this.examService.findOne(examId);
+
+    questionGroup.position =
+      (last(questionGroup.exam.groups)?.position ?? -1) + 1;
+  }
+
   @Transactional()
   async create(
     createQuestionGroupDto: CreateQuestionGroupDto,
   ): Promise<QuestionGroup> {
     const questionGroup = this.repository.create(createQuestionGroupDto);
     if (createQuestionGroupDto.examId) {
-      questionGroup.exam = await this.examService.findOne(
+      await this.setExamAndPosition(
+        questionGroup,
         createQuestionGroupDto.examId,
       );
     }
@@ -61,16 +72,20 @@ export class QuestionGroupService {
   ): Promise<QuestionGroup> {
     let questionGroup = await this.findOne(id);
 
+    if (
+      updateQuestionGroupDto.examId &&
+      updateQuestionGroupDto.examId !== questionGroup.examId
+    ) {
+      await this.setExamAndPosition(
+        questionGroup,
+        updateQuestionGroupDto.examId,
+      );
+    }
+
     questionGroup = this.repository.merge(
       questionGroup,
       updateQuestionGroupDto,
     );
-
-    if (updateQuestionGroupDto.examId) {
-      questionGroup.exam = await this.examService.findOne(
-        updateQuestionGroupDto.examId,
-      );
-    }
 
     return this.repository.save(questionGroup);
   }

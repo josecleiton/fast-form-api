@@ -18,11 +18,11 @@ import {
 import { JwtGuard } from '../../auth/guards/jwt.guard';
 
 import { QuestionGroupService } from '../services/question-group.service';
-import { CreateQuestionGroupDto } from '../dto/create-question-group.dto';
-import { UpdateQuestionGroupDto } from '../dto/update-question-group.dto';
+import { CreateQuestionGroupDto } from '../dtos/create-question-group.dto';
+import { UpdateQuestionGroupDto } from '../dtos/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
-import { CopyQuestionGroupDto } from '../dto/copy-question-group.dto';
-import { ReorderQuestionGroupDto } from '../dto/reorder-question-group.dto';
+import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
+import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
 
 @Controller('question-group')
 @UseGuards(JwtGuard)

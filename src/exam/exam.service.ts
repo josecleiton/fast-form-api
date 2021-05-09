@@ -27,7 +27,7 @@ export class ExamService {
   }
 
   async findOne(id: number) {
-    const exam = await this.repository.findOne(id);
+    const exam = await this.repository.findOne(id, { relations: ['groups'] });
     if (!exam) {
       throw new NotFoundException({ id }, EXAM_NOT_FOUND);
     }

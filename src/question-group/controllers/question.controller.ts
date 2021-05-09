@@ -14,12 +14,12 @@ import {
 import { ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
 import { JwtGuard } from '../../auth/guards/jwt.guard';
 
-import { CreateQuestionDto } from '../question/dtos/create-question.dto';
-import { QuestionFindDto } from '../question/dtos/question-find.dto';
-import { ReorderQuestionDto } from '../question/dtos/reorder-question.dto';
-import { UpdateQuestionDto } from '../question/dtos/update-question.dto';
-import { Question } from '../question/entities/question.entity';
-import { QuestionService } from '../question/question.service';
+import { CreateQuestionDto } from '../dtos/create-question.dto';
+import { QuestionFindDto } from '../dtos/question-find.dto';
+import { ReorderQuestionDto } from '../dtos/reorder-question.dto';
+import { UpdateQuestionDto } from '../dtos/update-question.dto';
+import { Question } from '../entities/question.entity';
+import { QuestionService } from '../services/question.service';
 import { QuestionGroupService } from '../services/question-group.service';
 
 @Controller('question')
@@ -35,9 +35,6 @@ export class QuestionController {
   async createQuestion(
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise<Question> {
-    if (createQuestionDto.groupId) {
-      await this.questionGroupService.findOne(createQuestionDto.groupId);
-    }
     return await this.questionService.createQuestion(createQuestionDto);
   }
 
@@ -61,10 +58,6 @@ export class QuestionController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateQuestionDto: UpdateQuestionDto,
   ): Promise<Question> {
-    if (updateQuestionDto.groupId) {
-      await this.questionGroupService.findOne(updateQuestionDto.groupId);
-    }
-
     return await this.questionService.update(id, updateQuestionDto);
   }
 
