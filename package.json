@@ -28,7 +28,8 @@
     "typeorm:seed:create": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:create -n",
     "typeorm:seed:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:generate -n",
     "typeorm:seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:run",
-    "typeorm:seed:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:revert"
+    "typeorm:seed:revert": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -f ./src/config/database-cli-seed.config.ts migration:revert",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@casl/ability": "^5.2.2",
@@ -80,6 +81,7 @@
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "supertest": "^6.1.3",
