@@ -6,7 +6,7 @@ import {
 import { FirebaseAdmin } from './providers/firebase-admin.provider';
 import { FIREBASE_OPTIONS } from './firebase-admin.constants';
 
-@Module({})
+@Module({ providers: [FirebaseAdmin], exports: [FirebaseAdmin] })
 export class FirebaseAdminModule {
   private static readonly exports = [FirebaseAdmin];
   private static readonly providers: Provider[] = [FirebaseAdmin];
