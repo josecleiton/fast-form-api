@@ -11,7 +11,7 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
+import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { JwtGuard } from '../../auth/guards/jwt.guard';
 
 import { CreateQuestionDto } from '../dtos/create-question.dto';
@@ -23,6 +23,7 @@ import { QuestionService } from '../services/question.service';
 import { QuestionGroupService } from '../services/question-group.service';
 
 @Controller('question')
+@ApiTags('Question')
 @UseGuards(JwtGuard)
 export class QuestionController {
   constructor(

@@ -13,10 +13,11 @@ import { ExamService } from './exam.service';
 import { CreateExamDto } from './dto/create-exam.dto';
 import { UpdateExamDto } from './dto/update-exam.dto';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { ApiBearerAuth, ApiOkResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Exam } from './entities/exam.entity';
 
 @Controller('exam')
+@ApiTags('Exam')
 @UseGuards(JwtGuard)
 @ApiBearerAuth()
 export class ExamController {

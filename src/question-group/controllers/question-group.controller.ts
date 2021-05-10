@@ -14,6 +14,7 @@ import {
   ApiBearerAuth,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
 import { JwtGuard } from '../../auth/guards/jwt.guard';
 
@@ -25,6 +26,7 @@ import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
 import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
 
 @Controller('question-group')
+@ApiTags('QuestionGroup')
 @UseGuards(JwtGuard)
 @ApiBearerAuth()
 export class QuestionGroupController {
