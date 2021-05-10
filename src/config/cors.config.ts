@@ -7,7 +7,7 @@ type Callback = (err: Error | null, stat?: boolean) => void;
 const isProd = process.env.NODE_ENV === 'production';
 
 const whiteList: RegExp[] = isProd
-  ? [new RegExp('^https://(.*\\.|)constante.app$')]
+  ? [new RegExp('^https://(.*\\.|)herokuapp.com$')]
   : [
       new RegExp('^http://localhost:3000$'),
       new RegExp('^http://localhost:5000$'),
