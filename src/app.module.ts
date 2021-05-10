@@ -11,6 +11,7 @@ import { AnswerModule } from './answer/answer.module';
 import { CoreModule } from './core/core.module';
 import { AuxiliaryModule } from './auxiliary/auxiliary.module';
 import { InfraModule } from './infra/infra.module';
+import { AppController } from './controllers/app.controller';
 
 @Module({
   imports: [
@@ -31,5 +32,6 @@ import { InfraModule } from './infra/infra.module';
     AuxiliaryModule,
     InfraModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
