@@ -192,8 +192,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/database/migrations/1620563708532-QuestionPositionIdx.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/database/migrations/1620563708532-QuestionPositionIdx.ts:14</a></div>
                 </td>
             </tr>
 
@@ -329,7 +329,6 @@ export class QuestionPositionIdx1620563708532 implements MigrationInterface {
     name &#x3D; &#x27;QuestionPositionIdx1620563708532&#x27;
 
     public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
-        await queryRunner.query(&quot;DELETE FROM &#x60;question&#x60;&quot;);
         await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; DROP FOREIGN KEY &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60;&quot;);
         await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; CHANGE &#x60;group_id&#x60; &#x60;group_id&#x60; int NOT NULL&quot;);
         await queryRunner.query(&quot;CREATE INDEX &#x60;IX_question_position&#x60; ON &#x60;question&#x60; (&#x60;position&#x60;)&quot;);

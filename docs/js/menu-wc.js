@@ -221,6 +221,21 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/FirebaseAdminModule.html" data-type="entity-link">FirebaseAdminModule</a>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#injectables-links-module-FirebaseAdminModule-1db91986c80ab5c72af7df6d1a31b4aa"' : 'data-target="#xs-injectables-links-module-FirebaseAdminModule-1db91986c80ab5c72af7df6d1a31b4aa"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-FirebaseAdminModule-1db91986c80ab5c72af7df6d1a31b4aa"' :
+                                        'id="xs-injectables-links-module-FirebaseAdminModule-1db91986c80ab5c72af7df6d1a31b4aa"' }>
+                                        <li class="link">
+                                            <a href="injectables/FirebaseAdmin.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>FirebaseAdmin</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </li>
                             <li class="link">
                                 <a href="modules/FirebaseModule.html" data-type="entity-link">FirebaseModule</a>
@@ -527,9 +542,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
-                                <li class="link">
-                                    <a href="injectables/FirebaseAdmin.html" data-type="entity-link">FirebaseAdmin</a>
-                                </li>
                                 <li class="link">
                                     <a href="injectables/FirebaseFirestoreService.html" data-type="entity-link">FirebaseFirestoreService</a>
                                 </li>
