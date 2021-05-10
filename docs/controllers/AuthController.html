@@ -130,8 +130,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/auth/controllers/auth.controller.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/auth/controllers/auth.controller.ts:12</a></div>
                 </td>
             </tr>
 
@@ -183,10 +183,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post } from &#x27;@nestjs/common&#x27;;
+import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { AuthService } from &#x27;../auth.service&#x27;;
 import { LoginDto } from &#x27;../dtos/login.dto&#x27;;
 
-@Controller(&quot;auth&quot;)
+@Controller(&#x27;auth&#x27;)
+@ApiTags(&#x27;Auth&#x27;)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

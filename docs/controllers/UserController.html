@@ -133,8 +133,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/user/controllers/user.controller.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/user/controllers/user.controller.ts:15</a></div>
                 </td>
             </tr>
 
@@ -210,8 +210,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/user/controllers/user.controller.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/user/controllers/user.controller.ts:21</a></div>
                 </td>
             </tr>
 
@@ -263,6 +263,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Get, Post, UseGuards } from &#x27;@nestjs/common&#x27;;
+import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { JwtGuard } from &#x27;../../auth/guards/jwt.guard&#x27;;
 import { GetUser } from &#x27;../decoratos/get-user.decorator&#x27;;
 import { CreateUserDto } from &#x27;../dtos/create-user.dto&#x27;;
@@ -270,6 +271,7 @@ import { User } from &#x27;../entities/user.entity&#x27;;
 import { UserService } from &#x27;../user.service&#x27;;
 
 @Controller(&#x27;user&#x27;)
+@ApiTags(&#x27;User&#x27;)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

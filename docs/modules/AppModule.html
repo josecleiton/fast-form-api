@@ -222,6 +222,15 @@
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
+                    <h3>Controllers<a href="https://docs.nestjs.com/controllers" target="_blank" title="Official documentation about module controllers"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../controllers/AppController.html">AppController</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" title="Official documentation about module imports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
@@ -275,6 +284,7 @@ import { AnswerModule } from &#x27;./answer/answer.module&#x27;;
 import { CoreModule } from &#x27;./core/core.module&#x27;;
 import { AuxiliaryModule } from &#x27;./auxiliary/auxiliary.module&#x27;;
 import { InfraModule } from &#x27;./infra/infra.module&#x27;;
+import { AppController } from &#x27;./controllers/app.controller&#x27;;
 
 @Module({
   imports: [
@@ -295,6 +305,7 @@ import { InfraModule } from &#x27;./infra/infra.module&#x27;;
     AuxiliaryModule,
     InfraModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
 </code></pre>

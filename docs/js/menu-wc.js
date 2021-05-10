@@ -86,6 +86,21 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#controllers-links-module-AppModule-e7dc760d22f420d34cfecdb9ff429f3d"' : 'data-target="#xs-controllers-links-module-AppModule-e7dc760d22f420d34cfecdb9ff429f3d"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AppModule-e7dc760d22f420d34cfecdb9ff429f3d"' :
+                                            'id="xs-controllers-links-module-AppModule-e7dc760d22f420d34cfecdb9ff429f3d"' }>
+                                            <li class="link">
+                                                <a href="controllers/AppController.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">AppController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/AuthModule.html" data-type="entity-link">AuthModule</a>

@@ -149,8 +149,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/exam/exam.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/exam/exam.controller.ts:28</a></div>
                 </td>
             </tr>
 
@@ -228,8 +228,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/exam/exam.controller.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/exam/exam.controller.ts:34</a></div>
                 </td>
             </tr>
 
@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/exam/exam.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/exam/exam.controller.ts:39</a></div>
                 </td>
             </tr>
 
@@ -355,8 +355,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/exam/exam.controller.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/exam/exam.controller.ts:52</a></div>
                 </td>
             </tr>
 
@@ -434,8 +434,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/exam/exam.controller.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/exam/exam.controller.ts:44</a></div>
                 </td>
             </tr>
 
@@ -513,10 +513,11 @@ import { ExamService } from &#x27;./exam.service&#x27;;
 import { CreateExamDto } from &#x27;./dto/create-exam.dto&#x27;;
 import { UpdateExamDto } from &#x27;./dto/update-exam.dto&#x27;;
 import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { ApiBearerAuth, ApiOkResponse } from &#x27;@nestjs/swagger&#x27;;
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { Exam } from &#x27;./entities/exam.entity&#x27;;
 
 @Controller(&#x27;exam&#x27;)
+@ApiTags(&#x27;Exam&#x27;)
 @UseGuards(JwtGuard)
 @ApiBearerAuth()
 export class ExamController {

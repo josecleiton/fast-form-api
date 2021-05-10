@@ -153,8 +153,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -232,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:44</a></div>
                 </td>
             </tr>
 
@@ -311,8 +311,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:51</a></div>
                 </td>
             </tr>
 
@@ -390,8 +390,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:76</a></div>
                 </td>
             </tr>
 
@@ -469,8 +469,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:67</a></div>
                 </td>
             </tr>
 
@@ -548,8 +548,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:58</a></div>
                 </td>
             </tr>
 
@@ -625,7 +625,7 @@
   Query,
   UseGuards,
 } from &#x27;@nestjs/common&#x27;;
-import { ApiNotFoundResponse, ApiOkResponse } from &#x27;@nestjs/swagger&#x27;;
+import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { JwtGuard } from &#x27;../../auth/guards/jwt.guard&#x27;;
 
 import { CreateQuestionDto } from &#x27;../dtos/create-question.dto&#x27;;
@@ -637,6 +637,7 @@ import { QuestionService } from &#x27;../services/question.service&#x27;;
 import { QuestionGroupService } from &#x27;../services/question-group.service&#x27;;
 
 @Controller(&#x27;question&#x27;)
+@ApiTags(&#x27;Question&#x27;)
 @UseGuards(JwtGuard)
 export class QuestionController {
   constructor(
