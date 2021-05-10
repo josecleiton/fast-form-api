@@ -1,8 +1,13 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModuleOptions } from '@nestjs/jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { UserType } from 'src/user/enum/user-type.enum';
 
 import { jwtConfigKey } from '../../config';
 
@@ -35,6 +40,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
     if (!user) {
       throw new UnauthorizedException();
+    }
+
+    if (user.type === UserType.USER) {
+      throw new ForbiddenException();
     }
 
     return user;
