@@ -14,7 +14,7 @@ const whiteList: RegExp[] = isProd
     ];
 
 function origin(origin: string, callback: Callback): void {
-  return !origin || whiteList.find((re) => origin.match(re))
+  return !origin || whiteList.some((re) => Boolean(origin.match(re)))
     ? callback(null, true)
     : callback(
         new ForbiddenException(
