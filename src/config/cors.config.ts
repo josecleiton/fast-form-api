@@ -9,8 +9,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const whiteList: RegExp[] = isProd
   ? [new RegExp('^https://(.*\\.|)herokuapp.com$')]
   : [
-      new RegExp('^http://localhost:3000$'),
-      new RegExp('^http://localhost:5000$'),
+      new RegExp('^http://localhost:*$'),
+      new RegExp('^https://(.*\\.|)herokuapp.com$'),
     ];
 
 function origin(origin: string, callback: Callback): void {
