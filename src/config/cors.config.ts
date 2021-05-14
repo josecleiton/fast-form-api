@@ -6,7 +6,7 @@ type Callback = (err: Error | null, stat?: boolean) => void;
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const whiteList: RegExp[] = isProd
+const allowedOrigins: RegExp[] = isProd
   ? [new RegExp('^https://(.*\\.|)herokuapp.com$')]
   : [
       new RegExp('^http://localhost:*$'),
@@ -14,7 +14,7 @@ const whiteList: RegExp[] = isProd
     ];
 
 function origin(origin: string, callback: Callback): void {
-  return !origin || whiteList.some((re) => Boolean(origin.match(re)))
+  return !origin || allowedOrigins.some((re) => Boolean(origin.match(re)))
     ? callback(null, true)
     : callback(
         new ForbiddenException(

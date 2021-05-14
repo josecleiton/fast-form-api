@@ -10,7 +10,7 @@ import {
 export class CreateExamDto {
   @IsString()
   @IsNotEmpty()
-  text: string;
+  title: string;
 
   @IsString()
   @IsNotEmpty()

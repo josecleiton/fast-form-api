@@ -7,7 +7,7 @@ import { ExamStatus } from '../enums/exam-status.enum';
 @Entity('exam')
 export class Exam extends FFEntity {
   @Column({ type: 'text' })
-  text: string;
+  title: string;
 
   @Column({ type: 'text' })
   description: string;
