@@ -107,7 +107,7 @@
                                 <a href="#status">status</a>
                             </li>
                             <li>
-                                <a href="#text">text</a>
+                                <a href="#title">title</a>
                             </li>
                             <li>
                                 <a href="#id">id</a>
@@ -419,11 +419,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="text"></a>
+                        <a name="title"></a>
                         <span class="name">
                             <b>
-                            text</b>
-                            <a href="#text"><span class="icon ion-ios-link"></span></a>
+                            title</b>
+                            <a href="#title"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -824,7 +824,7 @@ import { ExamStatus } from &#x27;../enums/exam-status.enum&#x27;;
 @Entity(&#x27;exam&#x27;)
 export class Exam extends FFEntity {
   @Column({ type: &#x27;text&#x27; })
-  text: string;
+  title: string;
 
   @Column({ type: &#x27;text&#x27; })
   description: string;
