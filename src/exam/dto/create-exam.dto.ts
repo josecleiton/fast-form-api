@@ -24,8 +24,6 @@ export class CreateExamDto {
   @Type(() => Date)
   endedAt: Date;
 
-  @IsDate()
-  @Type(() => Date)
   @IsOptional()
   @IsBoolean()
   allowAnonymous?: boolean;
