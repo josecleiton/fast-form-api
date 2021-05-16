@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/database/migrations/1621036457247-ExamTitle.ts</code>
+            <code>src/controllers/1621036457247-ExamTitle.ts</code>
         </p>
 
 
@@ -153,7 +153,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/database/migrations/1621036457247-ExamTitle.ts:4</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/controllers/1621036457247-ExamTitle.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -192,8 +192,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/database/migrations/1621036457247-ExamTitle.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/controllers/1621036457247-ExamTitle.ts:12</a></div>
                 </td>
             </tr>
 
@@ -266,7 +266,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/database/migrations/1621036457247-ExamTitle.ts:6</a></div>
+                            class="link-to-prism">src/controllers/1621036457247-ExamTitle.ts:6</a></div>
                 </td>
             </tr>
 
@@ -323,19 +323,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {MigrationInterface, QueryRunner} from &quot;typeorm&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
 
 export class ExamTitle1621036457247 implements MigrationInterface {
-    name &#x3D; &#x27;ExamTitle1621036457247&#x27;
+  name &#x3D; &#x27;ExamTitle1621036457247&#x27;;
 
-    public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; CHANGE &#x60;text&#x60; &#x60;title&#x60; text NOT NULL&quot;);
-    }
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    // await queryRunner.query(
+    //   &#x27;ALTER TABLE &#x60;exam&#x60; CHANGE &#x60;text&#x60; &#x60;title&#x60; text NOT NULL&#x27;,
+    // );
+  }
 
-    public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; CHANGE &#x60;title&#x60; &#x60;text&#x60; text NOT NULL&quot;);
-    }
-
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;exam&#x60; CHANGE &#x60;title&#x60; &#x60;text&#x60; text NOT NULL&#x27;,
+    );
+  }
 }
 </code></pre>
     </div>
