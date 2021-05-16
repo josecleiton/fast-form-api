@@ -440,10 +440,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CreateExamDto.html" data-type="entity-link">CreateExamDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CreateQuestion.html" data-type="entity-link">CreateQuestion</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/CreateQuestionDto.html" data-type="entity-link">CreateQuestionDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/CreateQuestionGroupDto.html" data-type="entity-link">CreateQuestionGroupDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CreateQuestionsDto.html" data-type="entity-link">CreateQuestionsDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/CreateUserDto.html" data-type="entity-link">CreateUserDto</a>
