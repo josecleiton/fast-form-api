@@ -1,4 +1,9 @@
-import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { In } from 'typeorm';
@@ -13,6 +18,7 @@ import { questionNotFound } from '../question.constants';
 import { QuestionRepository } from '../repositories/question.repository';
 import { QuestionGroupService } from './question-group.service';
 import { last } from 'src/core/utils/last.util';
+import { CreateQuestionsDto } from '../dtos/create-questions.dto';
 
 @Injectable()
 export class QuestionService {
@@ -39,6 +45,20 @@ export class QuestionService {
     });
 
     return this.repository.save(question);
+  }
+
+  @Transactional()
+  async createQuestions(
+    groupId: number,
+    createQuestionsDto: CreateQuestionsDto,
+  ): Promise<Question[]> {
+    const questions = this.repository.create(
+      createQuestionsDto.questions.map((dto, position) =>
+        this.repository.create({ ...dto, position, groupId }),
+      ),
+    );
+
+    return this.repository.save(questions);
   }
 
   find(findDto: QuestionFindDto): Promise<Question[]> {

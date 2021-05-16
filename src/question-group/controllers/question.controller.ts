@@ -21,15 +21,13 @@ import { UpdateQuestionDto } from '../dtos/update-question.dto';
 import { Question } from '../entities/question.entity';
 import { QuestionService } from '../services/question.service';
 import { QuestionGroupService } from '../services/question-group.service';
+import { CreateQuestionsDto } from '../dtos/create-questions.dto';
 
 @Controller('question')
 @ApiTags('Question')
 @UseGuards(JwtGuard)
 export class QuestionController {
-  constructor(
-    private readonly questionService: QuestionService,
-    private readonly questionGroupService: QuestionGroupService,
-  ) {}
+  constructor(private readonly questionService: QuestionService) {}
 
   @Post()
   @ApiOkResponse({ type: Question })
@@ -37,6 +35,18 @@ export class QuestionController {
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise<Question> {
     return await this.questionService.createQuestion(createQuestionDto);
+  }
+
+  @Post(':groupId')
+  @ApiOkResponse({ type: [Question] })
+  async createQuestions(
+    @Param('groupId', ParseIntPipe) groupId: number,
+    @Body() createQuestionsDto: CreateQuestionsDto,
+  ): Promise<Question[]> {
+    return await this.questionService.createQuestions(
+      groupId,
+      createQuestionsDto,
+    );
   }
 
   @Get()
