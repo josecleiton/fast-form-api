@@ -14,7 +14,11 @@ import {
 } from 'class-validator';
 import { CreateQuestionDto } from './create-question.dto';
 
-class CreateQuestion extends OmitType(CreateQuestionDto, ['groupId']) {}
+class CreateQuestion extends OmitType(CreateQuestionDto, ['groupId']) {
+  @IsOptional()
+  @IsPositive()
+  id?: number
+}
 
 export class CreateQuestionsDto {
   @IsArray()
