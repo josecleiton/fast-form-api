@@ -519,8 +519,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/user/user.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/user/user.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -721,6 +721,8 @@ export class UserService {
       select: [&#x27;type&#x27;, &#x27;id&#x27;],
       where: { ...userDto },
     });
+
+    console.log(partialUser);
 
     if (!partialUser) {
       throw new UnauthorizedException(userDto);

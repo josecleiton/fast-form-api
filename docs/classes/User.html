@@ -268,7 +268,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Expose()<br />
+                                @Column({type: &#x27;enum&#x27;, enum: UserType})<br />
                             </code>
                         </td>
                     </tr>
@@ -609,7 +609,7 @@ export class User extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, unique: true })
   cpf: string;
 
-  @Expose()
+  @Column({ type: &#x27;enum&#x27;, enum: UserType })
   type: UserType;
 
   @Column({ type: &#x27;enum&#x27;, default: UserRole.REGULAR, enum: UserRole })

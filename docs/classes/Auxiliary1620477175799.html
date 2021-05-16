@@ -192,8 +192,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/database/migrations/1620477175799-Auxiliary.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/database/migrations/1620477175799-Auxiliary.ts:60</a></div>
                 </td>
             </tr>
 
@@ -323,70 +323,121 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {MigrationInterface, QueryRunner} from &quot;typeorm&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
 
 export class Auxiliary1620477175799 implements MigrationInterface {
-    name &#x3D; &#x27;Auxiliary1620477175799&#x27;
+  name &#x3D; &#x27;Auxiliary1620477175799&#x27;;
 
-    public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
-        await queryRunner.query(&quot;CREATE TABLE &#x60;period&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;name&#x60; varchar(255) NULL, &#x60;stated_at&#x60; datetime NOT NULL, &#x60;ended_at&#x60; datetime NOT NULL, PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;);
-        await queryRunner.query(&quot;CREATE TABLE &#x60;course&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;code&#x60; varchar(255) NOT NULL, &#x60;title&#x60; varchar(255) NOT NULL, UNIQUE INDEX &#x60;IDX_5cf4963ae12285cda6432d5a3a&#x60; (&#x60;code&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;);
-        await queryRunner.query(&quot;CREATE TABLE &#x60;subject&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;code&#x60; varchar(255) NOT NULL, &#x60;title&#x60; varchar(255) NOT NULL, &#x60;code_id&#x60; int NOT NULL, &#x60;course_id&#x60; int NULL, UNIQUE INDEX &#x60;IDX_92374adc6b583e8cf659977e48&#x60; (&#x60;code&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;);
-        await queryRunner.query(&quot;CREATE TABLE &#x60;grade&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;subject_id&#x60; int NULL, &#x60;period_id&#x60; int NULL, PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;);
-        await queryRunner.query(&quot;CREATE TABLE &#x60;exam_agreement&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;uuid&#x60; varchar(255) NOT NULL, &#x60;anonymous&#x60; tinyint NOT NULL, &#x60;user_id&#x60; int NOT NULL, UNIQUE INDEX &#x60;IDX_2b38bb607ef3e86920e9bd0163&#x60; (&#x60;uuid&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; ADD &#x60;personal&#x60; tinyint NOT NULL DEFAULT 0&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; ADD &#x60;exam_id&#x60; int NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;text&#x60; text NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;description&#x60; text NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;started_at&#x60; datetime NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;ended_at&#x60; datetime NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;allow_anonymous&#x60; tinyint NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;status&#x60; enum (&#x27;active&#x27;, &#x27;inactive&#x27;) NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD &#x60;period_id&#x60; int NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; DROP FOREIGN KEY &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; CHANGE &#x60;group_id&#x60; &#x60;group_id&#x60; int NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; CHANGE &#x60;class&#x60; &#x60;class&#x60; tinyint NOT NULL DEFAULT 0&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; ADD CONSTRAINT &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60; FOREIGN KEY (&#x60;group_id&#x60;) REFERENCES &#x60;question_group&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; ADD CONSTRAINT &#x60;FK_1d110bd5138b275a2ea2944e290&#x60; FOREIGN KEY (&#x60;exam_id&#x60;) REFERENCES &#x60;exam&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; ADD CONSTRAINT &#x60;FK_ba483ad17eb41fb181aa3a77d4f&#x60; FOREIGN KEY (&#x60;period_id&#x60;) REFERENCES &#x60;period&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;subject&#x60; ADD CONSTRAINT &#x60;FK_b9db72ddc93f196bf9d79132171&#x60; FOREIGN KEY (&#x60;course_id&#x60;) REFERENCES &#x60;course&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;grade&#x60; ADD CONSTRAINT &#x60;FK_b472107b61171823120f069fd50&#x60; FOREIGN KEY (&#x60;subject_id&#x60;) REFERENCES &#x60;subject&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;grade&#x60; ADD CONSTRAINT &#x60;FK_d35fb46683694975ba85bcd804e&#x60; FOREIGN KEY (&#x60;period_id&#x60;) REFERENCES &#x60;period&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;answer&#x60; ADD CONSTRAINT &#x60;FK_814144bcce3b80921f41f15b823&#x60; FOREIGN KEY (&#x60;exam_agreement_id&#x60;) REFERENCES &#x60;exam_agreement&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;answer&#x60; ADD CONSTRAINT &#x60;FK_971014f1fb44be716098484bb5a&#x60; FOREIGN KEY (&#x60;grade_id&#x60;) REFERENCES &#x60;grade&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-    }
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &quot;CREATE TABLE &#x60;exam&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;text&#x60; text NOT NULL, &#x60;description&#x60; text NOT NULL, &#x60;started_at&#x60; datetime NOT NULL, &#x60;ended_at&#x60; datetime NOT NULL, &#x60;allow_anonymous&#x60; tinyint NOT NULL DEFAULT 0, &#x60;status&#x60; enum (&#x27;active&#x27;, &#x27;inactive&#x27;) NOT NULL, &#x60;period_id&#x60; int NULL, PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&quot;,
+    );
+    await queryRunner.query(
+      &#x27;CREATE TABLE &#x60;period&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;name&#x60; varchar(255) NULL, &#x60;stated_at&#x60; datetime NOT NULL, &#x60;ended_at&#x60; datetime NOT NULL, PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;CREATE TABLE &#x60;course&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;code&#x60; varchar(255) NOT NULL, &#x60;title&#x60; varchar(255) NOT NULL, UNIQUE INDEX &#x60;IDX_5cf4963ae12285cda6432d5a3a&#x60; (&#x60;code&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;CREATE TABLE &#x60;subject&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;code&#x60; varchar(255) NOT NULL, &#x60;title&#x60; varchar(255) NOT NULL, &#x60;code_id&#x60; int NOT NULL, &#x60;course_id&#x60; int NULL, UNIQUE INDEX &#x60;IDX_92374adc6b583e8cf659977e48&#x60; (&#x60;code&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;CREATE TABLE &#x60;grade&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;subject_id&#x60; int NULL, &#x60;period_id&#x60; int NULL, PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;CREATE TABLE &#x60;exam_agreement&#x60; (&#x60;created_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), &#x60;updated_at&#x60; datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), &#x60;deleted_at&#x60; datetime(6) NULL, &#x60;id&#x60; int NOT NULL AUTO_INCREMENT, &#x60;uuid&#x60; varchar(255) NOT NULL, &#x60;anonymous&#x60; tinyint NOT NULL, &#x60;user_id&#x60; int NOT NULL, UNIQUE INDEX &#x60;IDX_2b38bb607ef3e86920e9bd0163&#x60; (&#x60;uuid&#x60;), PRIMARY KEY (&#x60;id&#x60;)) ENGINE&#x3D;InnoDB&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; ADD &#x60;personal&#x60; tinyint NOT NULL DEFAULT 0&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; ADD &#x60;exam_id&#x60; int NULL&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; DROP FOREIGN KEY &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; CHANGE &#x60;group_id&#x60; &#x60;group_id&#x60; int NOT NULL&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; CHANGE &#x60;class&#x60; &#x60;class&#x60; tinyint NOT NULL DEFAULT 0&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; ADD CONSTRAINT &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60; FOREIGN KEY (&#x60;group_id&#x60;) REFERENCES &#x60;question_group&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; ADD CONSTRAINT &#x60;FK_1d110bd5138b275a2ea2944e290&#x60; FOREIGN KEY (&#x60;exam_id&#x60;) REFERENCES &#x60;exam&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;exam&#x60; ADD CONSTRAINT &#x60;FK_ba483ad17eb41fb181aa3a77d4f&#x60; FOREIGN KEY (&#x60;period_id&#x60;) REFERENCES &#x60;period&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;subject&#x60; ADD CONSTRAINT &#x60;FK_b9db72ddc93f196bf9d79132171&#x60; FOREIGN KEY (&#x60;course_id&#x60;) REFERENCES &#x60;course&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;grade&#x60; ADD CONSTRAINT &#x60;FK_b472107b61171823120f069fd50&#x60; FOREIGN KEY (&#x60;subject_id&#x60;) REFERENCES &#x60;subject&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;grade&#x60; ADD CONSTRAINT &#x60;FK_d35fb46683694975ba85bcd804e&#x60; FOREIGN KEY (&#x60;period_id&#x60;) REFERENCES &#x60;period&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+  }
 
-    public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
-        await queryRunner.query(&quot;ALTER TABLE &#x60;answer&#x60; DROP FOREIGN KEY &#x60;FK_971014f1fb44be716098484bb5a&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;answer&#x60; DROP FOREIGN KEY &#x60;FK_814144bcce3b80921f41f15b823&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;grade&#x60; DROP FOREIGN KEY &#x60;FK_d35fb46683694975ba85bcd804e&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;grade&#x60; DROP FOREIGN KEY &#x60;FK_b472107b61171823120f069fd50&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;subject&#x60; DROP FOREIGN KEY &#x60;FK_b9db72ddc93f196bf9d79132171&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP FOREIGN KEY &#x60;FK_ba483ad17eb41fb181aa3a77d4f&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; DROP FOREIGN KEY &#x60;FK_1d110bd5138b275a2ea2944e290&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; DROP FOREIGN KEY &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; CHANGE &#x60;class&#x60; &#x60;class&#x60; tinyint NOT NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; CHANGE &#x60;group_id&#x60; &#x60;group_id&#x60; int NULL&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question&#x60; ADD CONSTRAINT &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60; FOREIGN KEY (&#x60;group_id&#x60;) REFERENCES &#x60;question_group&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;period_id&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;status&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;allow_anonymous&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;ended_at&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;started_at&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;description&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;text&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; DROP COLUMN &#x60;exam_id&#x60;&quot;);
-        await queryRunner.query(&quot;ALTER TABLE &#x60;question_group&#x60; DROP COLUMN &#x60;personal&#x60;&quot;);
-        await queryRunner.query(&quot;DROP INDEX &#x60;IDX_2b38bb607ef3e86920e9bd0163&#x60; ON &#x60;exam_agreement&#x60;&quot;);
-        await queryRunner.query(&quot;DROP TABLE &#x60;exam_agreement&#x60;&quot;);
-        await queryRunner.query(&quot;DROP TABLE &#x60;grade&#x60;&quot;);
-        await queryRunner.query(&quot;DROP INDEX &#x60;IDX_92374adc6b583e8cf659977e48&#x60; ON &#x60;subject&#x60;&quot;);
-        await queryRunner.query(&quot;DROP TABLE &#x60;subject&#x60;&quot;);
-        await queryRunner.query(&quot;DROP INDEX &#x60;IDX_5cf4963ae12285cda6432d5a3a&#x60; ON &#x60;course&#x60;&quot;);
-        await queryRunner.query(&quot;DROP TABLE &#x60;course&#x60;&quot;);
-        await queryRunner.query(&quot;DROP TABLE &#x60;period&#x60;&quot;);
-    }
-
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;grade&#x60; DROP FOREIGN KEY &#x60;FK_d35fb46683694975ba85bcd804e&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;grade&#x60; DROP FOREIGN KEY &#x60;FK_b472107b61171823120f069fd50&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;subject&#x60; DROP FOREIGN KEY &#x60;FK_b9db72ddc93f196bf9d79132171&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;exam&#x60; DROP FOREIGN KEY &#x60;FK_ba483ad17eb41fb181aa3a77d4f&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; DROP FOREIGN KEY &#x60;FK_1d110bd5138b275a2ea2944e290&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; DROP FOREIGN KEY &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; CHANGE &#x60;class&#x60; &#x60;class&#x60; tinyint NOT NULL&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; CHANGE &#x60;group_id&#x60; &#x60;group_id&#x60; int NULL&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question&#x60; ADD CONSTRAINT &#x60;FK_3b2789ae1c494ff1bf8dd4d4607&#x60; FOREIGN KEY (&#x60;group_id&#x60;) REFERENCES &#x60;question_group&#x60;(&#x60;id&#x60;) ON DELETE NO ACTION ON UPDATE NO ACTION&#x27;,
+    );
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;period_id&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;status&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;allow_anonymous&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;ended_at&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;started_at&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;description&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;exam&#x60; DROP COLUMN &#x60;text&#x60;&#x27;);
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; DROP COLUMN &#x60;exam_id&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;question_group&#x60; DROP COLUMN &#x60;personal&#x60;&#x27;,
+    );
+    await queryRunner.query(
+      &#x27;DROP INDEX &#x60;IDX_2b38bb607ef3e86920e9bd0163&#x60; ON &#x60;exam_agreement&#x60;&#x27;,
+    );
+    await queryRunner.query(&#x27;DROP TABLE &#x60;exam_agreement&#x60;&#x27;);
+    await queryRunner.query(&#x27;DROP TABLE &#x60;grade&#x60;&#x27;);
+    await queryRunner.query(
+      &#x27;DROP INDEX &#x60;IDX_92374adc6b583e8cf659977e48&#x60; ON &#x60;subject&#x60;&#x27;,
+    );
+    await queryRunner.query(&#x27;DROP TABLE &#x60;subject&#x60;&#x27;);
+    await queryRunner.query(
+      &#x27;DROP INDEX &#x60;IDX_5cf4963ae12285cda6432d5a3a&#x60; ON &#x60;course&#x60;&#x27;,
+    );
+    await queryRunner.query(&#x27;DROP TABLE &#x60;course&#x60;&#x27;);
+    await queryRunner.query(&#x27;DROP TABLE &#x60;period&#x60;&#x27;);
+  }
 }
 </code></pre>
     </div>
