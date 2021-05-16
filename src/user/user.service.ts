@@ -75,6 +75,8 @@ export class UserService {
       where: { ...userDto },
     });
 
+    console.log(partialUser);
+
     if (!partialUser) {
       throw new UnauthorizedException(userDto);
     }

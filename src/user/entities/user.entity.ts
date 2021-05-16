@@ -13,7 +13,7 @@ export class User extends FFEntity {
   @Column({ type: 'varchar', unique: true })
   cpf: string;
 
-  @Expose()
+  @Column({ type: 'enum', enum: UserType })
   type: UserType;
 
   @Column({ type: 'enum', default: UserRole.REGULAR, enum: UserRole })

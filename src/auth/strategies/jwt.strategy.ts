@@ -42,10 +42,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    if (user.type === UserType.USER) {
-      throw new ForbiddenException();
-    }
-
     return user;
   }
 }
