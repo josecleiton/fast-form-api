@@ -1,3 +1,4 @@
+import { Expose } from 'class-transformer';
 import { Column, Entity, TableInheritance } from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
 import { UserRole } from '../enum/user-role.enum';
@@ -12,6 +13,7 @@ export class User extends FFEntity {
   @Column({ type: 'varchar', unique: true })
   cpf: string;
 
+  @Expose()
   type: UserType;
 
   @Column({ type: 'enum', default: UserRole.REGULAR, enum: UserRole })
