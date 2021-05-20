@@ -127,12 +127,15 @@ export class QuestionGroupService {
       groupIds.map((id, position) => [id, position]),
     );
 
-    return await this.repository.save(
-      groups.map((group) => {
-        group.position = groupIdPositionMap.get(group.id) ?? 0;
-        return group;
-      }),
-    );
+    return (
+      await Promise.all(
+        groups.map(async (group) => {
+          group.position = groupIdPositionMap.get(group.id) ?? 0;
+          await this.repository.update(group.id, { position: group.position });
+          return group;
+        }),
+      )
+    ).sort((a, b) => a.position - b.position);
   }
 
   @Transactional()
