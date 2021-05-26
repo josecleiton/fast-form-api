@@ -24,6 +24,7 @@ import { UpdateQuestionGroupDto } from '../dtos/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
 import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
+import { QuestionGroupTarget } from '../enums/question-group-target.enum';
 
 @Controller('question-group')
 @ApiTags('QuestionGroup')
@@ -44,6 +45,12 @@ export class QuestionGroupController {
   @ApiOkResponse({ type: [QuestionGroup] })
   async findAll(): Promise<QuestionGroup[]> {
     return await this.questionGroupService.findAll();
+  }
+
+  @Get('target')
+  @ApiOkResponse({ type: [() => QuestionGroupTarget] })
+  getTarget(): QuestionGroupTarget[] {
+    return this.questionGroupService.getTargets();
   }
 
   @Get(':id')
@@ -73,8 +80,10 @@ export class QuestionGroupController {
   }
 
   @Patch()
-  @ApiOkResponse({type: [QuestionGroup]})
-  async reorder(@Body() reorderQuestionGroupDto: ReorderQuestionGroupDto ): Promise<QuestionGroup[]> {
+  @ApiOkResponse({ type: [QuestionGroup] })
+  async reorder(
+    @Body() reorderQuestionGroupDto: ReorderQuestionGroupDto,
+  ): Promise<QuestionGroup[]> {
     return await this.questionGroupService.reorder(reorderQuestionGroupDto);
   }
 
