@@ -205,13 +205,17 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ExamModule.html" data-type="entity-link">ExamModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' : 'data-target="#xs-controllers-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' }>
+                                            'data-target="#controllers-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' : 'data-target="#xs-controllers-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' :
-                                            'id="xs-controllers-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' :
+                                            'id="xs-controllers-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' }>
+                                            <li class="link">
+                                                <a href="controllers/ExamAgreementController.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">ExamAgreementController</a>
+                                            </li>
                                             <li class="link">
                                                 <a href="controllers/ExamController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">ExamController</a>
@@ -224,13 +228,17 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' : 'data-target="#xs-injectables-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' }>
+                                        'data-target="#injectables-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' : 'data-target="#xs-injectables-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' :
-                                        'id="xs-injectables-links-module-ExamModule-ff184dea3f3e71093dfd2cb96b1f7ef2"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' :
+                                        'id="xs-injectables-links-module-ExamModule-c12eb3d37140625b22d8d3fea9b834e7"' }>
+                                        <li class="link">
+                                            <a href="injectables/ExamAgreementService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>ExamAgreementService</a>
+                                        </li>
                                         <li class="link">
                                             <a href="injectables/ExamService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>ExamService</a>
@@ -445,6 +453,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CreateAuthDto.html" data-type="entity-link">CreateAuthDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CreateExamAgreementDto.html" data-type="entity-link">CreateExamAgreementDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/CreateExamDto.html" data-type="entity-link">CreateExamDto</a>
                             </li>
                             <li class="link">
@@ -470,6 +481,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/ExamAgreement.html" data-type="entity-link">ExamAgreement</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ExamAgreementRepository.html" data-type="entity-link">ExamAgreementRepository</a>
                             </li>
                             <li class="link">
                                 <a href="classes/ExamRepository.html" data-type="entity-link">ExamRepository</a>

@@ -27,18 +27,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>CaslAbilityFactory</li>
+  <li>Controllers</li>
+  <li>ExamAgreementController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,8 +54,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/auth/casl/factories/casl-ability.factory.ts</code>
+            <code>src/exam/controllers/exam-agreement.controller.ts</code>
         </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>exam-agreement</code>
+            </p>
+
 
 
 
@@ -76,7 +82,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#createForUser">createForUser</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#createAgreement">createAgreement</a>
                             </li>
                         </ul>
                     </td>
@@ -90,7 +97,6 @@
     </table>
 </section>
 
-
             <section>
     
     <h3 id="methods">
@@ -100,26 +106,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createForUser"></a>
+                    <a name="createAgreement"></a>
                     <span class="name">
                         <b>
-                            createForUser
+                            <span class="modifier">Async</span>
+                            createAgreement
                         </b>
-                        <a href="#createForUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createAgreement"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createForUser(user: <a href="../classes/User.html">User</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createAgreement(createAgreementDto: <a href="../classes/CreateExamAgreementDto.html">CreateExamAgreementDto</a>, user: literal type)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post()<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/auth/casl/factories/casl-ability.factory.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:17</a></div>
                 </td>
             </tr>
 
@@ -139,9 +154,21 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>createAgreementDto</td>
+                                    <td>
+                                                <code><a href="../classes/CreateExamAgreementDto.html" target="_self" >CreateExamAgreementDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
                                     <td>user</td>
                                     <td>
-                                                <code><a href="../classes/User.html" target="_self" >User</a></code>
+                                            <code>literal type</code>
                                     </td>
 
                                     <td>
@@ -156,7 +183,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -166,93 +193,41 @@
             </tr>
         </tbody>
     </table>
-</section>
-
-    </div>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Ability,
-  AbilityBuilder,
-  AbilityClass,
-  ExtractSubjectType,
-  InferSubjects,
-} from &#x27;@casl/ability&#x27;;
-import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post, UseGuards } from &#x27;@nestjs/common&#x27;;
+import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
+import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
+import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
+import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
+import { ExamAgreementService } from &#x27;../services/exam-agreement.service&#x27;;
 
-import { Answer } from &#x27;../../../answer/entities/answer.entity&#x27;;
-import { Exam } from &#x27;../../../exam/entities/exam.entity&#x27;;
-import { ExamAgreement } from &#x27;../../../exam/entities/exam-agreement.entity&#x27;;
-import { User } from &#x27;../../../user/entities/user.entity&#x27;;
-import { CaslAction as Action } from &#x27;../enums/casl-action.enum&#x27;;
-import { QuestionGroup } from &#x27;src/question-group/entities/question-group.entity&#x27;;
-import { UserRole } from &#x27;src/user/enum/user-role.enum&#x27;;
+@Controller(&#x27;exam-agreement&#x27;)
+@UseGuards(JwtGuard)
+@ApiBearerAuth()
+@ApiTags(&#x27;ExamAgreement&#x27;)
+export class ExamAgreementController {
+  constructor(private readonly examAgreementService: ExamAgreementService) {}
 
-type CaslSubjects &#x3D;
-  | InferSubjects&lt;
-      | typeof Exam
-      | typeof ExamAgreement
-      | typeof User
-      | typeof Answer
-      | typeof QuestionGroup
-    &gt;
-  | &#x27;all&#x27;;
-
-type AppAbility &#x3D; Ability&lt;[Action, CaslSubjects]&gt;;
-
-@Injectable()
-export class CaslAbilityFactory {
-  createForUser(user: User) {
-    const { can, cannot, build } &#x3D; new AbilityBuilder&lt;AppAbility&gt;(
-      Ability as AbilityClass&lt;AppAbility&gt;,
-    );
-
-    switch (user.role) {
-      case UserRole.ADMIN:
-        can(Action.MANAGE, &#x27;all&#x27;);
-        break;
-      case UserRole.MANAGER:
-        can(Action.READ, &#x27;all&#x27;);
-        can(Action.MANAGE, QuestionGroup);
-        break;
-      default:
-        can(Action.READ, User);
-        can(Action.READ, ExamAgreement, { userId: user.id });
-    }
-
-    // User
-    can(Action.UPDATE, User, { id: user.id });
-
-    can(Action.MANAGE, Answer, {});
-
-    // ExamAgreement
-    cannot(Action.DELETE, ExamAgreement, { uuid: undefined });
-
-    const examAgreementNotFinished &#x3D; {
+  @Post()
+  async createAgreement(
+    @Body() createAgreementDto: CreateExamAgreementDto,
+    @GetUser() user: { id: number },
+  ): Promise&lt;ExamAgreement&gt; {
+    return await this.examAgreementService.createAgreement({
+      ...createAgreementDto,
       userId: user.id,
-      uuid: undefined,
-    };
-
-    can(Action.MANAGE, ExamAgreement, examAgreementNotFinished);
-
-    // Answer
-    can(Action.MANAGE, Answer, {
-      examAgreement: examAgreementNotFinished,
-    });
-
-    // Answer Grade
-
-    return build({
-      detectSubjectType: (item) &#x3D;&gt;
-        item.constructor as ExtractSubjectType&lt;CaslSubjects&gt;,
     });
   }
 }
 </code></pre>
     </div>
-
 </div>
+
+
 
 
 
@@ -281,8 +256,8 @@ export class CaslAbilityFactory {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'CaslAbilityFactory.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamAgreementController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
