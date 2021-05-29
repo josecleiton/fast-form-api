@@ -12,6 +12,8 @@ import { ExamTargetService } from './services/exam-target.service';
 
 @Injectable()
 export class ExamService {
+  private static readonly relations = ['groups', 'period', 'agreements'];
+
   constructor(
     @InjectRepository(ExamRepository)
     private readonly repository: ExamRepository,
@@ -21,14 +23,12 @@ export class ExamService {
   private async newExam(dto: CreateExamDto | UpdateExamDto): Promise<Exam> {
     const { targets, ...entityLike } = dto;
     const exam = this.repository.create(entityLike);
+
     if (targets) {
-      exam.targets = await Promise.all(
-        targets.map(async (target) => {
-          const targetMap = await this.targetService.targetMap;
-          return targetMap.get(target)!;
-        }),
-      );
+      const targetMap = await this.targetService.targetMap;
+      exam.targets = targets.map((target) => targetMap.get(target)!);
     }
+
     return exam;
   }
 
@@ -40,11 +40,13 @@ export class ExamService {
   }
 
   findAll() {
-    return this.repository.find({ relations: ['groups'] });
+    return this.repository.find({ relations: ExamService.relations });
   }
 
   async findOne(id: number) {
-    const exam = await this.repository.findOne(id, { relations: ['groups'] });
+    const exam = await this.repository.findOne(id, {
+      relations: ExamService.relations,
+    });
     if (!exam) {
       throw new NotFoundException({ id }, EXAM_NOT_FOUND);
     }

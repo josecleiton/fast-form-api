@@ -1,4 +1,4 @@
-import { ExamAgreement } from 'src/exam/entities/agreement.entity';
+import { ExamAgreement } from 'src/exam/entities/exam-agreement.entity';
 import {
   Column,
   Entity,

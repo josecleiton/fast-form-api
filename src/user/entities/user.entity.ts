@@ -1,5 +1,5 @@
-import { Expose } from 'class-transformer';
-import { Column, Entity, TableInheritance } from 'typeorm';
+import { ExamAgreement } from 'src/exam/entities/exam-agreement.entity';
+import { Column, Entity, OneToMany, TableInheritance } from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
 import { UserRole } from '../enum/user-role.enum';
 import { UserType } from '../enum/user-type.enum';
@@ -18,4 +18,7 @@ export class User extends FFEntity {
 
   @Column({ type: 'enum', default: UserRole.REGULAR, enum: UserRole })
   role: UserRole;
+
+  @OneToMany(() => ExamAgreement, (agreement) => agreement.user)
+  examAgreements: ExamAgreement[];
 }

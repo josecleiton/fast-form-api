@@ -9,7 +9,7 @@ import { Injectable } from '@nestjs/common';
 
 import { Answer } from '../../../answer/entities/answer.entity';
 import { Exam } from '../../../exam/entities/exam.entity';
-import { ExamAgreement } from '../../../exam/entities/agreement.entity';
+import { ExamAgreement } from '../../../exam/entities/exam-agreement.entity';
 import { User } from '../../../user/entities/user.entity';
 import { CaslAction as Action } from '../enums/casl-action.enum';
 import { QuestionGroup } from 'src/question-group/entities/question-group.entity';

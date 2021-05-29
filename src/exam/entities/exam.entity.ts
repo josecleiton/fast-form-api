@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
 import { ExamStatus } from '../enums/exam-status.enum';
+import { ExamAgreement } from './exam-agreement.entity';
 import { ExamTarget } from './exam-target.entity';
 
 @Entity('exam')
@@ -42,6 +43,9 @@ export class Exam extends FFEntity {
 
   @OneToMany(() => QuestionGroup, (group) => group.exam)
   groups: QuestionGroup[];
+
+  @OneToMany(() => ExamAgreement, (agreement) => agreement.exam)
+  agreements: ExamAgreement[];
 
   @AfterLoad()
   sortItems() {

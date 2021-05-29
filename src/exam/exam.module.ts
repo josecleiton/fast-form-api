@@ -7,11 +7,20 @@ import { ExamRepository } from './repositories/exam.repository';
 import { ExamTargetRepository } from './repositories/exam-target.repository';
 import { ExamTargetService } from './services/exam-target.service';
 import { ExamTargetController } from './controllers/exam-target.controller';
+import { ExamAgreementService } from './services/exam-agreement.service';
+import { ExamAgreementRepository } from './repositories/exam-agreement.repository';
+import { ExamAgreementController } from './controllers/exam-agreement.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ExamRepository, ExamTargetRepository])],
-  controllers: [ExamController, ExamTargetController],
-  providers: [ExamService, ExamTargetService],
-  exports: [ExamService],
+  imports: [
+    TypeOrmModule.forFeature([
+      ExamRepository,
+      ExamTargetRepository,
+      ExamAgreementRepository,
+    ]),
+  ],
+  controllers: [ExamController, ExamTargetController, ExamAgreementController],
+  providers: [ExamService, ExamTargetService, ExamAgreementService],
+  exports: [ExamService, ExamAgreementService],
 })
 export class ExamModule {}
