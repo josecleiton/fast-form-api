@@ -2,22 +2,39 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
-import { CreateExamDto } from './dto/create-exam.dto';
-import { UpdateExamDto } from './dto/update-exam.dto';
+import { CreateExamDto } from './dtos/create-exam.dto';
+import { ExamTargetManagerDto } from './dtos/exam-target-manager.dto';
+import { UpdateExamDto } from './dtos/update-exam.dto';
 import { Exam } from './entities/exam.entity';
 import { EXAM_NOT_FOUND } from './exam.constants';
 import { ExamRepository } from './repositories/exam.repository';
+import { ExamTargetService } from './services/exam-target.service';
 
 @Injectable()
 export class ExamService {
   constructor(
     @InjectRepository(ExamRepository)
     private readonly repository: ExamRepository,
+    private readonly targetService: ExamTargetService,
   ) {}
 
+  private async newExam(dto: CreateExamDto | UpdateExamDto): Promise<Exam> {
+    const { targets, ...entityLike } = dto;
+    const exam = this.repository.create(entityLike);
+    if (targets) {
+      exam.targets = await Promise.all(
+        targets.map(async (target) => {
+          const targetMap = await this.targetService.targetMap;
+          return targetMap.get(target)!;
+        }),
+      );
+    }
+    return exam;
+  }
+
   @Transactional()
-  create(createExamDto: CreateExamDto): Promise<Exam> {
-    const exam = this.repository.create(createExamDto);
+  async create(createExamDto: CreateExamDto): Promise<Exam> {
+    const exam = await this.newExam(createExamDto);
 
     return this.repository.save(exam);
   }
@@ -39,7 +56,7 @@ export class ExamService {
   async update(id: number, updateExamDto: UpdateExamDto) {
     let exam = await this.findOne(id);
 
-    exam = this.repository.merge(exam, updateExamDto);
+    exam = this.repository.merge(exam, await this.newExam(updateExamDto));
 
     return this.repository.save(exam);
   }

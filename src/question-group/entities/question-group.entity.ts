@@ -8,7 +8,7 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { QuestionGroupTarget } from '../enums/question-group-target.enum';
+import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 import { Question } from './question.entity';
 
 @Entity()
@@ -28,10 +28,6 @@ export class QuestionGroup extends FFEntity {
 
   @Column({ type: 'int', nullable: true })
   examId: number;
-
-  @Index('IX_question_group_target')
-  @Column({ type: 'enum', enum: QuestionGroupTarget, nullable: true })
-  target?: QuestionGroupTarget;
 
   @OneToMany(() => Question, (question) => question.group)
   questions: Question[];

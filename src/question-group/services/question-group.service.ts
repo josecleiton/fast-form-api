@@ -14,7 +14,7 @@ import { QuestionService } from './question.service';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
 import { last } from 'src/core/utils/last.util';
 import { createAliasResolver } from '@casl/ability';
-import { QuestionGroupTarget } from '../enums/question-group-target.enum';
+import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 
 @Injectable()
 export class QuestionGroupService {
@@ -139,8 +139,8 @@ export class QuestionGroupService {
     ).sort((a, b) => a.position - b.position);
   }
 
-  getTargets(): QuestionGroupTarget[] {
-    return Object.values(QuestionGroupTarget);
+  getTargets(): ExamTargetType[] {
+    return Object.values(ExamTargetType);
   }
 
   @Transactional()

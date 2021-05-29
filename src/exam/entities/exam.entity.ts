@@ -1,8 +1,17 @@
 import { Period } from 'src/auxiliary/entities/period.entity';
 import { QuestionGroup } from 'src/question-group/entities/question-group.entity';
-import { AfterLoad, Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import {
+  AfterLoad,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
 import { ExamStatus } from '../enums/exam-status.enum';
+import { ExamTarget } from './exam-target.entity';
 
 @Entity('exam')
 export class Exam extends FFEntity {
@@ -23,6 +32,10 @@ export class Exam extends FFEntity {
 
   @Column({ type: 'enum', enum: ExamStatus })
   status: ExamStatus;
+
+  @ManyToMany(() => ExamTarget)
+  @JoinTable()
+  targets?: ExamTarget[];
 
   @ManyToOne(() => Period)
   period: Period;

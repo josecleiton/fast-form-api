@@ -24,7 +24,7 @@ import { UpdateQuestionGroupDto } from '../dtos/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
 import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
-import { QuestionGroupTarget } from '../enums/question-group-target.enum';
+import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 
 @Controller('question-group')
 @ApiTags('QuestionGroup')
@@ -48,8 +48,8 @@ export class QuestionGroupController {
   }
 
   @Get('target')
-  @ApiOkResponse({ type: [() => QuestionGroupTarget] })
-  getTarget(): QuestionGroupTarget[] {
+  @ApiOkResponse({ type: [() => ExamTargetType] })
+  getTarget(): ExamTargetType[] {
     return this.questionGroupService.getTargets();
   }
 
