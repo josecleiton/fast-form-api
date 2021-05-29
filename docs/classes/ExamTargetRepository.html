@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>UpdateExamDto</li>
+  <li>ExamTargetRepository</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,10 +60,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/dtos/update-exam.dto.ts</code>
+            <code>src/exam/repositories/exam-target.repository.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                    <code>BaseRepository</code>
+            </p>
 
 
 
@@ -80,10 +86,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType } from &#x27;@nestjs/mapped-types&#x27;;
-import { CreateExamDto } from &#x27;./create-exam.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository } from &#x27;typeorm&#x27;;
+import { BaseRepository } from &#x27;typeorm-transactional-cls-hooked&#x27;;
+import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
 
-export class UpdateExamDto extends PartialType(CreateExamDto) {}
+@EntityRepository(ExamTarget)
+export class ExamTargetRepository extends BaseRepository&lt;ExamTarget&gt; {}
 </code></pre>
     </div>
 </div>
@@ -112,7 +120,7 @@ export class UpdateExamDto extends PartialType(CreateExamDto) {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UpdateExamDto.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetRepository.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

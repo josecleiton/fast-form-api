@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>QuestionGroup</li>
+  <li>ExamTarget</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/entities/question-group.entity.ts</code>
+            <code>src/exam/entities/exam-target.entity.ts</code>
         </p>
 
 
@@ -86,25 +86,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#class">class</a>
-                            </li>
-                            <li>
-                                <a href="#exam">exam</a>
-                            </li>
-                            <li>
-                                <a href="#examId">examId</a>
-                            </li>
-                            <li>
-                                <a href="#personal">personal</a>
-                            </li>
-                            <li>
-                                <a href="#position">position</a>
-                            </li>
-                            <li>
-                                <a href="#questions">questions</a>
-                            </li>
-                            <li>
-                                <a href="#title">title</a>
+                                <a href="#type">type</a>
                             </li>
                             <li>
                                 <a href="#id">id</a>
@@ -131,20 +113,6 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#sortItems">sortItems</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -164,17 +132,17 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="class"></a>
+                        <a name="type"></a>
                         <span class="name">
                             <b>
-                            class</b>
-                            <a href="#class"><span class="icon ion-ios-link"></span></a>
+                            type</b>
+                            <a href="#type"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType</a></code>
 
                         </td>
                     </tr>
@@ -183,229 +151,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Column({type: &#x27;bool&#x27;, default: false})<br />
+                                @Column({type: &#x27;enum&#x27;, enum: ExamTargetType, unique: true})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/question-group/entities/question-group.entity.ts:20</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="exam"></a>
-                        <span class="name">
-                            <b>
-                            exam</b>
-                            <a href="#exam"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Exam.html" target="_self" >Exam</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ManyToOne(undefined)<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/question-group/entities/question-group.entity.ts:36</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="examId"></a>
-                        <span class="name">
-                            <b>
-                            examId</b>
-                            <a href="#examId"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @Column({type: &#x27;int&#x27;, nullable: true})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/question-group/entities/question-group.entity.ts:30</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="personal"></a>
-                        <span class="name">
-                            <b>
-                            personal</b>
-                            <a href="#personal"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @Column({type: &#x27;bool&#x27;, default: false})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/question-group/entities/question-group.entity.ts:23</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="position"></a>
-                        <span class="name">
-                            <b>
-                            position</b>
-                            <a href="#position"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @Index(&#x27;IX_question_group_position&#x27;)<br />@Column({type: &#x27;int&#x27;, default: 0})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/question-group/entities/question-group.entity.ts:27</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="questions"></a>
-                        <span class="name">
-                            <b>
-                            questions</b>
-                            <a href="#questions"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Question.html" target="_self" >Question[]</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @OneToMany(undefined, undefined)<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/question-group/entities/question-group.entity.ts:33</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="title"></a>
-                        <span class="name">
-                            <b>
-                            title</b>
-                            <a href="#title"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @Column({type: &#x27;varchar&#x27;})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/question-group/entities/question-group.entity.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/exam/entities/exam-target.entity.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -715,58 +467,7 @@
         </table>
 </section>
 
-            <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="sortItems"></a>
-                    <span class="name">
-                        <b>
-                            sortItems
-                        </b>
-                        <a href="#sortItems"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>sortItems()</code>
-                </td>
-            </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@AfterLoad()<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/question-group/entities/question-group.entity.ts:39</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 
 
@@ -777,47 +478,13 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FFEntity } from &#x27;src/core/entities/ff.entity&#x27;;
-import { Exam } from &#x27;src/exam/entities/exam.entity&#x27;;
-import {
-  AfterLoad,
-  Column,
-  Entity,
-  Index,
-  ManyToOne,
-  OneToMany,
-} from &#x27;typeorm&#x27;;
-import { ExamTargetType } from &#x27;../../exam/enums/exam-target-type.enum&#x27;;
-import { Question } from &#x27;./question.entity&#x27;;
+import { Column, Entity, Unique } from &#x27;typeorm&#x27;;
+import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
 
-@Entity()
-export class QuestionGroup extends FFEntity {
-  @Column({ type: &#x27;varchar&#x27; })
-  title: string;
-
-  @Column({ type: &#x27;bool&#x27;, default: false })
-  class: boolean;
-
-  @Column({ type: &#x27;bool&#x27;, default: false })
-  personal: boolean;
-
-  @Index(&#x27;IX_question_group_position&#x27;)
-  @Column({ type: &#x27;int&#x27;, default: 0 })
-  position: number;
-
-  @Column({ type: &#x27;int&#x27;, nullable: true })
-  examId: number;
-
-  @OneToMany(() &#x3D;&gt; Question, (question) &#x3D;&gt; question.group)
-  questions: Question[];
-
-  @ManyToOne(() &#x3D;&gt; Exam)
-  exam: Exam;
-
-  @AfterLoad()
-  sortItems() {
-    this.questions &#x3D;
-      this.questions?.sort((a, b) &#x3D;&gt; a.position - b.position) ?? [];
-  }
+@Entity(&#x27;exam_target&#x27;)
+export class ExamTarget extends FFEntity {
+  @Column({ type: &#x27;enum&#x27;, enum: ExamTargetType, unique: true })
+  type: ExamTargetType;
 }
 </code></pre>
     </div>
@@ -847,7 +514,7 @@ export class QuestionGroup extends FFEntity {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'QuestionGroup.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTarget.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

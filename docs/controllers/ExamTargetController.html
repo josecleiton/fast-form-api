@@ -27,22 +27,16 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>CreateQuestionsDto</li>
+  <li>Controllers</li>
+  <li>ExamTargetController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,8 +54,15 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/dtos/create-questions.dto.ts</code>
+            <code>src/exam/controllers/exam-target.controller.ts</code>
         </p>
+
+            <p class="comment">
+                <h3>Prefix</h3>
+            </p>
+            <p class="comment">
+                <code>exam-target</code>
+            </p>
 
 
 
@@ -71,16 +72,18 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
+                        <h6><b>Methods</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#questions">questions</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#getTargets">getTargets</a>
                             </li>
                         </ul>
                     </td>
@@ -90,98 +93,95 @@
 
 
 
-
         </tbody>
     </table>
 </section>
 
-
             <section>
     
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="questions"></a>
-                        <span class="name">
-                            <b>
-                            questions</b>
-                            <a href="#questions"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>CreateQuestion[]</code>
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTargets"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getTargets
+                        </b>
+                        <a href="#getTargets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getTargets()</code>
+                </td>
+            </tr>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @IsArray()<br />@ValidateNested({each: true})<br />@Type(undefined)<br />@IsDefined({each: true})<br />@ArrayMinSize(1)<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/question-group/dtos/create-questions.dto.ts:29</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get()<br />@ApiOkResponse({type: undefined, schema: undefined})<br /></code>
+                </td>
+            </tr>
 
-
-            </tbody>
-        </table>
-</section>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:16</a></div>
+                </td>
+            </tr>
 
 
+            <tr>
+                <td class="col-md-4">
 
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ExamTargetType[]&gt;</a></code>
 
-
-
-
-    </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, OmitType, PickType } from &#x27;@nestjs/swagger&#x27;;
-import { Type } from &#x27;class-transformer&#x27;;
-import {
-  ArrayMinSize,
-  IsArray,
-  IsBoolean,
-  IsDefined,
-  IsNotEmpty,
-  IsOptional,
-  IsPositive,
-  IsString,
-  IsUrl,
-  ValidateNested,
-} from &#x27;class-validator&#x27;;
-import { CreateQuestionDto } from &#x27;./create-question.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get } from &#x27;@nestjs/common&#x27;;
+import { ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
+import { ExamTargetService } from &#x27;../services/exam-target.service&#x27;;
 
-class CreateQuestion extends OmitType(CreateQuestionDto, [&#x27;groupId&#x27;]) {
-  @IsOptional()
-  @IsPositive()
-  id?: number
-}
+@Controller(&#x27;exam-target&#x27;)
+@ApiTags(&#x27;ExamTarget&#x27;)
+export class ExamTargetController {
+  constructor(private readonly targetService: ExamTargetService) {}
 
-export class CreateQuestionsDto {
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() &#x3D;&gt; CreateQuestion)
-  @IsDefined({ each: true })
-  @ArrayMinSize(1)
-  questions: CreateQuestion[];
+  @Get()
+  @ApiOkResponse({
+    type: [String],
+    schema: { examples: Object.values(ExamTargetType) },
+  })
+  async getTargets(): Promise&lt;ExamTargetType[]&gt; {
+    return await this.targetService.getTargets();
+  }
 }
 </code></pre>
     </div>
 </div>
+
+
+
+
+
+
 
 
 
@@ -206,8 +206,8 @@ export class CreateQuestionsDto {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'CreateQuestionsDto.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

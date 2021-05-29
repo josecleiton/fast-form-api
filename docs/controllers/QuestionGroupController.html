@@ -98,6 +98,9 @@
                                 <a href="#findOne">findOne</a>
                             </li>
                             <li>
+                                <a href="#getTarget">getTarget</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#remove">remove</a>
                             </li>
@@ -157,8 +160,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:76</a></div>
                 </td>
             </tr>
 
@@ -236,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:38</a></div>
                 </td>
             </tr>
 
@@ -315,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:46</a></div>
                 </td>
             </tr>
 
@@ -363,8 +366,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:59</a></div>
                 </td>
             </tr>
 
@@ -415,6 +418,52 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getTarget"></a>
+                    <span class="name">
+                        <b>
+                            getTarget
+                        </b>
+                        <a href="#getTarget"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTarget()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;target&#x27;)<br />@ApiOkResponse({type: undefined})<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType[]</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
                         <b>
@@ -442,8 +491,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:93</a></div>
                 </td>
             </tr>
 
@@ -521,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:84</a></div>
                 </td>
             </tr>
 
@@ -600,8 +649,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:66</a></div>
                 </td>
             </tr>
 
@@ -690,6 +739,7 @@ import { UpdateQuestionGroupDto } from &#x27;../dtos/update-question-group.dto&#
 import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
 import { CopyQuestionGroupDto } from &#x27;../dtos/copy-question-group.dto&#x27;;
 import { ReorderQuestionGroupDto } from &#x27;../dtos/reorder-question-group.dto&#x27;;
+import { ExamTargetType } from &#x27;../../exam/enums/exam-target-type.enum&#x27;;
 
 @Controller(&#x27;question-group&#x27;)
 @ApiTags(&#x27;QuestionGroup&#x27;)
@@ -710,6 +760,12 @@ export class QuestionGroupController {
   @ApiOkResponse({ type: [QuestionGroup] })
   async findAll(): Promise&lt;QuestionGroup[]&gt; {
     return await this.questionGroupService.findAll();
+  }
+
+  @Get(&#x27;target&#x27;)
+  @ApiOkResponse({ type: [() &#x3D;&gt; ExamTargetType] })
+  getTarget(): ExamTargetType[] {
+    return this.questionGroupService.getTargets();
   }
 
   @Get(&#x27;:id&#x27;)
@@ -739,8 +795,10 @@ export class QuestionGroupController {
   }
 
   @Patch()
-  @ApiOkResponse({type: [QuestionGroup]})
-  async reorder(@Body() reorderQuestionGroupDto: ReorderQuestionGroupDto ): Promise&lt;QuestionGroup[]&gt; {
+  @ApiOkResponse({ type: [QuestionGroup] })
+  async reorder(
+    @Body() reorderQuestionGroupDto: ReorderQuestionGroupDto,
+  ): Promise&lt;QuestionGroup[]&gt; {
     return await this.questionGroupService.reorder(reorderQuestionGroupDto);
   }
 

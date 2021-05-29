@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -40,9 +40,10 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>UpdateExamDto</li>
+  <li>Interfaces</li>
+  <li>ExamTargetManagerDto</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,34 +61,85 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/dtos/update-exam.dto.ts</code>
+            <code>src/exam/dtos/exam-target-manager.dto.ts</code>
         </p>
 
 
 
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#targets">targets</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="targets"></a>
+                                        <span class="name"><b>targets</b><a href="#targets"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>targets:         <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType[]</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType[]</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
-
-
-
-
-
-
-
+                        </tbody>
+                    </table>
+            </section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType } from &#x27;@nestjs/mapped-types&#x27;;
-import { CreateExamDto } from &#x27;./create-exam.dto&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
 
-export class UpdateExamDto extends PartialType(CreateExamDto) {}
+export interface ExamTargetManagerDto {
+  targets?: ExamTargetType[];
+}
 </code></pre>
     </div>
 </div>
-
 
 
                    
@@ -111,8 +163,8 @@ export class UpdateExamDto extends PartialType(CreateExamDto) {}
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'UpdateExamDto.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetManagerDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
