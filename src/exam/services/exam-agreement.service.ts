@@ -4,6 +4,7 @@ import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
+import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamAgreementRepository } from '../repositories/exam-agreement.repository';
 
 @Injectable()
@@ -24,5 +25,10 @@ export class ExamAgreementService {
 
   agreementsByDateInterval(start: Date, end: Date): Promise<ExamAgreement[]> {
     return this.repository.find({ where: { createdAt: Between(start, end) } });
+  }
+
+  @Transactional()
+  getByUser(user: ExamUser): Promise<ExamAgreement[]> {
+    return this.repository.find({ where: { userId: user.id }, relations: ['exam'] });
   }
 }

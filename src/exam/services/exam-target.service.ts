@@ -4,6 +4,7 @@ import _ = require('lodash');
 
 import { ExamTarget } from '../entities/exam-target.entity';
 import { ExamTargetType } from '../enums/exam-target-type.enum';
+import { ExamTargetTree } from '../providers/exam-target-tree.provider';
 import { ExamTargetRepository } from '../repositories/exam-target.repository';
 
 @Injectable()
@@ -13,6 +14,7 @@ export class ExamTargetService {
   constructor(
     @InjectRepository(ExamTargetRepository)
     private readonly repository: ExamTargetRepository,
+    private readonly tree: ExamTargetTree,
   ) {
     this.loadTargetMap();
   }
@@ -41,5 +43,9 @@ export class ExamTargetService {
     const map = await this.targetMap;
 
     return Array.from(map.values()).map((target) => target.type);
+  }
+
+  getTargetsForUser(target: string): ExamTargetType[] {
+    return this.tree.queryTarget(target).map((p) => p.type);
   }
 }

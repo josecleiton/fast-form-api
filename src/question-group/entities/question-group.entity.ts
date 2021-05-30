@@ -16,6 +16,7 @@ export class QuestionGroup extends FFEntity {
   @Column({ type: 'varchar' })
   title: string;
 
+  // TODO: juntar essas flags em um enum
   @Column({ type: 'bool', default: false })
   class: boolean;
 

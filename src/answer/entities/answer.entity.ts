@@ -18,6 +18,9 @@ export class Answer extends FFEntity {
   @Column({ type: 'enum', enum: AnswerType })
   type: AnswerType;
 
+  @Column({ type: 'int' })
+  examAgreementId: number;
+
   @ManyToOne(() => ExamAgreement)
   examAgreement: ExamAgreement;
 }

@@ -10,6 +10,8 @@ import { ExamTargetController } from './controllers/exam-target.controller';
 import { ExamAgreementService } from './services/exam-agreement.service';
 import { ExamAgreementRepository } from './repositories/exam-agreement.repository';
 import { ExamAgreementController } from './controllers/exam-agreement.controller';
+import { ExamTargetTree } from './providers/exam-target-tree.provider';
+import { ExamTargetNodeFactory } from './factories/exam-target-node.factory';
 
 @Module({
   imports: [
@@ -20,7 +22,13 @@ import { ExamAgreementController } from './controllers/exam-agreement.controller
     ]),
   ],
   controllers: [ExamController, ExamTargetController, ExamAgreementController],
-  providers: [ExamService, ExamTargetService, ExamAgreementService],
+  providers: [
+    ExamService,
+    ExamTargetService,
+    ExamAgreementService,
+    ExamTargetTree,
+    ExamTargetNodeFactory,
+  ],
   exports: [ExamService, ExamAgreementService],
 })
 export class ExamModule {}

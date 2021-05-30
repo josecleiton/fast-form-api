@@ -7,7 +7,10 @@ import { ExamTargetManagerDto } from './dtos/exam-target-manager.dto';
 import { UpdateExamDto } from './dtos/update-exam.dto';
 import { Exam } from './entities/exam.entity';
 import { EXAM_NOT_FOUND } from './exam.constants';
+import { ExamUser } from './interfaces/exam-user.interface';
+import { ExamPersonalResult } from './models/exam-personal-result.model';
 import { ExamRepository } from './repositories/exam.repository';
+import { ExamAgreementService } from './services/exam-agreement.service';
 import { ExamTargetService } from './services/exam-target.service';
 
 @Injectable()
@@ -18,6 +21,7 @@ export class ExamService {
     @InjectRepository(ExamRepository)
     private readonly repository: ExamRepository,
     private readonly targetService: ExamTargetService,
+    private readonly agreementService: ExamAgreementService,
   ) {}
 
   private async newExam(dto: CreateExamDto | UpdateExamDto): Promise<Exam> {
@@ -39,11 +43,11 @@ export class ExamService {
     return this.repository.save(exam);
   }
 
-  findAll() {
+  findAll(): Promise<Exam[]> {
     return this.repository.find({ relations: ExamService.relations });
   }
 
-  async findOne(id: number) {
+  async findOne(id: number): Promise<Exam> {
     const exam = await this.repository.findOne(id, {
       relations: ExamService.relations,
     });
@@ -52,6 +56,23 @@ export class ExamService {
     }
 
     return exam;
+  }
+
+  @Transactional()
+  async findPersonal(user: ExamUser): Promise<ExamPersonalResult> {
+    const alreadyAgreed = (await this.agreementService.getByUser(user)).map(
+      (agree) => agree.exam,
+    );
+
+    const targets = this.targetService.getTargetsForUser(user.type);
+
+    const canAgree = await this.repository.findByUser({
+      ignoreExams: alreadyAgreed,
+      user,
+      targets,
+    });
+
+    return { alreadyAgreed, canAgree };
   }
 
   @Transactional()
@@ -64,7 +85,7 @@ export class ExamService {
   }
 
   @Transactional()
-  async remove(id: number) {
+  async remove(id: number): Promise<void> {
     const result: SoftDeleteResult = await this.repository.softDelete(id);
     if (!result.raw.affectedRows) {
       throw new NotFoundException({ id }, EXAM_NOT_FOUND);

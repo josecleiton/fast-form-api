@@ -15,6 +15,9 @@ import { UpdateExamDto } from './dtos/update-exam.dto';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Exam } from './entities/exam.entity';
+import { GetUser } from 'src/user/decoratos/get-user.decorator';
+import { ExamUser } from './interfaces/exam-user.interface';
+import { ExamPersonalResult } from './models/exam-personal-result.model';
 
 @Controller('exam')
 @ApiTags('Exam')
@@ -33,6 +36,12 @@ export class ExamController {
   @ApiOkResponse({ type: [Exam] })
   async findAll(): Promise<Exam[]> {
     return await this.examService.findAll();
+  }
+
+  @Get('me')
+  @ApiOkResponse({ type: ExamPersonalResult })
+  async findPersonal(@GetUser() user: ExamUser): Promise<ExamPersonalResult> {
+    return await this.examService.findPersonal(user);
   }
 
   @Get(':id')
