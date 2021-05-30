@@ -47,10 +47,12 @@ export class QuestionGroupController {
     return await this.questionGroupService.findAll();
   }
 
-  @Get('target')
-  @ApiOkResponse({ type: [() => ExamTargetType] })
-  getTarget(): ExamTargetType[] {
-    return this.questionGroupService.getTargets();
+  @Get('me/:examId')
+  @ApiOkResponse({ type: [QuestionGroup] })
+  async findPersonal(
+    @Param('examId', ParseIntPipe) examId: number,
+  ): Promise<QuestionGroup[]> {
+    return await this.questionGroupService.findPersonal(examId);
   }
 
   @Get(':id')

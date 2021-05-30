@@ -25,6 +25,8 @@ export class QuestionGroupService {
     private readonly questionService: QuestionService,
   ) {}
 
+  private static readonly relations = ['questions']
+
   private async setExamAndPosition(
     questionGroup: QuestionGroup,
     examId: number,
@@ -50,13 +52,13 @@ export class QuestionGroupService {
   }
 
   findAll(): Promise<QuestionGroup[]> {
-    return this.repository.find({ relations: ['questions'] });
+    return this.repository.find({ relations: QuestionGroupService.relations});
   }
 
   async findOne(id: number): Promise<QuestionGroup> {
     const questionGroup = await this.repository.findOne({
       where: { id },
-      relations: ['questions'],
+      relations: QuestionGroupService.relations,
     });
 
     if (!questionGroup) {
@@ -139,8 +141,11 @@ export class QuestionGroupService {
     ).sort((a, b) => a.position - b.position);
   }
 
-  getTargets(): ExamTargetType[] {
-    return Object.values(ExamTargetType);
+  async findPersonal(examId: number): Promise<QuestionGroup[]> {
+    return await this.repository.find({
+      where: { examId },
+      relations: QuestionGroupService.relations
+    });
   }
 
   @Transactional()
