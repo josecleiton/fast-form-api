@@ -180,7 +180,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Column({type: &#x27;boolean&#x27;})<br />
+                                @Column({type: &#x27;boolean&#x27;, default: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -360,7 +360,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Generated(&#x27;uuid&#x27;)<br />@Column({type: &#x27;uuid&#x27;, unique: true})<br />
+                                @Generated(&#x27;uuid&#x27;)<br />@Column({unique: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -745,10 +745,10 @@ import { Exam } from &#x27;./exam.entity&#x27;;
 @Entity(&#x27;exam_agreement&#x27;)
 export class ExamAgreement extends FFEntity {
   @Generated(&#x27;uuid&#x27;)
-  @Column({ type: &#x27;uuid&#x27;, unique: true })
+  @Column({ unique: true })
   uuid: string;
 
-  @Column({ type: &#x27;boolean&#x27; })
+  @Column({ type: &#x27;boolean&#x27;, default: false })
   anonymous: boolean;
 
   @Column({ type: &#x27;int&#x27; })

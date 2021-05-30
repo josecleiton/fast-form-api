@@ -13,10 +13,10 @@ import { Exam } from './exam.entity';
 @Entity('exam_agreement')
 export class ExamAgreement extends FFEntity {
   @Generated('uuid')
-  @Column({ type: 'uuid', unique: true })
+  @Column({ unique: true })
   uuid: string;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: false })
   anonymous: boolean;
 
   @Column({ type: 'int' })
