@@ -1,6 +1,7 @@
 import { EntityRepository } from 'typeorm';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 import { FindExamByUserDto } from '../dtos/find-exam-by-user.dto';
+import { ExamTarget } from '../entities/exam-target.entity';
 import { Exam } from '../entities/exam.entity';
 import { ExamStatus } from '../enums/exam-status.enum';
 
@@ -30,15 +31,18 @@ export class ExamRepository extends BaseRepository<Exam> {
       .distinct(true)
       .leftJoin('exam_targets_exam_target', 'et', 'exam.id = et.exam_id')
       .leftJoin(
-        'exam_target',
+        ExamTarget,
         'target',
         'et.exam_target_id = target.id AND target.type IN (:...targets)',
         { targets },
       )
-      .where('exam.id NOT IN (:...ids)', {
+      .where('exam.status = :status', { status: ExamStatus.ACTIVE });
+
+    if (ignoreExams.length) {
+      query.andWhere('exam.id NOT IN (:...ids)', {
         ids: ignoreExams.map((el) => el.id),
-      })
-      .andWhere('exam.status = :status', { status: ExamStatus.ACTIVE });
+      });
+    }
     // .andWhere('exam.created_at BETWEEN :start AND :end', {start})
 
     return await query.getMany();
