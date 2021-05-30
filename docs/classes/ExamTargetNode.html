@@ -27,16 +27,22 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content class">
                    <div class="content-data">
 
 
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>ExamTargetController</li>
+  <li>Classes</li>
+  <li>ExamTargetNode</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,15 +60,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/controllers/exam-target.controller.ts</code>
+            <code>src/exam/models/exam-target-node.model.ts</code>
         </p>
-
-            <p class="comment">
-                <h3>Prefix</h3>
-            </p>
-            <p class="comment">
-                <code>exam-target</code>
-            </p>
 
 
 
@@ -72,6 +71,23 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#childs">childs</a>
+                            </li>
+                            <li>
+                                <a href="#type">type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -82,11 +98,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getForUser">getForUser</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getTargets">getTargets</a>
+                                <a href="#dfs">dfs</a>
                             </li>
                         </ul>
                     </td>
@@ -96,8 +108,84 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#isLeaf">isLeaf</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="childs"></a>
+                        <span class="name">
+                            <b>
+                            childs</b>
+                            <a href="#childs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ExamTargetNode[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/exam/models/exam-target-node.model.ts:6</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="type"></a>
+                        <span class="name">
+                            <b>
+                            type</b>
+                            <a href="#type"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/exam/models/exam-target-node.model.ts:7</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
 </section>
 
             <section>
@@ -109,33 +197,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getForUser"></a>
+                    <a name="dfs"></a>
                     <span class="name">
                         <b>
-                            getForUser
+                            dfs
                         </b>
-                        <a href="#getForUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#dfs"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getForUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
+<code>dfs(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;user&#x27;)<br />@ApiExcludeEndpoint()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/exam/models/exam-target-node.model.ts:13</a></div>
                 </td>
             </tr>
 
@@ -155,9 +236,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>user</td>
+                                    <td>type</td>
                                     <td>
-                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -172,7 +253,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Path" target="_self" >Path</a></code>
 
                     </div>
                     <div class="io-description">
@@ -182,96 +263,71 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getTargets"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getTargets
-                        </b>
-                        <a href="#getTargets"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTargets()</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get()<br />@ApiOkResponse({type: undefined, schema: undefined})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:20</a></div>
-                </td>
-            </tr>
+</section>
 
 
-            <tr>
-                <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ExamTargetType[]&gt;</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    </div>
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isLeaf"></a>
+                        <span class="name"><b>isLeaf</b><a href="#isLeaf"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isLeaf()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/exam/models/exam-target-node.model.ts:9</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, UseGuards } from &#x27;@nestjs/common&#x27;;
-import { ApiExcludeEndpoint, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
-import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
-import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
-import { ExamTargetService } from &#x27;../services/exam-target.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
 
-@Controller(&#x27;exam-target&#x27;)
-@ApiTags(&#x27;ExamTarget&#x27;)
-@UseGuards(JwtGuard)
-export class ExamTargetController {
-  constructor(private readonly targetService: ExamTargetService) {}
+type Path &#x3D; ExamTargetNode[] | undefined;
 
-  @Get()
-  @ApiOkResponse({
-    type: [String],
-    schema: { examples: Object.values(ExamTargetType) },
-  })
-  async getTargets(): Promise&lt;ExamTargetType[]&gt; {
-    return await this.targetService.getTargets();
+export class ExamTargetNode {
+  childs: ExamTargetNode[];
+  type: ExamTargetType;
+
+  get isLeaf(): boolean {
+    return !this.childs.length;
   }
 
-  @Get(&#x27;user&#x27;)
-  @ApiExcludeEndpoint()
-  getForUser(@GetUser() user: ExamUser) {
-    return this.targetService.getTargetsForUser(user.type);
+  dfs(type: string): Path {
+    if (this.type &#x3D;&#x3D;&#x3D; type) {
+      return [this];
+    }
+    if (this.isLeaf) return;
+    for (const node of this.childs) {
+      const partialPath &#x3D; node.dfs(type);
+      if (partialPath) {
+        return [this, ...partialPath];
+      }
+    }
   }
 }
 </code></pre>
     </div>
 </div>
-
-
-
-
-
-
 
 
 
@@ -296,8 +352,8 @@ export class ExamTargetController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetNode.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

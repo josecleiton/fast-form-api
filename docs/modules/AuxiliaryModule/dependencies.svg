@@ -24,13 +24,13 @@
 <title>cluster_AuxiliaryModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="77.5,-70 77.5,-268 418.5,-268 418.5,-70 77.5,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_AuxiliaryModule_providers</title>
-<polygon fill="none" stroke="black" points="85.5,-78 85.5,-130 410.5,-130 410.5,-78 85.5,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_AuxiliaryModule_exports</title>
 <polygon fill="none" stroke="black" points="108.5,-208 108.5,-260 360.5,-260 360.5,-208 108.5,-208"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_AuxiliaryModule_providers</title>
+<polygon fill="none" stroke="black" points="85.5,-78 85.5,-130 410.5,-130 410.5,-78 85.5,-78"/>
 </g>
 <!-- ProfessorService  -->
 <g id="node1" class="node">

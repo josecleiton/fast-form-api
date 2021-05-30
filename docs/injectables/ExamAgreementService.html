@@ -81,6 +81,9 @@
                             <li>
                                 <a href="#createAgreement">createAgreement</a>
                             </li>
+                            <li>
+                                <a href="#getByUser">getByUser</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -104,7 +107,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/exam/services/exam-agreement.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/exam/services/exam-agreement.service.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -169,8 +172,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -258,8 +261,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:18</a></div>
                 </td>
             </tr>
 
@@ -306,6 +309,83 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getByUser"></a>
+                    <span class="name">
+                        <b>
+                            getByUser
+                        </b>
+                        <a href="#getByUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getByUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Transactional()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -318,6 +398,7 @@ import { Between } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
+import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamAgreementRepository } from &#x27;../repositories/exam-agreement.repository&#x27;;
 
 @Injectable()
@@ -338,6 +419,11 @@ export class ExamAgreementService {
 
   agreementsByDateInterval(start: Date, end: Date): Promise&lt;ExamAgreement[]&gt; {
     return this.repository.find({ where: { createdAt: Between(start, end) } });
+  }
+
+  @Transactional()
+  getByUser(user: ExamUser): Promise&lt;ExamAgreement[]&gt; {
+    return this.repository.find({ where: { userId: user.id }, relations: [&#x27;exam&#x27;] });
   }
 }
 </code></pre>

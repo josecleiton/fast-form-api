@@ -27,16 +27,22 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content class">
                    <div class="content-data">
 
 
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>ExamTargetController</li>
+  <li>Classes</li>
+  <li>ExamTargetAdd1622378888497</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,24 +60,37 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/controllers/exam-target.controller.ts</code>
+            <code>src/database/migrations/1622378888497-ExamTargetAdd.ts</code>
         </p>
 
+
+
             <p class="comment">
-                <h3>Prefix</h3>
+                <h3>Implements</h3>
             </p>
             <p class="comment">
-                <code>exam-target</code>
+                        <code>MigrationInterface</code>
             </p>
-
-
-
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#name">name</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -82,11 +101,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getForUser">getForUser</a>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#down">down</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#getTargets">getTargets</a>
+                                <a href="#up">up</a>
                             </li>
                         </ul>
                     </td>
@@ -100,6 +122,46 @@
     </table>
 </section>
 
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name">
+                            <b>
+                            name</b>
+                            <a href="#name"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;ExamTargetAdd1622378888497&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/database/migrations/1622378888497-ExamTargetAdd.ts:6</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
             <section>
     
     <h3 id="methods">
@@ -109,33 +171,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getForUser"></a>
+                    <a name="down"></a>
                     <span class="name">
                         <b>
-                            getForUser
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            down
                         </b>
-                        <a href="#getForUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getForUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;user&#x27;)<br />@ApiExcludeEndpoint()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/database/migrations/1622378888497-ExamTargetAdd.ts:21</a></div>
                 </td>
             </tr>
 
@@ -155,9 +213,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>user</td>
+                                    <td>queryRunner</td>
                                     <td>
-                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                            <code>QueryRunner</code>
                                     </td>
 
                                     <td>
@@ -172,7 +230,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -186,35 +244,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTargets"></a>
+                    <a name="up"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                            getTargets
+                            up
                         </b>
-                        <a href="#getTargets"><span class="icon ion-ios-link"></span></a>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTargets()</code>
+                    <code>up(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get()<br />@ApiOkResponse({type: undefined, schema: undefined})<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="8"
+                            class="link-to-prism">src/database/migrations/1622378888497-ExamTargetAdd.ts:8</a></div>
                 </td>
             </tr>
 
@@ -223,55 +275,89 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ExamTargetType[]&gt;</a></code>
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>queryRunner</td>
+                                    <td>
+                                            <code>QueryRunner</code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>    </div>
+</section>
+
+
+
+
+
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, UseGuards } from &#x27;@nestjs/common&#x27;;
-import { ApiExcludeEndpoint, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
-import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
-import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
-import { ExamTargetService } from &#x27;../services/exam-target.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
 
-@Controller(&#x27;exam-target&#x27;)
-@ApiTags(&#x27;ExamTarget&#x27;)
-@UseGuards(JwtGuard)
-export class ExamTargetController {
-  constructor(private readonly targetService: ExamTargetService) {}
+const addTargets &#x3D; [&#x27;Course&#x27;, &#x27;Grade&#x27;];
 
-  @Get()
-  @ApiOkResponse({
-    type: [String],
-    schema: { examples: Object.values(ExamTargetType) },
-  })
-  async getTargets(): Promise&lt;ExamTargetType[]&gt; {
-    return await this.targetService.getTargets();
+export class ExamTargetAdd1622378888497 implements MigrationInterface {
+  name &#x3D; &#x27;ExamTargetAdd1622378888497&#x27;;
+
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &quot;ALTER TABLE &#x60;exam_target&#x60; CHANGE &#x60;type&#x60; &#x60;type&#x60; enum (&#x27;Student&#x27;, &#x27;Professor&#x27;, &#x27;Course&#x27;, &#x27;Grade&#x27;) NOT NULL&quot;,
+    );
+    await Promise.all(
+      addTargets.map((target) &#x3D;&gt;
+        queryRunner.query(&#x27;INSERT INTO exam_target (&#x60;type&#x60;) VALUES (?)&#x27;, [
+          target,
+        ]),
+      ),
+    );
   }
 
-  @Get(&#x27;user&#x27;)
-  @ApiExcludeEndpoint()
-  getForUser(@GetUser() user: ExamUser) {
-    return this.targetService.getTargetsForUser(user.type);
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &#x60;DELETE FROM exam_target WHERE type IN (${addTargets
+        .map((_) &#x3D;&gt; &#x27;?&#x27;)
+        .join(&#x27;, &#x27;)})&#x60;,
+      [...addTargets],
+    );
+    await queryRunner.query(
+      &quot;ALTER TABLE &#x60;exam_target&#x60; CHANGE &#x60;type&#x60; &#x60;type&#x60; enum (&#x27;Student&#x27;, &#x27;Professor&#x27;) NOT NULL&quot;,
+    );
   }
 }
 </code></pre>
     </div>
 </div>
-
-
-
-
-
-
 
 
 
@@ -296,8 +382,8 @@ export class ExamTargetController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetAdd1622378888497.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

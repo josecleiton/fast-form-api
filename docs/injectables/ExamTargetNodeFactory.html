@@ -27,16 +27,18 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content injectable">
                    <div class="content-data">
 
 
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>ExamTargetController</li>
+  <li>Injectables</li>
+  <li>ExamTargetNodeFactory</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,16 +56,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/controllers/exam-target.controller.ts</code>
+            <code>src/exam/factories/exam-target-node.factory.ts</code>
         </p>
-
-            <p class="comment">
-                <h3>Prefix</h3>
-            </p>
-            <p class="comment">
-                <code>exam-target</code>
-            </p>
-
 
 
 
@@ -82,11 +76,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getForUser">getForUser</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getTargets">getTargets</a>
+                                <a href="#generate">generate</a>
                             </li>
                         </ul>
                     </td>
@@ -100,6 +90,7 @@
     </table>
 </section>
 
+
             <section>
     
     <h3 id="methods">
@@ -109,33 +100,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getForUser"></a>
+                    <a name="generate"></a>
                     <span class="name">
                         <b>
-                            getForUser
+                            generate
                         </b>
-                        <a href="#getForUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#generate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getForUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
+<code>generate(schema: <a href="../interfaces/ExamTargetNodeSchema.html">ExamTargetNodeSchema</a>)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get(&#x27;user&#x27;)<br />@ApiExcludeEndpoint()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/exam/factories/exam-target-node.factory.ts:12</a></div>
                 </td>
             </tr>
 
@@ -155,9 +139,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>user</td>
+                                    <td>schema</td>
                                     <td>
-                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                                <code><a href="../interfaces/ExamTargetNodeSchema.html" target="_self" >ExamTargetNodeSchema</a></code>
                                     </td>
 
                                     <td>
@@ -172,7 +156,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ExamTargetNode.html" target="_self" >ExamTargetNode</a></code>
 
                     </div>
                     <div class="io-description">
@@ -182,92 +166,36 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getTargets"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            getTargets
-                        </b>
-                        <a href="#getTargets"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTargets()</code>
-                </td>
-            </tr>
+</section>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get()<br />@ApiOkResponse({type: undefined, schema: undefined})<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/exam/controllers/exam-target.controller.ts:20</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ExamTargetType[]&gt;</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    </div>
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, UseGuards } from &#x27;@nestjs/common&#x27;;
-import { ApiExcludeEndpoint, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
-import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
-import { ExamTargetService } from &#x27;../services/exam-target.service&#x27;;
+import { ExamTargetNode } from &#x27;../models/exam-target-node.model&#x27;;
 
-@Controller(&#x27;exam-target&#x27;)
-@ApiTags(&#x27;ExamTarget&#x27;)
-@UseGuards(JwtGuard)
-export class ExamTargetController {
-  constructor(private readonly targetService: ExamTargetService) {}
+interface ExamTargetNodeSchema {
+  type: ExamTargetType;
+  childs?: ExamTargetNodeSchema[];
+}
 
-  @Get()
-  @ApiOkResponse({
-    type: [String],
-    schema: { examples: Object.values(ExamTargetType) },
-  })
-  async getTargets(): Promise&lt;ExamTargetType[]&gt; {
-    return await this.targetService.getTargets();
-  }
+@Injectable()
+export class ExamTargetNodeFactory {
+  generate(schema: ExamTargetNodeSchema): ExamTargetNode {
+    const node &#x3D; new ExamTargetNode();
+    node.type &#x3D; schema.type;
 
-  @Get(&#x27;user&#x27;)
-  @ApiExcludeEndpoint()
-  getForUser(@GetUser() user: ExamUser) {
-    return this.targetService.getTargetsForUser(user.type);
+    node.childs &#x3D; schema.childs?.map((node) &#x3D;&gt; this.generate(node)) ?? [];
+
+    return node;
   }
 }
 </code></pre>
     </div>
+
 </div>
-
-
 
 
 
@@ -296,8 +224,8 @@ export class ExamTargetController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetNodeFactory.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

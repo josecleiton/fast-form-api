@@ -73,10 +73,126 @@
 
 
 
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findByUser">findByUser</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
 
+
+        </tbody>
+    </table>
+</section>
+
+
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findByUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findByUser
+                        </b>
+                        <a href="#findByUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findByUser(undefined: <a href="../interfaces/FindExamByUserDto.html">FindExamByUserDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/exam/repositories/exam.repository.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>SELECT DISTINCT exam.*
+FROM exam
+LEFT JOIN exam_targets_exam_target et
+  ON exam.id = et.exam_id
+INNER JOIN exam_target target
+  on et.exam_target_id = target.id AND target.type IN :targets
+WHERE
+  (exam.id NOT IN :ids)
+  (exam.status = &quot;ACTIVE&quot;) AND
+  (exam.created_at BETWEEN :start AND :end) AND
+  (exam.deleted_at IS NULL)</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                                <code><a href="../interfaces/FindExamByUserDto.html" target="_self" >FindExamByUserDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >Promise&lt;Exam[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 
 
@@ -88,10 +204,54 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository } from &#x27;typeorm&#x27;;
 import { BaseRepository } from &#x27;typeorm-transactional-cls-hooked&#x27;;
+import { FindExamByUserDto } from &#x27;../dtos/find-exam-by-user.dto&#x27;;
+import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
 import { Exam } from &#x27;../entities/exam.entity&#x27;;
+import { ExamStatus } from &#x27;../enums/exam-status.enum&#x27;;
 
 @EntityRepository(Exam)
-export class ExamRepository extends BaseRepository&lt;Exam&gt; {}
+export class ExamRepository extends BaseRepository&lt;Exam&gt; {
+  /**
+   * SELECT DISTINCT exam.*
+   * FROM exam
+   * LEFT JOIN exam_targets_exam_target et
+   *  ON exam.id &#x3D; et.exam_id
+   * INNER JOIN exam_target target
+   *  on et.exam_target_id &#x3D; target.id AND target.type IN :targets
+   * WHERE
+   *  (exam.id NOT IN :ids)
+   *  (exam.status &#x3D; &quot;ACTIVE&quot;) AND
+   *  (exam.created_at BETWEEN :start AND :end) AND
+   *  (exam.deleted_at IS NULL)
+   */
+  async findByUser({
+    ignoreExams,
+    targets,
+    user,
+  }: FindExamByUserDto): Promise&lt;Exam[]&gt; {
+    const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
+
+    query
+      .distinct(true)
+      .leftJoin(&#x27;exam_targets_exam_target&#x27;, &#x27;et&#x27;, &#x27;exam.id &#x3D; et.exam_id&#x27;)
+      .leftJoin(
+        ExamTarget,
+        &#x27;target&#x27;,
+        &#x27;et.exam_target_id &#x3D; target.id AND target.type IN (:...targets)&#x27;,
+        { targets },
+      )
+      .where(&#x27;exam.status &#x3D; :status&#x27;, { status: ExamStatus.ACTIVE });
+
+    if (ignoreExams.length) {
+      query.andWhere(&#x27;exam.id NOT IN (:...ids)&#x27;, {
+        ids: ignoreExams.map((el) &#x3D;&gt; el.id),
+      });
+    }
+    // .andWhere(&#x27;exam.created_at BETWEEN :start AND :end&#x27;, {start})
+
+    return await query.getMany();
+  }
+}
 </code></pre>
     </div>
 </div>

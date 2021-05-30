@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>ExamTargetService</li>
+  <li>ExamTargetTree</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/services/exam-target.service.ts</code>
+            <code>src/exam/providers/exam-target-tree.provider.ts</code>
         </p>
 
 
@@ -76,8 +76,8 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                    <span class="modifier">Optional</span>
-                                <a href="#_targetMap">_targetMap</a>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#root">root</a>
                             </li>
                         </ul>
                     </td>
@@ -92,16 +92,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getTargets">getTargets</a>
-                            </li>
-                            <li>
-                                <a href="#getTargetsForUser">getTargetsForUser</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#loadTargetMap">loadTargetMap</a>
+                                <a href="#queryTarget">queryTarget</a>
                             </li>
                         </ul>
                     </td>
@@ -111,20 +102,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#targetMap">targetMap</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -135,12 +112,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/ExamTargetRepository.html">ExamTargetRepository</a>, tree: <a href="../injectables/ExamTargetTree.html">ExamTargetTree</a>)</code>
+<code>constructor(targetNodeFactory: <a href="../injectables/ExamTargetNodeFactory.html">ExamTargetNodeFactory</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/exam/services/exam-target.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/exam/providers/exam-target-tree.provider.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -158,22 +135,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>repository</td>
+                                                        <td>targetNodeFactory</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/ExamTargetRepository.html" target="_self" >ExamTargetRepository</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>tree</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/ExamTargetTree.html" target="_self" >ExamTargetTree</a></code>
+                                                                        <code><a href="../injectables/ExamTargetNodeFactory.html" target="_self" >ExamTargetNodeFactory</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -199,67 +164,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTargets"></a>
+                    <a name="queryTarget"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Async</span>
-                            getTargets
+                            queryTarget
                         </b>
-                        <a href="#getTargets"><span class="icon ion-ios-link"></span></a>
+                        <a href="#queryTarget"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTargets()</code>
+<code>queryTarget(target: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/exam/services/exam-target.service.ts:42</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ExamTargetType[]&gt;</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getTargetsForUser"></a>
-                    <span class="name">
-                        <b>
-                            getTargetsForUser
-                        </b>
-                        <a href="#getTargetsForUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getTargetsForUser(target: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/exam/services/exam-target.service.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/exam/providers/exam-target-tree.provider.ts:26</a></div>
                 </td>
             </tr>
 
@@ -296,53 +220,11 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType[]</a></code>
+                        <b>Returns : </b>    <code>ExamTargetNode[]</code>
 
                     </div>
                     <div class="io-description">
                         
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="loadTargetMap"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Async</span>
-                            loadTargetMap
-                        </b>
-                        <a href="#loadTargetMap"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>loadTargetMap()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/exam/services/exam-target.service.ts:22</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
-
                     </div>
                 </td>
             </tr>
@@ -358,25 +240,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_targetMap"></a>
+                        <a name="root"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Private</span>
-                                <span class="modifier">Optional</span>
-                            _targetMap</b>
-                            <a href="#_targetMap"><span class="icon ion-ios-link"></span></a>
+                                <span class="modifier">Readonly</span>
+                            root</b>
+                            <a href="#root"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ReadonlyMap&lt;ExamTargetType | ExamTarget&gt;</a></code>
+                            <i>Type : </i>        <code><a href="../classes/ExamTargetNode.html" target="_self" >ExamTargetNode</a></code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/exam/services/exam-target.service.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/exam/providers/exam-target-tree.provider.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -385,86 +267,43 @@
         </table>
 </section>
 
-            <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="targetMap"></a>
-                        <span class="name"><b>targetMap</b><a href="#targetMap"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>targetMap()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/exam/services/exam-target.service.ts:30</a></div>
-                                </td>
-                            </tr>
-
-            </tbody>
-        </table>
-</section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import _ &#x3D; require(&#x27;lodash&#x27;);
-
-import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+import { Exam } from &#x27;../entities/exam.entity&#x27;;
 import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
-import { ExamTargetTree } from &#x27;../providers/exam-target-tree.provider&#x27;;
-import { ExamTargetRepository } from &#x27;../repositories/exam-target.repository&#x27;;
+import { ExamTargetNodeFactory } from &#x27;../factories/exam-target-node.factory&#x27;;
+import { ExamTargetNode } from &#x27;../models/exam-target-node.model&#x27;;
 
 @Injectable()
-export class ExamTargetService {
-  private _targetMap?: ReadonlyMap&lt;ExamTargetType, ExamTarget&gt;;
+export class ExamTargetTree {
+  private readonly root: ExamTargetNode;
 
-  constructor(
-    @InjectRepository(ExamTargetRepository)
-    private readonly repository: ExamTargetRepository,
-    private readonly tree: ExamTargetTree,
-  ) {
-    this.loadTargetMap();
-  }
-
-  private async loadTargetMap(): Promise&lt;void&gt; {
-    const targets &#x3D; await this.repository.find();
-
-    this._targetMap &#x3D; new Map&lt;ExamTargetType, ExamTarget&gt;(
-      targets.map((target) &#x3D;&gt; [target.type, target]),
-    );
-  }
-
-  get targetMap(): Promise&lt;ReadonlyMap&lt;ExamTargetType, ExamTarget&gt;&gt; {
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      if (!this._targetMap) {
-        return this.loadTargetMap()
-          .then(() &#x3D;&gt; resolve(_.cloneDeep(this._targetMap!)))
-          .catch((e) &#x3D;&gt; reject(e));
-      }
-
-      resolve(_.cloneDeep(this._targetMap));
+  constructor(targetNodeFactory: ExamTargetNodeFactory) {
+    this.root &#x3D; targetNodeFactory.generate({
+      type: ExamTargetType.COURSE,
+      childs: [
+        {
+          type: ExamTargetType.GRADE,
+          childs: [
+            { type: ExamTargetType.PROFESSOR },
+            { type: ExamTargetType.STUDENT },
+          ],
+        },
+      ],
     });
   }
 
-  async getTargets(): Promise&lt;ExamTargetType[]&gt; {
-    const map &#x3D; await this.targetMap;
+  queryTarget(target: string): ExamTargetNode[] {
+    const path &#x3D; this.root.dfs(target);
 
-    return Array.from(map.values()).map((target) &#x3D;&gt; target.type);
-  }
+    if (!path) {
+      throw new NotFoundException(this.root, target);
+    }
 
-  getTargetsForUser(target: string): ExamTargetType[] {
-    return this.tree.queryTarget(target).map((p) &#x3D;&gt; p.type);
+    return path;
   }
 }
 </code></pre>
@@ -500,7 +339,7 @@ export class ExamTargetService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetTree.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
