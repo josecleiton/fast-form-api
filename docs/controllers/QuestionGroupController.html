@@ -98,7 +98,8 @@
                                 <a href="#findOne">findOne</a>
                             </li>
                             <li>
-                                <a href="#getTarget">getTarget</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#findPersonal">findPersonal</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -160,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:78</a></div>
                 </td>
             </tr>
 
@@ -366,8 +367,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:61</a></div>
                 </td>
             </tr>
 
@@ -418,18 +419,20 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTarget"></a>
+                    <a name="findPersonal"></a>
                     <span class="name">
                         <b>
-                            getTarget
+                            <span class="modifier">Async</span>
+                            findPersonal
                         </b>
-                        <a href="#getTarget"><span class="icon ion-ios-link"></span></a>
+                        <a href="#findPersonal"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTarget()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findPersonal(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -437,7 +440,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;target&#x27;)<br />@ApiOkResponse({type: undefined})<br /></code>
+                    <code>@Get(&#x27;me/:examId&#x27;)<br />@ApiOkResponse({type: undefined})<br /></code>
                 </td>
             </tr>
 
@@ -453,8 +456,39 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType[]</a></code>
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>examId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;QuestionGroup[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -491,8 +525,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:95</a></div>
                 </td>
             </tr>
 
@@ -570,8 +604,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:86</a></div>
                 </td>
             </tr>
 
@@ -649,8 +683,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:68</a></div>
                 </td>
             </tr>
 
@@ -762,10 +796,12 @@ export class QuestionGroupController {
     return await this.questionGroupService.findAll();
   }
 
-  @Get(&#x27;target&#x27;)
-  @ApiOkResponse({ type: [() &#x3D;&gt; ExamTargetType] })
-  getTarget(): ExamTargetType[] {
-    return this.questionGroupService.getTargets();
+  @Get(&#x27;me/:examId&#x27;)
+  @ApiOkResponse({ type: [QuestionGroup] })
+  async findPersonal(
+    @Param(&#x27;examId&#x27;, ParseIntPipe) examId: number,
+  ): Promise&lt;QuestionGroup[]&gt; {
+    return await this.questionGroupService.findPersonal(examId);
   }
 
   @Get(&#x27;:id&#x27;)

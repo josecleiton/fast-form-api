@@ -497,6 +497,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/ExamAgreementAnonymousDefault1622334780336.html" data-type="entity-link">ExamAgreementAnonymousDefault1622334780336</a>
                             </li>
                             <li class="link">
+                                <a href="classes/ExamAgreementObservation1622417032753.html" data-type="entity-link">ExamAgreementObservation1622417032753</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/ExamAgreementRepository.html" data-type="entity-link">ExamAgreementRepository</a>
                             </li>
                             <li class="link">
@@ -591,6 +594,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateAnswerDto.html" data-type="entity-link">UpdateAnswerDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateExamAgreementDto.html" data-type="entity-link">UpdateExamAgreementDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateExamDto.html" data-type="entity-link">UpdateExamDto</a>

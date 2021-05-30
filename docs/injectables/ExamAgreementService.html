@@ -84,6 +84,10 @@
                             <li>
                                 <a href="#getByUser">getByUser</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateAgreement">updateAgreement</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -107,7 +111,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/exam/services/exam-agreement.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/exam/services/exam-agreement.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -172,8 +176,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -261,8 +265,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:20</a></div>
                 </td>
             </tr>
 
@@ -338,8 +342,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:49</a></div>
                 </td>
             </tr>
 
@@ -386,17 +390,110 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAgreement"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            updateAgreement
+                        </b>
+                        <a href="#updateAgreement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateAgreement(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Transactional()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>updateAgreementDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateExamAgreementDto.html" target="_self" >UpdateExamAgreementDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { UpdateAnswerDto } from &#x27;src/answer/dto/update-answer.dto&#x27;;
 import { Between } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
+import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
 import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamAgreementRepository } from &#x27;../repositories/exam-agreement.repository&#x27;;
@@ -417,13 +514,32 @@ export class ExamAgreementService {
     return this.repository.save(agreement);
   }
 
+  @Transactional()
+  async updateAgreement(
+    id: number,
+    updateAgreementDto: UpdateExamAgreementDto,
+  ): Promise&lt;ExamAgreement&gt; {
+    let agreement &#x3D; await this.repository.findOne(id);
+
+    if (!agreement) {
+      throw new NotFoundException({ id });
+    }
+
+    agreement &#x3D; this.repository.merge(agreement, updateAgreementDto);
+
+    return this.repository.save(agreement);
+  }
+
   agreementsByDateInterval(start: Date, end: Date): Promise&lt;ExamAgreement[]&gt; {
     return this.repository.find({ where: { createdAt: Between(start, end) } });
   }
 
   @Transactional()
   getByUser(user: ExamUser): Promise&lt;ExamAgreement[]&gt; {
-    return this.repository.find({ where: { userId: user.id }, relations: [&#x27;exam&#x27;] });
+    return this.repository.find({
+      where: { userId: user.id },
+      relations: [&#x27;exam&#x27;],
+    });
   }
 }
 </code></pre>

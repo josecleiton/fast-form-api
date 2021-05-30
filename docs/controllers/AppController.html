@@ -118,7 +118,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;ping&#x27;)<br /></code>
+                    <code>@Get(&#x27;health&#x27;)<br /></code>
                 </td>
             </tr>
 
@@ -149,9 +149,9 @@
 
 @Controller()
 export class AppController {
-  @Get(&#x27;ping&#x27;)
+  @Get(&#x27;health&#x27;)
   ping(): string {
-    return &#x27;Pong&#x27;;
+    return &#x27;Healthy&#x27;;
   }
 }
 </code></pre>
