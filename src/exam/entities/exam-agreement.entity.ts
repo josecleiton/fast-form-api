@@ -19,6 +19,9 @@ export class ExamAgreement extends FFEntity {
   @Column({ type: 'boolean', default: false })
   anonymous: boolean;
 
+  @Column({ type: 'text', nullable: true })
+  observation?: string;
+
   @Column({ type: 'int' })
   userId: number;
 
