@@ -28,6 +28,7 @@ import { AppController } from './controllers/app.controller';
     UserModule,
     ExamModule,
     QuestionGroupModule,
+    AnswerModule,
     AuxiliaryModule,
     InfraModule,
   ],

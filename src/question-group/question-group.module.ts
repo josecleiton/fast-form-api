@@ -15,5 +15,6 @@ import { QuestionRepository } from './repositories/question.repository';
   ],
   controllers: [QuestionGroupController, QuestionController],
   providers: [QuestionGroupService, QuestionService],
+  exports: [QuestionService],
 })
 export class QuestionGroupModule {}
