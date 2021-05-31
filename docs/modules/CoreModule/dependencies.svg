@@ -24,13 +24,13 @@
 <title>cluster_CoreModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="147,-70 147,-268 349,-268 349,-70 147,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_CoreModule_exports</title>
-<polygon fill="none" stroke="black" points="177,-208 177,-260 319,-260 319,-208 177,-208"/>
-</g>
 <g id="clust6" class="cluster">
 <title>cluster_CoreModule_providers</title>
 <polygon fill="none" stroke="black" points="155,-78 155,-130 341,-130 341,-78 155,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_CoreModule_exports</title>
+<polygon fill="none" stroke="black" points="177,-208 177,-260 319,-260 319,-208 177,-208"/>
 </g>
 <!-- PayloadInterceptor  -->
 <g id="node1" class="node">

@@ -91,6 +91,9 @@
                                 <a href="#find">find</a>
                             </li>
                             <li>
+                                <a href="#findByIds">findByIds</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#findOne">findOne</a>
                             </li>
@@ -220,8 +223,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/question-group/services/question.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/question-group/services/question.service.ts:102</a></div>
                 </td>
             </tr>
 
@@ -524,6 +527,76 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="findByIds"></a>
+                    <span class="name">
+                        <b>
+                            findByIds
+                        </b>
+                        <a href="#findByIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findByIds(ids: number[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/question-group/services/question.service.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+                                    <td>
+                                            <code>number[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Question.html" target="_self" >Promise&lt;Question[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findOne"></a>
                     <span class="name">
                         <b>
@@ -544,8 +617,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/question-group/services/question.service.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/question-group/services/question.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -696,8 +769,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">src/question-group/services/question.service.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/question-group/services/question.service.ts:135</a></div>
                 </td>
             </tr>
 
@@ -775,8 +848,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">src/question-group/services/question.service.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/question-group/services/question.service.ts:114</a></div>
                 </td>
             </tr>
 
@@ -853,8 +926,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/question-group/services/question.service.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/question-group/services/question.service.ts:89</a></div>
                 </td>
             </tr>
 
@@ -991,6 +1064,10 @@ export class QuestionService {
         return qb;
       },
     });
+  }
+
+  findByIds(ids: number[]): Promise&lt;Question[]&gt; {
+    return this.repository.findByIds(ids);
   }
 
   async findOne(id: number): Promise&lt;Question&gt; {

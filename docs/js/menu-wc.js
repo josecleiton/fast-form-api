@@ -55,13 +55,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AnswerModule.html" data-type="entity-link">AnswerModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' : 'data-target="#xs-controllers-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' }>
+                                            'data-target="#controllers-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' : 'data-target="#xs-controllers-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' :
-                                            'id="xs-controllers-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' :
+                                            'id="xs-controllers-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' }>
                                             <li class="link">
                                                 <a href="controllers/AnswerController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AnswerController</a>
@@ -70,13 +70,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' : 'data-target="#xs-injectables-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' }>
+                                        'data-target="#injectables-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' : 'data-target="#xs-injectables-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' :
-                                        'id="xs-injectables-links-module-AnswerModule-9fdb35037f954459c785bbba7b4db36b"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' :
+                                        'id="xs-injectables-links-module-AnswerModule-3f7f968d52b8772c858b45f44e0a0f32"' }>
                                         <li class="link">
                                             <a href="injectables/AnswerService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>AnswerService</a>
@@ -423,6 +423,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/Answer.html" data-type="entity-link">Answer</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/Answer1622421768424.html" data-type="entity-link">Answer1622421768424</a>
                             </li>
                             <li class="link">
                                 <a href="classes/AnswerGrade.html" data-type="entity-link">AnswerGrade</a>

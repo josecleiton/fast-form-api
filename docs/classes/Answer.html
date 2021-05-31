@@ -92,6 +92,13 @@
                                 <a href="#examAgreementId">examAgreementId</a>
                             </li>
                             <li>
+                                <a href="#question">question</a>
+                            </li>
+                            <li>
+                                <a href="#questionId">questionId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
                                 <a href="#score">score</a>
                             </li>
                             <li>
@@ -157,7 +164,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/answer/entities/answer.entity.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/answer/entities/answer.entity.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -193,7 +200,79 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/answer/entities/answer.entity.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/answer/entities/answer.entity.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="question"></a>
+                        <span class="name">
+                            <b>
+                            question</b>
+                            <a href="#question"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Question.html" target="_self" >Question</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ManyToOne(undefined)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/answer/entities/answer.entity.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="questionId"></a>
+                        <span class="name">
+                            <b>
+                            questionId</b>
+                            <a href="#questionId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Column({type: &#x27;int&#x27;})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/answer/entities/answer.entity.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -207,6 +286,7 @@
                         <a name="score"></a>
                         <span class="name">
                             <b>
+                                <span class="modifier">Optional</span>
                             score</b>
                             <a href="#score"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -229,7 +309,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/answer/entities/answer.entity.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/answer/entities/answer.entity.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -265,7 +345,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/answer/entities/answer.entity.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/answer/entities/answer.entity.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -457,6 +537,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ExamAgreement } from &#x27;src/exam/entities/exam-agreement.entity&#x27;;
+import { Question } from &#x27;src/question-group/entities/question.entity&#x27;;
 import {
   Column,
   Entity,
@@ -471,7 +552,7 @@ import { AnswerType } from &#x27;../enums/answer-type.enum&#x27;;
 @TableInheritance({ column: { type: &#x27;enum&#x27;, name: &#x27;type&#x27;, enum: AnswerType } })
 export class Answer extends FFEntity {
   @Column({ type: &#x27;int&#x27;, nullable: true })
-  score: number;
+  score?: number;
 
   @Column({ type: &#x27;enum&#x27;, enum: AnswerType })
   type: AnswerType;
@@ -479,8 +560,14 @@ export class Answer extends FFEntity {
   @Column({ type: &#x27;int&#x27; })
   examAgreementId: number;
 
+  @Column({ type: &#x27;int&#x27; })
+  questionId: number;
+
   @ManyToOne(() &#x3D;&gt; ExamAgreement)
   examAgreement: ExamAgreement;
+
+  @ManyToOne(() &#x3D;&gt; Question)
+  question: Question;
 }
 </code></pre>
     </div>
