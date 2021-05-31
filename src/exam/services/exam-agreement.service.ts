@@ -52,4 +52,15 @@ export class ExamAgreementService {
       relations: ['exam'],
     });
   }
+
+  async findOne(findDto: {
+    userId: number;
+    examId: number;
+  }): Promise<ExamAgreement> {
+    const agreement = await this.repository.findOne(findDto);
+    if (!agreement) {
+      throw new NotFoundException(findDto);
+    }
+    return agreement;
+  }
 }

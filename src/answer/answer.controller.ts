@@ -11,6 +11,8 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ExamUser } from 'src/exam/interfaces/exam-user.interface';
+import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { AnswerService } from './answer.service';
 import { CreateAnswerDto } from './dto/create-answer.dto';
 import { UpdateAnswerDto } from './dto/update-answer.dto';
@@ -22,13 +24,18 @@ import { Answer } from './entities/answer.entity';
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
-  @Post('batch')
+  @Post('batch/:examId')
   @ApiOkResponse({ type: [CreateAnswerDto] })
   async create(
+    @Param('examId', ParseIntPipe) examId: number,
+    @GetUser() user: ExamUser,
     @Body(new ParseArrayPipe({ items: CreateAnswerDto }))
     createAnswerDtos: CreateAnswerDto[],
   ) {
-    return await this.answerService.createBatch(createAnswerDtos);
+    return await this.answerService.createBatch(createAnswerDtos, {
+      userId: user.id,
+      examId,
+    });
   }
 
   @Put(':id')

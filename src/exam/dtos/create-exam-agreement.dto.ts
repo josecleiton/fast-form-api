@@ -1,14 +1,8 @@
-import { ApiHideProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsBoolean, IsOptional, IsPositive } from 'class-validator';
+import { IsBoolean, IsOptional } from 'class-validator';
+import { ExamAgreementDto } from './exam-agreement.dto';
 
-export class CreateExamAgreementDto {
-  @ApiHideProperty()
-  userId: number;
-
-  @IsPositive()
-  examId: number;
-
+export class CreateExamAgreementDto extends ExamAgreementDto {
   @IsOptional()
   @IsBoolean()
   @Type(() => Boolean)
