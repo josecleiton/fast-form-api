@@ -82,6 +82,10 @@
                                 <a href="#createAgreement">createAgreement</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOne">findOne</a>
+                            </li>
+                            <li>
                                 <a href="#getByUser">getByUser</a>
                             </li>
                             <li>
@@ -289,6 +293,78 @@
                                     <td>createAgreementDto</td>
                                     <td>
                                                 <code><a href="../classes/CreateExamAgreementDto.html" target="_self" >CreateExamAgreementDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOne"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findOne
+                        </b>
+                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(findDto: literal type)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>findDto</td>
+                                    <td>
+                                            <code>literal type</code>
                                     </td>
 
                                     <td>
@@ -540,6 +616,17 @@ export class ExamAgreementService {
       where: { userId: user.id },
       relations: [&#x27;exam&#x27;],
     });
+  }
+
+  async findOne(findDto: {
+    userId: number;
+    examId: number;
+  }): Promise&lt;ExamAgreement&gt; {
+    const agreement &#x3D; await this.repository.findOne(findDto);
+    if (!agreement) {
+      throw new NotFoundException(findDto);
+    }
+    return agreement;
   }
 }
 </code></pre>

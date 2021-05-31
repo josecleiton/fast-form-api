@@ -127,7 +127,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createAnswerDtos: CreateAnswerDto[])</code>
+                    <code>create(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, user: <a href="../interfaces/ExamUser.html">ExamUser</a>, createAnswerDtos: CreateAnswerDto[])</code>
                 </td>
             </tr>
 
@@ -135,14 +135,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;batch&#x27;)<br /></code>
+                    <code>@Post(&#x27;batch/:examId&#x27;)<br />@ApiOkResponse({type: undefined})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/answer/answer.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/answer/answer.controller.ts:29</a></div>
                 </td>
             </tr>
 
@@ -161,6 +161,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td>examId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                                 <tr>
                                     <td>createAnswerDtos</td>
                                     <td>
@@ -220,8 +244,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/answer/answer.controller.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/answer/answer.controller.ts:50</a></div>
                 </td>
             </tr>
 
@@ -299,8 +323,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/answer/answer.controller.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/answer/answer.controller.ts:42</a></div>
                 </td>
             </tr>
 
@@ -375,7 +399,9 @@
   Put,
   ParseIntPipe,
 } from &#x27;@nestjs/common&#x27;;
-import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { ExamUser } from &#x27;src/exam/interfaces/exam-user.interface&#x27;;
+import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
 import { AnswerService } from &#x27;./answer.service&#x27;;
 import { CreateAnswerDto } from &#x27;./dto/create-answer.dto&#x27;;
 import { UpdateAnswerDto } from &#x27;./dto/update-answer.dto&#x27;;
@@ -387,12 +413,18 @@ import { Answer } from &#x27;./entities/answer.entity&#x27;;
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
-  @Post(&#x27;batch&#x27;)
+  @Post(&#x27;batch/:examId&#x27;)
+  @ApiOkResponse({ type: [CreateAnswerDto] })
   async create(
+    @Param(&#x27;examId&#x27;, ParseIntPipe) examId: number,
+    @GetUser() user: ExamUser,
     @Body(new ParseArrayPipe({ items: CreateAnswerDto }))
     createAnswerDtos: CreateAnswerDto[],
   ) {
-    return await this.answerService.createBatch(createAnswerDtos);
+    return await this.answerService.createBatch(createAnswerDtos, {
+      userId: user.id,
+      examId,
+    });
   }
 
   @Put(&#x27;:id&#x27;)

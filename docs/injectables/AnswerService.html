@@ -112,12 +112,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(answerRepository: <a href="../classes/AnswerRepository.html">AnswerRepository</a>, answerGradeRepository: <a href="../classes/AnswerGradeRepository.html">AnswerGradeRepository</a>, questionService: <a href="../injectables/QuestionService.html">QuestionService</a>)</code>
+<code>constructor(answerRepository: <a href="../classes/AnswerRepository.html">AnswerRepository</a>, answerGradeRepository: <a href="../classes/AnswerGradeRepository.html">AnswerGradeRepository</a>, questionService: <a href="../injectables/QuestionService.html">QuestionService</a>, examAgreementService: <a href="../injectables/ExamAgreementService.html">ExamAgreementService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/answer/answer.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/answer/answer.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -170,6 +170,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>examAgreementService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExamAgreementService.html" target="_self" >ExamAgreementService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -201,7 +213,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createBatch(createAnswerDtos: CreateAnswerDto[])</code>
+                    <code>createBatch(createAnswerDtos: CreateAnswerDto[], user: <a href="../interfaces/BatchUser.html">BatchUser</a>)</code>
                 </td>
             </tr>
 
@@ -215,8 +227,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/answer/answer.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/answer/answer.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -239,6 +251,18 @@
                                     <td>createAnswerDtos</td>
                                     <td>
                                             <code>CreateAnswerDto[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/BatchUser.html" target="_self" >BatchUser</a></code>
                                     </td>
 
                                     <td>
@@ -285,8 +309,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/answer/answer.service.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/answer/answer.service.ts:65</a></div>
                 </td>
             </tr>
 
@@ -326,8 +350,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/answer/answer.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/answer/answer.service.ts:69</a></div>
                 </td>
             </tr>
 
@@ -405,8 +429,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/answer/answer.service.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/answer/answer.service.ts:99</a></div>
                 </td>
             </tr>
 
@@ -484,8 +508,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/answer/answer.service.ts:78</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/answer/answer.service.ts:91</a></div>
                 </td>
             </tr>
 
@@ -553,6 +577,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { SoftDeleteResult } from &#x27;src/core/interfaces/soft-delete-result.interface&#x27;;
+import { ExamAgreementService } from &#x27;src/exam/services/exam-agreement.service&#x27;;
 import { Question } from &#x27;src/question-group/entities/question.entity&#x27;;
 import { QuestionService } from &#x27;src/question-group/services/question.service&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
@@ -560,6 +585,7 @@ import { CreateAnswerDto } from &#x27;./dto/create-answer.dto&#x27;;
 import { UpdateAnswerDto } from &#x27;./dto/update-answer.dto&#x27;;
 import { Answer } from &#x27;./entities/answer.entity&#x27;;
 import { AnswerType } from &#x27;./enums/answer-type.enum&#x27;;
+import { BatchUser } from &#x27;./interfaces/batch-user.interface&#x27;;
 import { AnswerGradeRepository } from &#x27;./repositories/answer-grade.repository&#x27;;
 import { AnswerRepository } from &#x27;./repositories/answer.repository&#x27;;
 
@@ -571,10 +597,15 @@ export class AnswerService {
     @InjectRepository(AnswerGradeRepository)
     private readonly answerGradeRepository: AnswerGradeRepository,
     private readonly questionService: QuestionService,
+    private readonly examAgreementService: ExamAgreementService,
   ) {}
 
   @Transactional()
-  async createBatch(createAnswerDtos: CreateAnswerDto[]): Promise&lt;Answer[]&gt; {
+  async createBatch(
+    createAnswerDtos: CreateAnswerDto[],
+    user: BatchUser,
+  ): Promise&lt;Answer[]&gt; {
+    const examAgreement &#x3D; await this.examAgreementService.findOne(user);
     const questions &#x3D; await this.questionService.findByIds(
       createAnswerDtos.map((dto) &#x3D;&gt; dto.questionId),
     );
@@ -591,10 +622,16 @@ export class AnswerService {
         }
 
         if (answerDto.type &#x3D;&#x3D;&#x3D; AnswerType.ANSWER) {
-          const answer &#x3D; this.answerRepository.create(answerDto);
+          const answer &#x3D; this.answerRepository.create({
+            ...answerDto,
+            examAgreement,
+          });
           return await this.answerRepository.save(answer);
         } else {
-          const answer &#x3D; this.answerGradeRepository.create(answerDto);
+          const answer &#x3D; this.answerGradeRepository.create({
+            ...answerDto,
+            examAgreement,
+          });
           return await this.answerGradeRepository.save(answer);
         }
       }),
