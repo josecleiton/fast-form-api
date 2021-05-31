@@ -72,6 +72,10 @@ export class QuestionService {
     });
   }
 
+  findByIds(ids: number[]): Promise<Question[]> {
+    return this.repository.findByIds(ids);
+  }
+
   async findOne(id: number): Promise<Question> {
     const question = await this.repository.findOne({ id });
     if (!question) {

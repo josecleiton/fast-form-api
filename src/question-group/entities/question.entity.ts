@@ -1,6 +1,7 @@
+import { Answer } from 'src/answer/entities/answer.entity';
 import { FFEntity } from 'src/core/entities/ff.entity';
 import { QuestionGroup } from 'src/question-group/entities/question-group.entity';
-import { Column, Entity, Index, ManyToOne } from 'typeorm';
+import { Column, Entity, Index, ManyToOne, OneToMany } from 'typeorm';
 
 @Entity()
 export class Question extends FFEntity {
@@ -25,4 +26,7 @@ export class Question extends FFEntity {
 
   @ManyToOne(() => QuestionGroup)
   group: QuestionGroup;
+
+  @OneToMany(() => Answer, (answer) => answer.question)
+  answers: Answer[];
 }
