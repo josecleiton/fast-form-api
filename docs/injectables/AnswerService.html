@@ -309,8 +309,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/answer/answer.service.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/answer/answer.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -350,8 +350,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/answer/answer.service.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/answer/answer.service.ts:70</a></div>
                 </td>
             </tr>
 
@@ -429,8 +429,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">src/answer/answer.service.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/answer/answer.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -508,8 +508,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/answer/answer.service.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/answer/answer.service.ts:92</a></div>
                 </td>
             </tr>
 
@@ -606,6 +606,7 @@ export class AnswerService {
     user: BatchUser,
   ): Promise&lt;Answer[]&gt; {
     const examAgreement &#x3D; await this.examAgreementService.findOne(user);
+    await this.answerRepository.delete({examAgreement});
     const questions &#x3D; await this.questionService.findByIds(
       createAnswerDtos.map((dto) &#x3D;&gt; dto.questionId),
     );

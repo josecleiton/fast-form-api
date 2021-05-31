@@ -141,8 +141,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/answer/answer.controller.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/answer/answer.controller.ts:32</a></div>
                 </td>
             </tr>
 
@@ -244,8 +244,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/answer/answer.controller.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/answer/answer.controller.ts:53</a></div>
                 </td>
             </tr>
 
@@ -323,8 +323,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/answer/answer.controller.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/answer/answer.controller.ts:45</a></div>
                 </td>
             </tr>
 
@@ -398,8 +398,10 @@
   ParseArrayPipe,
   Put,
   ParseIntPipe,
+  UseGuards,
 } from &#x27;@nestjs/common&#x27;;
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
 import { ExamUser } from &#x27;src/exam/interfaces/exam-user.interface&#x27;;
 import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
 import { AnswerService } from &#x27;./answer.service&#x27;;
@@ -410,6 +412,7 @@ import { Answer } from &#x27;./entities/answer.entity&#x27;;
 @Controller(&#x27;answer&#x27;)
 @ApiTags(&#x27;Answer&#x27;)
 @ApiBearerAuth()
+@UseGuards(JwtGuard)
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
