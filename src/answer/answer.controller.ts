@@ -10,7 +10,7 @@ import {
   Put,
   ParseIntPipe,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AnswerService } from './answer.service';
 import { CreateAnswerDto } from './dto/create-answer.dto';
 import { UpdateAnswerDto } from './dto/update-answer.dto';
@@ -23,6 +23,7 @@ export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
   @Post('batch')
+  @ApiOkResponse({ type: [CreateAnswerDto] })
   async create(
     @Body(new ParseArrayPipe({ items: CreateAnswerDto }))
     createAnswerDtos: CreateAnswerDto[],
