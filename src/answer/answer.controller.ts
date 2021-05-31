@@ -9,8 +9,10 @@ import {
   ParseArrayPipe,
   Put,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { ExamUser } from 'src/exam/interfaces/exam-user.interface';
 import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { AnswerService } from './answer.service';
@@ -21,6 +23,7 @@ import { Answer } from './entities/answer.entity';
 @Controller('answer')
 @ApiTags('Answer')
 @ApiBearerAuth()
+@UseGuards(JwtGuard)
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
