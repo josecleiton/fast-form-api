@@ -30,6 +30,7 @@ export class AnswerService {
     user: BatchUser,
   ): Promise<Answer[]> {
     const examAgreement = await this.examAgreementService.findOne(user);
+    console.log(examAgreement, createAnswerDtos);
     const questions = await this.questionService.findByIds(
       createAnswerDtos.map((dto) => dto.questionId),
     );
