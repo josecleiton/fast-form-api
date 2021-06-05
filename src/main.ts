@@ -3,6 +3,7 @@ import rateLimit = require('express-rate-limit');
 import compression = require('compression');
 import morgan = require('morgan');
 import basicAuth = require('express-basic-auth');
+import sentry = require('@sentry/node');
 import { initializeTransactionalContext } from 'typeorm-transactional-cls-hooked';
 
 import { NestFactory } from '@nestjs/core';
@@ -17,6 +18,7 @@ import { swaggerConfigKey } from './config/swagger.config';
 import { CustomLogger } from './logger/logger.service';
 import { corsConfigKey, rateLimitConfigKey } from './config';
 import { PayloadInterceptor } from './core/interceptors/payload.interceptor';
+import { HttpExceptionFilter } from './core/filters/http-exception.filter';
 
 const DEFAULT_PORT = 3000;
 
@@ -42,6 +44,15 @@ function buildSwaggerDoc(app: INestApplication, config: ConfigService): void {
   logger.log(`Docs generated in ${docsPath} using Swagger (OpenAPI)`);
 }
 
+function sentryInit(config: ConfigService) {
+  const sentryConfig = config.get('sentry');
+  if (!sentryConfig) {
+    return;
+  }
+  sentry.init(sentryConfig);
+  logger.log('Sentry initialized');
+}
+
 function applySecurityLayer(
   app: NestExpressApplication,
   config: ConfigService,
@@ -57,10 +68,14 @@ function applyPerfLayer(app: NestExpressApplication): void {
   app.use(compression());
 }
 
-async function applyGlobals(app: INestApplication): Promise<void> {
+async function applyGlobals(
+  app: INestApplication,
+  config: ConfigService,
+): Promise<void> {
   const logger = await app.resolve(CustomLogger);
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
   app.useGlobalInterceptors(new PayloadInterceptor());
+  app.useGlobalFilters(new HttpExceptionFilter(config));
   app.useLogger(logger);
 }
 
@@ -70,8 +85,9 @@ async function bootstrap(): Promise<void> {
   const PORT = parseInt(configService.get('PORT')!) ?? DEFAULT_PORT;
 
   applySecurityLayer(app, configService);
+  sentryInit(configService);
   applyPerfLayer(app);
-  await applyGlobals(app);
+  await applyGlobals(app, configService);
   buildSwaggerDoc(app, configService);
 
   if (PORT === DEFAULT_PORT) {
