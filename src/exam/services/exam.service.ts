@@ -2,16 +2,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
-import { CreateExamDto } from './dtos/create-exam.dto';
-import { ExamTargetManagerDto } from './dtos/exam-target-manager.dto';
-import { UpdateExamDto } from './dtos/update-exam.dto';
-import { Exam } from './entities/exam.entity';
-import { EXAM_NOT_FOUND } from './exam.constants';
-import { ExamUser } from './interfaces/exam-user.interface';
-import { ExamPersonalResult } from './models/exam-personal-result.model';
-import { ExamRepository } from './repositories/exam.repository';
-import { ExamAgreementService } from './services/exam-agreement.service';
-import { ExamTargetService } from './services/exam-target.service';
+import { CreateExamDto } from '../dtos/create-exam.dto';
+import { ExamTargetManagerDto } from '../dtos/exam-target-manager.dto';
+import { UpdateExamDto } from '../dtos/update-exam.dto';
+import { Exam } from '../entities/exam.entity';
+import { EXAM_NOT_FOUND } from '../exam.constants';
+import { ExamUser } from '../interfaces/exam-user.interface';
+import { ExamPersonalResult } from '../models/exam-personal-result.model';
+import { ExamRepository } from '../repositories/exam.repository';
+import { ExamAgreementService } from './exam-agreement.service';
+import { ExamTargetService } from './exam-target.service';
 
 @Injectable()
 export class ExamService {

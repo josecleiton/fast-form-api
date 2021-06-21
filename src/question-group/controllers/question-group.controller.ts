@@ -24,7 +24,9 @@ import { UpdateQuestionGroupDto } from '../dtos/update-question-group.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
 import { ReorderQuestionGroupDto } from '../dtos/reorder-question-group.dto';
-import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
+import { GetUser } from 'src/user/decoratos/get-user.decorator';
+import { QuestionGroupUser } from '../interfaces/question-group-user.interface';
+import { User } from 'src/user/entities/user.entity';
 
 @Controller('question-group')
 @ApiTags('QuestionGroup')
@@ -51,8 +53,9 @@ export class QuestionGroupController {
   @ApiOkResponse({ type: [QuestionGroup] })
   async findPersonal(
     @Param('examId', ParseIntPipe) examId: number,
+    @GetUser() user: User,
   ): Promise<QuestionGroup[]> {
-    return await this.questionGroupService.findPersonal(examId);
+    return await this.questionGroupService.findPersonal({ examId, user });
   }
 
   @Get(':id')

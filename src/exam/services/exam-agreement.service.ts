@@ -1,26 +1,46 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UpdateAnswerDto } from 'src/answer/dto/update-answer.dto';
+
+import { Professor } from 'src/auxiliary/entities/professor.entity';
+import { Student } from 'src/auxiliary/entities/student.entity';
 import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import { UpdateExamAgreementDto } from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
+import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
 import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamAgreementRepository } from '../repositories/exam-agreement.repository';
+import { ExamService } from './exam.service';
 
 @Injectable()
 export class ExamAgreementService {
   constructor(
     @InjectRepository(ExamAgreementRepository)
     private readonly repository: ExamAgreementRepository,
+    @Inject(forwardRef(() => ExamService))
+    private readonly examService: ExamService,
   ) {}
 
   @Transactional()
-  createAgreement(
+  async createAgreement(
     createAgreementDto: CreateExamAgreementDto,
+    user: ExamAgreementUser,
   ): Promise<ExamAgreement> {
+    const exam = await this.examService.findOne(createAgreementDto.examId);
     const agreement = this.repository.create(createAgreementDto);
+
+    if (user instanceof Professor || user instanceof Student) {
+      const grades = await user.grades;
+      agreement.grades = grades.filter(
+        (grade) => grade.periodId === exam.periodId,
+      );
+    }
 
     return this.repository.save(agreement);
   }
@@ -57,10 +77,15 @@ export class ExamAgreementService {
     userId: number;
     examId: number;
   }): Promise<ExamAgreement> {
-    const agreement = await this.repository.findOne(findDto);
+    const agreement = await this.repository.findOne({
+      where: findDto,
+      relations: ['exam'],
+    });
+
     if (!agreement) {
       throw new NotFoundException(findDto);
     }
+
     return agreement;
   }
 }

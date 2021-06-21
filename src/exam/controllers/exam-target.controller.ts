@@ -18,7 +18,7 @@ export class ExamTargetController {
     schema: { examples: Object.values(ExamTargetType) },
   })
   async getTargets(): Promise<ExamTargetType[]> {
-    return await this.targetService.getTargets();
+    return this.targetService.getTargets();
   }
 
   @Get('user')

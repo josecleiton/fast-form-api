@@ -9,13 +9,10 @@ export class Period extends FFEntity {
   name?: string;
 
   @Column({ type: 'datetime' })
-  statedAt: Date;
+  startedAt: Date;
 
   @Column({ type: 'datetime' })
   endedAt: Date;
-
-  @OneToMany(() => Grade, (grade) => grade.period)
-  grades: Grade[];
 
   @OneToMany(() => Exam, (exam) => exam.period)
   exams: Exam[];

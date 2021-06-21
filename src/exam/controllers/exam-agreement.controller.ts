@@ -13,6 +13,7 @@ import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import { UpdateExamAgreementDto } from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
+import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
 import { ExamAgreementService } from '../services/exam-agreement.service';
 
 @Controller('exam-agreement')
@@ -25,12 +26,12 @@ export class ExamAgreementController {
   @Post()
   async createAgreement(
     @Body() createAgreementDto: CreateExamAgreementDto,
-    @GetUser() user: { id: number },
+    @GetUser() user: ExamAgreementUser,
   ): Promise<ExamAgreement> {
-    return await this.examAgreementService.createAgreement({
-      ...createAgreementDto,
-      userId: user.id,
-    });
+    return this.examAgreementService.createAgreement(
+      createAgreementDto,
+      user,
+    );
   }
 
   @Put(':id')
@@ -38,7 +39,7 @@ export class ExamAgreementController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
-    return await this.examAgreementService.updateAgreement(
+    return this.examAgreementService.updateAgreement(
       id,
       updateAgreementDto,
     );

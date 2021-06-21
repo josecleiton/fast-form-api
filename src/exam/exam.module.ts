@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ExamService } from './exam.service';
-import { ExamController } from './exam.controller';
+import { ExamService } from './services/exam.service';
+import { ExamController } from './controllers/exam.controller';
 import { ExamRepository } from './repositories/exam.repository';
 import { ExamTargetRepository } from './repositories/exam-target.repository';
 import { ExamTargetService } from './services/exam-target.service';

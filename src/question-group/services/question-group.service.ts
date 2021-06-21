@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
-import { ExamService } from 'src/exam/exam.service';
+import { ExamService } from 'src/exam/services/exam.service';
 import { In } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
@@ -15,6 +15,10 @@ import { QuestionGroupRepository } from '../repositories/question-group.reposito
 import { last } from 'src/core/utils/last.util';
 import { createAliasResolver } from '@casl/ability';
 import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
+import { FindPersonalDto } from '../dtos/find-personal.dto';
+import { PersonalQuestionGroup } from '../providers/personal-group.provider';
+import { Student } from 'src/auxiliary/entities/student.entity';
+import { Professor } from 'src/auxiliary/entities/professor.entity';
 
 @Injectable()
 export class QuestionGroupService {
@@ -23,9 +27,10 @@ export class QuestionGroupService {
     private readonly repository: QuestionGroupRepository,
     private readonly examService: ExamService,
     private readonly questionService: QuestionService,
+    private readonly personalGroup: PersonalQuestionGroup,
   ) {}
 
-  private static readonly relations = ['questions']
+  private static readonly relations = ['questions'];
 
   private async setExamAndPosition(
     questionGroup: QuestionGroup,
@@ -52,7 +57,7 @@ export class QuestionGroupService {
   }
 
   findAll(): Promise<QuestionGroup[]> {
-    return this.repository.find({ relations: QuestionGroupService.relations});
+    return this.repository.find({ relations: QuestionGroupService.relations });
   }
 
   async findOne(id: number): Promise<QuestionGroup> {
@@ -141,11 +146,26 @@ export class QuestionGroupService {
     ).sort((a, b) => a.position - b.position);
   }
 
-  async findPersonal(examId: number): Promise<QuestionGroup[]> {
-    return await this.repository.find({
-      where: { examId },
-      relations: QuestionGroupService.relations
+  async findPersonal(
+    findPersonalDto: FindPersonalDto,
+  ): Promise<QuestionGroup[]> {
+    const exam = await this.examService.findOne(findPersonalDto.examId);
+
+    const result = await this.repository.find({
+      where: { exam, class: false },
+      relations: QuestionGroupService.relations,
     });
+
+    if (
+      findPersonalDto.user instanceof Student ||
+      findPersonalDto.user instanceof Professor
+    ) {
+      result.concat(
+        await this.personalGroup.getPersonal(findPersonalDto.user, exam),
+      );
+    }
+
+    return result;
   }
 
   @Transactional()
