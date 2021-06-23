@@ -161,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:78</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:81</a></div>
                 </td>
             </tr>
 
@@ -240,8 +240,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:40</a></div>
                 </td>
             </tr>
 
@@ -319,8 +319,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:48</a></div>
                 </td>
             </tr>
 
@@ -367,8 +367,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:64</a></div>
                 </td>
             </tr>
 
@@ -432,7 +432,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findPersonal(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>findPersonal(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, user: <a href="../classes/User.html">User</a>)</code>
                 </td>
             </tr>
 
@@ -446,8 +446,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:54</a></div>
                 </td>
             </tr>
 
@@ -470,6 +470,18 @@
                                     <td>examId</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >User</a></code>
                                     </td>
 
                                     <td>
@@ -525,8 +537,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:98</a></div>
                 </td>
             </tr>
 
@@ -604,8 +616,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:89</a></div>
                 </td>
             </tr>
 
@@ -683,8 +695,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/question-group/controllers/question-group.controller.ts:71</a></div>
                 </td>
             </tr>
 
@@ -773,7 +785,9 @@ import { UpdateQuestionGroupDto } from &#x27;../dtos/update-question-group.dto&#
 import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
 import { CopyQuestionGroupDto } from &#x27;../dtos/copy-question-group.dto&#x27;;
 import { ReorderQuestionGroupDto } from &#x27;../dtos/reorder-question-group.dto&#x27;;
-import { ExamTargetType } from &#x27;../../exam/enums/exam-target-type.enum&#x27;;
+import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
+import { QuestionGroupUser } from &#x27;../interfaces/question-group-user.interface&#x27;;
+import { User } from &#x27;src/user/entities/user.entity&#x27;;
 
 @Controller(&#x27;question-group&#x27;)
 @ApiTags(&#x27;QuestionGroup&#x27;)
@@ -800,8 +814,9 @@ export class QuestionGroupController {
   @ApiOkResponse({ type: [QuestionGroup] })
   async findPersonal(
     @Param(&#x27;examId&#x27;, ParseIntPipe) examId: number,
+    @GetUser() user: User,
   ): Promise&lt;QuestionGroup[]&gt; {
-    return await this.questionGroupService.findPersonal(examId);
+    return await this.questionGroupService.findPersonal({ examId, user });
   }
 
   @Get(&#x27;:id&#x27;)

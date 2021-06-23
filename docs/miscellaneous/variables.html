@@ -85,6 +85,9 @@
                             <a href="#DEFAULT_PORT" title="src/main.ts"><b>DEFAULT_PORT</b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</a>
                         </li>
                         <li>
+                            <a href="#defaultName" title="src/database/migrations/1624416663575-SeedAuxiliary1.ts"><b>defaultName</b>&nbsp;&nbsp;&nbsp;(src/.../1624416663575-SeedAuxiliary1.ts)</a>
+                        </li>
+                        <li>
                             <a href="#enrollment" title="src/database/migrations/1620299822480-AdminUser.ts"><b>enrollment</b>&nbsp;&nbsp;&nbsp;(src/.../1620299822480-AdminUser.ts)</a>
                         </li>
                         <li>
@@ -134,6 +137,12 @@
                         </li>
                         <li>
                             <a href="#rateLimitConfigKey" title="src/config/rate-limit.config.ts"><b>rateLimitConfigKey</b>&nbsp;&nbsp;&nbsp;(src/.../rate-limit.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#sentryConfig" title="src/config/sentry.config.ts"><b>sentryConfig</b>&nbsp;&nbsp;&nbsp;(src/.../sentry.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#student" title="src/database/migrations/1624416663575-SeedAuxiliary1.ts"><b>student</b>&nbsp;&nbsp;&nbsp;(src/.../1624416663575-SeedAuxiliary1.ts)</a>
                         </li>
                         <li>
                             <a href="#swaggerConfig" title="src/config/swagger.config.ts"><b>swaggerConfig</b>&nbsp;&nbsp;&nbsp;(src/.../swagger.config.ts)</a>
@@ -324,6 +333,7 @@
   corsConfig,
   jwtConfig,
   firebaseConfig,
+  sentryConfig,
 ]</code>
                         </td>
                     </tr>
@@ -506,6 +516,66 @@
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>new Logger(&#x27;bootstrap&#x27;)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/database/migrations/1624416663575-SeedAuxiliary1.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultName"></a>
+                        <span class="name">
+                            <b>
+                            defaultName</b>
+                            <a href="#defaultName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Gerado&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="student"></a>
+                        <span class="name">
+                            <b>
+                            student</b>
+                            <a href="#student"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  cpf: &#x27;50172241065&#x27;,
+  enrollment: &#x27;989898&#x27;,
+}</code>
                         </td>
                     </tr>
 
@@ -920,6 +990,32 @@
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>&#x27;rateLimit&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/config/sentry.config.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sentryConfig"></a>
+                        <span class="name">
+                            <b>
+                            sentryConfig</b>
+                            <a href="#sentryConfig"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>registerAs(&#x27;sentry&#x27;, () &#x3D;&gt; ({
+  dsn: process.env.SENTRY_DSN,
+}))</code>
                         </td>
                     </tr>
 

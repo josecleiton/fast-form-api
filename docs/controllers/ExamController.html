@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/exam.controller.ts</code>
+            <code>src/exam/controllers/exam.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -154,7 +154,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exam/exam.controller.ts:31</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:31</a></div>
                 </td>
             </tr>
 
@@ -233,7 +233,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/exam/exam.controller.ts:37</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:37</a></div>
                 </td>
             </tr>
 
@@ -281,7 +281,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/exam/exam.controller.ts:48</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:48</a></div>
                 </td>
             </tr>
 
@@ -360,7 +360,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/exam/exam.controller.ts:43</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:43</a></div>
                 </td>
             </tr>
 
@@ -439,7 +439,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/exam/exam.controller.ts:61</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:61</a></div>
                 </td>
             </tr>
 
@@ -518,7 +518,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/exam/exam.controller.ts:53</a></div>
+                            class="link-to-prism">src/exam/controllers/exam.controller.ts:53</a></div>
                 </td>
             </tr>
 
@@ -592,15 +592,15 @@
   ParseIntPipe,
   Put,
 } from &#x27;@nestjs/common&#x27;;
-import { ExamService } from &#x27;./exam.service&#x27;;
-import { CreateExamDto } from &#x27;./dtos/create-exam.dto&#x27;;
-import { UpdateExamDto } from &#x27;./dtos/update-exam.dto&#x27;;
+import { ExamService } from &#x27;../services/exam.service&#x27;;
+import { CreateExamDto } from &#x27;../dtos/create-exam.dto&#x27;;
+import { UpdateExamDto } from &#x27;../dtos/update-exam.dto&#x27;;
 import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { Exam } from &#x27;./entities/exam.entity&#x27;;
+import { Exam } from &#x27;../entities/exam.entity&#x27;;
 import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
-import { ExamUser } from &#x27;./interfaces/exam-user.interface&#x27;;
-import { ExamPersonalResult } from &#x27;./models/exam-personal-result.model&#x27;;
+import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
+import { ExamPersonalResult } from &#x27;../models/exam-personal-result.model&#x27;;
 
 @Controller(&#x27;exam&#x27;)
 @ApiTags(&#x27;Exam&#x27;)
@@ -612,24 +612,24 @@ export class ExamController {
   @Post()
   @ApiOkResponse({ type: Exam })
   async create(@Body() createExamDto: CreateExamDto): Promise&lt;Exam&gt; {
-    return await this.examService.create(createExamDto);
+    return this.examService.create(createExamDto);
   }
 
   @Get()
   @ApiOkResponse({ type: [Exam] })
   async findAll(): Promise&lt;Exam[]&gt; {
-    return await this.examService.findAll();
+    return this.examService.findAll();
   }
 
   @Get(&#x27;me&#x27;)
   @ApiOkResponse({ type: ExamPersonalResult })
   async findPersonal(@GetUser() user: ExamUser): Promise&lt;ExamPersonalResult&gt; {
-    return await this.examService.findPersonal(user);
+    return this.examService.findPersonal(user);
   }
 
   @Get(&#x27;:id&#x27;)
   async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;Exam&gt; {
-    return await this.examService.findOne(id);
+    return this.examService.findOne(id);
   }
 
   @Put(&#x27;:id&#x27;)
@@ -637,12 +637,12 @@ export class ExamController {
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateExamDto: UpdateExamDto,
   ): Promise&lt;Exam&gt; {
-    return await this.examService.update(id, updateExamDto);
+    return this.examService.update(id, updateExamDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   async remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;void&gt; {
-    return await this.examService.remove(id);
+    return this.examService.remove(id);
   }
 }
 </code></pre>

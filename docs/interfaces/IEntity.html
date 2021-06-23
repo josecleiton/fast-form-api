@@ -1,0 +1,327 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fast-form-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">fast-form-api documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>IEntity</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/database/migrations/1624416663575-SeedAuxiliary1.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#id">id</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name"><b>id</b><a href="#id"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { addMonths, endOfMonth, startOfMonth } from &#x27;date-fns&#x27;;
+import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
+import faker &#x3D; require(&#x27;faker&#x27;);
+import bcrypt &#x3D; require(&#x27;bcryptjs&#x27;);
+
+interface IEntity {
+  id: number;
+}
+
+const defaultName &#x3D; &#x27;Gerado&#x27;;
+const student &#x3D; {
+  cpf: &#x27;50172241065&#x27;,
+  enrollment: &#x27;989898&#x27;,
+};
+
+export class SeedAuxiliary1624412129413 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;period&#x60; (&#x60;name&#x60;, &#x60;started_at&#x60;, &#x60;ended_at&#x60;) VALUES (?, ?, ?)&#x27;,
+      [
+        defaultName,
+        startOfMonth(new Date()),
+        endOfMonth(addMonths(new Date(), 5)),
+      ],
+    );
+    const [
+      period,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;period&#x60; WHERE &#x60;name&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;course&#x60; (&#x60;code&#x60;, &#x60;title&#x60;) VALUES (?, ?)&#x27;,
+      [defaultName, faker.random.alphaNumeric(20)],
+    );
+    const [
+      course,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;course&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;subject&#x60; (&#x60;code&#x60;, &#x60;title&#x60;, &#x60;course_id&#x60;) VALUES (?, ?, ?)&#x27;,
+      [defaultName, faker.random.alpha({ count: 20, upcase: true }), course.id],
+    );
+    const [
+      subject,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;subject&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;grade&#x60; (&#x60;subject_id&#x60;, &#x60;period_id&#x60;) VALUES (?, ?)&#x27;,
+      [subject.id, period.id],
+    );
+    const [
+      grade,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;grade&#x60; WHERE &#x60;subject_id&#x60; &#x3D; ? AND &#x60;period_id&#x60; &#x3D; ?&#x27;,
+      [subject.id, period.id],
+    );
+
+    const salt &#x3D; await bcrypt.genSalt();
+    const password &#x3D; await bcrypt.hash(process.env.ADMIN_PASSWORD!, salt);
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;auth&#x60; (&#x60;login&#x60;, &#x60;password&#x60;, &#x60;salt&#x60;) VALUES (?, ?, ?)&#x27;,
+      [student.enrollment, password, salt],
+    );
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;user&#x60; (&#x60;enrollment&#x60;, &#x60;cpf&#x60;, &#x60;type&#x60;, &#x60;role&#x60;) VALUES (?, ?, ?, ?)&#x27;,
+      [student.enrollment, student.cpf, &#x27;Student&#x27;, &#x27;manager&#x27;],
+    );
+    const [
+      user,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;,
+      [student.enrollment],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;student_grade&#x60; (&#x60;user_id&#x60;, &#x60;grade_id&#x60;) VALUES (?, ?)&#x27;,
+      [user.id, grade.id],
+    );
+  }
+
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    const [
+      user,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;,
+      [student.enrollment],
+    );
+    await queryRunner.query(&#x27;DELETE FROM &#x60;student_grade&#x60; WHERE &#x60;user_id&#x60; &#x3D; ?&#x27;, [
+      user.id,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;, [
+      student.enrollment,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;auth&#x60; WHERE &#x60;login&#x60; &#x3D; ?&#x27;, [
+      student.enrollment,
+    ]);
+
+    const [
+      period,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;period&#x60; WHERE &#x60;name&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      course,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;course&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      subject,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;subject&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      grade,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;grade&#x60; WHERE &#x60;subject_id&#x60; &#x3D; ? AND &#x60;period_id&#x60; &#x3D; ?&#x27;,
+      [subject.id, period.id],
+    );
+
+    await queryRunner.query(&#x27;DELETE FROM &#x60;subject&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [
+      subject.id,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;course&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [course.id]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;grade&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [grade.id]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;period&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [period.id]);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'IEntity.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

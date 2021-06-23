@@ -27,16 +27,22 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content class">
                    <div class="content-data">
 
 
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>ExamAgreementController</li>
+  <li>Classes</li>
+  <li>SeedAuxiliary1624412129413</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,18 +60,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/controllers/exam-agreement.controller.ts</code>
+            <code>src/database/migrations/1624416663575-SeedAuxiliary1.ts</code>
         </p>
 
+
+
             <p class="comment">
-                <h3>Prefix</h3>
+                <h3>Implements</h3>
             </p>
             <p class="comment">
-                <code>exam-agreement</code>
+                        <code>MigrationInterface</code>
             </p>
-
-
-
 
 
             <section>
@@ -82,12 +87,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#createAgreement">createAgreement</a>
+                                <a href="#down">down</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#updateAgreemment">updateAgreemment</a>
+                                <a href="#up">up</a>
                             </li>
                         </ul>
                     </td>
@@ -101,6 +108,8 @@
     </table>
 </section>
 
+
+
             <section>
     
     <h3 id="methods">
@@ -110,35 +119,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createAgreement"></a>
+                    <a name="down"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                            createAgreement
+                            down
                         </b>
-                        <a href="#createAgreement"><span class="icon ion-ios-link"></span></a>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createAgreement(createAgreementDto: <a href="../classes/CreateExamAgreementDto.html">CreateExamAgreementDto</a>, user: <a href="../interfaces/ExamAgreementUser.html">ExamAgreementUser</a>)</code>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/database/migrations/1624416663575-SeedAuxiliary1.ts:90</a></div>
                 </td>
             </tr>
 
@@ -158,21 +161,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>createAgreementDto</td>
+                                    <td>queryRunner</td>
                                     <td>
-                                                <code><a href="../classes/CreateExamAgreementDto.html" target="_self" >CreateExamAgreementDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>user</td>
-                                    <td>
-                                                <code><a href="../interfaces/ExamAgreementUser.html" target="_self" >ExamAgreementUser</a></code>
+                                            <code>QueryRunner</code>
                                     </td>
 
                                     <td>
@@ -187,7 +178,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -201,35 +192,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="updateAgreemment"></a>
+                    <a name="up"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                            updateAgreemment
+                            up
                         </b>
-                        <a href="#updateAgreemment"><span class="icon ion-ios-link"></span></a>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateAgreemment(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
+                    <code>up(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Put(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/database/migrations/1624416663575-SeedAuxiliary1.ts:17</a></div>
                 </td>
             </tr>
 
@@ -249,21 +234,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>queryRunner</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>updateAgreementDto</td>
-                                    <td>
-                                                <code><a href="../classes/UpdateExamAgreementDto.html" target="_self" >UpdateExamAgreementDto</a></code>
+                                            <code>QueryRunner</code>
                                     </td>
 
                                     <td>
@@ -278,7 +251,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -288,66 +261,158 @@
             </tr>
         </tbody>
     </table>
-</section>    </div>
+</section>
+
+
+
+
+
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  UseGuards,
-} from &#x27;@nestjs/common&#x27;;
-import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
-import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
-import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
-import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
-import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
-import { ExamAgreementService } from &#x27;../services/exam-agreement.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { addMonths, endOfMonth, startOfMonth } from &#x27;date-fns&#x27;;
+import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
+import faker &#x3D; require(&#x27;faker&#x27;);
+import bcrypt &#x3D; require(&#x27;bcryptjs&#x27;);
 
-@Controller(&#x27;exam-agreement&#x27;)
-@UseGuards(JwtGuard)
-@ApiBearerAuth()
-@ApiTags(&#x27;ExamAgreement&#x27;)
-export class ExamAgreementController {
-  constructor(private readonly examAgreementService: ExamAgreementService) {}
+interface IEntity {
+  id: number;
+}
 
-  @Post()
-  async createAgreement(
-    @Body() createAgreementDto: CreateExamAgreementDto,
-    @GetUser() user: ExamAgreementUser,
-  ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.createAgreement(
-      createAgreementDto,
+const defaultName &#x3D; &#x27;Gerado&#x27;;
+const student &#x3D; {
+  cpf: &#x27;50172241065&#x27;,
+  enrollment: &#x27;989898&#x27;,
+};
+
+export class SeedAuxiliary1624412129413 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;period&#x60; (&#x60;name&#x60;, &#x60;started_at&#x60;, &#x60;ended_at&#x60;) VALUES (?, ?, ?)&#x27;,
+      [
+        defaultName,
+        startOfMonth(new Date()),
+        endOfMonth(addMonths(new Date(), 5)),
+      ],
+    );
+    const [
+      period,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;period&#x60; WHERE &#x60;name&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;course&#x60; (&#x60;code&#x60;, &#x60;title&#x60;) VALUES (?, ?)&#x27;,
+      [defaultName, faker.random.alphaNumeric(20)],
+    );
+    const [
+      course,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;course&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;subject&#x60; (&#x60;code&#x60;, &#x60;title&#x60;, &#x60;course_id&#x60;) VALUES (?, ?, ?)&#x27;,
+      [defaultName, faker.random.alpha({ count: 20, upcase: true }), course.id],
+    );
+    const [
+      subject,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;subject&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;grade&#x60; (&#x60;subject_id&#x60;, &#x60;period_id&#x60;) VALUES (?, ?)&#x27;,
+      [subject.id, period.id],
+    );
+    const [
+      grade,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;grade&#x60; WHERE &#x60;subject_id&#x60; &#x3D; ? AND &#x60;period_id&#x60; &#x3D; ?&#x27;,
+      [subject.id, period.id],
+    );
+
+    const salt &#x3D; await bcrypt.genSalt();
+    const password &#x3D; await bcrypt.hash(process.env.ADMIN_PASSWORD!, salt);
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;auth&#x60; (&#x60;login&#x60;, &#x60;password&#x60;, &#x60;salt&#x60;) VALUES (?, ?, ?)&#x27;,
+      [student.enrollment, password, salt],
+    );
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;user&#x60; (&#x60;enrollment&#x60;, &#x60;cpf&#x60;, &#x60;type&#x60;, &#x60;role&#x60;) VALUES (?, ?, ?, ?)&#x27;,
+      [student.enrollment, student.cpf, &#x27;Student&#x27;, &#x27;manager&#x27;],
+    );
+    const [
       user,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;,
+      [student.enrollment],
+    );
+
+    await queryRunner.query(
+      &#x27;INSERT INTO &#x60;student_grade&#x60; (&#x60;user_id&#x60;, &#x60;grade_id&#x60;) VALUES (?, ?)&#x27;,
+      [user.id, grade.id],
     );
   }
 
-  @Put(&#x27;:id&#x27;)
-  async updateAgreemment(
-    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
-    @Body() updateAgreementDto: UpdateExamAgreementDto,
-  ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.updateAgreement(
-      id,
-      updateAgreementDto,
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    const [
+      user,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;,
+      [student.enrollment],
     );
+    await queryRunner.query(&#x27;DELETE FROM &#x60;student_grade&#x60; WHERE &#x60;user_id&#x60; &#x3D; ?&#x27;, [
+      user.id,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;user&#x60; WHERE &#x60;enrollment&#x60; &#x3D; ?&#x27;, [
+      student.enrollment,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;auth&#x60; WHERE &#x60;login&#x60; &#x3D; ?&#x27;, [
+      student.enrollment,
+    ]);
+
+    const [
+      period,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;period&#x60; WHERE &#x60;name&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      course,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;course&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      subject,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;subject&#x60; WHERE &#x60;code&#x60; &#x3D; ?&#x27;,
+      [defaultName],
+    );
+    const [
+      grade,
+    ]: IEntity[] &#x3D; await queryRunner.query(
+      &#x27;SELECT &#x60;id&#x60; FROM &#x60;grade&#x60; WHERE &#x60;subject_id&#x60; &#x3D; ? AND &#x60;period_id&#x60; &#x3D; ?&#x27;,
+      [subject.id, period.id],
+    );
+
+    await queryRunner.query(&#x27;DELETE FROM &#x60;subject&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [
+      subject.id,
+    ]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;course&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [course.id]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;grade&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [grade.id]);
+    await queryRunner.query(&#x27;DELETE FROM &#x60;period&#x60; WHERE &#x60;id&#x60; &#x3D; ?&#x27;, [period.id]);
   }
 }
 </code></pre>
     </div>
 </div>
-
-
-
-
-
-
 
 
 
@@ -372,8 +437,8 @@ export class ExamAgreementController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamAgreementController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'SeedAuxiliary1624412129413.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

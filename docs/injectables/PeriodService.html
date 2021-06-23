@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>JwtStrategy</li>
+  <li>PeriodService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/auth/strategies/jwt.strategy.ts</code>
+            <code>src/auxiliary/services/period.service.ts</code>
         </p>
 
 
@@ -76,8 +76,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#validate">validate</a>
+                                <a href="#findAll">findAll</a>
                             </li>
                         </ul>
                     </td>
@@ -97,12 +96,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html">AuthService</a>, userService: <a href="../injectables/UserService.html">UserService</a>, configService: ConfigService)</code>
+<code>constructor(periodRepository: <a href="../classes/PeriodRepository.html">PeriodRepository</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/auth/strategies/jwt.strategy.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/auxiliary/services/period.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -120,34 +119,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>authService</td>
+                                                        <td>periodRepository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>userService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>configService</td>
-                                                  
-                                                        <td>
-                                                                    <code>ConfigService</code>
+                                                                        <code><a href="../classes/PeriodRepository.html" target="_self" >PeriodRepository</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -173,28 +148,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="validate"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Async</span>
-                            validate
+                            findAll
                         </b>
-                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>validate(payload: <a href="../interfaces/JwtPayload.html">JwtPayload</a>)</code>
+<code>findAll()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/auth/strategies/jwt.strategy.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/auxiliary/services/period.service.ts:13</a></div>
                 </td>
             </tr>
 
@@ -203,39 +176,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>payload</td>
-                                    <td>
-                                                <code><a href="../interfaces/JwtPayload.html" target="_self" >JwtPayload</a></code>
-                                    </td>
+                        <b>Returns : </b>        <code><a href="../classes/Period.html" target="_self" >Promise&lt;Period[]&gt;</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;unknown&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -247,51 +189,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ForbiddenException,
-  Injectable,
-  UnauthorizedException,
-} from &#x27;@nestjs/common&#x27;;
-import { ConfigService } from &#x27;@nestjs/config&#x27;;
-import { JwtModuleOptions } from &#x27;@nestjs/jwt&#x27;;
-import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
-import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
-import { UserType } from &#x27;src/user/enum/user-type.enum&#x27;;
-
-import { jwtConfigKey } from &#x27;../../config&#x27;;
-
-import { UserService } from &#x27;../../user/user.service&#x27;;
-import { AuthService } from &#x27;../auth.service&#x27;;
-import { JwtPayload } from &#x27;../interfaces/jwt-payload.interface&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Period } from &#x27;../entities/period.entity&#x27;;
+import { PeriodRepository } from &#x27;../repositories/period.repository&#x27;;
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class PeriodService {
   constructor(
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
-    configService: ConfigService,
-  ) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: true,
-      secretOrKey: configService.get&lt;JwtModuleOptions&gt;(jwtConfigKey)!.secret,
-    });
-  }
+    @InjectRepository(PeriodRepository)
+    private readonly periodRepository: PeriodRepository,
+  ) {}
 
-  async validate(payload: JwtPayload): Promise&lt;unknown&gt; {
-    const auth &#x3D; await this.authService.findAuth({ login: payload.uid });
-    if (!auth) {
-      throw new UnauthorizedException();
-    }
-
-    const user &#x3D; await this.userService.findSpecializedUser({
-      enrollment: payload.uid,
-    });
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-
-    return user;
+  findAll(): Promise&lt;Period[]&gt; {
+    return this.periodRepository.find();
   }
 }
 </code></pre>
@@ -327,7 +238,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'JwtStrategy.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PeriodService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

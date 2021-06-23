@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/exam.service.ts</code>
+            <code>src/exam/services/exam.service.ts</code>
         </p>
 
 
@@ -143,7 +143,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/exam/exam.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/exam/services/exam.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -242,7 +242,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/exam/exam.service.ts:40</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:40</a></div>
                 </td>
             </tr>
 
@@ -312,7 +312,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/exam/exam.service.ts:46</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:46</a></div>
                 </td>
             </tr>
 
@@ -353,7 +353,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/exam/exam.service.ts:50</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:50</a></div>
                 </td>
             </tr>
 
@@ -432,7 +432,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">src/exam/exam.service.ts:62</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:62</a></div>
                 </td>
             </tr>
 
@@ -505,7 +505,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/exam/exam.service.ts:27</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:27</a></div>
                 </td>
             </tr>
 
@@ -584,7 +584,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">src/exam/exam.service.ts:88</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:88</a></div>
                 </td>
             </tr>
 
@@ -663,7 +663,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">src/exam/exam.service.ts:79</a></div>
+                            class="link-to-prism">src/exam/services/exam.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -756,7 +756,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/exam/exam.service.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/exam/services/exam.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -773,16 +773,16 @@
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { SoftDeleteResult } from &#x27;src/core/interfaces/soft-delete-result.interface&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
-import { CreateExamDto } from &#x27;./dtos/create-exam.dto&#x27;;
-import { ExamTargetManagerDto } from &#x27;./dtos/exam-target-manager.dto&#x27;;
-import { UpdateExamDto } from &#x27;./dtos/update-exam.dto&#x27;;
-import { Exam } from &#x27;./entities/exam.entity&#x27;;
-import { EXAM_NOT_FOUND } from &#x27;./exam.constants&#x27;;
-import { ExamUser } from &#x27;./interfaces/exam-user.interface&#x27;;
-import { ExamPersonalResult } from &#x27;./models/exam-personal-result.model&#x27;;
-import { ExamRepository } from &#x27;./repositories/exam.repository&#x27;;
-import { ExamAgreementService } from &#x27;./services/exam-agreement.service&#x27;;
-import { ExamTargetService } from &#x27;./services/exam-target.service&#x27;;
+import { CreateExamDto } from &#x27;../dtos/create-exam.dto&#x27;;
+import { ExamTargetManagerDto } from &#x27;../dtos/exam-target-manager.dto&#x27;;
+import { UpdateExamDto } from &#x27;../dtos/update-exam.dto&#x27;;
+import { Exam } from &#x27;../entities/exam.entity&#x27;;
+import { EXAM_NOT_FOUND } from &#x27;../exam.constants&#x27;;
+import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
+import { ExamPersonalResult } from &#x27;../models/exam-personal-result.model&#x27;;
+import { ExamRepository } from &#x27;../repositories/exam.repository&#x27;;
+import { ExamAgreementService } from &#x27;./exam-agreement.service&#x27;;
+import { ExamTargetService } from &#x27;./exam-target.service&#x27;;
 
 @Injectable()
 export class ExamService {

@@ -79,6 +79,7 @@
                                 <a href="#agreementsByDateInterval">agreementsByDateInterval</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#createAgreement">createAgreement</a>
                             </li>
                             <li>
@@ -110,12 +111,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/ExamAgreementRepository.html">ExamAgreementRepository</a>)</code>
+<code>constructor(repository: <a href="../classes/ExamAgreementRepository.html">ExamAgreementRepository</a>, examService: <a href="../injectables/ExamService.html">ExamService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/exam/services/exam-agreement.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/exam/services/exam-agreement.service.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -137,6 +138,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/ExamAgreementRepository.html" target="_self" >ExamAgreementRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>examService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ExamService.html" target="_self" >ExamService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -180,8 +193,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:64</a></div>
                 </td>
             </tr>
 
@@ -247,6 +260,7 @@
                     <a name="createAgreement"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Async</span>
                             createAgreement
                         </b>
                         <a href="#createAgreement"><span class="icon ion-ios-link"></span></a>
@@ -255,7 +269,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createAgreement(createAgreementDto: <a href="../classes/CreateExamAgreementDto.html">CreateExamAgreementDto</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createAgreement(createAgreementDto: <a href="../classes/CreateExamAgreementDto.html">CreateExamAgreementDto</a>, user: <a href="../interfaces/ExamAgreementUser.html">ExamAgreementUser</a>)</code>
                 </td>
             </tr>
 
@@ -269,8 +284,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -293,6 +308,18 @@
                                     <td>createAgreementDto</td>
                                     <td>
                                                 <code><a href="../classes/CreateExamAgreementDto.html" target="_self" >CreateExamAgreementDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExamAgreementUser.html" target="_self" >ExamAgreementUser</a></code>
                                     </td>
 
                                     <td>
@@ -341,8 +368,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:76</a></div>
                 </td>
             </tr>
 
@@ -418,8 +445,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:69</a></div>
                 </td>
             </tr>
 
@@ -497,8 +524,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:49</a></div>
                 </td>
             </tr>
 
@@ -563,29 +590,49 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { UpdateAnswerDto } from &#x27;src/answer/dto/update-answer.dto&#x27;;
+
+import { Professor } from &#x27;src/auxiliary/entities/professor.entity&#x27;;
+import { Student } from &#x27;src/auxiliary/entities/student.entity&#x27;;
 import { Between } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
 import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
+import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
 import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamAgreementRepository } from &#x27;../repositories/exam-agreement.repository&#x27;;
+import { ExamService } from &#x27;./exam.service&#x27;;
 
 @Injectable()
 export class ExamAgreementService {
   constructor(
     @InjectRepository(ExamAgreementRepository)
     private readonly repository: ExamAgreementRepository,
+    @Inject(forwardRef(() &#x3D;&gt; ExamService))
+    private readonly examService: ExamService,
   ) {}
 
   @Transactional()
-  createAgreement(
+  async createAgreement(
     createAgreementDto: CreateExamAgreementDto,
+    user: ExamAgreementUser,
   ): Promise&lt;ExamAgreement&gt; {
+    const exam &#x3D; await this.examService.findOne(createAgreementDto.examId);
     const agreement &#x3D; this.repository.create(createAgreementDto);
+
+    if (user instanceof Professor || user instanceof Student) {
+      const grades &#x3D; await user.grades;
+      agreement.grades &#x3D; grades.filter(
+        (grade) &#x3D;&gt; grade.periodId &#x3D;&#x3D;&#x3D; exam.periodId,
+      );
+    }
 
     return this.repository.save(agreement);
   }
@@ -622,10 +669,15 @@ export class ExamAgreementService {
     userId: number;
     examId: number;
   }): Promise&lt;ExamAgreement&gt; {
-    const agreement &#x3D; await this.repository.findOne(findDto);
+    const agreement &#x3D; await this.repository.findOne({
+      where: findDto,
+      relations: [&#x27;exam&#x27;],
+    });
+
     if (!agreement) {
       throw new NotFoundException(findDto);
     }
+
     return agreement;
   }
 }

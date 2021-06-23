@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -36,9 +36,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>JwtStrategy</li>
+  <li>Classes</li>
+  <li>PersonalQuestionGroup</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,8 +60,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/auth/strategies/jwt.strategy.ts</code>
+            <code>src/question-group/providers/personal-group.provider.ts</code>
         </p>
+
 
 
 
@@ -77,7 +82,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#validate">validate</a>
+                                <a href="#getPersonal">getPersonal</a>
                             </li>
                         </ul>
                     </td>
@@ -97,12 +102,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html">AuthService</a>, userService: <a href="../injectables/UserService.html">UserService</a>, configService: ConfigService)</code>
+<code>constructor(repository: <a href="../classes/QuestionGroupRepository.html">QuestionGroupRepository</a>, gradeService: <a href="../injectables/GradeService.html">GradeService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/auth/strategies/jwt.strategy.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/question-group/providers/personal-group.provider.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -120,10 +125,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>authService</td>
+                                                        <td>repository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                                        <code><a href="../classes/QuestionGroupRepository.html" target="_self" >QuestionGroupRepository</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -132,22 +137,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>userService</td>
+                                                        <td>gradeService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>configService</td>
-                                                  
-                                                        <td>
-                                                                    <code>ConfigService</code>
+                                                                        <code><a href="../injectables/GradeService.html" target="_self" >GradeService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -164,6 +157,7 @@
         </table>
 </section>
 
+
             <section>
     
     <h3 id="methods">
@@ -173,28 +167,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="validate"></a>
+                    <a name="getPersonal"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            validate
+                            getPersonal
                         </b>
-                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getPersonal"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>validate(payload: <a href="../interfaces/JwtPayload.html">JwtPayload</a>)</code>
+                    <code>getPersonal(user: Student | Professor, exam: <a href="../classes/Exam.html">Exam</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/auth/strategies/jwt.strategy.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/question-group/providers/personal-group.provider.ts:17</a></div>
                 </td>
             </tr>
 
@@ -214,9 +208,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>payload</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="../interfaces/JwtPayload.html" target="_self" >JwtPayload</a></code>
+                                            <code>Student | Professor</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>exam</td>
+                                    <td>
+                                                <code><a href="../classes/Exam.html" target="_self" >Exam</a></code>
                                     </td>
 
                                     <td>
@@ -231,7 +237,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;unknown&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;QuestionGroup[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -243,65 +249,64 @@
     </table>
 </section>
 
+
+
+
+
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  ForbiddenException,
-  Injectable,
-  UnauthorizedException,
-} from &#x27;@nestjs/common&#x27;;
-import { ConfigService } from &#x27;@nestjs/config&#x27;;
-import { JwtModuleOptions } from &#x27;@nestjs/jwt&#x27;;
-import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
-import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
-import { UserType } from &#x27;src/user/enum/user-type.enum&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Professor } from &#x27;src/auxiliary/entities/professor.entity&#x27;;
+import { Student } from &#x27;src/auxiliary/entities/student.entity&#x27;;
+import { GradeService } from &#x27;src/auxiliary/services/grade.service&#x27;;
+import { Exam } from &#x27;src/exam/entities/exam.entity&#x27;;
+import { QuestionGroupGrade } from &#x27;../entities/question-group-grade.entity&#x27;;
+import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
+import { QuestionGroupRepository } from &#x27;../repositories/question-group.repository&#x27;;
 
-import { jwtConfigKey } from &#x27;../../config&#x27;;
-
-import { UserService } from &#x27;../../user/user.service&#x27;;
-import { AuthService } from &#x27;../auth.service&#x27;;
-import { JwtPayload } from &#x27;../interfaces/jwt-payload.interface&#x27;;
-
-@Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class PersonalQuestionGroup {
   constructor(
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
-    configService: ConfigService,
-  ) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: true,
-      secretOrKey: configService.get&lt;JwtModuleOptions&gt;(jwtConfigKey)!.secret,
-    });
-  }
+    @InjectRepository(QuestionGroupRepository)
+    private readonly repository: QuestionGroupRepository,
+    private readonly gradeService: GradeService,
+  ) {}
 
-  async validate(payload: JwtPayload): Promise&lt;unknown&gt; {
-    const auth &#x3D; await this.authService.findAuth({ login: payload.uid });
-    if (!auth) {
-      throw new UnauthorizedException();
+  async getPersonal(
+    user: Student | Professor,
+    exam: Exam,
+  ): Promise&lt;QuestionGroup[]&gt; {
+    const grades &#x3D; await this.gradeService.findByUserAndPeriod(
+      user,
+      exam.period,
+    );
+    if (!grades.length) {
+      return [];
     }
 
-    const user &#x3D; await this.userService.findSpecializedUser({
-      enrollment: payload.uid,
+    const groupGrades &#x3D; await this.repository.find({
+      where: { exam, class: true },
     });
-    if (!user) {
-      throw new UnauthorizedException();
-    }
 
-    return user;
+    return groupGrades
+      .reduce(
+        (result, group) &#x3D;&gt; [
+          ...result,
+          ...grades.map((grade) &#x3D;&gt; {
+            const groupGrade &#x3D; Object.assign(new QuestionGroupGrade(), group);
+            groupGrade.grade &#x3D; grade;
+            return groupGrade;
+          }),
+        ],
+        new Array&lt;QuestionGroup&gt;(),
+      )
+      .sort((a, b) &#x3D;&gt; a.id - b.id);
   }
 }
 </code></pre>
     </div>
-
 </div>
-
-
-
-
 
 
 
@@ -326,8 +331,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'JwtStrategy.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'PersonalQuestionGroup.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

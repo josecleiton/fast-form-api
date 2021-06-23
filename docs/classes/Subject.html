@@ -89,10 +89,10 @@
                                 <a href="#code">code</a>
                             </li>
                             <li>
-                                <a href="#codeId">codeId</a>
+                                <a href="#course">course</a>
                             </li>
                             <li>
-                                <a href="#course">course</a>
+                                <a href="#courseId">courseId</a>
                             </li>
                             <li>
                                 <a href="#grades">grades</a>
@@ -171,42 +171,6 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="codeId"></a>
-                        <span class="name">
-                            <b>
-                            codeId</b>
-                            <a href="#codeId"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @Column({type: &#x27;int&#x27;})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/auxiliary/entities/subject.entity.ts:16</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="course"></a>
                         <span class="name">
                             <b>
@@ -233,6 +197,42 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/auxiliary/entities/subject.entity.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="courseId"></a>
+                        <span class="name">
+                            <b>
+                            courseId</b>
+                            <a href="#courseId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Column({type: &#x27;int&#x27;})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/auxiliary/entities/subject.entity.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -510,7 +510,7 @@ export class Subject extends FFEntity {
   title: string;
 
   @Column({ type: &#x27;int&#x27; })
-  codeId: number;
+  courseId: number;
 
   @ManyToOne(() &#x3D;&gt; Course)
   course: Course;

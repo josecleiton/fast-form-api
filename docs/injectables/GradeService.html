@@ -27,16 +27,18 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content injectable">
                    <div class="content-data">
 
 
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>ExamAgreementController</li>
+  <li>Injectables</li>
+  <li>GradeService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,16 +56,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/controllers/exam-agreement.controller.ts</code>
+            <code>src/auxiliary/services/grade.service.ts</code>
         </p>
-
-            <p class="comment">
-                <h3>Prefix</h3>
-            </p>
-            <p class="comment">
-                <code>exam-agreement</code>
-            </p>
-
 
 
 
@@ -82,12 +76,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#createAgreement">createAgreement</a>
+                                <a href="#findAll">findAll</a>
                             </li>
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#updateAgreemment">updateAgreemment</a>
+                                <a href="#findByUserAndPeriod">findByUserAndPeriod</a>
                             </li>
                         </ul>
                     </td>
@@ -102,6 +94,55 @@
 </section>
 
             <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(gradeRepository: <a href="../classes/GradeRepository.html">GradeRepository</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/auxiliary/services/grade.service.ts:9</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>gradeRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/GradeRepository.html" target="_self" >GradeRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
     
     <h3 id="methods">
         Methods
@@ -110,35 +151,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createAgreement"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Async</span>
-                            createAgreement
+                            findAll
                         </b>
-                        <a href="#createAgreement"><span class="icon ion-ios-link"></span></a>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createAgreement(createAgreementDto: <a href="../classes/CreateExamAgreementDto.html">CreateExamAgreementDto</a>, user: <a href="../interfaces/ExamAgreementUser.html">ExamAgreementUser</a>)</code>
+<code>findAll()</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/auxiliary/services/grade.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -147,51 +179,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>createAgreementDto</td>
-                                    <td>
-                                                <code><a href="../classes/CreateExamAgreementDto.html" target="_self" >CreateExamAgreementDto</a></code>
-                                    </td>
+                        <b>Returns : </b>        <code><a href="../classes/Grade.html" target="_self" >Promise&lt;Grade[]&gt;</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>user</td>
-                                    <td>
-                                                <code><a href="../interfaces/ExamAgreementUser.html" target="_self" >ExamAgreementUser</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -201,35 +190,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="updateAgreemment"></a>
+                    <a name="findByUserAndPeriod"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Async</span>
-                            updateAgreemment
+                            findByUserAndPeriod
                         </b>
-                        <a href="#updateAgreemment"><span class="icon ion-ios-link"></span></a>
+                        <a href="#findByUserAndPeriod"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateAgreemment(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
+<code>findByUserAndPeriod(user: <a href="../classes/User.html">UserToFind</a>, period: <a href="../classes/Period.html">Period</a>)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Put(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/auxiliary/services/grade.service.ts:19</a></div>
                 </td>
             </tr>
 
@@ -249,9 +229,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="../classes/User.html" target="_self" >UserToFind</a></code>
                                     </td>
 
                                     <td>
@@ -261,9 +241,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>updateAgreementDto</td>
+                                    <td>period</td>
                                     <td>
-                                                <code><a href="../classes/UpdateExamAgreementDto.html" target="_self" >UpdateExamAgreementDto</a></code>
+                                                <code><a href="../classes/Period.html" target="_self" >Period</a></code>
                                     </td>
 
                                     <td>
@@ -278,7 +258,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+                        <b>Returns : </b>        <code><a href="../classes/Grade.html" target="_self" >Promise&lt;Grade[]&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -288,62 +268,38 @@
             </tr>
         </tbody>
     </table>
-</section>    </div>
+</section>
+
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  UseGuards,
-} from &#x27;@nestjs/common&#x27;;
-import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
-import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
-import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
-import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
-import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
-import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
-import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
-import { ExamAgreementService } from &#x27;../services/exam-agreement.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Grade } from &#x27;../entities/grade.entity&#x27;;
+import { Period } from &#x27;../entities/period.entity&#x27;;
+import { GradeRepository } from &#x27;../repositories/grade.repository&#x27;;
+import type { UserToFind } from &#x27;../types/user-to-find.type&#x27;;
 
-@Controller(&#x27;exam-agreement&#x27;)
-@UseGuards(JwtGuard)
-@ApiBearerAuth()
-@ApiTags(&#x27;ExamAgreement&#x27;)
-export class ExamAgreementController {
-  constructor(private readonly examAgreementService: ExamAgreementService) {}
+@Injectable()
+export class GradeService {
+  constructor(
+    @InjectRepository(GradeRepository)
+    private readonly gradeRepository: GradeRepository,
+  ) {}
 
-  @Post()
-  async createAgreement(
-    @Body() createAgreementDto: CreateExamAgreementDto,
-    @GetUser() user: ExamAgreementUser,
-  ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.createAgreement(
-      createAgreementDto,
-      user,
-    );
+  findAll(): Promise&lt;Grade[]&gt; {
+    return this.gradeRepository.find();
   }
 
-  @Put(&#x27;:id&#x27;)
-  async updateAgreemment(
-    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
-    @Body() updateAgreementDto: UpdateExamAgreementDto,
-  ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.updateAgreement(
-      id,
-      updateAgreementDto,
-    );
+  findByUserAndPeriod(user: UserToFind, period: Period): Promise&lt;Grade[]&gt; {
+    return this.gradeRepository.findByUserAndPeriod(user, period);
   }
 }
 </code></pre>
     </div>
+
 </div>
-
-
 
 
 
@@ -372,8 +328,8 @@ export class ExamAgreementController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamAgreementController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'GradeService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
