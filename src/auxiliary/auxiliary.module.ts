@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PeriodController } from './controllers/period.controller';
+
 import { GradeRepository } from './repositories/grade.repository';
 import { PeriodRepository } from './repositories/period.repository';
 import { ProfessorRepository } from './repositories/professor.repository';
 import { StudentRepository } from './repositories/student.repository';
+
 import { GradeService } from './services/grade.service';
 import { PeriodService } from './services/period.service';
 import { ProfessorService } from './services/professor.service';

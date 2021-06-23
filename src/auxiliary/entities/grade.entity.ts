@@ -9,10 +9,10 @@ import { Subject } from './subject.entity';
 
 @Entity('grade')
 export class Grade extends FFEntity {
-  @Column({type: 'int'})
+  @Column({ type: 'int' })
   subjectId: number;
 
-  @Column({type: 'int'})
+  @Column({ type: 'int' })
   periodId: number;
 
   @ManyToOne(() => Subject)

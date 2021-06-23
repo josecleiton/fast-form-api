@@ -13,7 +13,7 @@ export class Subject extends FFEntity {
   title: string;
 
   @Column({ type: 'int' })
-  codeId: number;
+  courseId: number;
 
   @ManyToOne(() => Course)
   course: Course;
