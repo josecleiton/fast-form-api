@@ -14,6 +14,7 @@ import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import { UpdateExamAgreementDto } from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
+import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
 import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
 import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamAgreementRepository } from '../repositories/exam-agreement.repository';
@@ -88,5 +89,11 @@ export class ExamAgreementService {
     }
 
     return agreement;
+  }
+
+  async finishExam(agreement: ExamAgreement): Promise<ExamAgreement> {
+    agreement.status = ExamAgreementStatus.FINISHED;
+
+    return this.repository.save(agreement);
   }
 }

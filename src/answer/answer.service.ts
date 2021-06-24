@@ -39,28 +39,28 @@ export class AnswerService {
       Question
     >(questions.map((question) => [question.id, question]));
 
-    return Promise.all(
+    const answers = await Promise.all(
       createAnswerDtos.map(async (answerDto) => {
         const question = questionMap.get(answerDto.questionId);
         if (!question) {
-          throw new NotFoundException(answerDto, 'Question Not Found');
+          throw new NotFoundException(answerDto, 'Question not found');
         }
 
-        if (answerDto.type === AnswerType.ANSWER) {
-          const answer = this.answerRepository.create({
-            ...answerDto,
-            examAgreement,
-          });
-          return this.answerRepository.save(answer);
-        } else {
-          const answer = this.answerGradeRepository.create({
-            ...answerDto,
-            examAgreement,
-          });
+        const createDto = { ...answerDto, examAgreement };
+
+        if (answerDto.type === AnswerType.ANSWER_GRADE) {
+          const answer = this.answerGradeRepository.create(createDto);
           return this.answerGradeRepository.save(answer);
         }
+
+        const answer = this.answerRepository.create(createDto);
+        return this.answerRepository.save(answer);
       }),
     );
+
+    await this.examAgreementService.finishExam(examAgreement);
+
+    return answers;
   }
 
   findAll() {
@@ -73,19 +73,6 @@ export class AnswerService {
       throw new NotFoundException({ id });
     }
     return answer;
-    // const raw:
-    //   | { id: number; type: AnswerType }
-    //   | undefined = await this.answerRepository.query(
-    //   'SELECT id, type FROM `answer` WHERE id = ?',
-    //   [id],
-    // );
-    // if (!raw) {
-    //   throw new NotFoundException({ id });
-    // }
-
-    // return raw.type === AnswerType.ANSWER_GRADE
-    //   ? await this.answerGradeRepository.findOneOrFail(id)
-    //   : await this.answerRepository.findOneOrFail(id);
   }
 
   @Transactional()

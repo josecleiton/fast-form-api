@@ -10,7 +10,7 @@ import { AnswerType } from '../enums/answer-type.enum';
 
 export class CreateAnswerDto {
   @IsOptional()
-  @Min(-1)
+  @Min(0)
   @Max(5)
   score?: number;
 
