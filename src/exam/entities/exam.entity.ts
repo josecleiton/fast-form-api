@@ -34,7 +34,7 @@ export class Exam extends FFEntity {
   @Column({ type: 'enum', enum: ExamStatus })
   status: ExamStatus;
 
-  @Column({ type: 'int', nullable: true })
+  @Column({ type: 'int' })
   periodId: number;
 
   @ManyToMany(() => ExamTarget)

@@ -34,7 +34,7 @@ export class QuestionController {
   async createQuestion(
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise<Question> {
-    return await this.questionService.createQuestion(createQuestionDto);
+    return this.questionService.createQuestion(createQuestionDto);
   }
 
   @Post(':groupId')
@@ -43,23 +43,20 @@ export class QuestionController {
     @Param('groupId', ParseIntPipe) groupId: number,
     @Body() createQuestionsDto: CreateQuestionsDto,
   ): Promise<Question[]> {
-    return await this.questionService.createQuestions(
-      groupId,
-      createQuestionsDto,
-    );
+    return this.questionService.createQuestions(groupId, createQuestionsDto);
   }
 
   @Get()
   @ApiOkResponse({ type: [Question] })
   async find(@Query() findDto: QuestionFindDto) {
-    return await this.questionService.find(findDto);
+    return this.questionService.find(findDto);
   }
 
   @Get(':id')
   @ApiOkResponse({ type: Question })
   @ApiNotFoundResponse()
   async findOne(@Param('id', ParseIntPipe) id: number): Promise<Question> {
-    return await this.questionService.findOne(id);
+    return this.questionService.findOne(id);
   }
 
   @Put(':id')
@@ -69,7 +66,7 @@ export class QuestionController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateQuestionDto: UpdateQuestionDto,
   ): Promise<Question> {
-    return await this.questionService.update(id, updateQuestionDto);
+    return this.questionService.update(id, updateQuestionDto);
   }
 
   @Patch()
@@ -77,13 +74,13 @@ export class QuestionController {
   async reorder(
     @Body() reorderQuesitonDto: ReorderQuestionDto,
   ): Promise<Question[]> {
-    return await this.questionService.reorder(reorderQuesitonDto);
+    return this.questionService.reorder(reorderQuesitonDto);
   }
 
   @Delete(':id')
   @ApiOkResponse()
   @ApiNotFoundResponse()
   async remove(@Param('id', ParseIntPipe) id: number): Promise<void> {
-    return await this.questionService.remove(id);
+    return this.questionService.remove(id);
   }
 }

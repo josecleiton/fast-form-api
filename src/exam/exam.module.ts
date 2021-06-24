@@ -12,6 +12,7 @@ import { ExamAgreementRepository } from './repositories/exam-agreement.repositor
 import { ExamAgreementController } from './controllers/exam-agreement.controller';
 import { ExamTargetTree } from './providers/exam-target-tree.provider';
 import { ExamTargetNodeFactory } from './factories/exam-target-node.factory';
+import { AuxiliaryModule } from 'src/auxiliary/auxiliary.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ExamTargetNodeFactory } from './factories/exam-target-node.factory';
       ExamTargetRepository,
       ExamAgreementRepository,
     ]),
+    AuxiliaryModule,
   ],
   controllers: [ExamController, ExamTargetController, ExamAgreementController],
   providers: [

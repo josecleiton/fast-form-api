@@ -103,7 +103,7 @@ export class QuestionService {
     group: QuestionGroup,
     questions: Question[],
   ): Promise<Question[]> {
-    return await this.repository.save(
+    return this.repository.save(
       questions.map((question) =>
         this.repository.create({ ...question, group, id: undefined }),
       ),
@@ -123,7 +123,7 @@ export class QuestionService {
       questionIds.map((id, position) => [id, position]),
     );
 
-    return await this.repository.save(
+    return this.repository.save(
       questions.map((question) => {
         question.position = questionPositionMap.get(question.id) ?? 0;
         return question;

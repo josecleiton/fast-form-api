@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PeriodService } from 'src/auxiliary/services/period.service';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamDto } from '../dtos/create-exam.dto';
@@ -22,6 +23,7 @@ export class ExamService {
     private readonly repository: ExamRepository,
     private readonly targetService: ExamTargetService,
     private readonly agreementService: ExamAgreementService,
+    private readonly periodService: PeriodService,
   ) {}
 
   private async newExam(dto: CreateExamDto | UpdateExamDto): Promise<Exam> {
@@ -29,7 +31,7 @@ export class ExamService {
     const exam = this.repository.create(entityLike);
 
     if (targets) {
-      const targetMap = await this.targetService.targetMap;
+      const targetMap = await this.targetService.getTargetMap();
       exam.targets = targets.map((target) => targetMap.get(target)!);
     }
 
@@ -39,6 +41,7 @@ export class ExamService {
   @Transactional()
   async create(createExamDto: CreateExamDto): Promise<Exam> {
     const exam = await this.newExam(createExamDto);
+    exam.period = await this.periodService.getLastPeriod();
 
     return this.repository.save(exam);
   }

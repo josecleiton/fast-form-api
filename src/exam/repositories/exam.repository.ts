@@ -45,6 +45,6 @@ export class ExamRepository extends BaseRepository<Exam> {
     }
     // .andWhere('exam.created_at BETWEEN :start AND :end', {start})
 
-    return await query.getMany();
+    return query.getMany();
   }
 }

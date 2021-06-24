@@ -27,7 +27,7 @@ export class ExamTargetService {
     );
   }
 
-  get targetMap(): Promise<ReadonlyMap<ExamTargetType, ExamTarget>> {
+  getTargetMap(): Promise<ReadonlyMap<ExamTargetType, ExamTarget>> {
     return new Promise((resolve, reject) => {
       if (!this._targetMap) {
         return this.loadTargetMap()
@@ -40,7 +40,7 @@ export class ExamTargetService {
   }
 
   async getTargets(): Promise<ExamTargetType[]> {
-    const map = await this.targetMap;
+    const map = await this.getTargetMap();
 
     return Array.from(map.values()).map((target) => target.type);
   }

@@ -30,7 +30,7 @@ export class AnswerService {
     user: BatchUser,
   ): Promise<Answer[]> {
     const examAgreement = await this.examAgreementService.findOne(user);
-    await this.answerRepository.delete({examAgreement});
+    await this.answerRepository.delete({ examAgreement });
     const questions = await this.questionService.findByIds(
       createAnswerDtos.map((dto) => dto.questionId),
     );
@@ -39,7 +39,7 @@ export class AnswerService {
       Question
     >(questions.map((question) => [question.id, question]));
 
-    return await Promise.all(
+    return Promise.all(
       createAnswerDtos.map(async (answerDto) => {
         const question = questionMap.get(answerDto.questionId);
         if (!question) {
@@ -51,13 +51,13 @@ export class AnswerService {
             ...answerDto,
             examAgreement,
           });
-          return await this.answerRepository.save(answer);
+          return this.answerRepository.save(answer);
         } else {
           const answer = this.answerGradeRepository.create({
             ...answerDto,
             examAgreement,
           });
-          return await this.answerGradeRepository.save(answer);
+          return this.answerGradeRepository.save(answer);
         }
       }),
     );
@@ -93,7 +93,7 @@ export class AnswerService {
     let answer = await this.findOne(id);
     answer = this.answerRepository.merge(answer, updateAnswerDto);
 
-    return await this.answerRepository.save(answer);
+    return this.answerRepository.save(answer);
   }
 
   @Transactional()
