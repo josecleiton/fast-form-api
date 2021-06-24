@@ -87,6 +87,10 @@
                                 <a href="#findOne">findOne</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#finishExam">finishExam</a>
+                            </li>
+                            <li>
                                 <a href="#getByUser">getByUser</a>
                             </li>
                             <li>
@@ -116,7 +120,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/exam/services/exam-agreement.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/exam/services/exam-agreement.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -193,8 +197,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -284,8 +288,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:33</a></div>
                 </td>
             </tr>
 
@@ -368,8 +372,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -392,6 +396,78 @@
                                     <td>findDto</td>
                                     <td>
                                             <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;ExamAgreement&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finishExam"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            finishExam
+                        </b>
+                        <a href="#finishExam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>finishExam(agreement: <a href="../classes/ExamAgreement.html">ExamAgreement</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>agreement</td>
+                                    <td>
+                                                <code><a href="../classes/ExamAgreement.html" target="_self" >ExamAgreement</a></code>
                                     </td>
 
                                     <td>
@@ -445,8 +521,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:70</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:71</a></div>
                 </td>
             </tr>
 
@@ -524,8 +600,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:51</a></div>
                 </td>
             </tr>
 
@@ -606,6 +682,7 @@ import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
 import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
+import { ExamAgreementStatus } from &#x27;../enums/exam-agreement-status.enum&#x27;;
 import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
 import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamAgreementRepository } from &#x27;../repositories/exam-agreement.repository&#x27;;
@@ -680,6 +757,12 @@ export class ExamAgreementService {
     }
 
     return agreement;
+  }
+
+  async finishExam(agreement: ExamAgreement): Promise&lt;ExamAgreement&gt; {
+    agreement.status &#x3D; ExamAgreementStatus.FINISHED;
+
+    return this.repository.save(agreement);
   }
 }
 </code></pre>

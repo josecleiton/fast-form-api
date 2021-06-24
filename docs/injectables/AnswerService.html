@@ -429,8 +429,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">src/answer/answer.service.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/answer/answer.service.ts:87</a></div>
                 </td>
             </tr>
 
@@ -508,8 +508,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/answer/answer.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/answer/answer.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -615,28 +615,28 @@ export class AnswerService {
       Question
     &gt;(questions.map((question) &#x3D;&gt; [question.id, question]));
 
-    return Promise.all(
+    const answers &#x3D; await Promise.all(
       createAnswerDtos.map(async (answerDto) &#x3D;&gt; {
         const question &#x3D; questionMap.get(answerDto.questionId);
         if (!question) {
-          throw new NotFoundException(answerDto, &#x27;Question Not Found&#x27;);
+          throw new NotFoundException(answerDto, &#x27;Question not found&#x27;);
         }
 
-        if (answerDto.type &#x3D;&#x3D;&#x3D; AnswerType.ANSWER) {
-          const answer &#x3D; this.answerRepository.create({
-            ...answerDto,
-            examAgreement,
-          });
-          return this.answerRepository.save(answer);
-        } else {
-          const answer &#x3D; this.answerGradeRepository.create({
-            ...answerDto,
-            examAgreement,
-          });
+        const createDto &#x3D; { ...answerDto, examAgreement };
+
+        if (answerDto.type &#x3D;&#x3D;&#x3D; AnswerType.ANSWER_GRADE) {
+          const answer &#x3D; this.answerGradeRepository.create(createDto);
           return this.answerGradeRepository.save(answer);
         }
+
+        const answer &#x3D; this.answerRepository.create(createDto);
+        return this.answerRepository.save(answer);
       }),
     );
+
+    await this.examAgreementService.finishExam(examAgreement);
+
+    return answers;
   }
 
   findAll() {
@@ -649,19 +649,6 @@ export class AnswerService {
       throw new NotFoundException({ id });
     }
     return answer;
-    // const raw:
-    //   | { id: number; type: AnswerType }
-    //   | undefined &#x3D; await this.answerRepository.query(
-    //   &#x27;SELECT id, type FROM &#x60;answer&#x60; WHERE id &#x3D; ?&#x27;,
-    //   [id],
-    // );
-    // if (!raw) {
-    //   throw new NotFoundException({ id });
-    // }
-
-    // return raw.type &#x3D;&#x3D;&#x3D; AnswerType.ANSWER_GRADE
-    //   ? await this.answerGradeRepository.findOneOrFail(id)
-    //   : await this.answerRepository.findOneOrFail(id);
   }
 
   @Transactional()
