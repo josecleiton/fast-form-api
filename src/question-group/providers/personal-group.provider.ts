@@ -27,7 +27,7 @@ export class PersonalQuestionGroup {
     }
 
     const groupGrades = await this.repository.find({
-      where: { exam, class: true },
+      where: { class: true, exam },
     });
 
     return groupGrades

@@ -12,6 +12,7 @@ import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 import { Question } from './question.entity';
 
 @Entity()
+@Index('IX_question_group_class_examId', ['class', 'examId'])
 export class QuestionGroup extends FFEntity {
   @Column({ type: 'varchar' })
   title: string;

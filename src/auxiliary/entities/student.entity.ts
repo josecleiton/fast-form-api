@@ -4,7 +4,10 @@ import { Grade } from './grade.entity';
 
 @ChildEntity()
 export class Student extends User {
-  @ManyToMany(() => Grade)
-  @JoinTable({ name: 'student_grade' })
-  grades: Promise<Grade[]>;
+  @ManyToMany(() => Grade, { lazy: true })
+  studentGrades: Promise<Grade[]>;
+
+  get grades(): Promise<Grade[]> {
+    return this.studentGrades;
+  }
 }

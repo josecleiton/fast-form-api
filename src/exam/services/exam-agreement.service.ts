@@ -1,4 +1,5 @@
 import {
+  ConflictException,
   forwardRef,
   Inject,
   Injectable,
@@ -33,14 +34,14 @@ export class ExamAgreementService {
     user: ExamAgreementUser,
   ): Promise<ExamAgreement> {
     const exam = await this.examService.findOne(createAgreementDto.examId);
-    const agreement = this.repository.create(createAgreementDto);
-
-    if (user instanceof Professor || user instanceof Student) {
-      const grades = await user.grades;
-      agreement.grades = grades.filter(
-        (grade) => grade.periodId === exam.periodId,
-      );
+    const alreadyAgreed = await this.repository.findOne({
+      where: { exam, user },
+    });
+    if (alreadyAgreed) {
+      throw new ConflictException('already agreed');
     }
+
+    const agreement = this.repository.create({ ...createAgreementDto, user });
 
     return this.repository.save(agreement);
   }

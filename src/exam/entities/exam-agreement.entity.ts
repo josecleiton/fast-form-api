@@ -1,5 +1,12 @@
 import { FFEntity } from '../../core/entities/ff.entity';
-import { Column, Entity, Generated, ManyToMany, ManyToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Generated,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+} from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { Exam } from './exam.entity';
 import { Grade } from 'src/auxiliary/entities/grade.entity';
@@ -17,6 +24,13 @@ export class ExamAgreement extends FFEntity {
   @Column({ type: 'text', nullable: true })
   observation?: string;
 
+  @Column({
+    type: 'enum',
+    enum: ExamAgreementStatus,
+    default: ExamAgreementStatus.STARTED,
+  })
+  status: ExamAgreementStatus;
+
   @Column({ type: 'int' })
   userId: number;
 
@@ -28,16 +42,6 @@ export class ExamAgreement extends FFEntity {
 
   @ManyToOne(() => Exam)
   exam: Exam;
-
-  @ManyToMany(() => Grade)
-  grades: Grade[];
-
-  @Column({
-    type: 'enum',
-    enum: ExamAgreementStatus,
-    default: ExamAgreementStatus.STARTED,
-  })
-  status: ExamAgreementStatus;
 
   hasFinishedExam(): boolean {
     return this.status === ExamAgreementStatus.FINISHED;

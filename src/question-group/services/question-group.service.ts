@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { In } from 'typeorm';
+
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { ExamService } from 'src/exam/services/exam.service';
-import { In } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CopyQuestionGroupDto } from '../dtos/copy-question-group.dto';
 import { CreateQuestionGroupDto } from '../dtos/create-question-group.dto';
@@ -13,8 +14,6 @@ import { questionGroupNotFound } from '../question-group.constants';
 import { QuestionService } from './question.service';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
 import { last } from 'src/core/utils/last.util';
-import { createAliasResolver } from '@casl/ability';
-import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 import { FindPersonalDto } from '../dtos/find-personal.dto';
 import { PersonalQuestionGroup } from '../providers/personal-group.provider';
 import { Student } from 'src/auxiliary/entities/student.entity';
@@ -146,23 +145,20 @@ export class QuestionGroupService {
     ).sort((a, b) => a.position - b.position);
   }
 
-  async findPersonal(
-    findPersonalDto: FindPersonalDto,
-  ): Promise<QuestionGroup[]> {
-    const exam = await this.examService.findOne(findPersonalDto.examId);
+  async findPersonal({
+    examId,
+    user,
+  }: FindPersonalDto): Promise<QuestionGroup[]> {
+    const exam = await this.examService.findOne(examId);
 
     const result = await this.repository.find({
       where: { exam, class: false },
       relations: QuestionGroupService.relations,
     });
 
-    if (
-      findPersonalDto.user instanceof Student ||
-      findPersonalDto.user instanceof Professor
-    ) {
-      result.concat(
-        await this.personalGroup.getPersonal(findPersonalDto.user, exam),
-      );
+    if (user instanceof Student || user instanceof Professor) {
+      const personalGroups = await this.personalGroup.getPersonal(user, exam);
+      result.push(...personalGroups);
     }
 
     return result;

@@ -54,4 +54,12 @@ export class Exam extends FFEntity {
   sortItems() {
     this.groups = this.groups?.sort((a, b) => a.position - b.position) ?? [];
   }
+
+  get start(): Date {
+    return this.startedAt;
+  }
+
+  get end(): Date {
+    return this.endedAt;
+  }
 }

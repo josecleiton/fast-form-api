@@ -20,6 +20,7 @@ export class GradeRepository extends BaseRepository<Grade> {
     }
 
     query
+      .innerJoinAndSelect('grade.subject', 'subject')
       .where('grade.periodId = :periodId', { periodId: period.id })
       .andWhere('user.id = :userId', { userId: user.id });
 

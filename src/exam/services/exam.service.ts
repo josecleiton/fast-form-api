@@ -4,7 +4,6 @@ import { PeriodService } from 'src/auxiliary/services/period.service';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamDto } from '../dtos/create-exam.dto';
-import { ExamTargetManagerDto } from '../dtos/exam-target-manager.dto';
 import { UpdateExamDto } from '../dtos/update-exam.dto';
 import { Exam } from '../entities/exam.entity';
 import { EXAM_NOT_FOUND } from '../exam.constants';
@@ -41,7 +40,7 @@ export class ExamService {
   @Transactional()
   async create(createExamDto: CreateExamDto): Promise<Exam> {
     const exam = await this.newExam(createExamDto);
-    exam.period = await this.periodService.getLastPeriod();
+    exam.period = await this.periodService.getPeriodByInterval(exam);
 
     return this.repository.save(exam);
   }
