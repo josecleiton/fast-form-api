@@ -78,6 +78,14 @@
                             <li>
                                 <a href="#findAll">findAll</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getLastPeriod">getLastPeriod</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getPeriodByInterval">getPeriodByInterval</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -101,7 +109,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/auxiliary/services/period.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/auxiliary/services/period.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -166,8 +174,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/auxiliary/services/period.service.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/auxiliary/services/period.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -183,14 +191,127 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLastPeriod"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getLastPeriod
+                        </b>
+                        <a href="#getLastPeriod"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getLastPeriod()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/auxiliary/services/period.service.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Period.html" target="_self" >Promise&lt;Period&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPeriodByInterval"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            getPeriodByInterval
+                        </b>
+                        <a href="#getPeriodByInterval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getPeriodByInterval(undefined: Interval)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/auxiliary/services/period.service.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                            <code>Interval</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Period.html" target="_self" >Promise&lt;Period&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { LessThan, LessThanOrEqual, MoreThanOrEqual } from &#x27;typeorm&#x27;;
 import { Period } from &#x27;../entities/period.entity&#x27;;
 import { PeriodRepository } from &#x27;../repositories/period.repository&#x27;;
 
@@ -203,6 +324,45 @@ export class PeriodService {
 
   findAll(): Promise&lt;Period[]&gt; {
     return this.periodRepository.find();
+  }
+
+  // bool _rangeOverlapping(
+  //   Duration startA,
+  //   Duration endA,
+  //   Duration startB,
+  //   Duration endB,
+  // ) {
+  //   return (startA &lt; endB) &amp;&amp; (endA &gt;&#x3D; startB);
+  // }
+
+  async getLastPeriod(): Promise&lt;Period&gt; {
+    const period &#x3D; await this.periodRepository.findOne({
+      where: {
+        startedAt: MoreThanOrEqual(new Date()),
+        endedAt: LessThanOrEqual(new Date()),
+      },
+    });
+
+    if (!period) {
+      throw new NotFoundException(&#x27;period not found for given date&#x27;);
+    }
+
+    return period;
+  }
+
+  async getPeriodByInterval({ start, end }: Interval): Promise&lt;Period&gt; {
+    const period &#x3D; await this.periodRepository.findOne({
+      where: {
+        startedAt: LessThan(end),
+        endedAt: MoreThanOrEqual(start),
+      },
+    });
+
+    if (!period) {
+      throw new NotFoundException(&#x27;period not found for given date&#x27;);
+    }
+
+    return period;
   }
 }
 </code></pre>

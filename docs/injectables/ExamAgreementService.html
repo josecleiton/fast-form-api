@@ -116,7 +116,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/exam/services/exam-agreement.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/exam/services/exam-agreement.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -193,8 +193,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:65</a></div>
                 </td>
             </tr>
 
@@ -284,8 +284,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -368,8 +368,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:77</a></div>
                 </td>
             </tr>
 
@@ -445,8 +445,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:70</a></div>
                 </td>
             </tr>
 
@@ -524,8 +524,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:50</a></div>
                 </td>
             </tr>
 
@@ -591,6 +591,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ConflictException,
   forwardRef,
   Inject,
   Injectable,
@@ -625,14 +626,14 @@ export class ExamAgreementService {
     user: ExamAgreementUser,
   ): Promise&lt;ExamAgreement&gt; {
     const exam &#x3D; await this.examService.findOne(createAgreementDto.examId);
-    const agreement &#x3D; this.repository.create(createAgreementDto);
-
-    if (user instanceof Professor || user instanceof Student) {
-      const grades &#x3D; await user.grades;
-      agreement.grades &#x3D; grades.filter(
-        (grade) &#x3D;&gt; grade.periodId &#x3D;&#x3D;&#x3D; exam.periodId,
-      );
+    const alreadyAgreed &#x3D; await this.repository.findOne({
+      where: { exam, user },
+    });
+    if (alreadyAgreed) {
+      throw new ConflictException(&#x27;already agreed&#x27;);
     }
+
+    const agreement &#x3D; this.repository.create({ ...createAgreementDto, user });
 
     return this.repository.save(agreement);
   }

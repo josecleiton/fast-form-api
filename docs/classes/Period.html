@@ -460,10 +460,10 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FFEntity } from &#x27;src/core/entities/ff.entity&#x27;;
 import { Exam } from &#x27;src/exam/entities/exam.entity&#x27;;
-import { Column, Entity, OneToMany } from &#x27;typeorm&#x27;;
-import { Grade } from &#x27;./grade.entity&#x27;;
+import { Column, Entity, Index, OneToMany } from &#x27;typeorm&#x27;;
 
 @Entity(&#x27;period&#x27;)
+@Index(&#x27;IX_period_started_at_ended_at&#x27;, [&#x27;startedAt&#x27;, &#x27;endedAt&#x27;])
 export class Period extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, nullable: true })
   name?: string;

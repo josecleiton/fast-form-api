@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>ExamRepository</li>
+  <li>GradeIndex1624560625346</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,23 +60,37 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/repositories/exam.repository.ts</code>
+            <code>src/database/migrations/1624560625346-GradeIndex.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code>BaseRepository</code>
-            </p>
 
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>MigrationInterface</code>
+            </p>
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#name">name</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -87,8 +101,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#findByUser">findByUser</a>
+                                <a href="#down">down</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#up">up</a>
                             </li>
                         </ul>
                     </td>
@@ -103,6 +123,44 @@
 </section>
 
 
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name">
+                            <b>
+                            name</b>
+                            <a href="#name"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;GradeIndex1624560625346&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/database/migrations/1624560625346-GradeIndex.ts:4</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -113,46 +171,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findByUser"></a>
+                    <a name="down"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                            findByUser
+                            down
                         </b>
-                        <a href="#findByUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByUser(undefined: <a href="../interfaces/FindExamByUserDto.html">FindExamByUserDto</a>)</code>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/exam/repositories/exam.repository.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/database/migrations/1624560625346-GradeIndex.ts:10</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>SELECT DISTINCT exam.*
-FROM exam
-LEFT JOIN exam_targets_exam_target et
-  ON exam.id = et.exam_id
-INNER JOIN exam_target target
-  on et.exam_target_id = target.id AND target.type IN :targets
-WHERE
-  (exam.id NOT IN :ids)
-  (exam.status = &quot;ACTIVE&quot;) AND
-  (exam.created_at BETWEEN :start AND :end) AND
-  (exam.deleted_at IS NULL)</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -166,8 +213,9 @@ WHERE
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>queryRunner</td>
                                     <td>
-                                                <code><a href="../interfaces/FindExamByUserDto.html" target="_self" >FindExamByUserDto</a></code>
+                                            <code>QueryRunner</code>
                                     </td>
 
                                     <td>
@@ -182,7 +230,80 @@ WHERE
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >Promise&lt;Exam[]&gt;</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="up"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            up
+                        </b>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>up(queryRunner: QueryRunner)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="6"
+                            class="link-to-prism">src/database/migrations/1624560625346-GradeIndex.ts:6</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>queryRunner</td>
+                                    <td>
+                                            <code>QueryRunner</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -202,55 +323,19 @@ WHERE
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository } from &#x27;typeorm&#x27;;
-import { BaseRepository } from &#x27;typeorm-transactional-cls-hooked&#x27;;
-import { FindExamByUserDto } from &#x27;../dtos/find-exam-by-user.dto&#x27;;
-import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
-import { Exam } from &#x27;../entities/exam.entity&#x27;;
-import { ExamStatus } from &#x27;../enums/exam-status.enum&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {MigrationInterface, QueryRunner} from &quot;typeorm&quot;;
 
-@EntityRepository(Exam)
-export class ExamRepository extends BaseRepository&lt;Exam&gt; {
-  /**
-   * SELECT DISTINCT exam.*
-   * FROM exam
-   * LEFT JOIN exam_targets_exam_target et
-   *  ON exam.id &#x3D; et.exam_id
-   * INNER JOIN exam_target target
-   *  on et.exam_target_id &#x3D; target.id AND target.type IN :targets
-   * WHERE
-   *  (exam.id NOT IN :ids)
-   *  (exam.status &#x3D; &quot;ACTIVE&quot;) AND
-   *  (exam.created_at BETWEEN :start AND :end) AND
-   *  (exam.deleted_at IS NULL)
-   */
-  async findByUser({
-    ignoreExams,
-    targets,
-    user,
-  }: FindExamByUserDto): Promise&lt;Exam[]&gt; {
-    const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
+export class GradeIndex1624560625346 implements MigrationInterface {
+    name &#x3D; &#x27;GradeIndex1624560625346&#x27;
 
-    query
-      .distinct(true)
-      .leftJoin(&#x27;exam_targets_exam_target&#x27;, &#x27;et&#x27;, &#x27;exam.id &#x3D; et.exam_id&#x27;)
-      .leftJoin(
-        ExamTarget,
-        &#x27;target&#x27;,
-        &#x27;et.exam_target_id &#x3D; target.id AND target.type IN (:...targets)&#x27;,
-        { targets },
-      )
-      .where(&#x27;exam.status &#x3D; :status&#x27;, { status: ExamStatus.ACTIVE });
-
-    if (ignoreExams.length) {
-      query.andWhere(&#x27;exam.id NOT IN (:...ids)&#x27;, {
-        ids: ignoreExams.map((el) &#x3D;&gt; el.id),
-      });
+    public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+        await queryRunner.query(&quot;CREATE INDEX &#x60;IX_question_group_class_examId&#x60; ON &#x60;question_group&#x60; (&#x60;class&#x60;, &#x60;exam_id&#x60;)&quot;);
     }
-    // .andWhere(&#x27;exam.created_at BETWEEN :start AND :end&#x27;, {start})
 
-    return query.getMany();
-  }
+    public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+        await queryRunner.query(&quot;DROP INDEX &#x60;IX_question_group_class_examId&#x60; ON &#x60;question_group&#x60;&quot;);
+    }
+
 }
 </code></pre>
     </div>
@@ -280,7 +365,7 @@ export class ExamRepository extends BaseRepository&lt;Exam&gt; {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamRepository.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'GradeIndex1624560625346.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

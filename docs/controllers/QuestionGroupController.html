@@ -801,13 +801,13 @@ export class QuestionGroupController {
   async create(
     @Body() createQuestionGroupDto: CreateQuestionGroupDto,
   ): Promise&lt;QuestionGroup&gt; {
-    return await this.questionGroupService.create(createQuestionGroupDto);
+    return this.questionGroupService.create(createQuestionGroupDto);
   }
 
   @Get()
   @ApiOkResponse({ type: [QuestionGroup] })
   async findAll(): Promise&lt;QuestionGroup[]&gt; {
-    return await this.questionGroupService.findAll();
+    return this.questionGroupService.findAll();
   }
 
   @Get(&#x27;me/:examId&#x27;)
@@ -816,14 +816,14 @@ export class QuestionGroupController {
     @Param(&#x27;examId&#x27;, ParseIntPipe) examId: number,
     @GetUser() user: User,
   ): Promise&lt;QuestionGroup[]&gt; {
-    return await this.questionGroupService.findPersonal({ examId, user });
+    return this.questionGroupService.findPersonal({ examId, user });
   }
 
   @Get(&#x27;:id&#x27;)
   @ApiOkResponse({ type: QuestionGroup })
   @ApiNotFoundResponse()
   async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;QuestionGroup&gt; {
-    return await this.questionGroupService.findOne(id);
+    return this.questionGroupService.findOne(id);
   }
 
   @Put(&#x27;:id&#x27;)
@@ -833,7 +833,7 @@ export class QuestionGroupController {
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateQuestionGroupDto: UpdateQuestionGroupDto,
   ): Promise&lt;QuestionGroup&gt; {
-    return await this.questionGroupService.update(id, updateQuestionGroupDto);
+    return this.questionGroupService.update(id, updateQuestionGroupDto);
   }
 
   @Put()
@@ -842,7 +842,7 @@ export class QuestionGroupController {
   async copy(
     @Body() copyQuestionGroupDto: CopyQuestionGroupDto,
   ): Promise&lt;QuestionGroup&gt; {
-    return await this.questionGroupService.copy(copyQuestionGroupDto);
+    return this.questionGroupService.copy(copyQuestionGroupDto);
   }
 
   @Patch()
@@ -850,14 +850,14 @@ export class QuestionGroupController {
   async reorder(
     @Body() reorderQuestionGroupDto: ReorderQuestionGroupDto,
   ): Promise&lt;QuestionGroup[]&gt; {
-    return await this.questionGroupService.reorder(reorderQuestionGroupDto);
+    return this.questionGroupService.reorder(reorderQuestionGroupDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   @ApiOkResponse()
   @ApiNotFoundResponse()
   async remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;void&gt; {
-    return await this.questionGroupService.remove(id);
+    return this.questionGroupService.remove(id);
   }
 }
 </code></pre>

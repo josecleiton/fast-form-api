@@ -163,6 +163,23 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#start">start</a>
+                                </li>
+                                <li>
+                                    <a href="#end">end</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -412,7 +429,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @Column({type: &#x27;int&#x27;, nullable: true})<br />
+                                @Column({type: &#x27;int&#x27;})<br />
                             </code>
                         </td>
                     </tr>
@@ -930,6 +947,55 @@
 
 
 
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="start"></a>
+                        <span class="name"><b>start</b><a href="#start"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>start()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/exam/entities/exam.entity.ts:58</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="end"></a>
+                        <span class="name"><b>end</b><a href="#end"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>end()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/exam/entities/exam.entity.ts:62</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
     </div>
 
 
@@ -970,7 +1036,7 @@ export class Exam extends FFEntity {
   @Column({ type: &#x27;enum&#x27;, enum: ExamStatus })
   status: ExamStatus;
 
-  @Column({ type: &#x27;int&#x27;, nullable: true })
+  @Column({ type: &#x27;int&#x27; })
   periodId: number;
 
   @ManyToMany(() &#x3D;&gt; ExamTarget)
@@ -989,6 +1055,14 @@ export class Exam extends FFEntity {
   @AfterLoad()
   sortItems() {
     this.groups &#x3D; this.groups?.sort((a, b) &#x3D;&gt; a.position - b.position) ?? [];
+  }
+
+  get start(): Date {
+    return this.startedAt;
+  }
+
+  get end(): Date {
+    return this.endedAt;
   }
 }
 </code></pre>

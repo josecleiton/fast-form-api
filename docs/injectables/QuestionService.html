@@ -1097,7 +1097,7 @@ export class QuestionService {
     group: QuestionGroup,
     questions: Question[],
   ): Promise&lt;Question[]&gt; {
-    return await this.repository.save(
+    return this.repository.save(
       questions.map((question) &#x3D;&gt;
         this.repository.create({ ...question, group, id: undefined }),
       ),
@@ -1117,7 +1117,7 @@ export class QuestionService {
       questionIds.map((id, position) &#x3D;&gt; [id, position]),
     );
 
-    return await this.repository.save(
+    return this.repository.save(
       questions.map((question) &#x3D;&gt; {
         question.position &#x3D; questionPositionMap.get(question.id) ?? 0;
         return question;

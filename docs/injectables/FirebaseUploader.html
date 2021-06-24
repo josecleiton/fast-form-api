@@ -252,7 +252,7 @@ export class FirebaseUploader implements UploaderService {
   constructor(private readonly storageService: FirebaseStorageService) {}
 
   async upload(fileDto: FileSendDto, path &#x3D; &#x27;&#x27;): Promise&lt;string&gt; {
-    return await this.storageService.upload(
+    return this.storageService.upload(
       &#x60;${path}/${randomBytes(32).toString(&#x27;hex&#x27;)}&#x60;,
       fileDto.buffer,
       fileDto.mimetype,

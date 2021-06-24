@@ -222,6 +222,7 @@ export class GradeRepository extends BaseRepository&lt;Grade&gt; {
     }
 
     query
+      .innerJoinAndSelect(&#x27;grade.subject&#x27;, &#x27;subject&#x27;)
       .where(&#x27;grade.periodId &#x3D; :periodId&#x27;, { periodId: period.id })
       .andWhere(&#x27;user.id &#x3D; :userId&#x27;, { userId: user.id });
 

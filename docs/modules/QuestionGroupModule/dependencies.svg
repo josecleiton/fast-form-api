@@ -28,13 +28,13 @@
 <title>cluster_QuestionGroupModule_providers</title>
 <polygon fill="none" stroke="black" points="264,-78 264,-130 647,-130 647,-78 264,-78"/>
 </g>
-<g id="clust3" class="cluster">
-<title>cluster_QuestionGroupModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 256,-130 256,-78 16,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_QuestionGroupModule_exports</title>
 <polygon fill="none" stroke="black" points="205,-208 205,-260 333,-260 333,-208 205,-208"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_QuestionGroupModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 256,-130 256,-78 16,-78"/>
 </g>
 <!-- AuxiliaryModule -->
 <g id="node1" class="node">

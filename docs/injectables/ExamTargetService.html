@@ -92,6 +92,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#getTargetMap">getTargetMap</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#getTargets">getTargets</a>
                             </li>
@@ -111,20 +114,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#targetMap">targetMap</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -195,6 +184,45 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTargetMap"></a>
+                    <span class="name">
+                        <b>
+                            getTargetMap
+                        </b>
+                        <a href="#getTargetMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTargetMap()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/exam/services/exam-target.service.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >Promise&lt;ReadonlyMap&lt;ExamTargetType, ExamTarget&gt;&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -385,33 +413,6 @@
         </table>
 </section>
 
-            <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="targetMap"></a>
-                        <span class="name"><b>targetMap</b><a href="#targetMap"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>targetMap()</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/exam/services/exam-target.service.ts:30</a></div>
-                                </td>
-                            </tr>
-
-            </tbody>
-        </table>
-</section>
     </div>
 
 
@@ -445,7 +446,7 @@ export class ExamTargetService {
     );
   }
 
-  get targetMap(): Promise&lt;ReadonlyMap&lt;ExamTargetType, ExamTarget&gt;&gt; {
+  getTargetMap(): Promise&lt;ReadonlyMap&lt;ExamTargetType, ExamTarget&gt;&gt; {
     return new Promise((resolve, reject) &#x3D;&gt; {
       if (!this._targetMap) {
         return this.loadTargetMap()
@@ -458,7 +459,7 @@ export class ExamTargetService {
   }
 
   async getTargets(): Promise&lt;ExamTargetType[]&gt; {
-    const map &#x3D; await this.targetMap;
+    const map &#x3D; await this.getTargetMap();
 
     return Array.from(map.values()).map((target) &#x3D;&gt; target.type);
   }

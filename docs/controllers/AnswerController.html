@@ -424,7 +424,7 @@ export class AnswerController {
     @Body(new ParseArrayPipe({ items: CreateAnswerDto }))
     createAnswerDtos: CreateAnswerDto[],
   ) {
-    return await this.answerService.createBatch(createAnswerDtos, {
+    return this.answerService.createBatch(createAnswerDtos, {
       userId: user.id,
       examId,
     });
@@ -435,12 +435,12 @@ export class AnswerController {
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateAnswerDto: UpdateAnswerDto,
   ): Promise&lt;Answer&gt; {
-    return await this.answerService.update(id, updateAnswerDto);
+    return this.answerService.update(id, updateAnswerDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   async remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
-    return await this.answerService.remove(id);
+    return this.answerService.remove(id);
   }
 }
 </code></pre>

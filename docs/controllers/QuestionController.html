@@ -327,8 +327,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:51</a></div>
                 </td>
             </tr>
 
@@ -406,8 +406,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:58</a></div>
                 </td>
             </tr>
 
@@ -485,8 +485,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:83</a></div>
                 </td>
             </tr>
 
@@ -564,8 +564,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:74</a></div>
                 </td>
             </tr>
 
@@ -643,8 +643,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/question-group/controllers/question.controller.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/question-group/controllers/question.controller.ts:65</a></div>
                 </td>
             </tr>
 
@@ -743,7 +743,7 @@ export class QuestionController {
   async createQuestion(
     @Body() createQuestionDto: CreateQuestionDto,
   ): Promise&lt;Question&gt; {
-    return await this.questionService.createQuestion(createQuestionDto);
+    return this.questionService.createQuestion(createQuestionDto);
   }
 
   @Post(&#x27;:groupId&#x27;)
@@ -752,23 +752,20 @@ export class QuestionController {
     @Param(&#x27;groupId&#x27;, ParseIntPipe) groupId: number,
     @Body() createQuestionsDto: CreateQuestionsDto,
   ): Promise&lt;Question[]&gt; {
-    return await this.questionService.createQuestions(
-      groupId,
-      createQuestionsDto,
-    );
+    return this.questionService.createQuestions(groupId, createQuestionsDto);
   }
 
   @Get()
   @ApiOkResponse({ type: [Question] })
   async find(@Query() findDto: QuestionFindDto) {
-    return await this.questionService.find(findDto);
+    return this.questionService.find(findDto);
   }
 
   @Get(&#x27;:id&#x27;)
   @ApiOkResponse({ type: Question })
   @ApiNotFoundResponse()
   async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;Question&gt; {
-    return await this.questionService.findOne(id);
+    return this.questionService.findOne(id);
   }
 
   @Put(&#x27;:id&#x27;)
@@ -778,7 +775,7 @@ export class QuestionController {
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateQuestionDto: UpdateQuestionDto,
   ): Promise&lt;Question&gt; {
-    return await this.questionService.update(id, updateQuestionDto);
+    return this.questionService.update(id, updateQuestionDto);
   }
 
   @Patch()
@@ -786,14 +783,14 @@ export class QuestionController {
   async reorder(
     @Body() reorderQuesitonDto: ReorderQuestionDto,
   ): Promise&lt;Question[]&gt; {
-    return await this.questionService.reorder(reorderQuesitonDto);
+    return this.questionService.reorder(reorderQuesitonDto);
   }
 
   @Delete(&#x27;:id&#x27;)
   @ApiOkResponse()
   @ApiNotFoundResponse()
   async remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number): Promise&lt;void&gt; {
-    return await this.questionService.remove(id);
+    return this.questionService.remove(id);
   }
 }
 </code></pre>

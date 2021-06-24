@@ -24,13 +24,13 @@
 <title>cluster_CoreModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="94,-70 94,-268 402,-268 402,-70 94,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_CoreModule_providers</title>
-<polygon fill="none" stroke="black" points="155,-78 155,-130 341,-130 341,-78 155,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_CoreModule_exports</title>
 <polygon fill="none" stroke="black" points="102,-208 102,-260 394,-260 394,-208 102,-208"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_CoreModule_providers</title>
+<polygon fill="none" stroke="black" points="155,-78 155,-130 341,-130 341,-78 155,-78"/>
 </g>
 <!-- HttpExceptionFilter  -->
 <g id="node1" class="node">
