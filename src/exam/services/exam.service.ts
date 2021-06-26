@@ -15,7 +15,7 @@ import { ExamTargetService } from './exam-target.service';
 
 @Injectable()
 export class ExamService {
-  private static readonly relations = ['groups', 'period', 'agreements'];
+  private static readonly relations = ['groups', 'period', 'agreements', 'targets'];
 
   constructor(
     @InjectRepository(ExamRepository)
