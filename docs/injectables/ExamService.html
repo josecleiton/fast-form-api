@@ -143,7 +143,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/exam/services/exam.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/exam/services/exam.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -253,8 +253,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/exam/services/exam.service.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/exam/services/exam.service.ts:46</a></div>
                 </td>
             </tr>
 
@@ -323,8 +323,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/exam/services/exam.service.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/exam/services/exam.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -364,8 +364,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/exam/services/exam.service.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/exam/services/exam.service.ts:57</a></div>
                 </td>
             </tr>
 
@@ -443,8 +443,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/exam/services/exam.service.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/exam/services/exam.service.ts:69</a></div>
                 </td>
             </tr>
 
@@ -516,8 +516,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/exam/services/exam.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/exam/services/exam.service.ts:33</a></div>
                 </td>
             </tr>
 
@@ -595,8 +595,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/exam/services/exam.service.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/exam/services/exam.service.ts:92</a></div>
                 </td>
             </tr>
 
@@ -674,8 +674,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/exam/services/exam.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/exam/services/exam.service.ts:83</a></div>
                 </td>
             </tr>
 
@@ -763,7 +763,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>[&#x27;groups&#x27;, &#x27;period&#x27;, &#x27;agreements&#x27;]</code>
+                            <i>Default value : </i><code>[
+    &#x27;groups&#x27;,
+    &#x27;period&#x27;,
+    &#x27;agreements&#x27;,
+    &#x27;targets&#x27;,
+  ]</code>
                         </td>
                     </tr>
                         <tr>
@@ -798,7 +803,12 @@ import { ExamTargetService } from &#x27;./exam-target.service&#x27;;
 
 @Injectable()
 export class ExamService {
-  private static readonly relations &#x3D; [&#x27;groups&#x27;, &#x27;period&#x27;, &#x27;agreements&#x27;];
+  private static readonly relations &#x3D; [
+    &#x27;groups&#x27;,
+    &#x27;period&#x27;,
+    &#x27;agreements&#x27;,
+    &#x27;targets&#x27;,
+  ];
 
   constructor(
     @InjectRepository(ExamRepository)
@@ -845,15 +855,12 @@ export class ExamService {
 
   @Transactional()
   async findPersonal(user: ExamUser): Promise&lt;ExamPersonalResult&gt; {
-    const alreadyAgreed &#x3D; (await this.agreementService.getByUser(user)).map(
-      (agree) &#x3D;&gt; agree.exam,
-    );
+    const alreadyAgreed &#x3D; await this.repository.findByUser(user);
 
     const targets &#x3D; this.targetService.getTargetsForUser(user.type);
 
-    const canAgree &#x3D; await this.repository.findByUser({
+    const canAgree &#x3D; await this.repository.findByTargets({
       ignoreExams: alreadyAgreed,
-      user,
       targets,
     });
 

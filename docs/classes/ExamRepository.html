@@ -88,7 +88,15 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#findByTargets">findByTargets</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findByUser">findByUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#loadRelations">loadRelations</a>
                             </li>
                         </ul>
                     </td>
@@ -113,28 +121,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findByUser"></a>
+                    <a name="findByTargets"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Async</span>
-                            findByUser
+                            findByTargets
                         </b>
-                        <a href="#findByUser"><span class="icon ion-ios-link"></span></a>
+                        <a href="#findByTargets"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByUser(undefined: <a href="../interfaces/FindExamByUserDto.html">FindExamByUserDto</a>)</code>
+                    <code>findByTargets(undefined: <a href="../interfaces/FindExamByUserDto.html">FindExamByUserDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/exam/repositories/exam.repository.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/exam/repositories/exam.repository.ts:25</a></div>
                 </td>
             </tr>
 
@@ -192,6 +200,150 @@ WHERE
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findByUser"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            findByUser
+                        </b>
+                        <a href="#findByUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findByUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/exam/repositories/exam.repository.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >Promise&lt;Exam[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadRelations"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            loadRelations
+                        </b>
+                        <a href="#loadRelations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadRelations(query: <a href="../classes/Exam.html">SelectQueryBuilder<Exam></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/exam/repositories/exam.repository.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>query</td>
+                                    <td>
+                                                <code><a href="../classes/Exam.html" target="_self" >SelectQueryBuilder&lt;Exam&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >SelectQueryBuilder&lt;Exam&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 
@@ -202,12 +354,14 @@ WHERE
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository } from &#x27;typeorm&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository, SelectQueryBuilder } from &#x27;typeorm&#x27;;
 import { BaseRepository } from &#x27;typeorm-transactional-cls-hooked&#x27;;
+import { SelectQuery } from &#x27;typeorm/query-builder/SelectQuery&#x27;;
 import { FindExamByUserDto } from &#x27;../dtos/find-exam-by-user.dto&#x27;;
 import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
 import { Exam } from &#x27;../entities/exam.entity&#x27;;
 import { ExamStatus } from &#x27;../enums/exam-status.enum&#x27;;
+import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 
 @EntityRepository(Exam)
 export class ExamRepository extends BaseRepository&lt;Exam&gt; {
@@ -224,10 +378,9 @@ export class ExamRepository extends BaseRepository&lt;Exam&gt; {
    *  (exam.created_at BETWEEN :start AND :end) AND
    *  (exam.deleted_at IS NULL)
    */
-  async findByUser({
+  async findByTargets({
     ignoreExams,
     targets,
-    user,
   }: FindExamByUserDto): Promise&lt;Exam[]&gt; {
     const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
 
@@ -249,7 +402,25 @@ export class ExamRepository extends BaseRepository&lt;Exam&gt; {
     }
     // .andWhere(&#x27;exam.created_at BETWEEN :start AND :end&#x27;, {start})
 
-    return query.getMany();
+    return this.loadRelations(query).getMany();
+  }
+
+  async findByUser(user: ExamUser): Promise&lt;Exam[]&gt; {
+    const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
+
+    query
+      .innerJoinAndSelect(&#x27;exam.agreements&#x27;, &#x27;agreement&#x27;)
+      .where(&#x27;agreement.userId &#x3D; :userId&#x27;, { userId: user.id });
+
+    return this.loadRelations(query).getMany();
+  }
+
+  private loadRelations(
+    query: SelectQueryBuilder&lt;Exam&gt;,
+  ): SelectQueryBuilder&lt;Exam&gt; {
+    return query
+      .innerJoinAndSelect(&#x27;exam.period&#x27;, &#x27;exam_period&#x27;)
+      .leftJoinAndSelect(&#x27;exam.targets&#x27;, &#x27;exam_target&#x27;);
   }
 }
 </code></pre>
