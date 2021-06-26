@@ -38,11 +38,15 @@ export class ExamAgreementService {
     const alreadyAgreed = await this.repository.findOne({
       where: { exam, user },
     });
+
     if (alreadyAgreed) {
       throw new ConflictException('already agreed');
     }
 
-    const agreement = this.repository.create({ ...createAgreementDto, user });
+    const agreement = this.repository.create({
+      ...createAgreementDto,
+      userId: user.id,
+    });
 
     return this.repository.save(agreement);
   }
