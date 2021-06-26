@@ -67,15 +67,13 @@ export class UserService {
     return user;
   }
 
-  async findSpecializedUser(userDto: UserDto): Promise<User | undefined> {
+  async findSpecializedUser(userDto: UserDto): Promise<User> {
     const partialUser:
       | UserResult
       | undefined = await this.userRepository.findOne({
       select: ['type', 'id'],
       where: { ...userDto },
     });
-
-    console.log(partialUser);
 
     if (!partialUser) {
       throw new UnauthorizedException(userDto);
@@ -94,7 +92,7 @@ export class UserService {
         user = await this.userRepository.findOne({ ...userDto });
     }
 
-    return user;
+    return user!;
   }
 
   async mustFindSpecializedUser(userDto: UserDto): Promise<User> {
