@@ -1,15 +1,7 @@
 import { FFEntity } from '../../core/entities/ff.entity';
-import {
-  Column,
-  Entity,
-  Generated,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-} from 'typeorm';
+import { Column, Entity, Generated, ManyToOne } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { Exam } from './exam.entity';
-import { Grade } from 'src/auxiliary/entities/grade.entity';
 import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
 
 @Entity('exam_agreement')
