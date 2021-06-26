@@ -3,7 +3,7 @@ version: "3.3"
 services:
   db:
     container_name: ff-db
-    image: mysql
+    image: mysql:8.0.25
     expose:
       - "${DB_PORT}"
     volumes:
@@ -18,7 +18,7 @@ services:
 
   db-view:
     container_name: ff-db-admin
-    image: phpmyadmin
+    image: phpmyadmin:5.1.1-fpm-alpine
     restart: unless-stopped
     ports:
       - 8081:80
