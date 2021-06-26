@@ -415,7 +415,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User | undefined&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -519,8 +519,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">src/user/user.service.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/user/user.service.ts:98</a></div>
                 </td>
             </tr>
 
@@ -714,15 +714,13 @@ export class UserService {
     return user;
   }
 
-  async findSpecializedUser(userDto: UserDto): Promise&lt;User | undefined&gt; {
+  async findSpecializedUser(userDto: UserDto): Promise&lt;User&gt; {
     const partialUser:
       | UserResult
       | undefined &#x3D; await this.userRepository.findOne({
       select: [&#x27;type&#x27;, &#x27;id&#x27;],
       where: { ...userDto },
     });
-
-    console.log(partialUser);
 
     if (!partialUser) {
       throw new UnauthorizedException(userDto);
@@ -741,7 +739,7 @@ export class UserService {
         user &#x3D; await this.userRepository.findOne({ ...userDto });
     }
 
-    return user;
+    return user!;
   }
 
   async mustFindSpecializedUser(userDto: UserDto): Promise&lt;User&gt; {
