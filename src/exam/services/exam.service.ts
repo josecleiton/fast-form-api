@@ -15,7 +15,12 @@ import { ExamTargetService } from './exam-target.service';
 
 @Injectable()
 export class ExamService {
-  private static readonly relations = ['groups', 'period', 'agreements', 'targets'];
+  private static readonly relations = [
+    'groups',
+    'period',
+    'agreements',
+    'targets',
+  ];
 
   constructor(
     @InjectRepository(ExamRepository)
@@ -62,15 +67,12 @@ export class ExamService {
 
   @Transactional()
   async findPersonal(user: ExamUser): Promise<ExamPersonalResult> {
-    const alreadyAgreed = (await this.agreementService.getByUser(user)).map(
-      (agree) => agree.exam,
-    );
+    const alreadyAgreed = await this.repository.findByUser(user);
 
     const targets = this.targetService.getTargetsForUser(user.type);
 
-    const canAgree = await this.repository.findByUser({
+    const canAgree = await this.repository.findByTargets({
       ignoreExams: alreadyAgreed,
-      user,
       targets,
     });
 

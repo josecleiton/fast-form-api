@@ -1,9 +1,11 @@
-import { EntityRepository } from 'typeorm';
+import { EntityRepository, SelectQueryBuilder } from 'typeorm';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
+import { SelectQuery } from 'typeorm/query-builder/SelectQuery';
 import { FindExamByUserDto } from '../dtos/find-exam-by-user.dto';
 import { ExamTarget } from '../entities/exam-target.entity';
 import { Exam } from '../entities/exam.entity';
 import { ExamStatus } from '../enums/exam-status.enum';
+import { ExamUser } from '../interfaces/exam-user.interface';
 
 @EntityRepository(Exam)
 export class ExamRepository extends BaseRepository<Exam> {
@@ -20,10 +22,9 @@ export class ExamRepository extends BaseRepository<Exam> {
    *  (exam.created_at BETWEEN :start AND :end) AND
    *  (exam.deleted_at IS NULL)
    */
-  async findByUser({
+  async findByTargets({
     ignoreExams,
     targets,
-    user,
   }: FindExamByUserDto): Promise<Exam[]> {
     const query = this.createQueryBuilder('exam');
 
@@ -45,6 +46,24 @@ export class ExamRepository extends BaseRepository<Exam> {
     }
     // .andWhere('exam.created_at BETWEEN :start AND :end', {start})
 
-    return query.getMany();
+    return this.loadRelations(query).getMany();
+  }
+
+  async findByUser(user: ExamUser): Promise<Exam[]> {
+    const query = this.createQueryBuilder('exam');
+
+    query
+      .innerJoinAndSelect('exam.agreements', 'agreement')
+      .where('agreement.userId = :userId', { userId: user.id });
+
+    return this.loadRelations(query).getMany();
+  }
+
+  private loadRelations(
+    query: SelectQueryBuilder<Exam>,
+  ): SelectQueryBuilder<Exam> {
+    return query
+      .innerJoinAndSelect('exam.period', 'exam_period')
+      .leftJoinAndSelect('exam.targets', 'exam_target');
   }
 }
