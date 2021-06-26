@@ -5,6 +5,7 @@ import { GradeService } from 'src/auxiliary/services/grade.service';
 import { Exam } from 'src/exam/entities/exam.entity';
 import { QuestionGroupGrade } from '../entities/question-group-grade.entity';
 import { QuestionGroup } from '../entities/question-group.entity';
+import { questionGroupRelations } from '../question.constants';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
 
 export class PersonalQuestionGroup {
@@ -28,6 +29,7 @@ export class PersonalQuestionGroup {
 
     const groupGrades = await this.repository.find({
       where: { class: true, exam },
+      relations: questionGroupRelations,
     });
 
     return groupGrades

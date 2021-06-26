@@ -18,6 +18,7 @@ import { FindPersonalDto } from '../dtos/find-personal.dto';
 import { PersonalQuestionGroup } from '../providers/personal-group.provider';
 import { Student } from 'src/auxiliary/entities/student.entity';
 import { Professor } from 'src/auxiliary/entities/professor.entity';
+import { questionGroupRelations } from '../question.constants';
 
 @Injectable()
 export class QuestionGroupService {
@@ -28,8 +29,6 @@ export class QuestionGroupService {
     private readonly questionService: QuestionService,
     private readonly personalGroup: PersonalQuestionGroup,
   ) {}
-
-  private static readonly relations = ['questions'];
 
   private async setExamAndPosition(
     questionGroup: QuestionGroup,
@@ -56,13 +55,13 @@ export class QuestionGroupService {
   }
 
   findAll(): Promise<QuestionGroup[]> {
-    return this.repository.find({ relations: QuestionGroupService.relations });
+    return this.repository.find({ relations: questionGroupRelations});
   }
 
   async findOne(id: number): Promise<QuestionGroup> {
     const questionGroup = await this.repository.findOne({
       where: { id },
-      relations: QuestionGroupService.relations,
+      relations: questionGroupRelations,
     });
 
     if (!questionGroup) {
@@ -153,7 +152,7 @@ export class QuestionGroupService {
 
     const result = await this.repository.find({
       where: { exam, class: false },
-      relations: QuestionGroupService.relations,
+      relations: questionGroupRelations,
     });
 
     if (user instanceof Student || user instanceof Professor) {
