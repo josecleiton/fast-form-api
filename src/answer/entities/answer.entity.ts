@@ -1,6 +1,7 @@
 import { ExamAgreement } from 'src/exam/entities/exam-agreement.entity';
 import { Question } from 'src/question-group/entities/question.entity';
 import {
+  Check,
   Column,
   Entity,
   ManyToOne,
@@ -12,8 +13,9 @@ import { AnswerType } from '../enums/answer-type.enum';
 
 @Entity('answer')
 @TableInheritance({ column: { type: 'enum', name: 'type', enum: AnswerType } })
+@Check(`"score" IS NULL OR "score" BETWEEN 1 AND 5`)
 export class Answer extends FFEntity {
-  @Column({ type: 'int', nullable: true })
+  @Column({ type: 'tinyint', nullable: true })
   score?: number;
 
   @Column({ type: 'enum', enum: AnswerType })
