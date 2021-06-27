@@ -14,6 +14,7 @@ import { CoreModule } from './core/core.module';
 import { AuxiliaryModule } from './auxiliary/auxiliary.module';
 import { InfraModule } from './infra/infra.module';
 import { AppController } from './controllers/app.controller';
+import { ExportationModule } from './exportation/exportation.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { AppController } from './controllers/app.controller';
     AnswerModule,
     AuxiliaryModule,
     InfraModule,
+    ExportationModule,
   ],
   controllers: [AppController],
 })
