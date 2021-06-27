@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -36,13 +36,9 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>ExamRepository</li>
+  <li>Injectables</li>
+  <li>ExportationService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,16 +56,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/repositories/exam.repository.ts</code>
+            <code>src/exportation/exportation.service.ts</code>
         </p>
 
-
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code>BaseRepository</code>
-            </p>
 
 
 
@@ -87,16 +76,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
                                     <span class="modifier">Async</span>
-                                <a href="#findByTargets">findByTargets</a>
+                                <a href="#createCsv">createCsv</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#findByUser">findByUser</a>
+                                <a href="#exportToCsv">exportToCsv</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#loadRelations">loadRelations</a>
+                                <a href="#getFileName">getFileName</a>
                             </li>
                         </ul>
                     </td>
@@ -110,7 +100,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(repository: <a href="../classes/ExportationRepository.html">ExportationRepository</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/exportation/exportation.service.ts:10</a></div>
+                            </td>
+                        </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>repository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/ExportationRepository.html" target="_self" >ExportationRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -121,183 +158,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findByTargets"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            findByTargets
-                        </b>
-                        <a href="#findByTargets"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByTargets(undefined: <a href="../interfaces/FindExamByUserDto.html">FindExamByUserDto</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/exam/repositories/exam.repository.ts:25</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>SELECT DISTINCT exam.*
-FROM exam
-LEFT JOIN exam_targets_exam_target et
-  ON exam.id = et.exam_id
-INNER JOIN exam_target target
-  on et.exam_target_id = target.id AND target.type IN :targets
-WHERE
-  (exam.id NOT IN :ids)
-  (exam.status = &quot;ACTIVE&quot;) AND
-  (exam.created_at BETWEEN :start AND :end) AND
-  (exam.deleted_at IS NULL)</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                                <code><a href="../interfaces/FindExamByUserDto.html" target="_self" >FindExamByUserDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >Promise&lt;Exam[]&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="findByUser"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Async</span>
-                            findByUser
-                        </b>
-                        <a href="#findByUser"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByUser(user: <a href="../interfaces/ExamUser.html">ExamUser</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/exam/repositories/exam.repository.ts:55</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>user</td>
-                                    <td>
-                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >Promise&lt;Exam[]&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="loadRelations"></a>
+                    <a name="createCsv"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Private</span>
-                            loadRelations
+                            <span class="modifier">Async</span>
+                            createCsv
                         </b>
-                        <a href="#loadRelations"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createCsv"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>loadRelations(query: <a href="../classes/Exam.html">SelectQueryBuilder<Exam></a>)</code>
+                    <code>createCsv(csvLines: <a href="../interfaces/CsvLine.html">Array<CsvLine></a>, exportationType: <a href="../undefineds/ExportationType.html">ExportationType</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">src/exam/repositories/exam.repository.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/exportation/exportation.service.ts:22</a></div>
                 </td>
             </tr>
 
@@ -317,9 +200,21 @@ WHERE
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>query</td>
+                                    <td>csvLines</td>
                                     <td>
-                                                <code><a href="../classes/Exam.html" target="_self" >SelectQueryBuilder&lt;Exam&gt;</a></code>
+                                                <code><a href="../interfaces/CsvLine.html" target="_self" >Array&lt;CsvLine&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>exportationType</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/enumerations.html#ExportationType" target="_self" >ExportationType</a></code>
                                     </td>
 
                                     <td>
@@ -334,7 +229,151 @@ WHERE
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Exam.html" target="_self" >SelectQueryBuilder&lt;Exam&gt;</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;String&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportToCsv"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            exportToCsv
+                        </b>
+                        <a href="#exportToCsv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportToCsv(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/exportation/exportation.service.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>examId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFileName"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            getFileName
+                        </b>
+                        <a href="#getFileName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getFileName(exportationType: <a href="../undefineds/ExportationType.html">ExportationType</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/exportation/exportation.service.ts:16</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>exportationType</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/enumerations.html#ExportationType" target="_self" >ExportationType</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
 
                     </div>
                     <div class="io-description">
@@ -346,97 +385,59 @@ WHERE
     </table>
 </section>
 
-
-
-
-
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EntityRepository, SelectQueryBuilder } from &#x27;typeorm&#x27;;
-import { BaseRepository } from &#x27;typeorm-transactional-cls-hooked&#x27;;
-import { FindExamByUserDto } from &#x27;../dtos/find-exam-by-user.dto&#x27;;
-import { ExamTarget } from &#x27;../entities/exam-target.entity&#x27;;
-import { Exam } from &#x27;../entities/exam.entity&#x27;;
-import { ExamAgreementStatus } from &#x27;../enums/exam-agreement-status.enum&#x27;;
-import { ExamStatus } from &#x27;../enums/exam-status.enum&#x27;;
-import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
+import * as csvBuilder from &#x27;objects-to-csv&#x27;;
 
-@EntityRepository(Exam)
-export class ExamRepository extends BaseRepository&lt;Exam&gt; {
-  /**
-   * SELECT DISTINCT exam.*
-   * FROM exam
-   * LEFT JOIN exam_targets_exam_target et
-   *  ON exam.id &#x3D; et.exam_id
-   * INNER JOIN exam_target target
-   *  on et.exam_target_id &#x3D; target.id AND target.type IN :targets
-   * WHERE
-   *  (exam.id NOT IN :ids)
-   *  (exam.status &#x3D; &quot;ACTIVE&quot;) AND
-   *  (exam.created_at BETWEEN :start AND :end) AND
-   *  (exam.deleted_at IS NULL)
-   */
-  async findByTargets({
-    ignoreExams,
-    targets,
-  }: FindExamByUserDto): Promise&lt;Exam[]&gt; {
-    const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
+import { ExportationRepository } from &#x27;./exportation.repository&#x27;;
 
-    query
-      .distinct(true)
-      .leftJoin(&#x27;exam_targets_exam_target&#x27;, &#x27;et&#x27;, &#x27;exam.id &#x3D; et.exam_id&#x27;)
-      .leftJoin(
-        ExamTarget,
-        &#x27;target&#x27;,
-        &#x27;et.exam_target_id &#x3D; target.id AND target.type IN (:...targets)&#x27;,
-        { targets },
-      )
-      .where(&#x27;exam.status &#x3D; :status&#x27;, { status: ExamStatus.ACTIVE })
-      .andWhere(&#x27;:date BETWEEN exam.startedAt AND exam.endedAt&#x27;, {
-        date: new Date(),
-      });
+import { ExportationType } from &#x27;./enums/exportation-type.enum&#x27;
+import { CsvLine } from &#x27;./interfaces/csv-line.interface&#x27;;
 
-    if (ignoreExams.length) {
-      query.andWhere(&#x27;exam.id NOT IN (:...ids)&#x27;, {
-        ids: ignoreExams.map((el) &#x3D;&gt; el.id),
-      });
-    }
-    // .andWhere(&#x27;exam.created_at BETWEEN :start AND :end&#x27;, {start})
+@Injectable()
+export class ExportationService {
 
-    return this.loadRelations(query).getMany();
+  constructor(
+    private readonly repository: ExportationRepository,
+  ) {}
+
+  private getFileName(exportationType: ExportationType): String {
+    const fileDate &#x3D; new Date().toLocaleDateString(&#x27;pt-BR&#x27;).replace(/\//g, &quot;-&quot;);
+    const filePrefix &#x3D; process.env.EXPORTED_FILE_PREFIX || &#x27;exportation&#x27;;
+    return &#x60;${exportationType}_${filePrefix}_${fileDate}.csv&#x60;;
   }
 
-  async findByUser(user: ExamUser): Promise&lt;Exam[]&gt; {
-    const query &#x3D; this.createQueryBuilder(&#x27;exam&#x27;);
+  private async createCsv(csvLines: Array&lt;CsvLine&gt;, exportationType: ExportationType): Promise&lt;String&gt; {
+    if (!csvLines.length) {
+      throw new NotFoundException(&#x27;Nothing to export&#x27;);
+    };
+    
+    const fileName &#x3D; this.getFileName(exportationType);
+    const builder &#x3D; await new csvBuilder(csvLines);
+ 
+    await builder.toDisk(fileName, {
+      allColumns: true
+    });
 
-    query
-      .innerJoinAndSelect(&#x27;exam.agreements&#x27;, &#x27;agreement&#x27;)
-      .where(&#x27;agreement.userId &#x3D; :userId&#x27;, { userId: user.id })
-      .andWhere(
-        &#x27;(agreement.status &#x3D; :answered OR (agreement.status &#x3D; :defaultAgreementStatus AND :date BETWEEN exam.startedAt AND exam.endedAt))&#x27;,
-        {
-          answered: ExamAgreementStatus.FINISHED,
-          defaultAgreementStatus: ExamAgreementStatus.STARTED,
-          date: new Date(),
-        },
-      );
-
-    return this.loadRelations(query).getMany();
+    return fileName; 
   }
 
-  private loadRelations(
-    query: SelectQueryBuilder&lt;Exam&gt;,
-  ): SelectQueryBuilder&lt;Exam&gt; {
-    return query
-      .innerJoinAndSelect(&#x27;exam.period&#x27;, &#x27;exam_period&#x27;)
-      .leftJoinAndSelect(&#x27;exam.targets&#x27;, &#x27;exam_target&#x27;);
+  async exportToCsv(examId: number) { 
+    const csvLines: Array&lt;CsvLine&gt; &#x3D; await this.repository.getCsvLines(examId)
+    return this.createCsv(csvLines, ExportationType.AVALIACAO);
   }
-}
-</code></pre>
+
+}</code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -461,8 +462,8 @@ export class ExamRepository extends BaseRepository&lt;Exam&gt; {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamRepository.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ExportationService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

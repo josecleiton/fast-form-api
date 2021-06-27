@@ -24,83 +24,83 @@
 <title>cluster_QuestionGroupModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 655,-268 655,-70 8,-70"/>
 </g>
+<g id="clust3" class="cluster">
+<title>cluster_QuestionGroupModule_imports</title>
+<polygon fill="none" stroke="black" points="407,-78 407,-130 647,-130 647,-78 407,-78"/>
+</g>
 <g id="clust6" class="cluster">
 <title>cluster_QuestionGroupModule_providers</title>
-<polygon fill="none" stroke="black" points="264,-78 264,-130 647,-130 647,-78 264,-78"/>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 399,-130 399,-78 16,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_QuestionGroupModule_exports</title>
-<polygon fill="none" stroke="black" points="205,-208 205,-260 333,-260 333,-208 205,-208"/>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_QuestionGroupModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 256,-130 256,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="312,-208 312,-260 440,-260 440,-208 312,-208"/>
 </g>
 <!-- AuxiliaryModule -->
 <g id="node1" class="node">
 <title>AuxiliaryModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="247.7,-122 244.7,-126 223.7,-126 220.7,-122 134.3,-122 134.3,-86 247.7,-86 247.7,-122"/>
-<text text-anchor="middle" x="191" y="-99.8" font-family="Times,serif" font-size="14.00">AuxiliaryModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="638.7,-122 635.7,-126 614.7,-126 611.7,-122 525.3,-122 525.3,-86 638.7,-86 638.7,-122"/>
+<text text-anchor="middle" x="582" y="-99.8" font-family="Times,serif" font-size="14.00">AuxiliaryModule</text>
 </g>
 <!-- QuestionGroupModule -->
 <g id="node3" class="node">
 <title>QuestionGroupModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="341.86,-187 338.86,-191 317.86,-191 314.86,-187 196.14,-187 196.14,-151 341.86,-151 341.86,-187"/>
-<text text-anchor="middle" x="269" y="-164.8" font-family="Times,serif" font-size="14.00">QuestionGroupModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="448.86,-187 445.86,-191 424.86,-191 421.86,-187 303.14,-187 303.14,-151 448.86,-151 448.86,-187"/>
+<text text-anchor="middle" x="376" y="-164.8" font-family="Times,serif" font-size="14.00">QuestionGroupModule</text>
 </g>
 <!-- AuxiliaryModule&#45;&gt;QuestionGroupModule -->
 <g id="edge1" class="edge">
 <title>AuxiliaryModule&#45;&gt;QuestionGroupModule</title>
-<path fill="none" stroke="black" d="M221.83,-122.11C221.83,-122.11 221.83,-140.99 221.83,-140.99"/>
-<polygon fill="black" stroke="black" points="218.33,-140.99 221.83,-150.99 225.33,-140.99 218.33,-140.99"/>
+<path fill="none" stroke="black" d="M582,-122.11C582,-141.34 582,-169 582,-169 582,-169 458.92,-169 458.92,-169"/>
+<polygon fill="black" stroke="black" points="458.92,-165.5 448.92,-169 458.92,-172.5 458.92,-165.5"/>
 </g>
 <!-- ExamModule -->
 <g id="node2" class="node">
 <title>ExamModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="116.21,-122 113.21,-126 92.21,-126 89.21,-122 23.79,-122 23.79,-86 116.21,-86 116.21,-122"/>
-<text text-anchor="middle" x="70" y="-99.8" font-family="Times,serif" font-size="14.00">ExamModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="507.21,-122 504.21,-126 483.21,-126 480.21,-122 414.79,-122 414.79,-86 507.21,-86 507.21,-122"/>
+<text text-anchor="middle" x="461" y="-99.8" font-family="Times,serif" font-size="14.00">ExamModule</text>
 </g>
 <!-- ExamModule&#45;&gt;QuestionGroupModule -->
 <g id="edge2" class="edge">
 <title>ExamModule&#45;&gt;QuestionGroupModule</title>
-<path fill="none" stroke="black" d="M70,-122.11C70,-141.34 70,-169 70,-169 70,-169 186.03,-169 186.03,-169"/>
-<polygon fill="black" stroke="black" points="186.03,-172.5 196.03,-169 186.03,-165.5 186.03,-172.5"/>
+<path fill="none" stroke="black" d="M431.91,-122.11C431.91,-122.11 431.91,-140.99 431.91,-140.99"/>
+<polygon fill="black" stroke="black" points="428.41,-140.99 431.91,-150.99 435.41,-140.99 428.41,-140.99"/>
 </g>
 <!-- QuestionService  -->
 <g id="node4" class="node">
 <title>QuestionService </title>
-<polygon fill="#fb8072" stroke="black" points="325.02,-252 212.98,-252 212.98,-216 325.02,-216 325.02,-252"/>
-<text text-anchor="middle" x="269" y="-229.8" font-family="Times,serif" font-size="14.00">QuestionService </text>
+<polygon fill="#fb8072" stroke="black" points="432.02,-252 319.98,-252 319.98,-216 432.02,-216 432.02,-252"/>
+<text text-anchor="middle" x="376" y="-229.8" font-family="Times,serif" font-size="14.00">QuestionService </text>
 </g>
 <!-- QuestionGroupModule&#45;&gt;QuestionService  -->
 <g id="edge3" class="edge">
 <title>QuestionGroupModule&#45;&gt;QuestionService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M269,-187.11C269,-187.11 269,-205.99 269,-205.99"/>
-<polygon fill="black" stroke="black" points="265.5,-205.99 269,-215.99 272.5,-205.99 265.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M376,-187.11C376,-187.11 376,-205.99 376,-205.99"/>
+<polygon fill="black" stroke="black" points="372.5,-205.99 376,-215.99 379.5,-205.99 372.5,-205.99"/>
 </g>
 <!-- QuestionGroupService -->
 <g id="node5" class="node">
 <title>QuestionGroupService</title>
-<ellipse fill="#fdb462" stroke="black" cx="539" cy="-104" rx="99.56" ry="18"/>
-<text text-anchor="middle" x="539" y="-99.8" font-family="Times,serif" font-size="14.00">QuestionGroupService</text>
+<ellipse fill="#fdb462" stroke="black" cx="291" cy="-104" rx="99.56" ry="18"/>
+<text text-anchor="middle" x="291" y="-99.8" font-family="Times,serif" font-size="14.00">QuestionGroupService</text>
 </g>
 <!-- QuestionGroupService&#45;&gt;QuestionGroupModule -->
 <g id="edge4" class="edge">
 <title>QuestionGroupService&#45;&gt;QuestionGroupModule</title>
-<path fill="none" stroke="black" d="M539,-122.11C539,-141.34 539,-169 539,-169 539,-169 352.07,-169 352.07,-169"/>
-<polygon fill="black" stroke="black" points="352.07,-165.5 342.07,-169 352.07,-172.5 352.07,-165.5"/>
+<path fill="none" stroke="black" d="M346.8,-119.08C346.8,-119.08 346.8,-140.76 346.8,-140.76"/>
+<polygon fill="black" stroke="black" points="343.3,-140.76 346.8,-150.76 350.3,-140.76 343.3,-140.76"/>
 </g>
 <!-- QuestionService -->
 <g id="node6" class="node">
 <title>QuestionService</title>
-<ellipse fill="#fdb462" stroke="black" cx="347" cy="-104" rx="74.72" ry="18"/>
-<text text-anchor="middle" x="347" y="-99.8" font-family="Times,serif" font-size="14.00">QuestionService</text>
+<ellipse fill="#fdb462" stroke="black" cx="99" cy="-104" rx="74.72" ry="18"/>
+<text text-anchor="middle" x="99" y="-99.8" font-family="Times,serif" font-size="14.00">QuestionService</text>
 </g>
 <!-- QuestionService&#45;&gt;QuestionGroupModule -->
 <g id="edge5" class="edge">
 <title>QuestionService&#45;&gt;QuestionGroupModule</title>
-<path fill="none" stroke="black" d="M307.04,-119.4C307.04,-119.4 307.04,-140.94 307.04,-140.94"/>
-<polygon fill="black" stroke="black" points="303.54,-140.94 307.04,-150.94 310.54,-140.94 303.54,-140.94"/>
+<path fill="none" stroke="black" d="M99,-122.11C99,-141.34 99,-169 99,-169 99,-169 292.86,-169 292.86,-169"/>
+<polygon fill="black" stroke="black" points="292.86,-172.5 302.86,-169 292.86,-165.5 292.86,-172.5"/>
 </g>
 </g>
 </svg>
