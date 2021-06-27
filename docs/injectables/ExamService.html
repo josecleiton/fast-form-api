@@ -143,7 +143,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/exam/services/exam.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/exam/services/exam.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -241,8 +241,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/exam/services/exam.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/exam/services/exam.service.ts:46</a></div>
                 </td>
             </tr>
 
@@ -311,8 +311,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/exam/services/exam.service.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/exam/services/exam.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -352,8 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/exam/services/exam.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/exam/services/exam.service.ts:57</a></div>
                 </td>
             </tr>
 
@@ -431,8 +431,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/exam/services/exam.service.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/exam/services/exam.service.ts:69</a></div>
                 </td>
             </tr>
 
@@ -504,8 +504,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exam/services/exam.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/exam/services/exam.service.ts:33</a></div>
                 </td>
             </tr>
 
@@ -583,8 +583,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/exam/services/exam.service.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/exam/services/exam.service.ts:97</a></div>
                 </td>
             </tr>
 
@@ -662,8 +662,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/exam/services/exam.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/exam/services/exam.service.ts:88</a></div>
                 </td>
             </tr>
 
@@ -761,7 +761,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/exam/services/exam.service.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/exam/services/exam.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -776,12 +776,14 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { groupBy, first } from &#x27;lodash&#x27;;
 import { PeriodService } from &#x27;src/auxiliary/services/period.service&#x27;;
 import { SoftDeleteResult } from &#x27;src/core/interfaces/soft-delete-result.interface&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamDto } from &#x27;../dtos/create-exam.dto&#x27;;
 import { UpdateExamDto } from &#x27;../dtos/update-exam.dto&#x27;;
 import { Exam } from &#x27;../entities/exam.entity&#x27;;
+import { ExamAgreementStatus } from &#x27;../enums/exam-agreement-status.enum&#x27;;
 import { EXAM_NOT_FOUND } from &#x27;../exam.constants&#x27;;
 import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamPersonalResult } from &#x27;../models/exam-personal-result.model&#x27;;
@@ -841,16 +843,21 @@ export class ExamService {
 
   @Transactional()
   async findPersonal(user: ExamUser): Promise&lt;ExamPersonalResult&gt; {
-    const alreadyAgreed &#x3D; await this.repository.findByUser(user);
+    const agreed &#x3D; await this.repository.findByUser(user);
 
     const targets &#x3D; this.targetService.getTargetsForUser(user.type);
 
     const canAgree &#x3D; await this.repository.findByTargets({
-      ignoreExams: alreadyAgreed,
+      ignoreExams: agreed,
       targets,
     });
 
-    return { alreadyAgreed, canAgree };
+    const {
+      [ExamAgreementStatus.STARTED]: alreadyAgreed &#x3D; [],
+      [ExamAgreementStatus.FINISHED]: answered &#x3D; [],
+    } &#x3D; groupBy(agreed, (exam) &#x3D;&gt; first(exam.agreements)?.status);
+
+    return { alreadyAgreed, answered, canAgree };
   }
 
   @Transactional()
