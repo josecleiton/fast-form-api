@@ -132,7 +132,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/question-group/dtos/create-questions.dto.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/question-group/dtos/create-questions.dto.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -151,18 +151,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty, OmitType, PickType } from &#x27;@nestjs/swagger&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { OmitType } from &#x27;@nestjs/swagger&#x27;;
 import { Type } from &#x27;class-transformer&#x27;;
 import {
   ArrayMinSize,
   IsArray,
-  IsBoolean,
   IsDefined,
-  IsNotEmpty,
   IsOptional,
   IsPositive,
-  IsString,
-  IsUrl,
   ValidateNested,
 } from &#x27;class-validator&#x27;;
 import { CreateQuestionDto } from &#x27;./create-question.dto&#x27;;
@@ -170,7 +166,7 @@ import { CreateQuestionDto } from &#x27;./create-question.dto&#x27;;
 class CreateQuestion extends OmitType(CreateQuestionDto, [&#x27;groupId&#x27;]) {
   @IsOptional()
   @IsPositive()
-  id?: number
+  id?: number;
 }
 
 export class CreateQuestionsDto {

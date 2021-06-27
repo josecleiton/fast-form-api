@@ -222,14 +222,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;:id&#x27;)<br /></code>
+                    <code>@Put(&#x27;:id&#x27;)<br />@ApiOkResponse({type: ExamAgreement})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -301,7 +301,7 @@
   Put,
   UseGuards,
 } from &#x27;@nestjs/common&#x27;;
-import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
 import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
@@ -322,21 +322,16 @@ export class ExamAgreementController {
     @Body() createAgreementDto: CreateExamAgreementDto,
     @GetUser() user: ExamAgreementUser,
   ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.createAgreement(
-      createAgreementDto,
-      user,
-    );
+    return this.examAgreementService.createAgreement(createAgreementDto, user);
   }
 
   @Put(&#x27;:id&#x27;)
+  @ApiOkResponse({ type: ExamAgreement })
   async updateAgreemment(
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.updateAgreement(
-      id,
-      updateAgreementDto,
-    );
+    return this.examAgreementService.updateAgreement(id, updateAgreementDto);
   }
 }
 </code></pre>

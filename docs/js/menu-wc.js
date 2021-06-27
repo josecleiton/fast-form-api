@@ -445,6 +445,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/AnswerRepository.html" data-type="entity-link">AnswerRepository</a>
                             </li>
                             <li class="link">
+                                <a href="classes/AnswerScoreCheck1624750140568.html" data-type="entity-link">AnswerScoreCheck1624750140568</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/Auth.html" data-type="entity-link">Auth</a>
                             </li>
                             <li class="link">

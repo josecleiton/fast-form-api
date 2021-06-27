@@ -209,7 +209,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @IsOptional()<br />@Min(0)<br />@Max(5)<br />
+                                @IsOptional()<br />@Min(1)<br />@Max(5)<br />
                             </code>
                         </td>
                     </tr>
@@ -287,7 +287,7 @@ import { AnswerType } from &#x27;../enums/answer-type.enum&#x27;;
 
 export class CreateAnswerDto {
   @IsOptional()
-  @Min(0)
+  @Min(1)
   @Max(5)
   score?: number;
 

@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>PersonalQuestionGroup</li>
+  <li>AnswerScoreCheck1624750140568</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,17 +60,37 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/question-group/providers/personal-group.provider.ts</code>
+            <code>src/database/migrations/1624750140569-AnswerScoreCheck.ts</code>
         </p>
 
 
 
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>MigrationInterface</code>
+            </p>
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#name">name</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -81,8 +101,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
-                                <a href="#getPersonal">getPersonal</a>
+                                <a href="#down">down</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#up">up</a>
                             </li>
                         </ul>
                     </td>
@@ -96,67 +122,45 @@
     </table>
 </section>
 
+
             <section>
-    <h3 id="constructor">Constructor</h3>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/QuestionGroupRepository.html">QuestionGroupRepository</a>, gradeService: <a href="../injectables/GradeService.html">GradeService</a>)</code>
+                        <a name="name"></a>
+                        <span class="name">
+                            <b>
+                            name</b>
+                            <a href="#name"><span class="icon ion-ios-link"></span></a>
+                        </span>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;AnswerScoreCheck1624750140568&#x27;</code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/question-group/providers/personal-group.provider.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/database/migrations/1624750140569-AnswerScoreCheck.ts:4</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>repository</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../classes/QuestionGroupRepository.html" target="_self" >QuestionGroupRepository</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>gradeService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/GradeService.html" target="_self" >GradeService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
+
             </tbody>
         </table>
 </section>
-
 
             <section>
     
@@ -167,28 +171,29 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getPersonal"></a>
+                    <a name="down"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Public</span>
                             <span class="modifier">Async</span>
-                            getPersonal
+                            down
                         </b>
-                        <a href="#getPersonal"><span class="icon ion-ios-link"></span></a>
+                        <a href="#down"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getPersonal(user: Student | Professor, exam: <a href="../classes/Exam.html">Exam</a>)</code>
+                    <code>down(queryRunner: QueryRunner)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/question-group/providers/personal-group.provider.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/database/migrations/1624750140569-AnswerScoreCheck.ts:13</a></div>
                 </td>
             </tr>
 
@@ -208,21 +213,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>user</td>
+                                    <td>queryRunner</td>
                                     <td>
-                                            <code>Student | Professor</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>exam</td>
-                                    <td>
-                                                <code><a href="../classes/Exam.html" target="_self" >Exam</a></code>
+                                            <code>QueryRunner</code>
                                     </td>
 
                                     <td>
@@ -237,7 +230,80 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;QuestionGroup[]&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="up"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                            up
+                        </b>
+                        <a href="#up"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>up(queryRunner: QueryRunner)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="6"
+                            class="link-to-prism">src/database/migrations/1624750140569-AnswerScoreCheck.ts:6</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>queryRunner</td>
+                                    <td>
+                                            <code>QueryRunner</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -257,53 +323,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { Professor } from &#x27;src/auxiliary/entities/professor.entity&#x27;;
-import { Student } from &#x27;src/auxiliary/entities/student.entity&#x27;;
-import { GradeService } from &#x27;src/auxiliary/services/grade.service&#x27;;
-import { Exam } from &#x27;src/exam/entities/exam.entity&#x27;;
-import { QuestionGroupGrade } from &#x27;../entities/question-group-grade.entity&#x27;;
-import { QuestionGroup } from &#x27;../entities/question-group.entity&#x27;;
-import { questionGroupRelations } from &#x27;../question.constants&#x27;;
-import { QuestionGroupRepository } from &#x27;../repositories/question-group.repository&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { MigrationInterface, QueryRunner } from &#x27;typeorm&#x27;;
 
-export class PersonalQuestionGroup {
-  constructor(
-    @InjectRepository(QuestionGroupRepository)
-    private readonly repository: QuestionGroupRepository,
-    private readonly gradeService: GradeService,
-  ) {}
+export class AnswerScoreCheck1624750140568 implements MigrationInterface {
+  name &#x3D; &#x27;AnswerScoreCheck1624750140568&#x27;;
 
-  async getPersonal(
-    user: Student | Professor,
-    exam: Exam,
-  ): Promise&lt;QuestionGroup[]&gt; {
-    const grades &#x3D; await this.gradeService.findByUserAndPeriod(
-      user,
-      exam.period,
+  public async up(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;answer&#x60; DROP COLUMN &#x60;score&#x60;&#x27;);
+    await queryRunner.query(
+      &#x27;ALTER TABLE &#x60;answer&#x60; ADD &#x60;score&#x60; tinyint NULL CHECK (&#x60;score&#x60; IS NULL OR &#x60;score&#x60; BETWEEN 1 AND 5)&#x27;,
     );
-    if (!grades.length) {
-      return [];
-    }
+  }
 
-    const groupGrades &#x3D; await this.repository.find({
-      where: { class: true, exam },
-      relations: questionGroupRelations,
-    });
-
-    return groupGrades
-      .reduce(
-        (result, group) &#x3D;&gt; [
-          ...result,
-          ...grades.map((grade) &#x3D;&gt; {
-            const groupGrade &#x3D; Object.assign(new QuestionGroupGrade(), group);
-            groupGrade.grade &#x3D; grade;
-            return groupGrade;
-          }),
-        ],
-        new Array&lt;QuestionGroup&gt;(),
-      )
-      .sort((a, b) &#x3D;&gt; a.id - b.id);
+  public async down(queryRunner: QueryRunner): Promise&lt;void&gt; {
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;answer&#x60; DROP COLUMN &#x60;score&#x60;&#x27;);
+    await queryRunner.query(&#x27;ALTER TABLE &#x60;answer&#x60; ADD &#x60;score&#x60; int NULL&#x27;);
   }
 }
 </code></pre>
@@ -334,7 +368,7 @@ export class PersonalQuestionGroup {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'PersonalQuestionGroup.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AnswerScoreCheck1624750140568.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

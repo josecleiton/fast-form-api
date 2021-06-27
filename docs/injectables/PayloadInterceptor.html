@@ -111,7 +111,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>intercept(context: ExecutionContext, next: CallHandler)</code>
+<code>intercept(_: ExecutionContext, next: CallHandler)</code>
                 </td>
             </tr>
 
@@ -139,7 +139,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>context</td>
+                                    <td>_</td>
                                     <td>
                                             <code>ExecutionContext</code>
                                     </td>
@@ -195,7 +195,7 @@ import { map } from &#x27;rxjs/operators&#x27;;
 
 @Injectable()
 export class PayloadInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
+  intercept(_: ExecutionContext, next: CallHandler): Observable&lt;any&gt; {
     return next.handle().pipe(map((data) &#x3D;&gt; ({ data })));
   }
 }
