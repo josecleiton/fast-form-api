@@ -18,7 +18,7 @@ services:
 
   db-view:
     container_name: ff-db-admin
-    image: phpmyadmin:5.1.1-fpm-alpine
+    image: phpmyadmin
     restart: unless-stopped
     ports:
       - 8081:80
