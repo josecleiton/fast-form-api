@@ -1,4 +1,4 @@
-import { ChildEntity, JoinTable, ManyToMany } from 'typeorm';
+import { ChildEntity, ManyToMany } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Grade } from './grade.entity';
 

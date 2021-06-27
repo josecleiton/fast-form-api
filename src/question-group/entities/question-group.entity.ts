@@ -8,7 +8,6 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
-import { ExamTargetType } from '../../exam/enums/exam-target-type.enum';
 import { Question } from './question.entity';
 
 @Entity()

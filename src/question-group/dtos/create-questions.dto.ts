@@ -1,15 +1,11 @@
-import { ApiProperty, OmitType, PickType } from '@nestjs/swagger';
+import { OmitType } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import {
   ArrayMinSize,
   IsArray,
-  IsBoolean,
   IsDefined,
-  IsNotEmpty,
   IsOptional,
   IsPositive,
-  IsString,
-  IsUrl,
   ValidateNested,
 } from 'class-validator';
 import { CreateQuestionDto } from './create-question.dto';
@@ -17,7 +13,7 @@ import { CreateQuestionDto } from './create-question.dto';
 class CreateQuestion extends OmitType(CreateQuestionDto, ['groupId']) {
   @IsOptional()
   @IsPositive()
-  id?: number
+  id?: number;
 }
 
 export class CreateQuestionsDto {

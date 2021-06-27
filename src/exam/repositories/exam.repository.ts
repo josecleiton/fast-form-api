@@ -1,6 +1,5 @@
 import { EntityRepository, SelectQueryBuilder } from 'typeorm';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
-import { SelectQuery } from 'typeorm/query-builder/SelectQuery';
 import { FindExamByUserDto } from '../dtos/find-exam-by-user.dto';
 import { ExamTarget } from '../entities/exam-target.entity';
 import { Exam } from '../entities/exam.entity';

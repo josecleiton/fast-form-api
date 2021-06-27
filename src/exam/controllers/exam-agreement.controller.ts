@@ -7,7 +7,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
@@ -28,20 +28,15 @@ export class ExamAgreementController {
     @Body() createAgreementDto: CreateExamAgreementDto,
     @GetUser() user: ExamAgreementUser,
   ): Promise<ExamAgreement> {
-    return this.examAgreementService.createAgreement(
-      createAgreementDto,
-      user,
-    );
+    return this.examAgreementService.createAgreement(createAgreementDto, user);
   }
 
   @Put(':id')
+  @ApiOkResponse({ type: ExamAgreement })
   async updateAgreemment(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
-    return this.examAgreementService.updateAgreement(
-      id,
-      updateAgreementDto,
-    );
+    return this.examAgreementService.updateAgreement(id, updateAgreementDto);
   }
 }

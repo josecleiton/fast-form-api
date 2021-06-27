@@ -10,7 +10,6 @@ import { EXAM_NOT_FOUND } from '../exam.constants';
 import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamPersonalResult } from '../models/exam-personal-result.model';
 import { ExamRepository } from '../repositories/exam.repository';
-import { ExamAgreementService } from './exam-agreement.service';
 import { ExamTargetService } from './exam-target.service';
 
 @Injectable()
@@ -26,7 +25,6 @@ export class ExamService {
     @InjectRepository(ExamRepository)
     private readonly repository: ExamRepository,
     private readonly targetService: ExamTargetService,
-    private readonly agreementService: ExamAgreementService,
     private readonly periodService: PeriodService,
   ) {}
 

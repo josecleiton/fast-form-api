@@ -1,5 +1,5 @@
 import { FFEntity } from 'src/core/entities/ff.entity';
-import { Column, Entity, Unique } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { ExamTargetType } from '../enums/exam-target-type.enum';
 
 @Entity('exam_target')

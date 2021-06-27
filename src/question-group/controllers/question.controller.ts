@@ -20,7 +20,6 @@ import { ReorderQuestionDto } from '../dtos/reorder-question.dto';
 import { UpdateQuestionDto } from '../dtos/update-question.dto';
 import { Question } from '../entities/question.entity';
 import { QuestionService } from '../services/question.service';
-import { QuestionGroupService } from '../services/question-group.service';
 import { CreateQuestionsDto } from '../dtos/create-questions.dto';
 
 @Controller('question')

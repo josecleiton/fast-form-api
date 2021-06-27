@@ -1,13 +1,8 @@
-import {
-  ForbiddenException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModuleOptions } from '@nestjs/jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserType } from 'src/user/enum/user-type.enum';
 
 import { jwtConfigKey } from '../../config';
 

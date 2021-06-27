@@ -7,8 +7,6 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { Professor } from 'src/auxiliary/entities/professor.entity';
-import { Student } from 'src/auxiliary/entities/student.entity';
 import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
@@ -60,6 +58,10 @@ export class ExamAgreementService {
 
     if (!agreement) {
       throw new NotFoundException({ id });
+    }
+
+    if (agreement.status === ExamAgreementStatus.FINISHED) {
+      delete updateAgreementDto.anonymous;
     }
 
     agreement = this.repository.merge(agreement, updateAgreementDto);

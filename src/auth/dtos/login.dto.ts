@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Length } from 'class-validator';
+import { IsString, Length } from 'class-validator';
 import { PASSWORD_MAX, PASSWORD_MIN } from '../auth.constants';
 import { AuthDto } from './auth.dto';
 

@@ -1,13 +1,6 @@
 import { ExamAgreement } from 'src/exam/entities/exam-agreement.entity';
 import { Question } from 'src/question-group/entities/question.entity';
-import {
-  Check,
-  Column,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  TableInheritance,
-} from 'typeorm';
+import { Check, Column, Entity, ManyToOne, TableInheritance } from 'typeorm';
 import { FFEntity } from '../../core/entities/ff.entity';
 import { AnswerType } from '../enums/answer-type.enum';
 

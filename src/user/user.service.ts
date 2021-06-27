@@ -16,7 +16,6 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { User } from './entities/user.entity';
 import { UserType } from './enum/user-type.enum';
-import { createUser } from './helpers/create-user.helper';
 import { UserResult } from './interfaces/user-specialized-result.interface';
 import { UserRepository } from './repositories/user.repository';
 
