@@ -3,6 +3,7 @@ import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 import { FindExamByUserDto } from '../dtos/find-exam-by-user.dto';
 import { ExamTarget } from '../entities/exam-target.entity';
 import { Exam } from '../entities/exam.entity';
+import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
 import { ExamStatus } from '../enums/exam-status.enum';
 import { ExamUser } from '../interfaces/exam-user.interface';
 
@@ -36,7 +37,10 @@ export class ExamRepository extends BaseRepository<Exam> {
         'et.exam_target_id = target.id AND target.type IN (:...targets)',
         { targets },
       )
-      .where('exam.status = :status', { status: ExamStatus.ACTIVE });
+      .where('exam.status = :status', { status: ExamStatus.ACTIVE })
+      .andWhere(':date BETWEEN exam.startedAt AND exam.endedAt', {
+        date: new Date(),
+      });
 
     if (ignoreExams.length) {
       query.andWhere('exam.id NOT IN (:...ids)', {
@@ -53,7 +57,15 @@ export class ExamRepository extends BaseRepository<Exam> {
 
     query
       .innerJoinAndSelect('exam.agreements', 'agreement')
-      .where('agreement.userId = :userId', { userId: user.id });
+      .where('agreement.userId = :userId', { userId: user.id })
+      .andWhere(
+        '(agreement.status = :answered OR (agreement.status = :defaultAgreementStatus AND :date BETWEEN exam.startedAt AND exam.endedAt))',
+        {
+          answered: ExamAgreementStatus.FINISHED,
+          defaultAgreementStatus: ExamAgreementStatus.STARTED,
+          date: new Date(),
+        },
+      );
 
     return this.loadRelations(query).getMany();
   }
