@@ -9,5 +9,5 @@ export class CreateExamAgreementDto extends OmitType(ExamAgreementDto, [
   @IsOptional()
   @IsBoolean()
   @Type(() => Boolean)
-  anonymouns?: boolean;
+  anonymous?: boolean;
 }
