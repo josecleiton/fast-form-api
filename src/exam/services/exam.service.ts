@@ -1,11 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { groupBy, first } from 'lodash';
 import { PeriodService } from 'src/auxiliary/services/period.service';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamDto } from '../dtos/create-exam.dto';
 import { UpdateExamDto } from '../dtos/update-exam.dto';
 import { Exam } from '../entities/exam.entity';
+import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
 import { EXAM_NOT_FOUND } from '../exam.constants';
 import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamPersonalResult } from '../models/exam-personal-result.model';
@@ -65,16 +67,21 @@ export class ExamService {
 
   @Transactional()
   async findPersonal(user: ExamUser): Promise<ExamPersonalResult> {
-    const alreadyAgreed = await this.repository.findByUser(user);
+    const agreed = await this.repository.findByUser(user);
 
     const targets = this.targetService.getTargetsForUser(user.type);
 
     const canAgree = await this.repository.findByTargets({
-      ignoreExams: alreadyAgreed,
+      ignoreExams: agreed,
       targets,
     });
 
-    return { alreadyAgreed, canAgree };
+    const {
+      [ExamAgreementStatus.STARTED]: alreadyAgreed = [],
+      [ExamAgreementStatus.FINISHED]: answered = [],
+    } = groupBy(agreed, (exam) => first(exam.agreements)?.status);
+
+    return { alreadyAgreed, answered, canAgree };
   }
 
   @Transactional()
