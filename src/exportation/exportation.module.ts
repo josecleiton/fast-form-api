@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExportationController } from './exportation.controller';
 import { ExportationRepository } from './exportation.repository';
 import { ExportationService } from './exportation.service';
 
 @Module({
-  providers: [
-    ExportationService, 
-    ExportationRepository,
-  ],
+  imports: [TypeOrmModule.forFeature()],
+  providers: [ExportationService, ExportationRepository],
   exports: [ExportationService],
   controllers: [ExportationController],
 })

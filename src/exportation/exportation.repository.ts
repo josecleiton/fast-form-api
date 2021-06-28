@@ -1,11 +1,14 @@
 import { CsvLine } from './interfaces/csv-line.interface';
-import { getConnection } from 'typeorm';
+import { Connection } from 'typeorm';
+import { InjectConnection } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class ExportationRepository {
+  constructor(@InjectConnection() private readonly connection: Connection) {}
+
   async getCsvLines(examId: number): Promise<CsvLine[]> {
-    const connection = getConnection();
-    const queryRunner = connection.createQueryRunner();
-    await queryRunner.connect();
+    const queryRunner = this.connection.createQueryRunner();
 
     const csvLines = await queryRunner.query(
       `SELECT
