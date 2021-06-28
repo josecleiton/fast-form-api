@@ -270,13 +270,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ExportationModule.html" data-type="entity-link">ExportationModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' : 'data-target="#xs-controllers-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' }>
+                                            'data-target="#controllers-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' : 'data-target="#xs-controllers-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' :
-                                            'id="xs-controllers-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' :
+                                            'id="xs-controllers-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' }>
                                             <li class="link">
                                                 <a href="controllers/ExportationController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">ExportationController</a>
@@ -285,13 +285,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' : 'data-target="#xs-injectables-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' }>
+                                        'data-target="#injectables-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' : 'data-target="#xs-injectables-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' :
-                                        'id="xs-injectables-links-module-ExportationModule-5c304e048486f851045c9de2d1dac4ca"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' :
+                                        'id="xs-injectables-links-module-ExportationModule-a0022942d599fc48ddd5eb5d4d44ae0c"' }>
                                         <li class="link">
                                             <a href="injectables/ExportationRepository.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>ExportationRepository</a>

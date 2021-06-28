@@ -106,7 +106,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../injectables/ExportationRepository.html">ExportationRepository</a>, firebaseStorage: <a href="../injectables/FirebaseStorageService.html">FirebaseStorageService</a>)</code>
+<code>constructor(repository: <a href="../injectables/ExportationRepository.html">ExportationRepository</a>, uploadService: <a href="../classes/UploaderService.html">UploaderService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -141,10 +141,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>firebaseStorage</td>
+                                                        <td>uploadService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/FirebaseStorageService.html" target="_self" >FirebaseStorageService</a></code>
+                                                                        <code><a href="../classes/UploaderService.html" target="_self" >UploaderService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -396,13 +396,13 @@ import { ExportationRepository } from &#x27;./exportation.repository&#x27;;
 
 import { ExportationType } from &#x27;./enums/exportation-type.enum&#x27;;
 import { CsvLine } from &#x27;./interfaces/csv-line.interface&#x27;;
-import { FirebaseStorageService } from &#x27;src/firebase&#x27;;
+import { UploaderService } from &#x27;src/infra/services/uploader.service&#x27;;
 
 @Injectable()
 export class ExportationService {
   constructor(
     private readonly repository: ExportationRepository,
-    private readonly firebaseStorage: FirebaseStorageService,
+    private readonly uploadService: UploaderService,
   ) {}
 
   private getFileName(exportationType: ExportationType): string {
@@ -429,11 +429,17 @@ export class ExportationService {
     const fileName &#x3D; this.getFileName(ExportationType.AVALIACAO);
     const data &#x3D; await this.createCsv(csvLines);
 
-    return this.firebaseStorage.upload(&#x60;exports/${fileName}&#x60;, {
-      data,
-      contentType: &#x27;text/csv&#x27;,
-      publicFile: true,
-    });
+    return this.uploadService.upload(
+      {
+        buffer: data,
+        originalname: fileName,
+        mimetype: &#x27;text/csv&#x27;,
+        size: data.length,
+        encoding: &#x27;utf8&#x27;,
+        noRandomName: true,
+      },
+      &#x27;exports&#x27;,
+    );
   }
 }
 </code></pre>
