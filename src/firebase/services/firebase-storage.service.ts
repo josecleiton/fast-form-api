@@ -2,6 +2,7 @@ import firebase from 'firebase-admin';
 import { Injectable } from '@nestjs/common';
 
 import { FirebaseAdmin } from '../firebase-admin';
+import { FirebaseStorageUploadDto } from '../dtos/firebase-storage-upload.dto';
 
 @Injectable()
 export class FirebaseStorageService {
@@ -13,10 +14,7 @@ export class FirebaseStorageService {
 
   async upload(
     path: string,
-    data: Buffer,
-    contentType: string,
-    publicFile = false,
-    bucket?: string,
+    { data, contentType, publicFile, bucket }: FirebaseStorageUploadDto,
   ): Promise<string> {
     const file = this.storage.bucket(bucket).file(path);
     await file.save(data, {
