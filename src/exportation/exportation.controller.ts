@@ -11,7 +11,7 @@ import { ExportationService } from './exportation.service';
 
 @Controller('export')
 @ApiTags('Exportation')
-@UseGuards(JwtGuard)
+// @UseGuards(JwtGuard)
 @ApiBearerAuth()
 export class ExportationController {
   

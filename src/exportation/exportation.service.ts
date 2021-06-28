@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import csvBuilder from 'objects-to-csv';
+import * as csvBuilder from 'objects-to-csv';
 
 import { ExportationRepository } from './exportation.repository';
 
@@ -25,7 +25,7 @@ export class ExportationService {
     };
     
     const fileName = this.getFileName(exportationType);
-    const builder = await csvBuilder(csvLines);
+    const builder = await new csvBuilder(csvLines);
  
     await builder.toDisk(fileName, {
       allColumns: true
