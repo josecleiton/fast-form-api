@@ -638,6 +638,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/QuestionGroupGrade.html" data-type="entity-link">QuestionGroupGrade</a>
                             </li>
                             <li class="link">
+                                <a href="classes/QuestionGroupGradeRemove1624883202213.html" data-type="entity-link">QuestionGroupGradeRemove1624883202213</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/QuestionGroupRepository.html" data-type="entity-link">QuestionGroupRepository</a>
                             </li>
                             <li class="link">
