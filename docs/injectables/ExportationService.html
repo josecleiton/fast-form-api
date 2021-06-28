@@ -106,7 +106,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/ExportationRepository.html">ExportationRepository</a>, firebaseStorage: <a href="../injectables/FirebaseStorageService.html">FirebaseStorageService</a>)</code>
+<code>constructor(repository: <a href="../injectables/ExportationRepository.html">ExportationRepository</a>, firebaseStorage: <a href="../injectables/FirebaseStorageService.html">FirebaseStorageService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -132,7 +132,7 @@
                                                         <td>repository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/ExportationRepository.html" target="_self" >ExportationRepository</a></code>
+                                                                        <code><a href="../injectables/ExportationRepository.html" target="_self" >ExportationRepository</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -301,7 +301,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>{}</code>
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -419,7 +419,7 @@ export class ExportationService {
     return Buffer.from(await builder.toString());
   }
 
-  async exportToCsv(examId: number) {
+  async exportToCsv(examId: number): Promise&lt;string&gt; {
     const csvLines: CsvLine[] &#x3D; await this.repository.getCsvLines(examId);
 
     if (!csvLines.length) {

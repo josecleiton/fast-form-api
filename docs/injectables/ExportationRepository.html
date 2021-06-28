@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -36,12 +36,8 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
+  <li>Injectables</li>
   <li>ExportationRepository</li>
 </ol>
 
@@ -62,7 +58,6 @@
         <p class="comment">
             <code>src/exportation/exportation.repository.ts</code>
         </p>
-
 
 
 
@@ -107,7 +102,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/exportation/exportation.repository.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/exportation/exportation.repository.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -145,7 +140,6 @@
         </table>
 </section>
 
-
             <section>
     
     <h3 id="methods">
@@ -175,8 +169,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="8"
-                            class="link-to-prism">src/exportation/exportation.repository.ts:8</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/exportation/exportation.repository.ts:10</a></div>
                 </td>
             </tr>
 
@@ -225,10 +219,6 @@
     </table>
 </section>
 
-
-
-
-
     </div>
 
 
@@ -236,7 +226,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CsvLine } from &#x27;./interfaces/csv-line.interface&#x27;;
 import { Connection } from &#x27;typeorm&#x27;;
 import { InjectConnection } from &#x27;@nestjs/typeorm&#x27;;
+import { Injectable } from &#x27;@nestjs/common&#x27;;
 
+@Injectable()
 export class ExportationRepository {
   constructor(@InjectConnection() private readonly connection: Connection) {}
 
@@ -280,7 +272,12 @@ export class ExportationRepository {
 }
 </code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -305,7 +302,7 @@ export class ExportationRepository {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'ExportationRepository.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
