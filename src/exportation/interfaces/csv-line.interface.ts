@@ -1,7 +1,11 @@
 export interface CsvLine {
-  'Grupo de Questões': String,
-  'Disciplina'?: String,
-  'Questão': String,
-  'Matrícula': String,
-  'Nota': String,
+  'Grupo de Questões': string;
+  'Tipo de Usuário': string;
+  Disciplina?: string;
+  Pessoal: string;
+  Questão: string;
+  Matrícula: string;
+  Nota: string;
+  'Código Único': string;
+  Observação?: string;
 }

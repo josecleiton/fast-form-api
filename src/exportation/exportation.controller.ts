@@ -15,9 +15,9 @@ import { ExportationService } from './exportation.service';
 @ApiBearerAuth()
 export class ExportationController {
   constructor(private readonly service: ExportationService) {}
-
   @Post('/csv/:examId')
   async exportToCsv(@Param('examId', ParseIntPipe) examId: number) {
     return this.service.exportToCsv(examId);
   }
+
 }

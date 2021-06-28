@@ -14,15 +14,18 @@ export class ExportationService {
     private readonly uploadService: UploaderService,
   ) {}
 
-  private getFileName(exportationType: ExportationType): string {
+  private getFileName(
+    examId: number,
+    exportationType: ExportationType,
+  ): string {
     const fileDate = new Date()
       .toLocaleDateString('pt-BR')
       .replace(/\//gu, '-');
     const filePrefix = process.env.EXPORTED_FILE_PREFIX || 'exportation';
-    return `${exportationType}_${filePrefix}_${fileDate}.csv`;
+    return `${exportationType}_${examId}_${filePrefix}_${fileDate}.csv`;
   }
 
-  private async createCsv(csvLines: Array<CsvLine>): Promise<Buffer> {
+  private async createCsv(csvLines: CsvLine[]): Promise<Buffer> {
     const builder = new ObjectsToCsv(csvLines);
 
     return Buffer.from(await builder.toString());
@@ -35,7 +38,7 @@ export class ExportationService {
       throw new NotFoundException('Nothing to export');
     }
 
-    const fileName = this.getFileName(ExportationType.AVALIACAO);
+    const fileName = this.getFileName(examId, ExportationType.AVALIACAO);
     const data = await this.createCsv(csvLines);
 
     return this.uploadService.upload(

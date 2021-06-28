@@ -3,6 +3,7 @@ import { Column, Entity, Generated, ManyToOne } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { Exam } from './exam.entity';
 import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
+import { Expose } from 'class-transformer';
 
 @Entity('exam_agreement')
 export class ExamAgreement extends FFEntity {
@@ -35,6 +36,7 @@ export class ExamAgreement extends FFEntity {
   @ManyToOne(() => Exam)
   exam: Exam;
 
+  @Expose()
   hasFinishedExam(): boolean {
     return this.status === ExamAgreementStatus.FINISHED;
   }
