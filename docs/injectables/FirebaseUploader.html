@@ -348,7 +348,7 @@ export class FirebaseUploader implements UploaderService {
   }
 
   async upload(fileDto: FileSendDto, path &#x3D; &#x27;&#x27;): Promise&lt;string&gt; {
-    return this.storageService.upload(this.getName(fileDto, path), {
+    return this.storageService.upload(this.getName(fileDto, path).replace(/^\//u, &#x27;&#x27;), {
       data: fileDto.buffer,
       contentType: fileDto.mimetype,
       publicFile: true,
