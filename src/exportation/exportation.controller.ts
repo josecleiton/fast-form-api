@@ -14,15 +14,10 @@ import { ExportationService } from './exportation.service';
 @UseGuards(JwtGuard)
 @ApiBearerAuth()
 export class ExportationController {
-  
-  constructor(
-    private readonly service: ExportationService
-  ) {}
+  constructor(private readonly service: ExportationService) {}
 
   @Post('/csv/:examId')
-  async exportToCsv(
-    @Param('examId', ParseIntPipe) examId: number,
-  ) {
+  async exportToCsv(@Param('examId', ParseIntPipe) examId: number) {
     return this.service.exportToCsv(examId);
   }
 }

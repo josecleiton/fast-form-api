@@ -28,7 +28,7 @@ export class ExportationService {
     return Buffer.from(await builder.toString());
   }
 
-  async exportToCsv(examId: number) {
+  async exportToCsv(examId: number): Promise<string> {
     const csvLines: CsvLine[] = await this.repository.getCsvLines(examId);
 
     if (!csvLines.length) {
