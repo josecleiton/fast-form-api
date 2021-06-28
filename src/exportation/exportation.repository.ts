@@ -24,6 +24,7 @@ export class ExportationRepository {
             q.statement AS 'question_statement',
             u.enrollment AS 'user_enrollment',
             u.type AS 'user_type',
+            ea.id AS 'exam_agreement_id',
             ea.anonymous AS 'anonymous',
             ea.observation AS 'observation',
             ea.uuid AS 'unique_code',
