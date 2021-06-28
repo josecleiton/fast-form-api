@@ -1,5 +1,19 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
+import { ExamUser } from '../interfaces/exam-user.interface';
+
+export class UpdateExamAgreementDtoQuery {
+  @IsPositive()
+  examId: number;
+
+  user: ExamUser;
+}
 
 export class UpdateExamAgreementDto {
   @IsOptional()

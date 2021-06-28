@@ -10,7 +10,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
-import { UpdateExamAgreementDto } from '../dtos/update-exam-agreement.dto';
+import {
+  UpdateExamAgreementDto,
+  UpdateExamAgreementDtoQuery,
+} from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
 import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
 import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
@@ -51,13 +54,18 @@ export class ExamAgreementService {
 
   @Transactional()
   async updateAgreement(
-    id: number,
+    query: UpdateExamAgreementDtoQuery,
     updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
-    let agreement = await this.repository.findOne(id);
+    let agreement = await this.repository.findOne({
+      where: {
+        examId: query.examId,
+        user: query.user,
+      },
+    });
 
     if (!agreement) {
-      throw new NotFoundException({ id });
+      throw new NotFoundException(query);
     }
 
     if (agreement.status === ExamAgreementStatus.FINISHED) {

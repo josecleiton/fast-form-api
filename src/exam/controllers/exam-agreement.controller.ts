@@ -1,19 +1,15 @@
-import {
-  Body,
-  Controller,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
 import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
-import { UpdateExamAgreementDto } from '../dtos/update-exam-agreement.dto';
+import {
+  UpdateExamAgreementDto,
+  UpdateExamAgreementDtoQuery,
+} from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
 import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
+import { ExamUser } from '../interfaces/exam-user.interface';
 import { ExamAgreementService } from '../services/exam-agreement.service';
 
 @Controller('exam-agreement')
@@ -31,12 +27,16 @@ export class ExamAgreementController {
     return this.examAgreementService.createAgreement(createAgreementDto, user);
   }
 
-  @Put(':id')
+  @Put()
   @ApiOkResponse({ type: ExamAgreement })
   async updateAgreemment(
-    @Param('id', ParseIntPipe) id: number,
+    @GetUser() user: ExamUser,
+    @Query() queryDto: UpdateExamAgreementDtoQuery,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
-    return this.examAgreementService.updateAgreement(id, updateAgreementDto);
+    return this.examAgreementService.updateAgreement(
+      { ...queryDto, user },
+      updateAgreementDto,
+    );
   }
 }
