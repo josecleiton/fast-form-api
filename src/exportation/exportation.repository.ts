@@ -30,7 +30,7 @@ export class ExportationRepository {
         WHERE
           ex.id = ? AND
           ex.deleted_at IS NULL
-        LIMIT 1`,
+        `,
       [examId],
     );
 
