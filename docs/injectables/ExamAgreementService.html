@@ -120,7 +120,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/exam/services/exam-agreement.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/exam/services/exam-agreement.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -197,8 +197,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:80</a></div>
                 </td>
             </tr>
 
@@ -288,8 +288,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -372,8 +372,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:92</a></div>
                 </td>
             </tr>
 
@@ -444,8 +444,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:108</a></div>
                 </td>
             </tr>
 
@@ -521,8 +521,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:85</a></div>
                 </td>
             </tr>
 
@@ -586,7 +586,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateAgreement(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
+                    <code>updateAgreement(queryDto: <a href="../classes/UpdateExamAgreementQueryDto.html">UpdateExamAgreementQueryDto</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
                 </td>
             </tr>
 
@@ -600,8 +600,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:56</a></div>
                 </td>
             </tr>
 
@@ -621,9 +621,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>queryDto</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="../classes/UpdateExamAgreementQueryDto.html" target="_self" >UpdateExamAgreementQueryDto</a></code>
                                     </td>
 
                                     <td>
@@ -678,7 +678,10 @@ import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { Between } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
-import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
+import {
+  UpdateExamAgreementDto,
+  UpdateExamAgreementQueryDto,
+} from &#x27;../dtos/update-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
 import { ExamAgreementStatus } from &#x27;../enums/exam-agreement-status.enum&#x27;;
 import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
@@ -719,22 +722,27 @@ export class ExamAgreementService {
 
   @Transactional()
   async updateAgreement(
-    id: number,
+    queryDto: UpdateExamAgreementQueryDto,
     updateAgreementDto: UpdateExamAgreementDto,
   ): Promise&lt;ExamAgreement&gt; {
-    let agreement &#x3D; await this.repository.findOne(id);
+    const agreement &#x3D; await this.repository.findOne({
+      where: {
+        examId: queryDto.examId,
+        userId: queryDto.user.id,
+      },
+    });
 
     if (!agreement) {
-      throw new NotFoundException({ id });
+      throw new NotFoundException(queryDto);
     }
 
     if (agreement.status &#x3D;&#x3D;&#x3D; ExamAgreementStatus.FINISHED) {
       delete updateAgreementDto.anonymous;
     }
 
-    agreement &#x3D; this.repository.merge(agreement, updateAgreementDto);
-
-    return this.repository.save(agreement);
+    return this.repository.save(
+      this.repository.merge(agreement, updateAgreementDto),
+    );
   }
 
   agreementsByDateInterval(start: Date, end: Date): Promise&lt;ExamAgreement[]&gt; {

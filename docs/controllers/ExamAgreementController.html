@@ -137,8 +137,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:23</a></div>
                 </td>
             </tr>
 
@@ -214,7 +214,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateAgreemment(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
+                    <code>updateAgreemment(user: <a href="../interfaces/ExamUser.html">ExamUser</a>, queryDto: <a href="../classes/UpdateExamAgreementQueryDto.html">UpdateExamAgreementQueryDto</a>, updateAgreementDto: <a href="../classes/UpdateExamAgreementDto.html">UpdateExamAgreementDto</a>)</code>
                 </td>
             </tr>
 
@@ -222,14 +222,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;:id&#x27;)<br />@ApiOkResponse({type: ExamAgreement})<br /></code>
+                    <code>@Put()<br />@ApiOkResponse({type: ExamAgreement})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/exam/controllers/exam-agreement.controller.ts:32</a></div>
                 </td>
             </tr>
 
@@ -249,9 +249,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="../interfaces/ExamUser.html" target="_self" >ExamUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>queryDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateExamAgreementQueryDto.html" target="_self" >UpdateExamAgreementQueryDto</a></code>
                                     </td>
 
                                     <td>
@@ -292,22 +304,18 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Body,
-  Controller,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  UseGuards,
-} from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post, Put, Query, UseGuards } from &#x27;@nestjs/common&#x27;;
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { JwtGuard } from &#x27;src/auth/guards/jwt.guard&#x27;;
 import { GetUser } from &#x27;src/user/decoratos/get-user.decorator&#x27;;
 import { CreateExamAgreementDto } from &#x27;../dtos/create-exam-agreement.dto&#x27;;
-import { UpdateExamAgreementDto } from &#x27;../dtos/update-exam-agreement.dto&#x27;;
+import {
+  UpdateExamAgreementDto,
+  UpdateExamAgreementQueryDto,
+} from &#x27;../dtos/update-exam-agreement.dto&#x27;;
 import { ExamAgreement } from &#x27;../entities/exam-agreement.entity&#x27;;
 import { ExamAgreementUser } from &#x27;../interfaces/exam-agreement-user.interface&#x27;;
+import { ExamUser } from &#x27;../interfaces/exam-user.interface&#x27;;
 import { ExamAgreementService } from &#x27;../services/exam-agreement.service&#x27;;
 
 @Controller(&#x27;exam-agreement&#x27;)
@@ -325,13 +333,17 @@ export class ExamAgreementController {
     return this.examAgreementService.createAgreement(createAgreementDto, user);
   }
 
-  @Put(&#x27;:id&#x27;)
+  @Put()
   @ApiOkResponse({ type: ExamAgreement })
   async updateAgreemment(
-    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
+    @GetUser() user: ExamUser,
+    @Query() queryDto: UpdateExamAgreementQueryDto,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise&lt;ExamAgreement&gt; {
-    return this.examAgreementService.updateAgreement(id, updateAgreementDto);
+    return this.examAgreementService.updateAgreement(
+      { ...queryDto, user },
+      updateAgreementDto,
+    );
   }
 }
 </code></pre>
