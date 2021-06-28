@@ -410,6 +410,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-QuestionGroupModule-8ec4f0348d17a6cf1fc4f3c89f221b10"' :
                                         'id="xs-injectables-links-module-QuestionGroupModule-8ec4f0348d17a6cf1fc4f3c89f221b10"' }>
                                         <li class="link">
+                                            <a href="injectables/PersonalQuestionGroup.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>PersonalQuestionGroup</a>
+                                        </li>
+                                        <li class="link">
                                             <a href="injectables/QuestionGroupService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>QuestionGroupService</a>
                                         </li>
@@ -612,9 +616,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/PeriodRepository.html" data-type="entity-link">PeriodRepository</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/PersonalQuestionGroup.html" data-type="entity-link">PersonalQuestionGroup</a>
                             </li>
                             <li class="link">
                                 <a href="classes/Professor.html" data-type="entity-link">Professor</a>
