@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Professor } from 'src/auxiliary/entities/professor.entity';
 import { Student } from 'src/auxiliary/entities/student.entity';
@@ -8,6 +9,7 @@ import { QuestionGroup } from '../entities/question-group.entity';
 import { questionGroupRelations } from '../question.constants';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
 
+@Injectable()
 export class PersonalQuestionGroup {
   constructor(
     @InjectRepository(QuestionGroupRepository)
