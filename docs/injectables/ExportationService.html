@@ -184,15 +184,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createCsv(csvLines: <a href="../interfaces/CsvLine.html">Array<CsvLine></a>)</code>
+                    <code>createCsv(csvLines: <a href="../interfaces/CsvLine.html">CsvLine[]</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/exportation/exportation.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/exportation/exportation.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -214,7 +214,7 @@
                                 <tr>
                                     <td>csvLines</td>
                                     <td>
-                                                <code><a href="../interfaces/CsvLine.html" target="_self" >Array&lt;CsvLine&gt;</a></code>
+                                                <code><a href="../interfaces/CsvLine.html" target="_self" >CsvLine[]</a></code>
                                     </td>
 
                                     <td>
@@ -263,8 +263,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/exportation/exportation.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/exportation/exportation.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -328,7 +328,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getFileName(exportationType: <a href="../undefineds/ExportationType.html">ExportationType</a>)</code>
+                    <code>getFileName(examId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, exportationType: <a href="../undefineds/ExportationType.html">ExportationType</a>)</code>
                 </td>
             </tr>
 
@@ -355,6 +355,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td>examId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                                 <tr>
                                     <td>exportationType</td>
                                     <td>
@@ -405,15 +417,18 @@ export class ExportationService {
     private readonly uploadService: UploaderService,
   ) {}
 
-  private getFileName(exportationType: ExportationType): string {
+  private getFileName(
+    examId: number,
+    exportationType: ExportationType,
+  ): string {
     const fileDate &#x3D; new Date()
       .toLocaleDateString(&#x27;pt-BR&#x27;)
       .replace(/\//gu, &#x27;-&#x27;);
     const filePrefix &#x3D; process.env.EXPORTED_FILE_PREFIX || &#x27;exportation&#x27;;
-    return &#x60;${exportationType}_${filePrefix}_${fileDate}.csv&#x60;;
+    return &#x60;${exportationType}_${examId}_${filePrefix}_${fileDate}.csv&#x60;;
   }
 
-  private async createCsv(csvLines: Array&lt;CsvLine&gt;): Promise&lt;Buffer&gt; {
+  private async createCsv(csvLines: CsvLine[]): Promise&lt;Buffer&gt; {
     const builder &#x3D; new ObjectsToCsv(csvLines);
 
     return Buffer.from(await builder.toString());
@@ -426,7 +441,7 @@ export class ExportationService {
       throw new NotFoundException(&#x27;Nothing to export&#x27;);
     }
 
-    const fileName &#x3D; this.getFileName(ExportationType.AVALIACAO);
+    const fileName &#x3D; this.getFileName(examId, ExportationType.AVALIACAO);
     const data &#x3D; await this.createCsv(csvLines);
 
     return this.uploadService.upload(

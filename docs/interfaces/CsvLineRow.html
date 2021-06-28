@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>CsvLine</li>
+  <li>CsvLineRow</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exportation/interfaces/csv-line.interface.ts</code>
+            <code>src/exportation/interfaces/csv-line-row.interface.ts</code>
         </p>
 
 
@@ -79,33 +79,46 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#Código Único">Código Único</a>
+                                        <a href="#anonymous">anonymous</a>
+                                </li>
+                                <li>
+                                        <a href="#group_id">group_id</a>
+                                </li>
+                                <li>
+                                        <a href="#group_title">group_title</a>
+                                </li>
+                                <li>
+                                        <a href="#is_class">is_class</a>
+                                </li>
+                                <li>
+                                        <a href="#is_personal">is_personal</a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#Disciplina">Disciplina</a>
+                                        <a href="#observation">observation</a>
                                 </li>
                                 <li>
-                                        <a href="#Grupo de Questões">Grupo de Questões</a>
+                                        <a href="#question_id">question_id</a>
                                 </li>
                                 <li>
-                                        <a href="#Matrícula">Matrícula</a>
-                                </li>
-                                <li>
-                                        <a href="#Nota">Nota</a>
+                                        <a href="#question_statement">question_statement</a>
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
-                                        <a href="#Observação">Observação</a>
+                                        <a href="#score">score</a>
                                 </li>
                                 <li>
-                                        <a href="#Pessoal">Pessoal</a>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#subject_title">subject_title</a>
                                 </li>
                                 <li>
-                                        <a href="#Questão">Questão</a>
+                                        <a href="#unique_code">unique_code</a>
                                 </li>
                                 <li>
-                                        <a href="#Tipo de Usuário">Tipo de Usuário</a>
+                                        <a href="#user_enrollment">user_enrollment</a>
+                                </li>
+                                <li>
+                                        <a href="#user_type">user_type</a>
                                 </li>
                             </ul>
                         </td>
@@ -122,13 +135,71 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Código Único"></a>
-                                        <span class="name"><b>Código Único</b><a href="#Código Único"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="anonymous"></a>
+                                        <span class="name"><b>anonymous</b><a href="#anonymous"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Código Único:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>anonymous:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="group_id"></a>
+                                        <span class="name"><b>group_id</b><a href="#group_id"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>group_id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="group_title"></a>
+                                        <span class="name"><b>group_title</b><a href="#group_title"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>group_title:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -151,13 +222,71 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Disciplina"></a>
-                                        <span class="name"><b>Disciplina</b><a href="#Disciplina"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="is_class"></a>
+                                        <span class="name"><b>is_class</b><a href="#is_class"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Disciplina:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>is_class:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="is_personal"></a>
+                                        <span class="name"><b>is_personal</b><a href="#is_personal"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>is_personal:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="observation"></a>
+                                        <span class="name"><b>observation</b><a href="#observation"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>observation:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -185,13 +314,42 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Grupo de Questões"></a>
-                                        <span class="name"><b>Grupo de Questões</b><a href="#Grupo de Questões"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="question_id"></a>
+                                        <span class="name"><b>question_id</b><a href="#question_id"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Grupo de Questões:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>question_id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="question_statement"></a>
+                                        <span class="name"><b>question_statement</b><a href="#question_statement"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>question_statement:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -214,71 +372,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Matrícula"></a>
-                                        <span class="name"><b>Matrícula</b><a href="#Matrícula"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="score"></a>
+                                        <span class="name"><b>score</b><a href="#score"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Matrícula:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="Nota"></a>
-                                        <span class="name"><b>Nota</b><a href="#Nota"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>Nota:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="Observação"></a>
-                                        <span class="name"><b>Observação</b><a href="#Observação"><span class="icon ion-ios-link"></span></a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>Observação:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>score:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -306,13 +406,47 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Pessoal"></a>
-                                        <span class="name"><b>Pessoal</b><a href="#Pessoal"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="subject_title"></a>
+                                        <span class="name"><b>subject_title</b><a href="#subject_title"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Pessoal:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>subject_title:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="unique_code"></a>
+                                        <span class="name"><b>unique_code</b><a href="#unique_code"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>unique_code:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -335,13 +469,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Questão"></a>
-                                        <span class="name"><b>Questão</b><a href="#Questão"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="user_enrollment"></a>
+                                        <span class="name"><b>user_enrollment</b><a href="#user_enrollment"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Questão:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>user_enrollment:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -364,13 +498,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="Tipo de Usuário"></a>
-                                        <span class="name"><b>Tipo de Usuário</b><a href="#Tipo de Usuário"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="user_type"></a>
+                                        <span class="name"><b>user_type</b><a href="#user_type"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>Tipo de Usuário:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>user_type:     <code>&quot;Professor&quot; | &quot;Student&quot; | &quot;User&quot;</code>
 </code>
                                     </td>
                                 </tr>
@@ -378,7 +512,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>    <code>&quot;Professor&quot; | &quot;Student&quot; | &quot;User&quot;</code>
 
                                         </td>
                                     </tr>
@@ -394,16 +528,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface CsvLine {
-  &#x27;Grupo de Questões&#x27;: string;
-  &#x27;Tipo de Usuário&#x27;: string;
-  Disciplina?: string;
-  Pessoal: string;
-  Questão: string;
-  Matrícula: string;
-  Nota: string;
-  &#x27;Código Único&#x27;: string;
-  Observação?: string;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface CsvLineRow {
+  score?: string;
+  group_id: number;
+  group_title: string;
+  is_class: boolean;
+  is_personal: boolean;
+  question_id: number;
+  question_statement: string;
+  user_enrollment: string;
+  user_type: &#x27;Professor&#x27; | &#x27;Student&#x27; | &#x27;User&#x27;;
+  anonymous: boolean;
+  subject_title?: string;
+  unique_code: string;
+  observation?: string;
 }
 </code></pre>
     </div>
@@ -432,7 +570,7 @@
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'CsvLine.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CsvLineRow.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

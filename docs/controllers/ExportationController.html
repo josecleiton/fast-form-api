@@ -133,8 +133,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/exportation/exportation.controller.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/exportation/exportation.controller.ts:19</a></div>
                 </td>
             </tr>
 
@@ -202,11 +202,11 @@ import { ExportationService } from &#x27;./exportation.service&#x27;;
 @ApiBearerAuth()
 export class ExportationController {
   constructor(private readonly service: ExportationService) {}
-
   @Post(&#x27;/csv/:examId&#x27;)
   async exportToCsv(@Param(&#x27;examId&#x27;, ParseIntPipe) examId: number) {
     return this.service.exportToCsv(examId);
   }
+
 }
 </code></pre>
     </div>

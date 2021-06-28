@@ -102,7 +102,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/exportation/exportation.repository.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/exportation/exportation.repository.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -169,8 +169,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="10"
-                            class="link-to-prism">src/exportation/exportation.repository.ts:10</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/exportation/exportation.repository.ts:12</a></div>
                 </td>
             </tr>
 
@@ -227,6 +227,8 @@
 import { Connection } from &#x27;typeorm&#x27;;
 import { InjectConnection } from &#x27;@nestjs/typeorm&#x27;;
 import { Injectable } from &#x27;@nestjs/common&#x27;;
+import { CsvLineRow } from &#x27;./interfaces/csv-line-row.interface&#x27;;
+import { userTypeMap } from &#x27;./maps/user-type.map&#x27;;
 
 @Injectable()
 export class ExportationRepository {
@@ -235,37 +237,58 @@ export class ExportationRepository {
   async getCsvLines(examId: number): Promise&lt;CsvLine[]&gt; {
     const queryRunner &#x3D; this.connection.createQueryRunner();
 
-    const csvLines &#x3D; await queryRunner.query(
-      &#x60;SELECT
-          a.score as &#x27;score&#x27;, qg.id as &#x27;group_id&#x27;, qg.title as &#x27;group_title&#x27;,
-          qg.class as &#x27;is_class&#x27;, qg.personal as &#x27;is_personal&#x27;, q.id as &#x27;question_id&#x27;,
-          q.statement as &#x27;question_statement&#x27;, u.enrollment as &#x27;user_enrollment&#x27;,
-          ea.anonymous as &#x27;anonymous&#x27;
-        FROM exam ex
-        LEFT JOIN exam_agreement ea
-          ON ea.exam_id &#x3D; ex.id
-        LEFT JOIN answer a
-          ON a.exam_agreement_id &#x3D; ea.id
-        INNER JOIN user u
-          ON u.id &#x3D; ea.user_id
-        LEFT JOIN question_group qg
-          ON qg.exam_id &#x3D; ex.id
-        LEFT JOIN question q
-          ON q.group_id &#x3D; qg.id
+    const csvLines: CsvLineRow[] &#x3D; await queryRunner.query(
+      &#x60;
+        SELECT DISTINCT
+            a.score AS &#x27;score&#x27;,
+            qg.id AS &#x27;group_id&#x27;,
+            qg.title AS &#x27;group_title&#x27;,
+            qg.class AS &#x27;is_class&#x27;,
+            qg.personal AS &#x27;is_personal&#x27;,
+            q.id AS &#x27;question_id&#x27;,
+            q.statement AS &#x27;question_statement&#x27;,
+            u.enrollment AS &#x27;user_enrollment&#x27;,
+            u.type AS &#x27;user_type&#x27;,
+            ea.anonymous AS &#x27;anonymous&#x27;,
+            ea.observation AS &#x27;observation&#x27;,
+            ea.uuid AS &#x27;unique_code&#x27;,
+            s.title AS &#x27;subject_title&#x27;
+        FROM
+            exam ex
+        INNER JOIN exam_agreement ea ON
+            ea.exam_id &#x3D; ex.id
+        INNER JOIN user u ON
+            u.id &#x3D; ea.user_id
+        INNER JOIN answer a ON
+            a.exam_agreement_id &#x3D; ea.id
+        LEFT JOIN grade ON
+            grade.id &#x3D; a.grade_id
+        LEFT JOIN subject s ON
+            s.id &#x3D; grade.subject_id
+        INNER JOIN question_group qg ON
+            qg.exam_id &#x3D; ex.id
+        INNER JOIN question q ON
+            q.group_id &#x3D; qg.id
         WHERE
-          ex.id &#x3D; ? AND
-          ex.deleted_at IS NULL
-        &#x60;,
+            ex.id &#x3D; ? AND
+            ex.deleted_at IS NULL
+        ORDER BY
+            ea.id ASC, qg.id ASC, q.id ASC
+      &#x60;,
       [examId],
     );
 
     return csvLines.map((csvLine) &#x3D;&gt; {
       return {
         &#x27;Grupo de Questões&#x27;: csvLine.group_title,
-        Disciplina: csvLine.is_class ? &#x27;Sim&#x27; : &#x27;Não&#x27;,
+        Disciplina: csvLine.subject_title,
+        Pessoal: csvLine.is_personal ? &#x27;Sim&#x27; : &#x27;Não&#x27;,
         Questão: csvLine.question_statement,
         Matrícula: csvLine.anonymous ? &#x27;Anônimo&#x27; : csvLine.user_enrollment,
-        Nota: csvLine.score ? csvLine.score : &#x27;Não se aplica&#x27;,
+        &#x27;Tipo de Usuário&#x27;: userTypeMap.get(csvLine.user_type)!,
+        Nota: csvLine.score ?? &#x27;Não se aplica&#x27;,
+        Observação: csvLine.observation,
+        &#x27;Código Único&#x27;: csvLine.unique_code,
       };
     });
   }

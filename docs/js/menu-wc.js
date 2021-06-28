@@ -739,6 +739,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/CsvLine.html" data-type="entity-link">CsvLine</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/CsvLineRow.html" data-type="entity-link">CsvLineRow</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ExamAgreementUser.html" data-type="entity-link">ExamAgreementUser</a>
                             </li>
                             <li class="link">
