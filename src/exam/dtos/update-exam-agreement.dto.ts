@@ -8,8 +8,9 @@ import {
 } from 'class-validator';
 import { ExamUser } from '../interfaces/exam-user.interface';
 
-export class UpdateExamAgreementDtoQuery {
+export class UpdateExamAgreementQueryDto {
   @IsPositive()
+  @Type(() => Number)
   examId: number;
 
   user: ExamUser;

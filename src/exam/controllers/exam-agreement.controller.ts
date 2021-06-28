@@ -5,7 +5,7 @@ import { GetUser } from 'src/user/decoratos/get-user.decorator';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import {
   UpdateExamAgreementDto,
-  UpdateExamAgreementDtoQuery,
+  UpdateExamAgreementQueryDto,
 } from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
 import { ExamAgreementUser } from '../interfaces/exam-agreement-user.interface';
@@ -31,7 +31,7 @@ export class ExamAgreementController {
   @ApiOkResponse({ type: ExamAgreement })
   async updateAgreemment(
     @GetUser() user: ExamUser,
-    @Query() queryDto: UpdateExamAgreementDtoQuery,
+    @Query() queryDto: UpdateExamAgreementQueryDto,
     @Body() updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
     return this.examAgreementService.updateAgreement(

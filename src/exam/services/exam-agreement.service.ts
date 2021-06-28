@@ -12,7 +12,7 @@ import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { CreateExamAgreementDto } from '../dtos/create-exam-agreement.dto';
 import {
   UpdateExamAgreementDto,
-  UpdateExamAgreementDtoQuery,
+  UpdateExamAgreementQueryDto,
 } from '../dtos/update-exam-agreement.dto';
 import { ExamAgreement } from '../entities/exam-agreement.entity';
 import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
@@ -54,27 +54,27 @@ export class ExamAgreementService {
 
   @Transactional()
   async updateAgreement(
-    query: UpdateExamAgreementDtoQuery,
+    queryDto: UpdateExamAgreementQueryDto,
     updateAgreementDto: UpdateExamAgreementDto,
   ): Promise<ExamAgreement> {
-    let agreement = await this.repository.findOne({
+    const agreement = await this.repository.findOne({
       where: {
-        examId: query.examId,
-        user: query.user,
+        examId: queryDto.examId,
+        userId: queryDto.user.id,
       },
     });
 
     if (!agreement) {
-      throw new NotFoundException(query);
+      throw new NotFoundException(queryDto);
     }
 
     if (agreement.status === ExamAgreementStatus.FINISHED) {
       delete updateAgreementDto.anonymous;
     }
 
-    agreement = this.repository.merge(agreement, updateAgreementDto);
-
-    return this.repository.save(agreement);
+    return this.repository.save(
+      this.repository.merge(agreement, updateAgreementDto),
+    );
   }
 
   agreementsByDateInterval(start: Date, end: Date): Promise<ExamAgreement[]> {
