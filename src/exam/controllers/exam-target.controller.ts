@@ -15,7 +15,7 @@ export class ExamTargetController {
   @Get()
   @ApiOkResponse({
     type: [String],
-    schema: { examples: Object.values(ExamTargetType) },
+    schema: { example: Object.values(ExamTargetType) },
   })
   async getTargets(): Promise<ExamTargetType[]> {
     return this.targetService.getTargets();

@@ -14,6 +14,12 @@ export class FirebaseAdmin implements firebase.app.App {
       credential: firebase.credential.cert(options.cert),
     });
   }
+  appCheck(): firebase.appCheck.AppCheck {
+    throw new Error('Method not implemented.');
+  }
+  installations(): firebase.installations.Installations {
+    throw new Error('Method not implemented.');
+  }
 
   get name(): string {
     return this.app.name;
