@@ -106,12 +106,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/ExportationRepository.html">ExportationRepository</a>)</code>
+<code>constructor(repository: <a href="../classes/ExportationRepository.html">ExportationRepository</a>, firebaseStorage: <a href="../injectables/FirebaseStorageService.html">FirebaseStorageService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/exportation/exportation.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/exportation/exportation.service.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -133,6 +133,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/ExportationRepository.html" target="_self" >ExportationRepository</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>firebaseStorage</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FirebaseStorageService.html" target="_self" >FirebaseStorageService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -172,15 +184,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createCsv(csvLines: <a href="../interfaces/CsvLine.html">Array<CsvLine></a>, exportationType: <a href="../undefineds/ExportationType.html">ExportationType</a>)</code>
+                    <code>createCsv(csvLines: <a href="../interfaces/CsvLine.html">Array<CsvLine></a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/exportation/exportation.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/exportation/exportation.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -211,25 +223,13 @@
 
 
                                 </tr>
-                                <tr>
-                                    <td>exportationType</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/enumerations.html#ExportationType" target="_self" >ExportationType</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;String&gt;</code>
+                        <b>Returns : </b>    <code>Promise&lt;Buffer&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -263,8 +263,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/exportation/exportation.service.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/exportation/exportation.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -335,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/exportation/exportation.service.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/exportation/exportation.service.ts:17</a></div>
                 </td>
             </tr>
 
@@ -373,7 +373,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
@@ -390,47 +390,53 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import csvBuilder from &#x27;objects-to-csv&#x27;;
+import ObjectsToCsv from &#x27;objects-to-csv&#x27;;
 
 import { ExportationRepository } from &#x27;./exportation.repository&#x27;;
 
-import { ExportationType } from &#x27;./enums/exportation-type.enum&#x27;
+import { ExportationType } from &#x27;./enums/exportation-type.enum&#x27;;
 import { CsvLine } from &#x27;./interfaces/csv-line.interface&#x27;;
+import { FirebaseStorageService } from &#x27;src/firebase&#x27;;
 
 @Injectable()
 export class ExportationService {
-
   constructor(
     private readonly repository: ExportationRepository,
+    private readonly firebaseStorage: FirebaseStorageService,
   ) {}
 
-  private getFileName(exportationType: ExportationType): String {
-    const fileDate &#x3D; new Date().toLocaleDateString(&#x27;pt-BR&#x27;).replace(/\//g, &quot;-&quot;);
+  private getFileName(exportationType: ExportationType): string {
+    const fileDate &#x3D; new Date()
+      .toLocaleDateString(&#x27;pt-BR&#x27;)
+      .replace(/\//gu, &#x27;-&#x27;);
     const filePrefix &#x3D; process.env.EXPORTED_FILE_PREFIX || &#x27;exportation&#x27;;
     return &#x60;${exportationType}_${filePrefix}_${fileDate}.csv&#x60;;
   }
 
-  private async createCsv(csvLines: Array&lt;CsvLine&gt;, exportationType: ExportationType): Promise&lt;String&gt; {
+  private async createCsv(csvLines: Array&lt;CsvLine&gt;): Promise&lt;Buffer&gt; {
+    const builder &#x3D; new ObjectsToCsv(csvLines);
+
+    return Buffer.from(await builder.toString());
+  }
+
+  async exportToCsv(examId: number) {
+    const csvLines: CsvLine[] &#x3D; await this.repository.getCsvLines(examId);
+
     if (!csvLines.length) {
       throw new NotFoundException(&#x27;Nothing to export&#x27;);
-    };
-    
-    const fileName &#x3D; this.getFileName(exportationType);
-    const builder &#x3D; await csvBuilder(csvLines);
- 
-    await builder.toDisk(fileName, {
-      allColumns: true
+    }
+
+    const fileName &#x3D; this.getFileName(ExportationType.AVALIACAO);
+    const data &#x3D; await this.createCsv(csvLines);
+
+    return this.firebaseStorage.upload(&#x60;exports/${fileName}&#x60;, {
+      data,
+      contentType: &#x27;text/csv&#x27;,
+      publicFile: true,
     });
-
-    return fileName; 
   }
-
-  async exportToCsv(examId: number) { 
-    const csvLines: Array&lt;CsvLine&gt; &#x3D; await this.repository.getCsvLines(examId)
-    return this.createCsv(csvLines, ExportationType.AVALIACAO);
-  }
-
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>

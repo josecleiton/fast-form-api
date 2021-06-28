@@ -765,6 +765,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/FirebaseModuleOptions.html" data-type="entity-link">FirebaseModuleOptions</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/FirebaseStorageUploadDto.html" data-type="entity-link">FirebaseStorageUploadDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/IClassValidatorException.html" data-type="entity-link">IClassValidatorException</a>
                             </li>
                             <li class="link">

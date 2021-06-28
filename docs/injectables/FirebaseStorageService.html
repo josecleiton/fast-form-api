@@ -118,7 +118,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/firebase/services/firebase-storage.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/firebase/services/firebase-storage.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -178,15 +178,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>upload(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: Buffer, contentType: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, publicFile, bucket?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>upload(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, undefined: <a href="../interfaces/FirebaseStorageUploadDto.html">FirebaseStorageUploadDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/firebase/services/firebase-storage.service.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/firebase/services/firebase-storage.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -202,7 +202,6 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -216,64 +215,17 @@
                                         No
                                     </td>
 
-                                    <td>
-                                    </td>
 
                                 </tr>
                                 <tr>
-                                    <td>data</td>
                                     <td>
-                                            <code>Buffer</code>
+                                                <code><a href="../interfaces/FirebaseStorageUploadDto.html" target="_self" >FirebaseStorageUploadDto</a></code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>contentType</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>publicFile</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>false</code>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>bucket</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-                                    <td>
-                                    </td>
 
                                 </tr>
                             </tbody>
@@ -320,7 +272,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/firebase/services/firebase-storage.service.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/firebase/services/firebase-storage.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -337,6 +289,7 @@
 import { Injectable } from &#x27;@nestjs/common&#x27;;
 
 import { FirebaseAdmin } from &#x27;../firebase-admin&#x27;;
+import { FirebaseStorageUploadDto } from &#x27;../dtos/firebase-storage-upload.dto&#x27;;
 
 @Injectable()
 export class FirebaseStorageService {
@@ -348,10 +301,7 @@ export class FirebaseStorageService {
 
   async upload(
     path: string,
-    data: Buffer,
-    contentType: string,
-    publicFile &#x3D; false,
-    bucket?: string,
+    { data, contentType, publicFile, bucket }: FirebaseStorageUploadDto,
   ): Promise&lt;string&gt; {
     const file &#x3D; this.storage.bucket(bucket).file(path);
     await file.save(data, {
