@@ -3,7 +3,7 @@ import { Professor } from 'src/auxiliary/entities/professor.entity';
 import { Student } from 'src/auxiliary/entities/student.entity';
 import { GradeService } from 'src/auxiliary/services/grade.service';
 import { Exam } from 'src/exam/entities/exam.entity';
-import { QuestionGroupGrade } from '../entities/question-group-grade.entity';
+import { QuestionGroupGrade } from '../dtos/question-group-grade.dto';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { questionGroupRelations } from '../question.constants';
 import { QuestionGroupRepository } from '../repositories/question-group.repository';
