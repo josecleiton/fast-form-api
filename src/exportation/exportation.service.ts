@@ -5,13 +5,13 @@ import { ExportationRepository } from './exportation.repository';
 
 import { ExportationType } from './enums/exportation-type.enum';
 import { CsvLine } from './interfaces/csv-line.interface';
-import { FirebaseStorageService } from 'src/firebase';
+import { UploaderService } from 'src/infra/services/uploader.service';
 
 @Injectable()
 export class ExportationService {
   constructor(
     private readonly repository: ExportationRepository,
-    private readonly firebaseStorage: FirebaseStorageService,
+    private readonly uploadService: UploaderService,
   ) {}
 
   private getFileName(exportationType: ExportationType): string {
@@ -38,10 +38,16 @@ export class ExportationService {
     const fileName = this.getFileName(ExportationType.AVALIACAO);
     const data = await this.createCsv(csvLines);
 
-    return this.firebaseStorage.upload(`exports/${fileName}`, {
-      data,
-      contentType: 'text/csv',
-      publicFile: true,
-    });
+    return this.uploadService.upload(
+      {
+        buffer: data,
+        originalname: fileName,
+        mimetype: 'text/csv',
+        size: data.length,
+        encoding: 'utf8',
+        noRandomName: true,
+      },
+      'exports',
+    );
   }
 }

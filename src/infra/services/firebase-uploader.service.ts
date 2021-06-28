@@ -8,10 +8,19 @@ import { UploaderService } from './uploader.service';
 export class FirebaseUploader implements UploaderService {
   constructor(private readonly storageService: FirebaseStorageService) {}
 
+  private getName(fileDto: FileSendDto, path: string): string {
+    if (fileDto.noRandomName) {
+      return `${path}/${fileDto.originalname}`;
+    }
+
+    return `${path}/${randomBytes(32).toString('hex')}`;
+  }
+
   async upload(fileDto: FileSendDto, path = ''): Promise<string> {
-    return this.storageService.upload(
-      `${path}/${randomBytes(32).toString('hex')}`,
-      { data: fileDto.buffer, contentType: fileDto.mimetype, publicFile: true },
-    );
+    return this.storageService.upload(this.getName(fileDto, path), {
+      data: fileDto.buffer,
+      contentType: fileDto.mimetype,
+      publicFile: true,
+    });
   }
 }

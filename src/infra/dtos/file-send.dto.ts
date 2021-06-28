@@ -4,4 +4,5 @@ export interface FileSendDto {
   mimetype: string;
   buffer: Buffer;
   size: number;
+  noRandomName?: boolean;
 }
