@@ -390,7 +390,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import * as csvBuilder from &#x27;objects-to-csv&#x27;;
+import csvBuilder from &#x27;objects-to-csv&#x27;;
 
 import { ExportationRepository } from &#x27;./exportation.repository&#x27;;
 
@@ -416,7 +416,7 @@ export class ExportationService {
     };
     
     const fileName &#x3D; this.getFileName(exportationType);
-    const builder &#x3D; await new csvBuilder(csvLines);
+    const builder &#x3D; await csvBuilder(csvLines);
  
     await builder.toDisk(fileName, {
       allColumns: true
