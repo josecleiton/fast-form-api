@@ -24,6 +24,7 @@
 <title>cluster_QuestionGroupModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 880,-268 880,-70 8,-70"/>
 </g>
+<<<<<<< Updated upstream
 <g id="clust6" class="cluster">
 <title>cluster_QuestionGroupModule_providers</title>
 <polygon fill="none" stroke="black" points="264,-78 264,-130 872,-130 872,-78 264,-78"/>
@@ -35,6 +36,19 @@
 <g id="clust4" class="cluster">
 <title>cluster_QuestionGroupModule_exports</title>
 <polygon fill="none" stroke="black" points="283,-208 283,-260 411,-260 411,-208 283,-208"/>
+=======
+<g id="clust4" class="cluster">
+<title>cluster_QuestionGroupModule_exports</title>
+<polygon fill="none" stroke="black" points="448,-208 448,-260 576,-260 576,-208 448,-208"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_QuestionGroupModule_imports</title>
+<polygon fill="none" stroke="black" points="632,-78 632,-130 872,-130 872,-78 632,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_QuestionGroupModule_providers</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 624,-130 624,-78 16,-78"/>
+>>>>>>> Stashed changes
 </g>
 <!-- AuxiliaryModule -->
 <g id="node1" class="node">

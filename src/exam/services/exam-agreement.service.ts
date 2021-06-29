@@ -6,6 +6,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { MailerService } from 'src/infra/services/mailer.service';
 
 import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
@@ -28,6 +29,7 @@ export class ExamAgreementService {
     private readonly repository: ExamAgreementRepository,
     @Inject(forwardRef(() => ExamService))
     private readonly examService: ExamService,
+    private readonly mailerService: MailerService,
   ) {}
 
   @Transactional()
@@ -44,12 +46,18 @@ export class ExamAgreementService {
       throw new ConflictException('already agreed');
     }
 
-    const agreement = this.repository.create({
+    let agreement = this.repository.create({
       ...createAgreementDto,
       userId: user.id,
     });
 
-    return this.repository.save(agreement);
+    agreement = await this.repository.save(agreement);
+
+    // TODO: send email
+
+    console.log(this.mailerService);
+
+    return agreement;
   }
 
   @Transactional()

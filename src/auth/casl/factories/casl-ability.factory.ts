@@ -53,7 +53,7 @@ export class CaslAbilityFactory {
     can(Action.MANAGE, Answer, {});
 
     // ExamAgreement
-    cannot(Action.DELETE, ExamAgreement, { uuid: undefined });
+    cannot(Action.DELETE, ExamAgreement, { uniqueCode: undefined });
 
     const examAgreementNotFinished = {
       userId: user.id,

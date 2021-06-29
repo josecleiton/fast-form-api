@@ -2,6 +2,7 @@ import { corsConfig } from './cors.config';
 import { databaseConfig } from './database.config';
 import { firebaseConfig } from './firebase.config';
 import { jwtConfig } from './jwt.config';
+import { nodemailerConfig } from './nodemailer.config';
 import { rateLimitConfig } from './rate-limit.config';
 import { sentryConfig } from './sentry.config';
 import { swaggerConfig } from './swagger.config';
@@ -20,4 +21,5 @@ export const configs = [
   jwtConfig,
   firebaseConfig,
   sentryConfig,
+  nodemailerConfig,
 ];

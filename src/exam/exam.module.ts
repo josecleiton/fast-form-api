@@ -13,7 +13,7 @@ import { ExamAgreementController } from './controllers/exam-agreement.controller
 import { ExamTargetTree } from './providers/exam-target-tree.provider';
 import { ExamTargetNodeFactory } from './factories/exam-target-node.factory';
 import { AuxiliaryModule } from 'src/auxiliary/auxiliary.module';
-
+import { InfraModule } from 'src/infra/infra.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -22,6 +22,7 @@ import { AuxiliaryModule } from 'src/auxiliary/auxiliary.module';
       ExamAgreementRepository,
     ]),
     AuxiliaryModule,
+    InfraModule,
   ],
   controllers: [ExamController, ExamTargetController, ExamAgreementController],
   providers: [
