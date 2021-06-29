@@ -239,42 +239,43 @@ export class ExportationRepository {
 
     const csvLines: CsvLineRow[] &#x3D; await queryRunner.query(
       &#x60;
-        SELECT DISTINCT
-            a.score AS &#x27;score&#x27;,
-            qg.id AS &#x27;group_id&#x27;,
-            qg.title AS &#x27;group_title&#x27;,
-            qg.class AS &#x27;is_class&#x27;,
-            qg.personal AS &#x27;is_personal&#x27;,
-            q.id AS &#x27;question_id&#x27;,
-            q.statement AS &#x27;question_statement&#x27;,
-            u.enrollment AS &#x27;user_enrollment&#x27;,
-            u.type AS &#x27;user_type&#x27;,
-            ea.id AS &#x27;exam_agreement_id&#x27;,
-            ea.anonymous AS &#x27;anonymous&#x27;,
-            ea.observation AS &#x27;observation&#x27;,
-            ea.uuid AS &#x27;unique_code&#x27;,
-            s.title AS &#x27;subject_title&#x27;
-        FROM
-            exam ex
-        INNER JOIN exam_agreement ea ON
-            ea.exam_id &#x3D; ex.id
-        INNER JOIN user u ON
-            u.id &#x3D; ea.user_id
-        INNER JOIN answer a ON
-            a.exam_agreement_id &#x3D; ea.id
-        LEFT JOIN grade ON
-            grade.id &#x3D; a.grade_id
-        LEFT JOIN subject s ON
-            s.id &#x3D; grade.subject_id
-        INNER JOIN question_group qg ON
-            qg.exam_id &#x3D; ex.id
-        INNER JOIN question q ON
-            q.group_id &#x3D; qg.id
-        WHERE
-            ex.id &#x3D; ? AND
-            ex.deleted_at IS NULL
-        ORDER BY
-            ea.id ASC, qg.id ASC, q.id ASC
+      SELECT DISTINCT
+          ea.exam_id AS &#x27;exam_id&#x27;,
+          ea.id AS &#x27;exam_agreement_id&#x27;,
+          ea.anonymous AS &#x27;anonymous&#x27;,
+          ea.observation AS &#x27;observation&#x27;,
+          ea.uuid AS &#x27;unique_code&#x27;,
+          qg.title AS &#x27;group_title&#x27;,
+          qg.class AS &#x27;is_class&#x27;,
+          qg.personal AS &#x27;is_personal&#x27;,
+          qg.id AS &#x27;group_id&#x27;,
+          q.id AS &#x27;question_id&#x27;,
+          q.statement AS &#x27;question_statement&#x27;,
+          a.id AS &#x27;answer_id&#x27;,
+          a.score AS &#x27;score&#x27;,
+          s.title AS &#x27;subject_title&#x27;,
+          u.enrollment AS &#x27;user_enrollment&#x27;,
+          u.type AS &#x27;user_type&#x27;
+      FROM
+          exam_agreement ea
+      INNER JOIN \&#x60;user\&#x60; u ON
+          u.id &#x3D; ea.user_id
+      INNER JOIN answer a ON
+          a.exam_agreement_id &#x3D; ea.id
+      LEFT JOIN grade g ON
+          g.id &#x3D; a.grade_id
+      LEFT JOIN subject s ON
+          s.id &#x3D; g.subject_id
+      INNER JOIN question q ON
+          q.id &#x3D; a.question_id
+      INNER JOIN question_group qg ON
+          qg.id &#x3D; q.group_id
+      WHERE
+          ea.exam_id &#x3D; ? AND ea.deleted_at IS NULL
+      ORDER BY
+          ea.id ASC,
+          qg.id ASC,
+          q.id ASC
       &#x60;,
       [examId],
     );
