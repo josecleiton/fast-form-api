@@ -30,14 +30,14 @@ export class AnswerService {
     user: BatchUser,
   ): Promise<Answer[]> {
     const examAgreement = await this.examAgreementService.findOne(user);
-    await this.answerRepository.delete({ examAgreement });
     const questions = await this.questionService.findByIds(
       createAnswerDtos.map((dto) => dto.questionId),
     );
-    const questionMap: ReadonlyMap<number, Question> = new Map<
-      number,
-      Question
-    >(questions.map((question) => [question.id, question]));
+    const questionMap: ReadonlyMap<number, Question> = new Map(
+      questions.map((question) => [question.id, question]),
+    );
+
+    await this.answerRepository.delete({ examAgreement });
 
     const answers = await Promise.all(
       createAnswerDtos.map(async (answerDto) => {
@@ -49,12 +49,14 @@ export class AnswerService {
         const createDto = { ...answerDto, examAgreement };
 
         if (answerDto.type === AnswerType.ANSWER_GRADE) {
-          const answer = this.answerGradeRepository.create(createDto);
-          return this.answerGradeRepository.save(answer);
+          return this.answerGradeRepository.save(
+            this.answerGradeRepository.create(createDto),
+          );
         }
 
-        const answer = this.answerRepository.create(createDto);
-        return this.answerRepository.save(answer);
+        return this.answerRepository.save(
+          this.answerRepository.create(createDto),
+        );
       }),
     );
 

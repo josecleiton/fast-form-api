@@ -48,31 +48,31 @@ export class ExamAgreementService {
       throw new ConflictException('already agreed');
     }
 
-    const agreement = await this.repository.save(
-      this.repository.create({
-        ...createAgreementDto,
-        userId: user.id,
-      }),
-    );
+    const agreement = this.repository.create({
+      ...createAgreementDto,
+      userId: user.id,
+    });
 
-    const { email } = user;
-    if (!email) {
-      return agreement;
+    if (user.email) {
+      await this.sendAgreementEmail(user.email, agreement);
     }
 
+    return this.repository.save(agreement);
+  }
+
+  private async sendAgreementEmail(
+    email: string,
+    agreement: ExamAgreement,
+  ): Promise<void> {
     try {
       await this.sendEmailService.sendAgreementEmail({
         user: { email },
         agreement,
       });
-      await this.repository.update(agreement.id, {
-        uniqueCodeSendedAt: new Date(),
-      });
+      agreement.uniqueCodeSendedAt = new Date();
     } catch (e) {
       this.logger.error(e);
     }
-
-    return agreement;
   }
 
   @Transactional()
