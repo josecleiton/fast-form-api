@@ -94,6 +94,11 @@
                                 <a href="#getByUser">getByUser</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#sendAgreementEmail">sendAgreementEmail</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#updateAgreement">updateAgreement</a>
                             </li>
@@ -604,6 +609,91 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="sendAgreementEmail"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Async</span>
+                            sendAgreementEmail
+                        </b>
+                        <a href="#sendAgreementEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sendAgreementEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, agreement: <a href="../classes/ExamAgreement.html">ExamAgreement</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>email</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>agreement</td>
+                                    <td>
+                                                <code><a href="../classes/ExamAgreement.html" target="_self" >ExamAgreement</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="updateAgreement"></a>
                     <span class="name">
                         <b>
@@ -747,31 +837,31 @@ export class ExamAgreementService {
       throw new ConflictException(&#x27;already agreed&#x27;);
     }
 
-    const agreement &#x3D; await this.repository.save(
-      this.repository.create({
-        ...createAgreementDto,
-        userId: user.id,
-      }),
-    );
+    const agreement &#x3D; this.repository.create({
+      ...createAgreementDto,
+      userId: user.id,
+    });
 
-    const { email } &#x3D; user;
-    if (!email) {
-      return agreement;
+    if (user.email) {
+      await this.sendAgreementEmail(user.email, agreement);
     }
 
+    return this.repository.save(agreement);
+  }
+
+  private async sendAgreementEmail(
+    email: string,
+    agreement: ExamAgreement,
+  ): Promise&lt;void&gt; {
     try {
       await this.sendEmailService.sendAgreementEmail({
         user: { email },
         agreement,
       });
-      await this.repository.update(agreement.id, {
-        uniqueCodeSendedAt: new Date(),
-      });
+      agreement.uniqueCodeSendedAt &#x3D; new Date();
     } catch (e) {
       this.logger.error(e);
     }
-
-    return agreement;
   }
 
   @Transactional()
