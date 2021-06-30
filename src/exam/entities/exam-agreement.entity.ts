@@ -43,7 +43,7 @@ export class ExamAgreement extends FFEntity {
   exam: Exam;
 
   @Expose()
-  hasFinishedExam(): boolean {
+  get hasFinishedExam(): boolean {
     return this.status === ExamAgreementStatus.FINISHED;
   }
 

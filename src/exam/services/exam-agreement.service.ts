@@ -91,7 +91,7 @@ export class ExamAgreementService {
       throw new NotFoundException(queryDto);
     }
 
-    if (agreement.status === ExamAgreementStatus.FINISHED) {
+    if (agreement.hasFinishedExam) {
       delete updateAgreementDto.anonymous;
     }
 
@@ -128,6 +128,7 @@ export class ExamAgreementService {
     return agreement;
   }
 
+  @Transactional()
   async finishExam(agreement: ExamAgreement): Promise<ExamAgreement> {
     agreement.status = ExamAgreementStatus.FINISHED;
 
