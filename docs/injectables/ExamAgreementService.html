@@ -465,11 +465,18 @@
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Transactional()<br /></code>
+                </td>
+            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:132</a></div>
                 </td>
             </tr>
 
@@ -783,7 +790,7 @@ export class ExamAgreementService {
       throw new NotFoundException(queryDto);
     }
 
-    if (agreement.status &#x3D;&#x3D;&#x3D; ExamAgreementStatus.FINISHED) {
+    if (agreement.hasFinishedExam) {
       delete updateAgreementDto.anonymous;
     }
 
@@ -820,6 +827,7 @@ export class ExamAgreementService {
     return agreement;
   }
 
+  @Transactional()
   async finishExam(agreement: ExamAgreement): Promise&lt;ExamAgreement&gt; {
     agreement.status &#x3D; ExamAgreementStatus.FINISHED;
 
