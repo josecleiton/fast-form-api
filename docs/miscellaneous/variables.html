@@ -121,6 +121,12 @@
                             <a href="#logger" title="src/main.ts"><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</a>
                         </li>
                         <li>
+                            <a href="#NODEMAILER_TRANSPORTER" title="src/infra/infra.constants.ts"><b>NODEMAILER_TRANSPORTER</b>&nbsp;&nbsp;&nbsp;(src/.../infra.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#nodemailerConfig" title="src/config/nodemailer.config.ts"><b>nodemailerConfig</b>&nbsp;&nbsp;&nbsp;(src/.../nodemailer.config.ts)</a>
+                        </li>
+                        <li>
                             <a href="#PASSWORD_MAX" title="src/auth/auth.constants.ts"><b>PASSWORD_MAX</b>&nbsp;&nbsp;&nbsp;(src/.../auth.constants.ts)</a>
                         </li>
                         <li>
@@ -336,6 +342,7 @@
   jwtConfig,
   firebaseConfig,
   sentryConfig,
+  nodemailerConfig,
 ]</code>
                         </td>
                     </tr>
@@ -828,6 +835,96 @@
             </tbody>
         </table>
 </section>
+    <h3>src/infra/infra.constants.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="NODEMAILER_TRANSPORTER"></a>
+                        <span class="name">
+                            <b>
+                            NODEMAILER_TRANSPORTER</b>
+                            <a href="#NODEMAILER_TRANSPORTER"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;transporter&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="UPLOAD_PATH"></a>
+                        <span class="name">
+                            <b>
+                            UPLOAD_PATH</b>
+                            <a href="#UPLOAD_PATH"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;/questions&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/config/nodemailer.config.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nodemailerConfig"></a>
+                        <span class="name">
+                            <b>
+                            nodemailerConfig</b>
+                            <a href="#nodemailerConfig"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>registerAs(&#x27;nodemailer&#x27;, () &#x3D;&gt; ({
+  pool: true,
+  host: &#x27;smtp.gmail.com&#x27;,
+  port: 465,
+  secure: true, // use TLS
+  auth: {
+    user: process.env.MAIL_FROM,
+    pass: process.env.MAIL_PASSWORD,
+  },
+}))</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>src/auth/auth.constants.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1134,36 +1231,6 @@
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>[&quot;Student&quot;, &quot;Professor&quot;]</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>src/infra/infra.constants.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="UPLOAD_PATH"></a>
-                        <span class="name">
-                            <b>
-                            UPLOAD_PATH</b>
-                            <a href="#UPLOAD_PATH"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;/questions&#x27;</code>
                         </td>
                     </tr>
 

@@ -115,12 +115,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(repository: <a href="../classes/ExamAgreementRepository.html">ExamAgreementRepository</a>, examService: <a href="../injectables/ExamService.html">ExamService</a>)</code>
+<code>constructor(repository: <a href="../classes/ExamAgreementRepository.html">ExamAgreementRepository</a>, examService: <a href="../injectables/ExamService.html">ExamService</a>, sendEmailService: <a href="../injectables/SendEmailService.html">SendEmailService</a>, logger: <a href="../injectables/CustomLogger.html">CustomLogger</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/exam/services/exam-agreement.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/exam/services/exam-agreement.service.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -154,6 +154,30 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ExamService.html" target="_self" >ExamService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sendEmailService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SendEmailService.html" target="_self" >SendEmailService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CustomLogger.html" target="_self" >CustomLogger</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -197,8 +221,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:103</a></div>
                 </td>
             </tr>
 
@@ -288,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:38</a></div>
                 </td>
             </tr>
 
@@ -372,8 +396,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:115</a></div>
                 </td>
             </tr>
 
@@ -444,8 +468,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:131</a></div>
                 </td>
             </tr>
 
@@ -521,8 +545,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:108</a></div>
                 </td>
             </tr>
 
@@ -600,8 +624,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -674,6 +698,8 @@
   NotFoundException,
 } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { SendEmailService } from &#x27;src/infra/services/send-email.service&#x27;;
+import { CustomLogger } from &#x27;src/logger/logger.service&#x27;;
 
 import { Between } from &#x27;typeorm&#x27;;
 import { Transactional } from &#x27;typeorm-transactional-cls-hooked&#x27;;
@@ -696,6 +722,8 @@ export class ExamAgreementService {
     private readonly repository: ExamAgreementRepository,
     @Inject(forwardRef(() &#x3D;&gt; ExamService))
     private readonly examService: ExamService,
+    private readonly sendEmailService: SendEmailService,
+    private readonly logger: CustomLogger,
   ) {}
 
   @Transactional()
@@ -712,12 +740,31 @@ export class ExamAgreementService {
       throw new ConflictException(&#x27;already agreed&#x27;);
     }
 
-    const agreement &#x3D; this.repository.create({
-      ...createAgreementDto,
-      userId: user.id,
-    });
+    const agreement &#x3D; await this.repository.save(
+      this.repository.create({
+        ...createAgreementDto,
+        userId: user.id,
+      }),
+    );
 
-    return this.repository.save(agreement);
+    const { email } &#x3D; user;
+    if (!email) {
+      return agreement;
+    }
+
+    try {
+      await this.sendEmailService.sendAgreementEmail({
+        user: { email },
+        agreement,
+      });
+      await this.repository.update(agreement.id, {
+        uniqueCodeSendedAt: new Date(),
+      });
+    } catch (e) {
+      this.logger.error(e);
+    }
+
+    return agreement;
   }
 
   @Transactional()
