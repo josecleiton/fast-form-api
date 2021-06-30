@@ -7,6 +7,8 @@ import { NODEMAILER_TRANSPORTER } from './infra.constants';
 import { FirebaseUploader } from './services/firebase-uploader.service';
 import { MailerService } from './services/mailer.service';
 import { NodeMailerService } from './services/nodemailer.service';
+import { SendEmailService } from './services/send-email.service';
+import { TemplateService } from './services/template.service';
 import { UploaderService } from './services/uploader.service';
 
 @Module({
@@ -28,8 +30,10 @@ import { UploaderService } from './services/uploader.service';
       inject: [ConfigService],
     },
     { provide: MailerService, useClass: NodeMailerService },
+    TemplateService,
+    SendEmailService,
   ],
   controllers: [UploadController],
-  exports: [UploaderService, MailerService],
+  exports: [UploaderService, MailerService, TemplateService, SendEmailService],
 })
 export class InfraModule {}

@@ -1,9 +1,11 @@
 import { FFEntity } from '../../core/entities/ff.entity';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { BeforeInsert, Column, Entity, ManyToOne } from 'typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { Exam } from './exam.entity';
 import { ExamAgreementStatus } from '../enums/exam-agreement-status.enum';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
+import { ApiHideProperty } from '@nestjs/swagger';
+import { padStart } from 'lodash';
 
 @Entity('exam_agreement')
 export class ExamAgreement extends FFEntity {
@@ -11,6 +13,8 @@ export class ExamAgreement extends FFEntity {
   uniqueCode: string;
 
   @Column({ type: 'datetime', nullable: true })
+  @Exclude()
+  @ApiHideProperty()
   uniqueCodeSendedAt?: Date;
 
   @Column({ type: 'boolean', default: false })
@@ -41,5 +45,10 @@ export class ExamAgreement extends FFEntity {
   @Expose()
   hasFinishedExam(): boolean {
     return this.status === ExamAgreementStatus.FINISHED;
+  }
+
+  @BeforeInsert()
+  _generateUniqueCode() {
+    this.uniqueCode = padStart(`${Math.round(Math.random() * 6379)}`, 8, '0');
   }
 }

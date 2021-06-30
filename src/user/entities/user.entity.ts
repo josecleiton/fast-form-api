@@ -13,6 +13,9 @@ export class User extends FFEntity {
   @Column({ type: 'varchar', unique: true })
   cpf: string;
 
+  @Column({ type: 'varchar', unique: true, nullable: true })
+  email?: string;
+
   @Column({ type: 'enum', enum: UserType })
   type: UserType;
 

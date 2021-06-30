@@ -6,7 +6,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MailerService } from 'src/infra/services/mailer.service';
+import { SendEmailService } from 'src/infra/services/send-email.service';
+import { CustomLogger } from 'src/logger/logger.service';
 
 import { Between } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
@@ -29,7 +30,8 @@ export class ExamAgreementService {
     private readonly repository: ExamAgreementRepository,
     @Inject(forwardRef(() => ExamService))
     private readonly examService: ExamService,
-    private readonly mailerService: MailerService,
+    private readonly sendEmailService: SendEmailService,
+    private readonly logger: CustomLogger,
   ) {}
 
   @Transactional()
@@ -46,16 +48,29 @@ export class ExamAgreementService {
       throw new ConflictException('already agreed');
     }
 
-    let agreement = this.repository.create({
-      ...createAgreementDto,
-      userId: user.id,
-    });
+    const agreement = await this.repository.save(
+      this.repository.create({
+        ...createAgreementDto,
+        userId: user.id,
+      }),
+    );
 
-    agreement = await this.repository.save(agreement);
+    const { email } = user;
+    if (!email) {
+      return agreement;
+    }
 
-    // TODO: send email
-
-    console.log(this.mailerService);
+    try {
+      await this.sendEmailService.sendAgreementEmail({
+        user: { email },
+        agreement,
+      });
+      await this.repository.update(agreement.id, {
+        uniqueCodeSendedAt: new Date(),
+      });
+    } catch (e) {
+      this.logger.error(e);
+    }
 
     return agreement;
   }
