@@ -733,6 +733,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/UpdateQuestionGroupDto.html" data-type="entity-link">UpdateQuestionGroupDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/UpdateUserDto.html" data-type="entity-link">UpdateUserDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/UploaderService.html" data-type="entity-link">UploaderService</a>
                             </li>
                             <li class="link">
