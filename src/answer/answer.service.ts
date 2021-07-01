@@ -41,8 +41,7 @@ export class AnswerService {
 
     const answers = await Promise.all(
       createAnswerDtos.map(async (answerDto) => {
-        const question = questionMap.get(answerDto.questionId);
-        if (!question) {
+        if (!questionMap.get(answerDto.questionId)) {
           throw new NotFoundException(answerDto, 'Question not found');
         }
 
