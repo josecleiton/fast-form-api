@@ -1,4 +1,4 @@
-import { IsEnum } from 'class-validator';
+import { IsEmail, IsEnum, IsOptional } from 'class-validator';
 import { IsCPF } from 'brazilian-class-validator';
 import { PickType } from '@nestjs/swagger';
 
@@ -19,4 +19,8 @@ export class CreateUserDto extends PickType(CreateAuthDto, ['password']) {
 
   @IsEnum(UserRole)
   role: UserRole;
+
+  @IsOptional()
+  @IsEmail()
+  email?: string;
 }
