@@ -13,6 +13,7 @@ import {
 } from 'typeorm-transactional-cls-hooked';
 
 import { CreateUserDto } from './dtos/create-user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserDto } from './dtos/user.dto';
 import { User } from './entities/user.entity';
 import { UserType } from './enum/user-type.enum';
@@ -67,12 +68,11 @@ export class UserService {
   }
 
   async findSpecializedUser(userDto: UserDto): Promise<User> {
-    const partialUser:
-      | UserResult
-      | undefined = await this.userRepository.findOne({
-      select: ['type', 'id'],
-      where: { ...userDto },
-    });
+    const partialUser: UserResult | undefined =
+      await this.userRepository.findOne({
+        select: ['type', 'id'],
+        where: { ...userDto },
+      });
 
     if (!partialUser) {
       throw new UnauthorizedException(userDto);
@@ -102,5 +102,14 @@ export class UserService {
     }
 
     return user;
+  }
+
+  @Transactional()
+  async updateUser(enrollment: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.mustFindUser({ enrollment });
+
+    return this.userRepository.save(
+      this.userRepository.merge(user, updateUserDto),
+    );
   }
 }
