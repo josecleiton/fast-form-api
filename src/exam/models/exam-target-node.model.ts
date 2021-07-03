@@ -3,8 +3,10 @@ import { ExamTargetType } from '../enums/exam-target-type.enum';
 type Path = ExamTargetNode[] | undefined;
 
 export class ExamTargetNode {
-  childs: ExamTargetNode[];
-  type: ExamTargetType;
+  constructor(
+    readonly type: ExamTargetType,
+    readonly childs: ExamTargetNode[],
+  ) {}
 
   get isLeaf(): boolean {
     return !this.childs.length;

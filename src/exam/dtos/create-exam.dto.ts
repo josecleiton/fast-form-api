@@ -13,19 +13,19 @@ import { ExamTargetType } from '../enums/exam-target-type.enum';
 export class CreateExamDto {
   @IsString()
   @IsNotEmpty()
-  title: string;
+  title!: string;
 
   @IsString()
   @IsNotEmpty()
-  description: string;
+  description!: string;
 
   @IsDate()
   @Type(() => Date)
-  startedAt: Date;
+  startedAt!: Date;
 
   @IsDate()
   @Type(() => Date)
-  endedAt: Date;
+  endedAt!: Date;
 
   @IsOptional()
   @IsBoolean()
@@ -33,7 +33,6 @@ export class CreateExamDto {
 
   @IsOptional()
   @IsArray()
-  @IsEnum(ExamTargetType, {each: true})
+  @IsEnum(ExamTargetType, { each: true })
   targets?: ExamTargetType[];
-
 }

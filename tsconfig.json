@@ -12,7 +12,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "strictNullChecks": true,
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "lib": [

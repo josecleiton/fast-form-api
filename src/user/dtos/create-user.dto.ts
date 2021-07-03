@@ -9,16 +9,16 @@ import { UserRole } from '../enum/user-role.enum';
 
 export class CreateUserDto extends PickType(CreateAuthDto, ['password']) {
   @IsCPF()
-  cpf: string;
+  cpf!: string;
 
   @IsEnrollment()
-  enrollment: string;
+  enrollment!: string;
 
   @IsEnum(UserType)
-  type: UserType;
+  type!: UserType;
 
   @IsEnum(UserRole)
-  role: UserRole;
+  role!: UserRole;
 
   @IsOptional()
   @IsEmail()

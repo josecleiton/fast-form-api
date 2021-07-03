@@ -105,7 +105,10 @@ export class UserService {
   }
 
   @Transactional()
-  async updateUser(enrollment: string, updateUserDto: UpdateUserDto): Promise<User> {
+  async updateUser(
+    enrollment: string,
+    updateUserDto: UpdateUserDto,
+  ): Promise<User> {
     const user = await this.mustFindUser({ enrollment });
 
     return this.userRepository.save(

@@ -12,17 +12,17 @@ export class Answer extends FFEntity {
   score?: number;
 
   @Column({ type: 'enum', enum: AnswerType })
-  type: AnswerType;
+  type!: AnswerType;
 
   @Column({ type: 'int' })
-  examAgreementId: number;
+  examAgreementId!: number;
 
   @Column({ type: 'int' })
-  questionId: number;
+  questionId!: number;
 
   @ManyToOne(() => ExamAgreement)
-  examAgreement: ExamAgreement;
+  examAgreement!: ExamAgreement;
 
   @ManyToOne(() => Question)
-  question: Question;
+  question!: Question;
 }

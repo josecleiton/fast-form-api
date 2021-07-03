@@ -6,7 +6,7 @@ import { Column, Entity, Index, ManyToOne, OneToMany } from 'typeorm';
 @Entity()
 export class Question extends FFEntity {
   @Column({ type: 'text' })
-  statement: string;
+  statement!: string;
 
   @Column({ type: 'text', nullable: true })
   imageUrl?: string;
@@ -15,18 +15,18 @@ export class Question extends FFEntity {
   imageAlt?: string;
 
   @Column({ type: 'bool', default: true })
-  required: boolean;
+  required!: boolean;
 
   @Column({ type: 'int' })
-  groupId: number;
+  groupId!: number;
 
   @Index('IX_question_position')
   @Column({ type: 'int', default: 0 })
-  position: number;
+  position!: number;
 
   @ManyToOne(() => QuestionGroup)
-  group: QuestionGroup;
+  group!: QuestionGroup;
 
   @OneToMany(() => Answer, (answer) => answer.question)
-  answers: Answer[];
+  answers!: Answer[];
 }

@@ -11,9 +11,9 @@ import { ExamUser } from '../interfaces/exam-user.interface';
 export class UpdateExamAgreementQueryDto {
   @IsPositive()
   @Type(() => Number)
-  examId: number;
+  examId!: number;
 
-  user: ExamUser;
+  user!: ExamUser;
 }
 
 export class UpdateExamAgreementDto {

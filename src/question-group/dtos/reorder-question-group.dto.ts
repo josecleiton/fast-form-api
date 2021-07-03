@@ -2,9 +2,9 @@ import { IsArray, IsPositive } from 'class-validator';
 
 export class ReorderQuestionGroupDto {
   @IsPositive()
-  examId: number;
+  examId!: number;
 
   @IsArray()
   @IsPositive({ each: true })
-  groupIds: number[];
+  groupIds!: number[];
 }

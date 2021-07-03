@@ -17,38 +17,38 @@ import { ExamTarget } from './exam-target.entity';
 @Entity('exam')
 export class Exam extends FFEntity {
   @Column({ type: 'text' })
-  title: string;
+  title!: string;
 
   @Column({ type: 'text' })
-  description: string;
+  description!: string;
 
   @Column({ type: 'datetime' })
-  startedAt: Date;
+  startedAt!: Date;
 
   @Column({ type: 'datetime' })
-  endedAt: Date;
+  endedAt!: Date;
 
   @Column({ type: 'bool', default: false })
-  allowAnonymous: boolean;
+  allowAnonymous!: boolean;
 
   @Column({ type: 'enum', enum: ExamStatus })
-  status: ExamStatus;
+  status!: ExamStatus;
 
   @Column({ type: 'int' })
-  periodId: number;
+  periodId!: number;
 
   @ManyToMany(() => ExamTarget)
   @JoinTable()
   targets?: ExamTarget[];
 
   @ManyToOne(() => Period)
-  period: Period;
+  period!: Period;
 
   @OneToMany(() => QuestionGroup, (group) => group.exam)
-  groups: QuestionGroup[];
+  groups!: QuestionGroup[];
 
   @OneToMany(() => ExamAgreement, (agreement) => agreement.exam)
-  agreements: ExamAgreement[];
+  agreements!: ExamAgreement[];
 
   @AfterLoad()
   sortItems() {

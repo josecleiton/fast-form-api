@@ -2,8 +2,8 @@ import { IsPositive } from 'class-validator';
 
 export class CopyQuestionGroupDto {
   @IsPositive()
-  groupId: number;
+  groupId!: number;
 
   @IsPositive()
-  examId: number;
+  examId!: number;
 }

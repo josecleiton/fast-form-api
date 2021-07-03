@@ -9,7 +9,7 @@ import {
 export class CreateQuestionGroupDto {
   @IsString()
   @IsNotEmpty()
-  title: string;
+  title!: string;
 
   @IsOptional()
   @IsBoolean()

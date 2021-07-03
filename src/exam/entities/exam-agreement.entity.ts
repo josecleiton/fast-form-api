@@ -10,7 +10,7 @@ import { padStart } from 'lodash';
 @Entity('exam_agreement')
 export class ExamAgreement extends FFEntity {
   @Column({ unique: true, length: 36 })
-  uniqueCode: string;
+  uniqueCode!: string;
 
   @Column({ type: 'datetime', nullable: true })
   @Exclude()
@@ -18,7 +18,7 @@ export class ExamAgreement extends FFEntity {
   uniqueCodeSendedAt?: Date;
 
   @Column({ type: 'boolean', default: false })
-  anonymous: boolean;
+  anonymous!: boolean;
 
   @Column({ type: 'text', nullable: true })
   observation?: string;
@@ -28,19 +28,19 @@ export class ExamAgreement extends FFEntity {
     enum: ExamAgreementStatus,
     default: ExamAgreementStatus.STARTED,
   })
-  status: ExamAgreementStatus;
+  status!: ExamAgreementStatus;
 
   @Column({ type: 'int' })
-  userId: number;
+  userId!: number;
 
   @Column({ type: 'int' })
-  examId: number;
+  examId!: number;
 
   @ManyToOne(() => User)
-  user: User;
+  user!: User;
 
   @ManyToOne(() => Exam)
-  exam: Exam;
+  exam!: Exam;
 
   @Expose()
   get hasFinishedExam(): boolean {

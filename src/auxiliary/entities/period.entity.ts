@@ -9,11 +9,11 @@ export class Period extends FFEntity {
   name?: string;
 
   @Column({ type: 'datetime' })
-  startedAt: Date;
+  startedAt!: Date;
 
   @Column({ type: 'datetime' })
-  endedAt: Date;
+  endedAt!: Date;
 
   @OneToMany(() => Exam, (exam) => exam.period)
-  exams: Exam[];
+  exams!: Exam[];
 }

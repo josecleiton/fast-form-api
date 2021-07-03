@@ -3,8 +3,8 @@ import { IsPositive } from 'class-validator';
 
 export class ExamAgreementDto {
   @ApiHideProperty()
-  userId: number;
+  userId!: number;
 
   @IsPositive()
-  examId: number;
+  examId!: number;
 }

@@ -5,5 +5,5 @@ import { AuthDto } from './auth.dto';
 export class LoginDto extends AuthDto {
   @IsString()
   @Length(PASSWORD_MIN, PASSWORD_MAX)
-  password: string;
+  password!: string;
 }

@@ -14,27 +14,27 @@ import { Question } from './question.entity';
 @Index('IX_question_group_class_examId', ['class', 'examId'])
 export class QuestionGroup extends FFEntity {
   @Column({ type: 'varchar' })
-  title: string;
+  title!: string;
 
   // TODO: juntar essas flags em um enum
   @Column({ type: 'bool', default: false })
-  class: boolean;
+  class!: boolean;
 
   @Column({ type: 'bool', default: false })
-  personal: boolean;
+  personal!: boolean;
 
   @Index('IX_question_group_position')
   @Column({ type: 'int', default: 0 })
-  position: number;
+  position!: number;
 
   @Column({ type: 'int', nullable: true })
-  examId: number;
+  examId!: number;
 
   @OneToMany(() => Question, (question) => question.group)
-  questions: Question[];
+  questions!: Question[];
 
   @ManyToOne(() => Exam)
-  exam: Exam;
+  exam!: Exam;
 
   @AfterLoad()
   sortItems() {

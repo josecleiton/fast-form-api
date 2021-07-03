@@ -10,11 +10,8 @@ interface ExamTargetNodeSchema {
 @Injectable()
 export class ExamTargetNodeFactory {
   generate(schema: ExamTargetNodeSchema): ExamTargetNode {
-    const node = new ExamTargetNode();
-    node.type = schema.type;
+    const childs = schema.childs?.map((node) => this.generate(node)) ?? [];
 
-    node.childs = schema.childs?.map((node) => this.generate(node)) ?? [];
-
-    return node;
+    return new ExamTargetNode(schema.type, childs);
   }
 }

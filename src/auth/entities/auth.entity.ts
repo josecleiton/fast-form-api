@@ -4,11 +4,11 @@ import { Column, Entity } from 'typeorm';
 @Entity('auth')
 export class Auth extends FFEntity {
   @Column({ type: 'varchar', unique: true })
-  login: string;
+  login!: string;
 
   @Column({ type: 'varchar' })
-  password: string;
+  password!: string;
 
   @Column({ type: 'varchar' })
-  salt: string;
+  salt!: string;
 }

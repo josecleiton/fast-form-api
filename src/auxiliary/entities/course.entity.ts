@@ -5,11 +5,11 @@ import { Subject } from './subject.entity';
 @Entity('course')
 export class Course extends FFEntity {
   @Column({ type: 'varchar', unique: true })
-  code: string;
+  code!: string;
 
   @Column({ type: 'varchar' })
-  title: string;
+  title!: string;
 
   @OneToMany(() => Subject, (subject) => subject.course)
-  subjects: Subject[];
+  subjects!: Subject[];
 }

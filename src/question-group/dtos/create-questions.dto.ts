@@ -22,5 +22,5 @@ export class CreateQuestionsDto {
   @Type(() => CreateQuestion)
   @IsDefined({ each: true })
   @ArrayMinSize(1)
-  questions: CreateQuestion[];
+  questions!: CreateQuestion[];
 }

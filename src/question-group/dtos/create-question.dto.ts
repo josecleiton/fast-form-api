@@ -11,7 +11,7 @@ import {
 export class CreateQuestionDto {
   @IsString()
   @IsNotEmpty()
-  statement: string;
+  statement!: string;
 
   @IsOptional()
   @IsUrl()
@@ -32,5 +32,5 @@ export class CreateQuestionDto {
   required?: boolean;
 
   @IsPositive()
-  groupId: number;
+  groupId!: number;
 }

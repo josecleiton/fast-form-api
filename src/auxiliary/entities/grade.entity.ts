@@ -17,25 +17,25 @@ import { Subject } from './subject.entity';
 @Entity('grade')
 export class Grade extends FFEntity {
   @Column({ type: 'int' })
-  subjectId: number;
+  subjectId!: number;
 
   @Column({ type: 'int' })
-  periodId: number;
+  periodId!: number;
 
   @ManyToOne(() => Subject)
-  subject: Subject;
+  subject!: Subject;
 
   @ManyToOne(() => Period)
-  period: Period;
+  period!: Period;
 
   @OneToMany(() => AnswerGrade, (answer) => answer.grade)
-  answers: AnswerGrade[];
+  answers!: AnswerGrade[];
 
   @ManyToMany(() => Student)
   @JoinTable({ name: 'student_grade' })
-  students: Student[];
+  students!: Student[];
 
   @ManyToMany(() => Professor)
   @JoinTable({ name: 'professor_grade' })
-  professors: Professor[];
+  professors!: Professor[];
 }

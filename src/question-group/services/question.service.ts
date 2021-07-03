@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SoftDeleteResult } from 'src/core/interfaces/soft-delete-result.interface';
-import { In } from 'typeorm';
+import { In, SelectQueryBuilder } from 'typeorm';
 import { Transactional } from 'typeorm-transactional-cls-hooked';
 import { QuestionGroup } from '../entities/question-group.entity';
 import { CreateQuestionDto } from '../dtos/create-question.dto';
@@ -63,7 +63,7 @@ export class QuestionService {
 
   find(findDto: QuestionFindDto): Promise<Question[]> {
     return this.repository.find({
-      where: (qb) => {
+      where: (qb: SelectQueryBuilder<Question>) => {
         if (findDto.groupId) {
           qb.where(`${qb.alias}.groupId = :groupId`, findDto);
         }

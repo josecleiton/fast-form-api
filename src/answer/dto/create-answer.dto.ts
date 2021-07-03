@@ -15,7 +15,7 @@ export class CreateAnswerDto {
   score?: number;
 
   @IsPositive()
-  questionId: number;
+  questionId!: number;
 
   @IsOptional()
   @IsEnum(AnswerType)
