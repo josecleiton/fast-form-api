@@ -19,7 +19,7 @@ export class ExportationRepository {
           ea.id AS 'exam_agreement_id',
           ea.anonymous AS 'anonymous',
           ea.observation AS 'observation',
-          ea.uuid AS 'unique_code',
+          ea.unique_code AS 'unique_code',
           qg.title AS 'group_title',
           qg.class AS 'is_class',
           qg.personal AS 'is_personal',
