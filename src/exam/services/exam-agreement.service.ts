@@ -48,10 +48,12 @@ export class ExamAgreementService {
       throw new ConflictException('already agreed');
     }
 
-    const agreement = this.repository.create({
-      ...createAgreementDto,
-      userId: user.id,
-    });
+    const agreement = await this.repository.save(
+      this.repository.create({
+        ...createAgreementDto,
+        userId: user.id,
+      }),
+    );
 
     if (user.email) {
       await this.sendAgreementEmail(user.email, agreement);
