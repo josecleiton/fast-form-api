@@ -226,8 +226,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:105</a></div>
                 </td>
             </tr>
 
@@ -401,8 +401,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:115</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:117</a></div>
                 </td>
             </tr>
 
@@ -480,8 +480,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="132"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:132</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:134</a></div>
                 </td>
             </tr>
 
@@ -557,8 +557,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:110</a></div>
                 </td>
             </tr>
 
@@ -630,8 +630,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:65</a></div>
                 </td>
             </tr>
 
@@ -721,8 +721,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/exam/services/exam-agreement.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -837,10 +837,12 @@ export class ExamAgreementService {
       throw new ConflictException(&#x27;already agreed&#x27;);
     }
 
-    const agreement &#x3D; this.repository.create({
-      ...createAgreementDto,
-      userId: user.id,
-    });
+    const agreement &#x3D; await this.repository.save(
+      this.repository.create({
+        ...createAgreementDto,
+        userId: user.id,
+      }),
+    );
 
     if (user.email) {
       await this.sendAgreementEmail(user.email, agreement);
