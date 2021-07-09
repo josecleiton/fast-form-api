@@ -173,7 +173,7 @@ export class CreateQuestionsDto {
   @Type(() &#x3D;&gt; CreateQuestion)
   @IsDefined({ each: true })
   @ArrayMinSize(1)
-  questions: CreateQuestion[];
+  questions!: CreateQuestion[];
 }
 </code></pre>
     </div>

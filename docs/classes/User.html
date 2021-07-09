@@ -684,22 +684,22 @@ import { UserType } from &#x27;../enum/user-type.enum&#x27;;
 @TableInheritance({ column: { type: &#x27;enum&#x27;, name: &#x27;type&#x27;, enum: UserType } })
 export class User extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, unique: true })
-  enrollment: string;
+  enrollment!: string;
 
   @Column({ type: &#x27;varchar&#x27;, unique: true })
-  cpf: string;
+  cpf!: string;
 
   @Column({ type: &#x27;varchar&#x27;, unique: true, nullable: true })
   email?: string;
 
   @Column({ type: &#x27;enum&#x27;, enum: UserType })
-  type: UserType;
+  type!: UserType;
 
   @Column({ type: &#x27;enum&#x27;, default: UserRole.REGULAR, enum: UserRole })
-  role: UserRole;
+  role!: UserRole;
 
   @OneToMany(() &#x3D;&gt; ExamAgreement, (agreement) &#x3D;&gt; agreement.user)
-  examAgreements: ExamAgreement[];
+  examAgreements!: ExamAgreement[];
 }
 </code></pre>
     </div>

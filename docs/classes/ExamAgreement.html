@@ -911,7 +911,7 @@ import { padStart } from &#x27;lodash&#x27;;
 @Entity(&#x27;exam_agreement&#x27;)
 export class ExamAgreement extends FFEntity {
   @Column({ unique: true, length: 36 })
-  uniqueCode: string;
+  uniqueCode!: string;
 
   @Column({ type: &#x27;datetime&#x27;, nullable: true })
   @Exclude()
@@ -919,7 +919,7 @@ export class ExamAgreement extends FFEntity {
   uniqueCodeSendedAt?: Date;
 
   @Column({ type: &#x27;boolean&#x27;, default: false })
-  anonymous: boolean;
+  anonymous!: boolean;
 
   @Column({ type: &#x27;text&#x27;, nullable: true })
   observation?: string;
@@ -929,19 +929,19 @@ export class ExamAgreement extends FFEntity {
     enum: ExamAgreementStatus,
     default: ExamAgreementStatus.STARTED,
   })
-  status: ExamAgreementStatus;
+  status!: ExamAgreementStatus;
 
   @Column({ type: &#x27;int&#x27; })
-  userId: number;
+  userId!: number;
 
   @Column({ type: &#x27;int&#x27; })
-  examId: number;
+  examId!: number;
 
   @ManyToOne(() &#x3D;&gt; User)
-  user: User;
+  user!: User;
 
   @ManyToOne(() &#x3D;&gt; Exam)
-  exam: Exam;
+  exam!: Exam;
 
   @Expose()
   get hasFinishedExam(): boolean {

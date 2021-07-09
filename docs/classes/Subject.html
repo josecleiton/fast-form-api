@@ -504,19 +504,19 @@ import { Grade } from &#x27;./grade.entity&#x27;;
 @Entity(&#x27;subject&#x27;)
 export class Subject extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, unique: true })
-  code: string;
+  code!: string;
 
   @Column({ type: &#x27;varchar&#x27; })
-  title: string;
+  title!: string;
 
   @Column({ type: &#x27;int&#x27; })
-  courseId: number;
+  courseId!: number;
 
   @ManyToOne(() &#x3D;&gt; Course)
-  course: Course;
+  course!: Course;
 
   @OneToMany(() &#x3D;&gt; Grade, (grade) &#x3D;&gt; grade.subject)
-  grades: Grade[];
+  grades!: Grade[];
 }
 </code></pre>
     </div>

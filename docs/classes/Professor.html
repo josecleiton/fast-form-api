@@ -665,7 +665,7 @@ import { Grade } from &#x27;./grade.entity&#x27;;
 @ChildEntity()
 export class Professor extends User {
   @ManyToMany(() &#x3D;&gt; Grade, { lazy: true })
-  professorGrades: Promise&lt;Grade[]&gt;;
+  professorGrades!: Promise&lt;Grade[]&gt;;
 
   get grades(): Promise&lt;Grade[]&gt; {
     return this.professorGrades;

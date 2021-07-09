@@ -193,10 +193,10 @@ import { IsPositive } from &#x27;class-validator&#x27;;
 
 export class ExamAgreementDto {
   @ApiHideProperty()
-  userId: number;
+  userId!: number;
 
   @IsPositive()
-  examId: number;
+  examId!: number;
 }
 </code></pre>
     </div>

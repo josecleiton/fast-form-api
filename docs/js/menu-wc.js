@@ -616,9 +616,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/FFEntity.html" data-type="entity-link">FFEntity</a>
                             </li>
                             <li class="link">
-                                <a href="classes/FindPersonalDto.html" data-type="entity-link">FindPersonalDto</a>
-                            </li>
-                            <li class="link">
                                 <a href="classes/GracefulUniqueCodeOnExamAgreement1625001565001.html" data-type="entity-link">GracefulUniqueCodeOnExamAgreement1625001565001</a>
                             </li>
                             <li class="link">
@@ -698,9 +695,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/SeedAuxiliary1624412129413.html" data-type="entity-link">SeedAuxiliary1624412129413</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/SendMailDto.html" data-type="entity-link">SendMailDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/Student.html" data-type="entity-link">Student</a>
@@ -810,6 +804,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/FindExamByUserDto.html" data-type="entity-link">FindExamByUserDto</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/FindPersonalDto.html" data-type="entity-link">FindPersonalDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/FirebaseAsyncModuleOptions.html" data-type="entity-link">FirebaseAsyncModuleOptions</a>
                             </li>
                             <li class="link">
@@ -838,6 +835,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/SendAgreementEmailDto.html" data-type="entity-link">SendAgreementEmailDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SendMailDto.html" data-type="entity-link">SendMailDto</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/SoftDeleteResult.html" data-type="entity-link">SoftDeleteResult</a>

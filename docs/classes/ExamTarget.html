@@ -484,7 +484,7 @@ import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
 @Entity(&#x27;exam_target&#x27;)
 export class ExamTarget extends FFEntity {
   @Column({ type: &#x27;enum&#x27;, enum: ExamTargetType, unique: true })
-  type: ExamTargetType;
+  type!: ExamTargetType;
 }
 </code></pre>
     </div>

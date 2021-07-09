@@ -663,10 +663,10 @@ import { Answer } from &#x27;./answer.entity&#x27;;
 @ChildEntity()
 export class AnswerGrade extends Answer {
   @ManyToOne(() &#x3D;&gt; Grade)
-  grade: Grade;
+  grade!: Grade;
 
   @Column({ type: &#x27;int&#x27; })
-  gradeId: number;
+  gradeId!: number;
 }
 </code></pre>
     </div>

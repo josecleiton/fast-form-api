@@ -423,13 +423,13 @@ import { Column, Entity } from &#x27;typeorm&#x27;;
 @Entity(&#x27;auth&#x27;)
 export class Auth extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, unique: true })
-  login: string;
+  login!: string;
 
   @Column({ type: &#x27;varchar&#x27; })
-  password: string;
+  password!: string;
 
   @Column({ type: &#x27;varchar&#x27; })
-  salt: string;
+  salt!: string;
 }
 </code></pre>
     </div>

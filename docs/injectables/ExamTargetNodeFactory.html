@@ -184,12 +184,9 @@ interface ExamTargetNodeSchema {
 @Injectable()
 export class ExamTargetNodeFactory {
   generate(schema: ExamTargetNodeSchema): ExamTargetNode {
-    const node &#x3D; new ExamTargetNode();
-    node.type &#x3D; schema.type;
+    const childs &#x3D; schema.childs?.map((node) &#x3D;&gt; this.generate(node)) ?? [];
 
-    node.childs &#x3D; schema.childs?.map((node) &#x3D;&gt; this.generate(node)) ?? [];
-
-    return node;
+    return new ExamTargetNode(schema.type, childs);
   }
 }
 </code></pre>

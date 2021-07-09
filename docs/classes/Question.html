@@ -762,7 +762,7 @@ import { Column, Entity, Index, ManyToOne, OneToMany } from &#x27;typeorm&#x27;;
 @Entity()
 export class Question extends FFEntity {
   @Column({ type: &#x27;text&#x27; })
-  statement: string;
+  statement!: string;
 
   @Column({ type: &#x27;text&#x27;, nullable: true })
   imageUrl?: string;
@@ -771,20 +771,20 @@ export class Question extends FFEntity {
   imageAlt?: string;
 
   @Column({ type: &#x27;bool&#x27;, default: true })
-  required: boolean;
+  required!: boolean;
 
   @Column({ type: &#x27;int&#x27; })
-  groupId: number;
+  groupId!: number;
 
   @Index(&#x27;IX_question_position&#x27;)
   @Column({ type: &#x27;int&#x27;, default: 0 })
-  position: number;
+  position!: number;
 
   @ManyToOne(() &#x3D;&gt; QuestionGroup)
-  group: QuestionGroup;
+  group!: QuestionGroup;
 
   @OneToMany(() &#x3D;&gt; Answer, (answer) &#x3D;&gt; answer.question)
-  answers: Answer[];
+  answers!: Answer[];
 }
 </code></pre>
     </div>

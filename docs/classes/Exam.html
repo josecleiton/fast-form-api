@@ -1019,38 +1019,38 @@ import { ExamTarget } from &#x27;./exam-target.entity&#x27;;
 @Entity(&#x27;exam&#x27;)
 export class Exam extends FFEntity {
   @Column({ type: &#x27;text&#x27; })
-  title: string;
+  title!: string;
 
   @Column({ type: &#x27;text&#x27; })
-  description: string;
+  description!: string;
 
   @Column({ type: &#x27;datetime&#x27; })
-  startedAt: Date;
+  startedAt!: Date;
 
   @Column({ type: &#x27;datetime&#x27; })
-  endedAt: Date;
+  endedAt!: Date;
 
   @Column({ type: &#x27;bool&#x27;, default: false })
-  allowAnonymous: boolean;
+  allowAnonymous!: boolean;
 
   @Column({ type: &#x27;enum&#x27;, enum: ExamStatus })
-  status: ExamStatus;
+  status!: ExamStatus;
 
   @Column({ type: &#x27;int&#x27; })
-  periodId: number;
+  periodId!: number;
 
   @ManyToMany(() &#x3D;&gt; ExamTarget)
   @JoinTable()
   targets?: ExamTarget[];
 
   @ManyToOne(() &#x3D;&gt; Period)
-  period: Period;
+  period!: Period;
 
   @OneToMany(() &#x3D;&gt; QuestionGroup, (group) &#x3D;&gt; group.exam)
-  groups: QuestionGroup[];
+  groups!: QuestionGroup[];
 
   @OneToMany(() &#x3D;&gt; ExamAgreement, (agreement) &#x3D;&gt; agreement.exam)
-  agreements: ExamAgreement[];
+  agreements!: ExamAgreement[];
 
   @AfterLoad()
   sortItems() {

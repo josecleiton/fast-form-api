@@ -43,7 +43,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>ExamTargetNodeSchema</li>
+  <li>SendMailDto</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/exam/factories/exam-target-node.factory.ts</code>
+            <code>src/infra/dtos/send-mail.dto.ts</code>
         </p>
 
 
@@ -79,11 +79,16 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#childs">childs</a>
+                                        <a href="#html">html</a>
                                 </li>
                                 <li>
-                                        <a href="#type">type</a>
+                                        <a href="#subject">subject</a>
+                                </li>
+                                <li>
+                                        <a href="#text">text</a>
+                                </li>
+                                <li>
+                                        <a href="#to">to</a>
                                 </li>
                             </ul>
                         </td>
@@ -100,13 +105,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="childs"></a>
-                                        <span class="name"><b>childs</b><a href="#childs"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="html"></a>
+                                        <span class="name"><b>html</b><a href="#html"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>childs:         <code><a href="../interfaces/ExamTargetNodeSchema.html" target="_self" >ExamTargetNodeSchema[]</a></code>
+                                        <code>html:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -114,16 +119,11 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../interfaces/ExamTargetNodeSchema.html" target="_self" >ExamTargetNodeSchema[]</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -134,13 +134,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="type"></a>
-                                        <span class="name"><b>type</b><a href="#type"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="subject"></a>
+                                        <span class="name"><b>subject</b><a href="#subject"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>type:         <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType</a></code>
+                                        <code>subject:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -148,7 +148,65 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ExamTargetType" target="_self" >ExamTargetType</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="text"></a>
+                                        <span class="name"><b>text</b><a href="#text"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>text:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="to"></a>
+                                        <span class="name"><b>to</b><a href="#to"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>to:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -164,22 +222,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { ExamTargetType } from &#x27;../enums/exam-target-type.enum&#x27;;
-import { ExamTargetNode } from &#x27;../models/exam-target-node.model&#x27;;
-
-interface ExamTargetNodeSchema {
-  type: ExamTargetType;
-  childs?: ExamTargetNodeSchema[];
-}
-
-@Injectable()
-export class ExamTargetNodeFactory {
-  generate(schema: ExamTargetNodeSchema): ExamTargetNode {
-    const childs &#x3D; schema.childs?.map((node) &#x3D;&gt; this.generate(node)) ?? [];
-
-    return new ExamTargetNode(schema.type, childs);
-  }
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface SendMailDto {
+  html: string;
+  text: string;
+  to: string;
+  subject: string;
 }
 </code></pre>
     </div>
@@ -208,7 +255,7 @@ export class ExamTargetNodeFactory {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'ExamTargetNodeSchema.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SendMailDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

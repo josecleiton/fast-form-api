@@ -424,13 +424,13 @@ import { Subject } from &#x27;./subject.entity&#x27;;
 @Entity(&#x27;course&#x27;)
 export class Course extends FFEntity {
   @Column({ type: &#x27;varchar&#x27;, unique: true })
-  code: string;
+  code!: string;
 
   @Column({ type: &#x27;varchar&#x27; })
-  title: string;
+  title!: string;
 
   @OneToMany(() &#x3D;&gt; Subject, (subject) &#x3D;&gt; subject.course)
-  subjects: Subject[];
+  subjects!: Subject[];
 }
 </code></pre>
     </div>

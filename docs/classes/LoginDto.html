@@ -208,7 +208,7 @@ import { AuthDto } from &#x27;./auth.dto&#x27;;
 export class LoginDto extends AuthDto {
   @IsString()
   @Length(PASSWORD_MIN, PASSWORD_MAX)
-  password: string;
+  password!: string;
 }
 </code></pre>
     </div>

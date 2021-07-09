@@ -592,27 +592,27 @@ import { Subject } from &#x27;./subject.entity&#x27;;
 @Entity(&#x27;grade&#x27;)
 export class Grade extends FFEntity {
   @Column({ type: &#x27;int&#x27; })
-  subjectId: number;
+  subjectId!: number;
 
   @Column({ type: &#x27;int&#x27; })
-  periodId: number;
+  periodId!: number;
 
   @ManyToOne(() &#x3D;&gt; Subject)
-  subject: Subject;
+  subject!: Subject;
 
   @ManyToOne(() &#x3D;&gt; Period)
-  period: Period;
+  period!: Period;
 
   @OneToMany(() &#x3D;&gt; AnswerGrade, (answer) &#x3D;&gt; answer.grade)
-  answers: AnswerGrade[];
+  answers!: AnswerGrade[];
 
   @ManyToMany(() &#x3D;&gt; Student)
   @JoinTable({ name: &#x27;student_grade&#x27; })
-  students: Student[];
+  students!: Student[];
 
   @ManyToMany(() &#x3D;&gt; Professor)
   @JoinTable({ name: &#x27;professor_grade&#x27; })
-  professors: Professor[];
+  professors!: Professor[];
 }
 </code></pre>
     </div>

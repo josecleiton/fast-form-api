@@ -469,13 +469,13 @@ export class Period extends FFEntity {
   name?: string;
 
   @Column({ type: &#x27;datetime&#x27; })
-  startedAt: Date;
+  startedAt!: Date;
 
   @Column({ type: &#x27;datetime&#x27; })
-  endedAt: Date;
+  endedAt!: Date;
 
   @OneToMany(() &#x3D;&gt; Exam, (exam) &#x3D;&gt; exam.period)
-  exams: Exam[];
+  exams!: Exam[];
 }
 </code></pre>
     </div>
